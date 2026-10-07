@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, ClipboardCheck, Eye, EyeOff, Heart, Landmark, LockKeyhole, Minus, PenLine, Phone, Plus, RotateCcw, ShieldCheck, Sparkles, User, Users } from 'lucide-react'
+import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, ClipboardCheck, Eye, EyeOff, Heart, Landmark, LockKeyhole, MapPin, Minus, PenLine, Phone, Plus, RotateCcw, ShieldCheck, Sparkles, User, Users } from 'lucide-react'
 import * as Radio from '@radix-ui/react-radio-group'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
@@ -18,10 +18,21 @@ type Answers = {
   signature: string; callbackTime: string; coverageType: string; health: string[]
 }
 type StringAnswerKey = Exclude<keyof Answers, 'health'>
+type AddressSuggestion = { street: string; city: string; state: string; zip: string }
 const blank: Answers = { zip: '', city: '', state: '', who: '', month: '', day: '', year: '', gender: '', tobacco: '', feet: '', inches: '', weight: '', coverage: '15000', firstName: '', middleName: '', lastName: '', email: '', phone: '', street: '', apt: '', country: 'United States', birthState: '', citizen: '', resident: '', owner: '', ssn: '', beneficiaryType: 'A person', beneficiaryFirst: '', beneficiaryLast: '', relationship: '', beneficiaryPhone: '', otherInsurance: '', replacing: '', paymentMethod: 'Bank account', accountName: '', accountType: 'Checking', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', draftDate: '1st of the month', signature: '', callbackTime: '', coverageType: '', health: Array(8).fill('') }
 const quoteSteps: JourneyStep[] = ['zip', 'who', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'contact']
 const labels = ['Quote', 'About you', 'Health', 'Payment', 'Sign']
 const phone = '[FE_PHONE]'
+const demoAddresses: AddressSuggestion[] = [
+  { street: '123 Main Street', city: 'Orlando', state: 'FL', zip: '32801' },
+  { street: '125 Main Street', city: 'Dallas', state: 'TX', zip: '75201' },
+  { street: '129 Main Street', city: 'Columbus', state: 'OH', zip: '43215' },
+  { street: '456 Oak Avenue', city: 'Phoenix', state: 'AZ', zip: '85004' },
+  { street: '460 Oak Avenue', city: 'Tampa', state: 'FL', zip: '33602' },
+  { street: '789 Pine Road', city: 'Charlotte', state: 'NC', zip: '28202' },
+  { street: '812 Cedar Lane', city: 'Nashville', state: 'TN', zip: '37201' },
+  { street: '925 Maple Drive', city: 'Atlanta', state: 'GA', zip: '30303' },
+]
 
 export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) => void }) {
   const [screen, setScreen] = useState<JourneyStep>('zip')
@@ -45,6 +56,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const [code, setCode] = useState('')
   const [loadingLine, setLoadingLine] = useState(0)
   const [policyNumber, setPolicyNumber] = useState('')
+  const [addressMenuOpen, setAddressMenuOpen] = useState(false)
   const heading = useRef<HTMLHeadingElement>(null)
   const screenIndex = journeySteps.indexOf(screen)
   const quoteIndex = quoteSteps.indexOf(screen)
@@ -62,6 +74,11 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const coverageType = screen === 'gi-offer' || answers.coverageType === 'Guaranteed Issue' ? 'guaranteed' : outcome === 'graded' ? 'graded' : 'immediate'
   const monthly = calculatePrice(age || 68, answers.gender || 'Female', coverage, answers.tobacco, coverageType)
   const shownPrice = annual ? monthly * 12 * .95 : monthly
+  const addressSuggestions = useMemo(() => {
+    const query = answers.street.trim().toLowerCase()
+    if (query.length < 2) return []
+    return demoAddresses.filter((address) => `${address.street} ${address.city} ${address.state} ${address.zip}`.toLowerCase().includes(query)).slice(0, 4)
+  }, [answers.street])
 
   useEffect(() => {
     let savedStep: JourneyStep | undefined
@@ -113,6 +130,11 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const advance = (next: JourneyStep) => window.setTimeout(() => go(next), 300)
   const back = () => { const previous = journeySteps[Math.max(0, screenIndex - 1)]; if (previous) go(previous) }
   const choose = (key: StringAnswerKey, value: string, next?: JourneyStep) => { update(key, value); if (next) advance(next) }
+  const chooseAddress = (address: AddressSuggestion) => {
+    setAnswers((current) => ({ ...current, street: address.street, city: address.city, state: address.state, zip: address.zip }))
+    setAddressMenuOpen(false)
+    setError('')
+  }
   const healthChoice = (index: number, value: string) => {
     setAnswers((current) => ({ ...current, health: current.health.map((answer, i) => i === index ? value : answer) }))
     advance(index === 7 ? 'health-review' : (`h${index + 2}` as JourneyStep))
@@ -146,7 +168,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     if (screen === 'loading') return <LoadingState icon={<ShieldCheck />} title="Finding your rate" lines={[`Checking plans in ${answers.state || 'your state'}`, 'Calculating your rate', 'Locking in your price']} active={loadingLine} />
     if (screen === 'price') return shell(`Good news, ${answers.firstName || 'friend'}! Here’s your price.`, '', <><PriceCard price={shownPrice} coverage={coverage} annual={annual} setAnnual={setAnnual} /><div className="coverage-control"><label htmlFor="price-coverage">Adjust your coverage</label><input id="price-coverage" type="range" min="5000" max="40000" step="1000" value={coverage} onChange={(event) => update('coverage', event.target.value)} /></div><div className="next-list"><strong>What happens next</strong><span>1. Answer a few health questions</span><span>2. Get an instant decision</span><span>3. Choose a beneficiary, payment and sign online</span></div><Button variant="action" size="touch" className="continue-button" onClick={() => go('personal')}>Apply now <ArrowRight /></Button><Button variant="quiet" className="wide-button" onClick={() => { update('coverageType', 'Guaranteed Issue'); go('gi-offer') }}>Prefer no health questions?</Button><a className="question-call" href={`tel:${phone}`}>Rather talk it through? Call {phone}</a><p className="fine-print">Your final price is confirmed after your application is reviewed. [REPLACE_WITH_REAL_RATES]</p></>)
     if (screen === 'personal') return shell("Let's confirm a few details", '', <form onSubmit={submitNext('address', Boolean(answers.firstName && answers.lastName && answers.email && answers.phone))}><div className="two-fields">{field('firstName', 'First name')}{field('middleName', 'Middle name (optional)')}</div>{field('lastName', 'Last name')}<div className="readonly-summary">Date of birth <strong>{answers.month}/{answers.day}/{answers.year}</strong></div>{field('email', 'Email', { type: 'email' })}{field('phone', 'Phone', { type: 'tel' })}<NextButton /></form>)
-    if (screen === 'address') return shell("What's your home address?", '', <form onSubmit={submitNext('identity', Boolean(answers.street && answers.city))}>{field('street', 'Street address')}{field('apt', 'Apt (optional)')}<div className="two-fields">{field('city', 'City')}{field('state', 'State')}</div>{field('zip', 'ZIP code', { inputMode: 'numeric', maxLength: 5 })}<NextButton /></form>)
+    if (screen === 'address') return shell("What's your home address?", 'Start typing, then choose an address to fill in the rest.', <form onSubmit={submitNext('identity', Boolean(answers.street && answers.city && answers.state && /^\d{5}$/.test(answers.zip)))}><div className="address-lookup"><label className="field-label" htmlFor="street-address">Street address</label><div className="address-input-wrap"><MapPin aria-hidden="true" /><input id="street-address" className="text-field" value={answers.street} autoComplete="street-address" role="combobox" aria-autocomplete="list" aria-expanded={addressMenuOpen && addressSuggestions.length > 0} aria-controls="address-suggestions" placeholder="Start typing your street address" onFocus={() => setAddressMenuOpen(true)} onChange={(event) => { update('street', event.target.value); setAddressMenuOpen(true) }} onKeyDown={(event) => { if (event.key === 'Escape') setAddressMenuOpen(false) }} /></div>{addressMenuOpen && addressSuggestions.length > 0 && <div className="address-suggestions" id="address-suggestions" role="listbox" aria-label="Suggested addresses">{addressSuggestions.map((address) => <Button key={`${address.street}-${address.zip}`} type="button" variant="quiet" role="option" onMouseDown={(event) => event.preventDefault()} onClick={() => chooseAddress(address)}><MapPin aria-hidden="true" /><span><strong>{address.street}</strong><small>{address.city}, {address.state} {address.zip}</small></span></Button>)}</div>}</div>{field('apt', 'Apt (optional)', { autoComplete: 'address-line2' })}<div className="two-fields">{field('city', 'City', { autoComplete: 'address-level2' })}{field('state', 'State', { autoComplete: 'address-level1' })}</div>{field('zip', 'ZIP code', { inputMode: 'numeric', autoComplete: 'postal-code', maxLength: 5, onChange: (event) => update('zip', event.target.value.replace(/\D/g, '').slice(0, 5)) })}<NextButton /></form>)
     if (screen === 'identity') return shell('A few identity details', 'The insurance company needs these details to issue your policy and confirm your identity.', <form onSubmit={submitNext('health-intro', Boolean(answers.country && answers.citizen && answers.owner && answers.ssn.length >= 4))}>{select('country', 'Country of birth', ['United States', 'Canada', 'Other'])}{answers.country === 'United States' && field('birthState', 'State of birth')}{cards('citizen', ['Yes — U.S. citizen', 'No'])}{answers.citizen === 'No' && cards('resident', ['Yes — resident over 2 years', 'No — neither'])}<label className="field-label">Social Security number<div className="secure-field"><input value={answers.ssn} type={showSSN ? 'text' : 'password'} inputMode="numeric" maxLength={11} onChange={(event) => update('ssn', event.target.value.replace(/[^\d-]/g, ''))} /><Button type="button" variant="quiet" aria-label={showSSN ? 'Hide number' : 'Show number'} onClick={() => setShowSSN(!showSSN)}>{showSSN ? <EyeOff /> : <Eye />}</Button></div></label><p className="valid-note"><LockKeyhole /> Encrypted and never saved in this demo.</p><p className="field-prompt">Will you be the policy owner and the person paying?</p>{cards('owner', ['Yes', 'No'])}{(answers.resident === 'No — neither' || answers.owner === 'No') ? <Button type="button" variant="action" size="touch" className="wide-button" onClick={() => go('ineligible')}>See how an agent can help</Button> : <NextButton />}</form>)
     if (screen === 'health-intro') return shell('Now a few yes-or-no health questions', 'Answer honestly — it protects your coverage. There’s no exam and no needles. About 2 minutes.', <><div className="large-symbol"><Heart /><ClipboardCheck /></div><p className="placeholder-note">Sample questions for this prototype. [CARRIER_HEALTH_QUESTIONS]</p><Button variant="action" size="touch" className="continue-button" onClick={() => go('h1')}>Start health questions <ArrowRight /></Button></>)
     if (/^h[1-8]$/.test(screen)) { const index = Number(screen.slice(1)) - 1; const question = healthQuestions[index] ?? 'Health question'; return shell(question, `Health question ${index + 1} of 8`, <Radio.Root aria-label={`Health question ${index + 1}`} value={answers.health[index] || ''} onValueChange={(value) => healthChoice(index, value)} className="answer-list"><Radio.Item className="answer-card" value="No"><strong>No</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item><Radio.Item className="answer-card" value="Yes"><strong>Yes</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item></Radio.Root>) }
