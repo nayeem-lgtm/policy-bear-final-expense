@@ -46,7 +46,10 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const screenIndex = journeySteps.indexOf(screen)
   const quoteIndex = quoteSteps.indexOf(screen)
   const age = useMemo(() => {
-    const birthday = new Date(Number(answers.year), Number(answers.month) - 1, Number(answers.day))
+    const monthIndex = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(answers.month)
+    if (!answers.year || !answers.day || monthIndex < 0) return Number.NaN
+    const birthday = new Date(Number(answers.year), monthIndex, Number(answers.day))
+    if (birthday.getFullYear() !== Number(answers.year) || birthday.getMonth() !== monthIndex || birthday.getDate() !== Number(answers.day)) return Number.NaN
     const today = new Date()
     return today.getFullYear() - birthday.getFullYear() - (today < new Date(today.getFullYear(), birthday.getMonth(), birthday.getDate()) ? 1 : 0)
   }, [answers.day, answers.month, answers.year])
