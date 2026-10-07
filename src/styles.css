@@ -361,7 +361,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .document-row { border-bottom: 1px solid var(--border); }
 .document-row summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 62px; cursor: pointer; color: var(--brand-deep); font-weight: 600; }
 .document-row p { font-size: 16px; color: var(--muted-foreground); }
-.signature-preview { min-height: 90px; display: grid; place-items: center; border-bottom: 2px solid var(--brand-deep); color: var(--brand-deep); font-family: cursive; font-size: 34px; margin: 18px 0; }
+.signature-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; background: var(--brand-soft-blue); border-radius: 8px; padding: 4px; margin: 20px 0; }
+.signature-mode button { min-height: 50px; }
+.signature-styles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0 18px; }
+.signature-styles button { height: 76px; display: flex; flex-direction: column; gap: 2px; border: 2px solid var(--border); border-radius: 8px; color: var(--brand-deep); overflow: hidden; }
+.signature-styles button.selected { border-color: var(--primary); background: var(--brand-soft-blue); }
+.signature-styles small { font-family: var(--font-body); font-size: 12px; color: var(--muted-foreground); }
+.signature-sample { width: 100%; overflow: hidden; text-overflow: ellipsis; font-size: 25px; line-height: 1.1; }
+.signature-preview { min-height: 100px; display: grid; place-items: center; border-bottom: 2px solid var(--brand-deep); color: var(--brand-deep); font-size: 38px; margin: 18px 0; overflow-wrap: anywhere; text-align: center; }
+.signature-style-0 { font-family: 'Brush Script MT', 'Segoe Script', cursive; font-style: italic; }
+.signature-style-1 { font-family: 'Segoe Print', 'Bradley Hand', cursive; font-style: italic; }
+.signature-style-2 { font-family: 'Lucida Handwriting', 'Apple Chancery', cursive; }
+.draw-signature { margin: 8px 0 18px; }
+.draw-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--brand-deep); font-size: 16px; font-weight: 600; }
+.draw-heading button { gap: 6px; }
+.draw-heading svg { width: 17px; height: 17px; }
+.draw-signature canvas { display: block; width: 100%; height: 180px; border: 2px solid var(--input); border-radius: 8px; background: var(--background); touch-action: none; cursor: crosshair; }
+.draw-signature canvas:focus-visible { border-color: var(--primary); box-shadow: 0 0 0 3px var(--brand-soft-blue); }
+.draw-signature p { color: var(--muted-foreground); font-size: 16px; margin-top: 7px; }
 .code-field { text-align: center; font-size: 30px; letter-spacing: .35em; font-variant-numeric: tabular-nums; }
 .policy-card { display: grid; gap: 12px; border-top: 5px solid var(--success); }
 .policy-card span { display: flex; justify-content: space-between; gap: 14px; }
@@ -385,5 +402,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .how-section { padding: 48px 24px; } .section-heading h2, .faq-heading h2 { font-size: 28px; } .how-grid { grid-template-columns: 1fr; gap: 34px; margin-top: 36px; } .how-icon { margin-bottom: 16px; } .how-grid p { font-size: 18px; max-width: 370px; } .faq-inner { grid-template-columns: 1fr; gap: 24px; padding: 44px 24px; } .faq-heading h2 br { display: none; } .closing-section h2 { font-size: 26px; } .site-footer { padding: 28px 24px; } .footer-top { flex-direction: column; align-items: flex-start; gap: 12px; } .footer-top nav { flex-wrap: wrap; gap: 8px 20px; } .funnel-section { padding-top: 28px; min-height: 640px; } .date-fields { gap: 8px; } .wizard-standalone { padding: 24px; }
 }
 @media (max-width: 410px) { .brand-link img { width: 145px; } .header-inner { padding: 0 16px; } .policy-action.header-call { padding-right: 13px; } .phone-circle { display: none; } .hero-copy h1 { font-size: 34px; } .hero-inner { padding: 30px 20px; } .wizard { padding: 22px 18px; } .form-trust { flex-wrap: wrap; justify-content: center; gap: 10px; } .wizard-progress { font-size: 16px; gap: 6px; } .answer-grid { gap: 16px 10px; } .answer-grid .answer-card { padding: 22px 10px; } .answer-grid .radio-circle { display: none; } .answer-card[data-state=checked] .radio-circle { display: grid; } .date-fields { grid-template-columns: 1.3fr .75fr 1fr; gap: 7px; } .field-label select { padding: 0 5px; font-size: 16px; } }
-@media (max-width: 560px) { .two-fields { grid-template-columns: 1fr; gap: 0; } .chapter-progress span { font-size: 0; } .chapter-progress span::after { content: '•'; font-size: 20px; } .chapter-progress span.current::after { content: attr(data-label); } .review-row { grid-template-columns: 1fr auto; } .review-row > strong { grid-row: 2; } .price-card > p strong { font-size: 42px; } }
+@media (max-width: 560px) { .two-fields { grid-template-columns: 1fr; gap: 0; } .chapter-progress span { font-size: 0; } .chapter-progress span::after { content: '•'; font-size: 20px; } .chapter-progress span.current::after { content: attr(data-label); } .review-row { grid-template-columns: 1fr auto; } .review-row > strong { grid-row: 2; } .price-card > p strong { font-size: 42px; } .signature-styles { grid-template-columns: 1fr; } .signature-styles button { height: 62px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
