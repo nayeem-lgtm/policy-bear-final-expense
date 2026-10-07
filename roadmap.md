@@ -6,4 +6,4 @@
 - [x] Build application details, health questions, review, and all underwriting outcomes.
 - [x] Build beneficiary, insurance, payment, draft-date, review, e-sign, verification, and policy-issued screens.
 - [x] Build Guaranteed Issue, ineligible, callback, returning-visitor, and Demo toolbar paths.
-- [ ] Verify every screen at mobile width, keyboard focus, reduced motion, and browser-only persistence.
+- [x] Verify every screen at mobile width, keyboard focus, reduced motion, and browser-only persistence.
