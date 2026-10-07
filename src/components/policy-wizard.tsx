@@ -110,6 +110,9 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   useEffect(() => {
     if (!ready) return
     heading.current?.focus({ preventScroll: true })
+    if (screen !== 'zip' && window.matchMedia('(max-width: 800px)').matches) {
+      document.getElementById('get-covered')?.scrollIntoView({ block: 'start', behavior: 'instant' })
+    }
   }, [ready, screen])
 
   useEffect(() => {
@@ -209,7 +212,7 @@ function DrawSignature({ onChange }: { onChange: (drawn: boolean) => void }) {
 
   const point = (event: React.PointerEvent<HTMLCanvasElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect()
-    return { x: event.clientX - bounds.left, y: event.clientY - bounds.top }
+    return { x: (event.clientX - bounds.left) * event.currentTarget.width / bounds.width, y: (event.clientY - bounds.top) * event.currentTarget.height / bounds.height }
   }
   const start = (event: React.PointerEvent<HTMLCanvasElement>) => {
     const context = event.currentTarget.getContext('2d')
@@ -228,7 +231,7 @@ function DrawSignature({ onChange }: { onChange: (drawn: boolean) => void }) {
     context.lineWidth = 3
     context.lineCap = 'round'
     context.lineJoin = 'round'
-    context.strokeStyle = '#0f123c'
+    context.strokeStyle = getComputedStyle(event.currentTarget).getPropertyValue('--brand-deep').trim()
     context.lineTo(position.x, position.y)
     context.stroke()
     onChange(true)
