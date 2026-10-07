@@ -1,115 +1,164 @@
-import { useEffect, useRef, useState } from 'react'
-import { ArrowLeft, ArrowRight, Check, CircleHelp, Heart, LockKeyhole, MapPin, Minus, Phone, Plus, ShieldCheck, User, Users, AlertCircle } from 'lucide-react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, ClipboardCheck, Eye, EyeOff, Heart, Landmark, LockKeyhole, Minus, Phone, Plus, ShieldCheck, Sparkles, User, Users } from 'lucide-react'
 import * as Radio from '@radix-ui/react-radio-group'
+import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
+import { calculatePrice, chapterFor, determineOutcome, healthQuestions, journeySteps, sanitizedAnswers, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
-const steps = ['zip', 'for', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'next']
-const phone = '18447652327'
-type Answers = { zip: string; city: string; state: string; who: string; month: string; day: string; year: string; gender: string; tobacco: string; feet: string; inches: string; weight: string; coverage: string }
-const empty: Answers = { zip: '', city: '', state: '', who: '', month: '', day: '', year: '', gender: '', tobacco: '', feet: '', inches: '', weight: '', coverage: '' }
-const titles = ["Let's start with your ZIP code", 'Who would this coverage protect?', "What's your date of birth?", 'Are you male or female?', 'Have you used tobacco or nicotine in the last 12 months?', "What's your height and weight?", 'How much coverage would you like?', 'Your next step to a real price']
-const helpers = ['Prices and plans depend on where you live.', '', 'Your age is the biggest factor in your price.', 'Insurance companies price coverage differently for men and women.', 'Includes cigarettes, cigars, vaping, chewing tobacco, nicotine gum or patches.', 'It helps us show a more accurate price.', 'Many families choose $10,000–$20,000 to also cover final bills.', 'A licensed agent can help you check current plans and prices.']
+type Answers = Record<string, string> & { health: string[] }
+const blank: Answers = { zip: '', city: '', state: '', who: '', month: '', day: '', year: '', gender: '', tobacco: '', feet: '', inches: '', weight: '', coverage: '15000', firstName: '', middleName: '', lastName: '', email: '', phone: '', street: '', apt: '', country: 'United States', birthState: '', citizen: '', resident: '', owner: '', ssn: '', beneficiaryType: 'A person', beneficiaryFirst: '', beneficiaryLast: '', relationship: '', beneficiaryPhone: '', otherInsurance: '', replacing: '', paymentMethod: 'Bank account', accountName: '', accountType: 'Checking', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', draftDate: '1st of the month', signature: '', health: Array(8).fill('') }
+const quoteSteps: JourneyStep[] = ['zip', 'who', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'contact']
+const labels = ['Quote', 'About you', 'Health', 'Payment', 'Sign']
+const phone = '[FE_PHONE]'
+
 export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) => void }) {
-  const [step, setStep] = useState(0)
-  const [answers, setAnswers] = useState<Answers>(empty)
+  const [screen, setScreen] = useState<JourneyStep>('zip')
+  const [answers, setAnswers] = useState<Answers>(blank)
+  const [error, setError] = useState('')
   const [ready, setReady] = useState(false)
   const [resume, setResume] = useState(false)
-  const [error, setError] = useState('')
-  const [lookup, setLookup] = useState(false)
-  const [offline, setOffline] = useState(false)
-  const [help, setHelp] = useState(false)
-  const [other, setOther] = useState(false)
-  const [ineligible, setIneligible] = useState('')
-  const [choosing, setChoosing] = useState(false)
+  const [demo, setDemo] = useState(false)
+  const [forced, setForced] = useState<Outcome | ''>('')
+  const [annual, setAnnual] = useState(false)
+  const [otherAmount, setOtherAmount] = useState(false)
+  const [showSSN, setShowSSN] = useState(false)
+  const [consent, setConsent] = useState(false)
+  const [confirmed, setConfirmed] = useState(false)
+  const [documents, setDocuments] = useState(false)
+  const [signed, setSigned] = useState(false)
+  const [authorized, setAuthorized] = useState(false)
+  const [code, setCode] = useState('')
+  const [loadingLine, setLoadingLine] = useState(0)
+  const [policyNumber, setPolicyNumber] = useState('')
   const heading = useRef<HTMLHeadingElement>(null)
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const restoredStep = useRef(0)
+  const screenIndex = journeySteps.indexOf(screen)
+  const quoteIndex = quoteSteps.indexOf(screen)
+  const age = useMemo(() => {
+    const birthday = new Date(Number(answers.year), Number(answers.month) - 1, Number(answers.day))
+    const today = new Date()
+    return today.getFullYear() - birthday.getFullYear() - (today < new Date(today.getFullYear(), birthday.getMonth(), birthday.getDate()) ? 1 : 0)
+  }, [answers.day, answers.month, answers.year])
+  const coverage = Number(answers.coverage) || 15000
+  const naturalOutcome = determineOutcome(answers.health)
+  const outcome = forced || naturalOutcome
+  const coverageType = screen === 'gi-offer' || answers.coverageType === 'Guaranteed Issue' ? 'guaranteed' : outcome === 'graded' ? 'graded' : 'immediate'
+  const monthly = calculatePrice(age || 68, answers.gender || 'Female', coverage, answers.tobacco, coverageType)
+  const shownPrice = annual ? monthly * 12 * .95 : monthly
+
   useEffect(() => {
     try {
-      const saved = JSON.parse(localStorage.getItem('policybear-answers') || 'null')
-      if (saved && Date.now() - saved.at < 7 * 86400000 && saved.answers) {
-        setAnswers({ ...empty, ...saved.answers })
-        const hashStep = steps.indexOf(location.hash.replace('#step-', ''))
-        const target = hashStep >= 0 ? hashStep : Math.min(7, Math.max(0, saved.step || 0))
-        setStep(target); restoredStep.current = target; setResume(true)
+      const saved = JSON.parse(localStorage.getItem('policybear-demo') || 'null')
+      if (saved?.answers && Date.now() - saved.at < 7 * 86400000) {
+        setAnswers({ ...blank, ...saved.answers, health: [...blank.health, ...(saved.answers.health || [])].slice(0, 8) })
+        setResume(true)
       }
-    } catch { /* Unavailable storage should not block the journey. */ }
+    } catch { /* Browsing privacy settings should not block the demo. */ }
+    const fromHash = location.hash.replace('#step-', '') as JourneyStep
+    if (journeySteps.includes(fromHash)) setScreen(fromHash)
     setReady(true)
-    const navigate = () => { const index = steps.indexOf(location.hash.replace('#step-', '')); setStep(index < 0 ? 0 : index); setError(''); setIneligible(''); setHelp(false) }
-    const online = () => setOffline(!navigator.onLine)
-    online(); window.addEventListener('hashchange', navigate); window.addEventListener('online', online); window.addEventListener('offline', online)
-    return () => { window.removeEventListener('hashchange', navigate); window.removeEventListener('online', online); window.removeEventListener('offline', online); if (timer.current) clearTimeout(timer.current) }
+    const hashChange = () => { const next = location.hash.replace('#step-', '') as JourneyStep; if (journeySteps.includes(next)) setScreen(next) }
+    window.addEventListener('hashchange', hashChange)
+    return () => window.removeEventListener('hashchange', hashChange)
   }, [])
+
   useEffect(() => {
-    onStepChange(step)
     if (!ready) return
-    try { localStorage.setItem('policybear-answers', JSON.stringify({ answers, step, at: Date.now() })) } catch { /* Continue when private mode blocks storage. */ }
-  }, [answers, step, ready, onStepChange])
-  useEffect(() => { if (ready && step > 0) heading.current?.focus({ preventScroll: true }) }, [step, ready])
+    try { localStorage.setItem('policybear-demo', JSON.stringify({ answers: sanitizedAnswers(answers), screen, at: Date.now() })) } catch { /* Continue without persistence. */ }
+    onStepChange(screen === 'zip' ? 0 : 1)
+    heading.current?.focus({ preventScroll: true })
+  }, [answers, onStepChange, ready, screen])
+
   useEffect(() => {
-    if (!/^\d{5}$/.test(answers.zip)) return
-    const controller = new AbortController()
-    setLookup(true)
-    fetch(`https://api.zippopotam.us/us/${encodeURIComponent(answers.zip)}`, { signal: controller.signal })
-      .then(response => { if (!response.ok) throw new Error('not-found'); return response.json() })
-      .then(data => { const place = data.places?.[0]; if (!place) throw new Error('not-found'); setAnswers(a => ({ ...a, city: place['place name'], state: place.state })); setError('') })
-      .catch(e => { if (e.name !== 'AbortError') { setAnswers(a => ({ ...a, city: '', state: '' })); setError("We couldn't find that ZIP. Please check it or try again.") } })
-      .finally(() => { if (!controller.signal.aborted) setLookup(false) })
-    return () => controller.abort()
-  }, [answers.zip])
-  function update(key: keyof Answers, value: string) { setAnswers(a => ({ ...a, [key]: value })); setError('') }
-  function go(index: number) { setResume(false); setError(''); setHelp(false); setOther(false); setStep(index); location.hash = `step-${steps[index]}` }
-  function choose(key: keyof Answers, value: string) {
-    if (choosing) return
-    update(key, value)
-    if (key === 'who' && value !== 'Me') return
-    setChoosing(true)
-    timer.current = setTimeout(() => { setChoosing(false); go(step + 1) }, 300)
+    if (!['loading', 'underwriting', 'submitting'].includes(screen)) return
+    setLoadingLine(0)
+    const first = window.setTimeout(() => setLoadingLine(1), 650)
+    const second = window.setTimeout(() => setLoadingLine(2), 1300)
+    const finish = window.setTimeout(() => {
+      if (screen === 'loading') go('price')
+      if (screen === 'underwriting') go('decision')
+      if (screen === 'submitting') { setPolicyNumber(`PB-FE-${Math.floor(100000 + Math.random() * 900000)}`); go('issued') }
+    }, screen === 'underwriting' ? 2800 : 2200)
+    return () => { clearTimeout(first); clearTimeout(second); clearTimeout(finish) }
+  }, [screen])
+
+  const update = (key: string, value: string) => { setAnswers((current) => ({ ...current, [key]: value })); setError('') }
+  const go = (next: JourneyStep) => { setError(''); setResume(false); location.hash = `step-${next}`; setScreen(next) }
+  const advance = (next: JourneyStep) => window.setTimeout(() => go(next), 300)
+  const back = () => go(journeySteps[Math.max(0, screenIndex - 1)])
+  const choose = (key: string, value: string, next?: JourneyStep) => { update(key, value); if (next) advance(next) }
+  const healthChoice = (index: number, value: string) => {
+    setAnswers((current) => ({ ...current, health: current.health.map((answer, i) => i === index ? value : answer) }))
+    advance(index === 7 ? 'health-review' : (`h${index + 2}` as JourneyStep))
   }
-  const dob = new Date(Number(answers.year), Number(answers.month) - 1, Number(answers.day))
-  const now = new Date()
-  const age = now.getFullYear() - dob.getFullYear() - (now.getMonth() < dob.getMonth() || (now.getMonth() === dob.getMonth() && now.getDate() < dob.getDate()) ? 1 : 0)
-  const validDOB = Boolean(answers.year && answers.month && answers.day && dob.getMonth() === Number(answers.month) - 1 && dob.getDate() === Number(answers.day))
-  const sizeValid = Boolean(answers.feet && answers.inches !== '' && z.coerce.number().min(80).max(500).safeParse(answers.weight).success)
-  const valid = step === 0 ? Boolean(answers.city && /^\d{5}$/.test(answers.zip)) : step === 2 ? validDOB : step === 5 ? sizeValid : step === 6 ? Boolean(answers.coverage) : true
-  function next(e: React.FormEvent) {
-    e.preventDefault()
-    if (offline || !valid) return
-    if (step === 2 && (age < 50 || age > 85)) { setIneligible(age < 50 ? 'This plan is for ages 50 to 85' : "Let's find the right option together"); return }
-    go(step + 1)
+  const validDOB = age >= 50 && age <= 85 && Boolean(answers.day && answers.month && answers.year)
+  const field = (key: string, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => <label className="field-label">{label}<input className="text-field" value={answers[key] || ''} onChange={(event) => update(key, event.target.value)} maxLength={100} {...props} /></label>
+  const select = (key: string, label: string, options: string[], disabled = false) => <label className="field-label">{label}<select value={answers[key] || ''} disabled={disabled} onChange={(event) => update(key, event.target.value)}><option value="">{label}</option>{options.map((option) => <option key={option}>{option}</option>)}</select></label>
+  const cards = (key: string, options: string[], next?: JourneyStep) => <Radio.Root aria-label={key} value={answers[key] || ''} onValueChange={(value) => choose(key, value, next)} className="answer-list">{options.map((option) => <Radio.Item className="answer-card" key={option} value={option}><span className="answer-copy"><strong>{option}</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root>
+  const submitNext = (next: JourneyStep, valid = true, message = 'Please complete the required fields.') => (event: React.FormEvent) => { event.preventDefault(); if (!valid) { setError(message); return } go(next) }
+  const trust = <div className="form-trust"><span><LockKeyhole /> Secure & private</span><span><Check /> No medical exam</span><span><Check /> Rates never go up</span></div>
+
+  const shell = (title: string, helper: string, content: React.ReactNode, options?: { back?: boolean; compact?: boolean }) => <>
+    {options?.back !== false && screen !== 'zip' && !['loading', 'underwriting', 'submitting'].includes(screen) && <Button variant="quiet" className="back-button" onClick={back}><ArrowLeft /> Back</Button>}
+    <div className={`wizard-content ${options?.compact ? 'compact-content' : ''}`} key={screen}>
+      <h2 id="wizard-title" ref={heading} tabIndex={-1}>{title}</h2>
+      {helper && <p className="question-helper">{helper}</p>}
+      {content}
+      {error && <div className="form-error" role="alert"><AlertCircle /> {error}</div>}
+    </div>
+  </>
+
+  function renderScreen() {
+    if (screen === 'zip') return shell("Let's start with your ZIP code", 'Prices and plans depend on where you live.', <form onSubmit={submitNext('who', /^\d{5}$/.test(answers.zip))}>{field('zip', 'ZIP code', { inputMode: 'numeric', placeholder: 'Enter your 5-digit ZIP', maxLength: 5, onChange: (event) => update('zip', event.target.value.replace(/\D/g, '').slice(0, 5)) })}{/^\d{5}$/.test(answers.zip) && <p className="valid-note"><Check /> ZIP code ready</p>}<Button variant="action" size="touch" className="continue-button">Check my options <ArrowRight /></Button>{trust}</form>, { back: false })
+    if (screen === 'who') return shell('Who would this coverage protect?', '', <>{cards('who', ['Me', 'My spouse or partner', 'My mom or dad', 'Someone else'], answers.who === 'Me' ? 'dob' : undefined)}{answers.who && answers.who !== 'Me' && <div className="help-panel"><p>Great that you’re helping! The person being covered needs to answer and sign. Are they with you now?</p><Button variant="action" size="touch" onClick={() => go('dob')}>Yes, they’ll answer <ArrowRight /></Button><Button variant="quiet" onClick={() => go('callback')}>No, call me later</Button></div>}</>)
+    if (screen === 'dob') return shell("What's your date of birth?", 'Your age is the biggest factor in your price.', <form onSubmit={submitNext('gender', validDOB, 'Please enter a valid date for someone age 50 to 85.')}><div className="date-fields">{select('month', 'Month', Array.from({ length: 12 }, (_, i) => new Date(2026, i).toLocaleString('en', { month: 'short' })))}{select('day', 'Day', Array.from({ length: 31 }, (_, i) => String(i + 1)))}{select('year', 'Year', Array.from({ length: 36 }, (_, i) => String(new Date().getFullYear() - 50 - i)))}</div>{answers.year && <p className="valid-note">You’re {age}</p>}<Button variant="action" size="touch" className="continue-button">Continue <ArrowRight /></Button>{trust}</form>)
+    if (screen === 'gender') return shell('Are you male or female?', 'Insurers price coverage differently for men and women.', cards('gender', ['Male', 'Female'], 'tobacco'))
+    if (screen === 'tobacco') return shell('Have you used tobacco or nicotine in the last 12 months?', 'Includes cigarettes, cigars, vaping, chewing tobacco, nicotine gum or patches.', <>{cards('tobacco', ['No', 'Yes'], 'size')}<p className="valid-note"><ShieldCheck /> Smokers can still get covered.</p></>)
+    if (screen === 'size') return shell("What's your height and weight?", 'It helps us show a more accurate price.', <form onSubmit={submitNext('coverage', Boolean(answers.feet && answers.inches && z.coerce.number().min(80).max(500).safeParse(answers.weight).success))}><div className="height-fields">{select('feet', 'Feet', ['4', '5', '6', '7'])}{select('inches', 'Inches', Array.from({ length: 12 }, (_, i) => String(i)))}</div>{field('weight', 'Weight (lbs)', { inputMode: 'numeric', maxLength: 3 })}<Button variant="action" size="touch" className="continue-button">Continue <ArrowRight /></Button>{trust}</form>)
+    if (screen === 'coverage') return shell('How much coverage would you like?', 'Many families choose $10,000–$20,000 to also cover final bills.', <form onSubmit={submitNext('contact')}><Radio.Root value={answers.coverage} onValueChange={(value) => update('coverage', value)} className="answer-grid">{['10000', '15000', '20000', '25000'].map((value) => <Radio.Item className="answer-card" value={value} key={value}><span><strong>${Number(value).toLocaleString()}</strong><small>{value === '15000' ? 'Most popular' : value === '10000' ? 'Simple funeral' : value === '20000' ? 'Extra cushion' : 'Leave something behind'}</small></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root><Button variant="quiet" className="other-amount" type="button" onClick={() => setOtherAmount(!otherAmount)}>{otherAmount ? 'Choose a suggested amount' : 'Choose a different amount'}</Button>{otherAmount && <div className="coverage-control"><strong>${coverage.toLocaleString()}</strong><div><Button type="button" variant="quiet" aria-label="Decrease coverage" onClick={() => update('coverage', String(Math.max(5000, coverage - 1000)))}><Minus /></Button><input type="range" min="5000" max="40000" step="1000" value={coverage} onChange={(event) => update('coverage', event.target.value)} /><Button type="button" variant="quiet" aria-label="Increase coverage" onClick={() => update('coverage', String(Math.min(40000, coverage + 1000)))}><Plus /></Button></div></div>}<Button variant="action" size="touch" className="continue-button">Continue <ArrowRight /></Button>{trust}</form>)
+    if (screen === 'contact') return shell('Last step! Where should we send your price?', '', <form onSubmit={submitNext('loading', Boolean(answers.firstName && answers.lastName && z.string().email().safeParse(answers.email).success && answers.phone.length >= 10 && consent))}><div className="two-fields">{field('firstName', 'First name', { autoComplete: 'given-name' })}{field('lastName', 'Last name', { autoComplete: 'family-name' })}</div>{field('email', 'Email', { type: 'email', autoComplete: 'email' })}{field('phone', 'Mobile phone', { type: 'tel', placeholder: '(555) 555-5555', autoComplete: 'tel' })}<CheckRow checked={consent} onChange={setConsent}>By checking this box, I agree that Policy Bear and its licensed agents may call or text me about life insurance at the number above, including with automated technology or prerecorded messages, even if I’m on a Do Not Call list. Consent isn’t required to buy. Message and data rates may apply. Reply STOP to opt out. I agree to the Privacy Policy and Terms. [COMPLIANCE_TO_APPROVE]</CheckRow><Button variant="action" size="touch" className="continue-button">See my price <ArrowRight /></Button><p className="valid-note"><LockKeyhole /> We never sell your information.</p></form>)
+    if (screen === 'loading') return <LoadingState icon={<ShieldCheck />} title="Finding your rate" lines={[`Checking plans in ${answers.state || 'your state'}`, 'Calculating your rate', 'Locking in your price']} active={loadingLine} />
+    if (screen === 'price') return shell(`Good news, ${answers.firstName || 'friend'}! Here’s your price.`, '', <><PriceCard price={shownPrice} coverage={coverage} annual={annual} setAnnual={setAnnual} /><div className="coverage-control"><label htmlFor="price-coverage">Adjust your coverage</label><input id="price-coverage" type="range" min="5000" max="40000" step="1000" value={coverage} onChange={(event) => update('coverage', event.target.value)} /></div><div className="next-list"><strong>What happens next</strong><span>1. Answer a few health questions</span><span>2. Get an instant decision</span><span>3. Choose a beneficiary, payment and sign online</span></div><Button variant="action" size="touch" className="continue-button" onClick={() => go('personal')}>Apply now <ArrowRight /></Button><Button variant="quiet" className="wide-button" onClick={() => { update('coverageType', 'Guaranteed Issue'); go('gi-offer') }}>Prefer no health questions?</Button><a className="question-call" href={`tel:${phone}`}>Rather talk it through? Call {phone}</a><p className="fine-print">Your final price is confirmed after your application is reviewed. [REPLACE_WITH_REAL_RATES]</p></>)
+    if (screen === 'personal') return shell("Let's confirm a few details", '', <form onSubmit={submitNext('address', Boolean(answers.firstName && answers.lastName && answers.email && answers.phone))}><div className="two-fields">{field('firstName', 'First name')}{field('middleName', 'Middle name (optional)')}</div>{field('lastName', 'Last name')}<div className="readonly-summary">Date of birth <strong>{answers.month}/{answers.day}/{answers.year}</strong></div>{field('email', 'Email', { type: 'email' })}{field('phone', 'Phone', { type: 'tel' })}<NextButton /></form>)
+    if (screen === 'address') return shell("What's your home address?", '', <form onSubmit={submitNext('identity', Boolean(answers.street && answers.city))}>{field('street', 'Street address')}{field('apt', 'Apt (optional)')}<div className="two-fields">{field('city', 'City')}{field('state', 'State')}</div>{field('zip', 'ZIP code', { inputMode: 'numeric', maxLength: 5 })}<NextButton /></form>)
+    if (screen === 'identity') return shell('A few identity details', 'The insurance company needs these details to issue your policy and confirm your identity.', <form onSubmit={submitNext('health-intro', Boolean(answers.country && answers.citizen && answers.owner && answers.ssn.length >= 4))}>{select('country', 'Country of birth', ['United States', 'Canada', 'Other'])}{answers.country === 'United States' && field('birthState', 'State of birth')}{cards('citizen', ['Yes — U.S. citizen', 'No'])}{answers.citizen === 'No' && cards('resident', ['Yes — resident over 2 years', 'No — neither'])}<label className="field-label">Social Security number<div className="secure-field"><input value={answers.ssn} type={showSSN ? 'text' : 'password'} inputMode="numeric" maxLength={11} onChange={(event) => update('ssn', event.target.value.replace(/[^\d-]/g, ''))} /><Button type="button" variant="quiet" aria-label={showSSN ? 'Hide number' : 'Show number'} onClick={() => setShowSSN(!showSSN)}>{showSSN ? <EyeOff /> : <Eye />}</Button></div></label><p className="valid-note"><LockKeyhole /> Encrypted and never saved in this demo.</p><p className="field-prompt">Will you be the policy owner and the person paying?</p>{cards('owner', ['Yes', 'No'])}{(answers.resident === 'No — neither' || answers.owner === 'No') ? <Button type="button" variant="action" size="touch" className="wide-button" onClick={() => go('ineligible')}>See how an agent can help</Button> : <NextButton />}</form>)
+    if (screen === 'health-intro') return shell('Now a few yes-or-no health questions', 'Answer honestly — it protects your coverage. There’s no exam and no needles. About 2 minutes.', <><div className="large-symbol"><Heart /><ClipboardCheck /></div><p className="placeholder-note">Sample questions for this prototype. [CARRIER_HEALTH_QUESTIONS]</p><Button variant="action" size="touch" className="continue-button" onClick={() => go('h1')}>Start health questions <ArrowRight /></Button></>)
+    if (/^h[1-8]$/.test(screen)) { const index = Number(screen.slice(1)) - 1; return shell(healthQuestions[index], `Health question ${index + 1} of 8`, cards(`health-${index}`, ['No', 'Yes']) && <Radio.Root aria-label={`Health question ${index + 1}`} value={answers.health[index]} onValueChange={(value) => healthChoice(index, value)} className="answer-list"><Radio.Item className="answer-card" value="No"><strong>No</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item><Radio.Item className="answer-card" value="Yes"><strong>Yes</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item></Radio.Root>) }
+    if (screen === 'health-review') return shell('Review your health answers', 'Please make sure each answer is true and complete.', <>{healthQuestions.map((question, index) => <div className="review-row" key={question}><span><small>Question {index + 1}</small>{question}</span><strong>{answers.health[index] || '—'}</strong><Button variant="quiet" onClick={() => go(`h${index + 1}` as JourneyStep)}>Edit</Button></div>)}<CheckRow checked={confirmed} onChange={setConfirmed}>My answers are true and complete to the best of my knowledge.</CheckRow><Button variant="action" size="touch" className="continue-button" disabled={!confirmed} onClick={() => go('underwriting')}>Get my decision <ArrowRight /></Button></>)
+    if (screen === 'underwriting') return <LoadingState icon={<ShieldCheck />} title="Reviewing your application" lines={['Reviewing your answers', 'Checking eligibility', 'Preparing your decision']} active={loadingLine} />
+    if (screen === 'decision') return <Decision outcome={outcome} firstName={answers.firstName} coverage={coverage} price={monthly} onContinue={() => go(outcome === 'declined' ? 'gi-offer' : 'beneficiary')} onCallback={() => go('callback')} />
+    if (screen === 'gi-offer') return shell('Guaranteed acceptance coverage', 'No health questions. Ages 50–85.', <><Radio.Root value={answers.coverage} onValueChange={(value) => update('coverage', value)} className="answer-grid">{['5000', '10000', '15000', '20000', '25000'].map((value) => <Radio.Item className="answer-card" value={value} key={value}><strong>${Number(value).toLocaleString()}</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root><PriceCard price={calculatePrice(age || 68, answers.gender || 'Female', Math.min(coverage, 25000), answers.tobacco, 'guaranteed')} coverage={Math.min(coverage, 25000)} annual={annual} setAnnual={setAnnual} /><div className="info-panel">If final expenses result from natural causes in the first 2 years, your beneficiary receives the premiums paid plus interest. Accidental loss is covered in full from day one. After 2 years, the full benefit is paid. [CARRIER_TO_CONFIRM]</div><Button variant="action" size="touch" className="continue-button" onClick={() => { update('coverageType', 'Guaranteed Issue'); go('beneficiary') }}>Continue <ArrowRight /></Button></>)
+    if (screen === 'beneficiary') return shell('Who should receive the money?', 'You can change your beneficiary later.', <form onSubmit={submitNext('insurance', answers.beneficiaryType !== 'A person' || Boolean(answers.beneficiaryFirst && answers.beneficiaryLast))}>{cards('beneficiaryType', ['A person', 'My estate', 'All my children, equally', 'A trust', 'A charity or organisation'])}{answers.beneficiaryType === 'A person' && <><div className="two-fields">{field('beneficiaryFirst', 'First name')}{field('beneficiaryLast', 'Last name')}</div>{select('relationship', 'Relationship', ['Spouse', 'Husband', 'Wife', 'Son', 'Daughter', 'Grandson', 'Granddaughter', 'Brother', 'Sister', 'Mother', 'Father', 'Nephew', 'Niece', 'Friend', 'Domestic Partner', 'Other'])}{field('beneficiaryPhone', 'Phone (optional)', { type: 'tel' })}</>}<Button type="button" variant="quiet" className="wide-button">+ Add a backup beneficiary</Button><NextButton /></form>)
+    if (screen === 'insurance') return shell('Do you have any other life insurance or annuities, or a pending application?', '', <>{cards('otherInsurance', ['No', 'Yes'])}{answers.otherInsurance === 'Yes' && <div className="info-panel"><p>Will this policy replace or be paid for by cancelling any of them?</p>{cards('replacing', ['No', 'Yes'])}{answers.replacing === 'Yes' && <p>We’ll include a replacement notice in your documents. [STATE_REPLACEMENT_FORMS]</p>}</div>}<Button variant="action" size="touch" className="continue-button" disabled={!answers.otherInsurance || (answers.otherInsurance === 'Yes' && !answers.replacing)} onClick={() => go('payment')}>Continue <ArrowRight /></Button></>)
+    if (screen === 'payment') return shell(`How would you like to pay your $${monthly.toFixed(2)} monthly premium?`, '', <form onSubmit={submitNext('draft', authorized && (answers.paymentMethod === 'Bank account' ? Boolean(answers.routing.length === 9 && answers.account && answers.account === answers.accountConfirm) : Boolean(answers.card && answers.expiry)))}>{cards('paymentMethod', ['Bank account', 'Debit or credit card'])}{answers.paymentMethod === 'Bank account' ? <>{field('accountName', 'Account holder name')}{select('accountType', 'Account type', ['Checking', 'Savings'])}{field('routing', 'Routing number', { inputMode: 'numeric', maxLength: 9 })}{answers.routing.length === 9 && <p className="valid-note"><Landmark /> First National Bank</p>}{field('account', 'Account number', { type: 'password', inputMode: 'numeric' })}{field('accountConfirm', 'Confirm account number', { type: 'password', inputMode: 'numeric' })}</> : <>{field('accountName', 'Name on card')}{field('card', 'Card number', { inputMode: 'numeric' })}<div className="two-fields">{field('expiry', 'Expiry')}{field('paymentZip', 'ZIP')}</div><p className="placeholder-note">[IF_CARRIER_ALLOWS]</p></>}<CheckRow checked={authorized} onChange={setAuthorized}>I authorize the insurance company to draft my premium from this account.</CheckRow><p className="valid-note"><LockKeyhole /> Encrypted. Never saved in this demo.</p><NextButton /></form>)
+    if (screen === 'draft') return shell('When would you like your payment taken each month?', '', <>{cards('draftDate', ['1st of the month', '3rd of the month (Social Security day)', '2nd Wednesday', '3rd Wednesday', '4th Wednesday', 'Pick a date'])}<div className="summary-card"><span>First payment</span><strong>{answers.draftDate}</strong></div><Button variant="action" size="touch" className="continue-button" onClick={() => go('review')}>Continue <ArrowRight /></Button></>)
+    if (screen === 'review') return shell('Review your application', 'Check the details below before you sign.', <>{[['About you', `${answers.firstName} ${answers.lastName}`], ['Address', `${answers.street}, ${answers.city}`], ['Health answers', `${answers.health.filter((value) => value === 'Yes').length} yes answers`], ['Coverage & price', `$${coverage.toLocaleString()} · $${monthly.toFixed(2)}/month`], ['Beneficiary', answers.beneficiaryType === 'A person' ? `${answers.beneficiaryFirst} ${answers.beneficiaryLast}` : answers.beneficiaryType], ['Other insurance', answers.otherInsurance], ['Payment', `${answers.paymentMethod} •••• ${answers.account.slice(-4) || answers.card.slice(-4)}`], ['Draft date', answers.draftDate]].map(([label, value]) => <div className="review-row" key={label}><span><small>{label}</small>{value || 'Not provided'}</span><Button variant="quiet">Edit</Button></div>)}<Button variant="action" size="touch" className="continue-button" onClick={() => go('disclosures')}>Looks good — continue to sign <ArrowRight /></Button></>)
+    if (screen === 'disclosures') return shell('Please review your documents', '', <>{['Application', 'Authorization to release health information', 'Bank draft authorization', '[STATE_NOTICES]'].map((document) => <details className="document-row" key={document}><summary>{document}<ChevronDown /></summary><p>Prototype document text for review. Final carrier document will replace this placeholder.</p><Button variant="quiet">Download PDF (mock)</Button></details>)}<CheckRow checked={documents} onChange={setDocuments}>I have read and agree to the documents above.</CheckRow><Button variant="action" size="touch" className="continue-button" disabled={!documents} onClick={() => go('signature')}>Continue <ArrowRight /></Button></>)
+    if (screen === 'signature') return shell('Sign your application', 'Type your full legal name below.', <>{field('signature', 'Full legal name')}<div className="signature-preview">{answers.signature || 'Your signature'}</div><p className="valid-note">Dated {new Date().toLocaleDateString()}</p><CheckRow checked={signed} onChange={setSigned}>I agree to sign electronically and that my typed name is my legal signature.</CheckRow><Button variant="action" size="touch" className="continue-button" disabled={!signed || answers.signature.trim().length < 3} onClick={() => go('verify')}>Continue <ArrowRight /></Button></>)
+    if (screen === 'verify') return shell('Verify it’s you', `We sent a 6-digit code to ${answers.phone ? `(***) ***-${answers.phone.replace(/\D/g, '').slice(-4)}` : '(•••) •••-1234'} (mock).`, <><label className="field-label">Verification code<input className="text-field code-field" value={code} onChange={(event) => setCode(event.target.value.replace(/\D/g, '').slice(0, 6))} inputMode="numeric" maxLength={6} autoComplete="one-time-code" /></label><p className="question-call">Any 6 digits work in this prototype.</p><Button variant="quiet" className="wide-button">Send by email instead</Button><Button variant="action" size="touch" className="continue-button" disabled={code.length !== 6} onClick={() => go('submitting')}>Sign and submit <ArrowRight /></Button></>)
+    if (screen === 'submitting') return <LoadingState icon={<Sparkles />} title="Submitting your application…" lines={['Reviewing your signature', 'Issuing your policy…', 'All done!']} active={loadingLine} />
+    if (screen === 'issued') return shell(`Congratulations, ${answers.firstName || 'friend'}. Your family is protected.`, '', <><div className="success-symbol"><Check /></div><div className="policy-card"><span>Policy number <strong>{policyNumber || 'PB-FE-000000'}</strong></span><span>Coverage <strong>${coverage.toLocaleString()}</strong></span><span>Monthly premium <strong>${monthly.toFixed(2)}</strong></span><span>First draft <strong>{answers.draftDate}</strong></span><span>Beneficiary <strong>{answers.beneficiaryFirst || answers.beneficiaryType}</strong></span><span>Coverage type <strong>{answers.coverageType || (outcome === 'graded' ? 'Graded' : 'Immediate')}</strong></span></div><div className="next-list"><strong>What happens next</strong><span>Your policy documents will be emailed to {answers.email || 'your email'}.</span><span>Save our number {phone}.</span><span>Tell your beneficiary where to find your policy.</span></div><Button variant="action" size="touch" className="wide-button" onClick={() => window.print()}>Print this page</Button></>, { back: false })
+    if (screen === 'callback') return shell('Request a call back', 'A licensed agent can help when it’s convenient for you.', <form onSubmit={submitNext('zip', Boolean(answers.firstName && answers.phone && consent))}>{field('firstName', 'Name')}{field('phone', 'Phone', { type: 'tel' })}{cards('callbackTime', ['Morning', 'Afternoon', 'Evening'])}<CheckRow checked={consent} onChange={setConsent}>I agree that Policy Bear may call or text me about life insurance. [COMPLIANCE_TO_APPROVE]</CheckRow><Button variant="action" size="touch" className="wide-button">Request my call</Button></form>)
+    return shell('An agent can help set this up for you', 'You still have options. Talk with a licensed agent for personal help.', <><Button asChild variant="action" size="touch" className="wide-button"><a href={`tel:${phone}`}><Phone /> Call {phone}</a></Button><Button variant="quiet" className="wide-button" onClick={() => go('callback')}>Request a call back</Button></>)
   }
-  function cards(key: keyof Answers, options: { value: string; detail?: string; icon?: React.ReactNode; popular?: boolean }[], grid = false) {
-    return <Radio.Root aria-labelledby="wizard-title" value={answers[key]} onValueChange={value => choose(key, value)} className={grid ? 'answer-grid' : 'answer-list'} disabled={choosing || offline}>{options.map(option => <Radio.Item className={`answer-card ${option.popular ? 'popular-card' : ''}`} key={option.value} value={option.value}>{option.popular && <span className="popular-label">Most popular</span>}{option.icon}<span className="answer-copy"><strong>{option.value}</strong>{option.detail && <span>{option.detail}</span>}</span><span className="radio-circle"><Radio.Indicator><Check size={17} /></Radio.Indicator></span></Radio.Item>)}</Radio.Root>
-  }
-  function select(key: keyof Answers, label: string, options: { value: string; label: string }[]) {
-    return <label className="field-label" htmlFor={`answer-${key}`}>{label}<select id={`answer-${key}`} aria-label={label} value={answers[key]} onChange={e => update(key, e.target.value)} autoComplete={key === 'month' ? 'bday-month' : key === 'day' ? 'bday-day' : key === 'year' ? 'bday-year' : undefined}><option value="">{label}</option>{options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}</select></label>
-  }
-  const numericOptions = (start: number, end: number) => Array.from({ length: end - start + 1 }, (_, i) => ({ value: String(i + start), label: String(i + start) }))
-  return <section className={`wizard ${step > 0 ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Check your coverage options">
-    {offline && <div className="notice" role="status">You're offline. Your answers are saved.</div>}
-    {resume && <div className="resume-banner"><p>Welcome back! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => { setResume(false); go(restoredStep.current) }}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(empty); setResume(false); go(0) }}>Start over</Button></div></div>}
-    <div className="wizard-progress"><span>{step < 7 ? `Step ${step + 1} of 8` : 'Your options'}</span><span><LockKeyhole size={15} /> Private & secure</span></div>
-    <div className="progress-track" role="progressbar" aria-label="Questions completed" aria-valuenow={Math.min(step + 1, 8)} aria-valuemin={0} aria-valuemax={8}><div className={`progress-fill progress-${step + 1}`} /></div>
-    {step > 0 && <Button variant="quiet" className="back-button" onClick={() => go(step - 1)}><ArrowLeft size={18} /> Back</Button>}
-    <form onSubmit={next} className="wizard-content" key={`${step}-${ineligible}`}>
-      {step === 0 && <div className="wizard-intro"><span className="mini-shield"><ShieldCheck size={23} /></span><span>Peace of mind starts here</span></div>}
-      <h2 id="wizard-title" ref={heading} tabIndex={-1}>{ineligible || titles[step]}</h2>
-      <p className="question-helper">{ineligible ? 'A licensed agent may still be able to help you find coverage.' : helpers[step]}</p>
-      {[2, 3, 5].includes(step) && !ineligible && <><Button variant="quiet" className="why-button" aria-expanded={help} onClick={() => setHelp(!help)}><CircleHelp size={17} /> Why we ask</Button>{help && <p className="why-panel">{helpers[step]} We only ask for information needed to check your coverage options.</p>}</>}
-      {!ineligible && step === 0 && <><label className="field-label" htmlFor="zip">ZIP code</label><div className="zip-field"><MapPin size={22} /><input id="zip" value={answers.zip} inputMode="numeric" autoComplete="postal-code" maxLength={5} placeholder="Enter your ZIP code" onChange={e => { setAnswers(a => ({ ...a, zip: e.target.value.replace(/\D/g, '').slice(0, 5), city: '', state: '' })); setError('') }} onBlur={() => { if (answers.zip && answers.zip.length !== 5) setError('Please enter a 5-digit ZIP code, like 85001.') }} aria-describedby="zip-status" aria-invalid={Boolean(error)} /></div><div id="zip-status" className="zip-status" aria-live="polite">{lookup ? 'Finding your city…' : answers.city ? <><MapPin size={16} /> {answers.city}, {answers.state}</> : null}</div></>}
-      {!ineligible && step === 1 && <>{cards('who', [{ value: 'Me', icon: <User /> }, { value: 'My spouse or partner', icon: <Heart /> }, { value: 'My mom or dad', icon: <Users /> }, { value: 'Someone else', icon: <User /> }])}{answers.who && answers.who !== 'Me' && <div className="help-panel"><p>Great that you're helping! The person being covered needs to answer the next questions and sign themselves. Are they with you now?</p><Button variant="action" size="touch" onClick={() => go(2)}>Yes, they'll answer <ArrowRight /></Button><Button variant="quiet" onClick={() => setIneligible('Let’s find a time to talk together')}>No, let’s talk to an agent</Button></div>}</>}
-      {!ineligible && step === 2 && <><div className="date-fields">{select('month', 'Month', Array.from({ length: 12 }, (_, i) => ({ value: String(i + 1), label: new Date(2026, i).toLocaleString('en', { month: 'long' }) })))}{select('day', 'Day', numericOptions(1, 31))}{select('year', 'Year', numericOptions(now.getFullYear() - 85, now.getFullYear() - 50).reverse())}</div><p className="age-confirmation" aria-live="polite">{validDOB ? `You're ${age}` : answers.day && answers.month && answers.year ? 'Please double-check the day for that month.' : ''}</p></>}
-      {!ineligible && step === 3 && cards('gender', [{ value: 'Male' }, { value: 'Female' }])}
-      {!ineligible && step === 4 && <>{cards('tobacco', [{ value: 'No' }, { value: 'Yes' }])}<p className="reassurance"><ShieldCheck size={18} /> Smokers can still get covered.</p></>}
-      {!ineligible && step === 5 && <><div className="height-fields">{select('feet', 'Feet', numericOptions(4, 7))}{select('inches', 'Inches', numericOptions(0, 11))}</div><label className="field-label" htmlFor="weight">Weight</label><div className="weight-field"><input id="weight" value={answers.weight} inputMode="numeric" placeholder="Your weight" maxLength={3} onChange={e => update('weight', e.target.value.replace(/\D/g, ''))} onBlur={() => { if (answers.weight && !sizeValid) setError('Please double-check your height and weight. Weight should be 80–500 lbs.') }} /><span>lbs</span></div></>}
-      {!ineligible && step === 6 && <>{!other && cards('coverage', [{ value: '$10,000', detail: 'Covers a simple funeral' }, { value: '$15,000', detail: 'Funeral + final bills', popular: true }, { value: '$20,000', detail: 'Extra cushion for family' }, { value: '$25,000', detail: 'Leave something behind' }], true)}<Button variant="quiet" className="other-amount" onClick={() => { setOther(!other); update('coverage', '$15,000') }}>{other ? 'Choose a suggested amount' : 'Choose a different amount'}</Button>{other && <div className="coverage-control"><strong>{answers.coverage}</strong><div><Button variant="quiet" size="touch" aria-label="Decrease coverage" onClick={() => update('coverage', '$' + Math.max(5000, Number(answers.coverage.replace(/\D/g, '')) - 1000).toLocaleString())}><Minus /></Button><input type="range" aria-label="Coverage amount" min={5000} max={40000} step={1000} value={Number(answers.coverage.replace(/\D/g, ''))} onChange={e => update('coverage', '$' + Number(e.target.value).toLocaleString())} /><Button variant="quiet" size="touch" aria-label="Increase coverage" onClick={() => update('coverage', '$' + Math.min(40000, Number(answers.coverage.replace(/\D/g, '')) + 1000).toLocaleString())}><Plus /></Button></div><p>$5,000 to $40,000</p></div>}</>}
-      <div className="form-error" role="status">{error && <><AlertCircle size={18} />{error}</>}</div>
-      {!ineligible && [0, 2, 5].includes(step) || (!ineligible && step === 6 && other) ? <Button variant="action" size="touch" className="continue-button" type="submit" disabled={!valid || lookup || offline}>{step === 0 ? 'Check my options' : 'Continue'}<ArrowRight size={21} /></Button> : null}
-      {(ineligible || step === 7) && <div className="agent-next">{!ineligible && <><div className="coverage-summary"><ShieldCheck /><span><strong>{answers.coverage} of lifelong coverage</strong><span>No medical exam</span></span></div><p className="connection-note">Online prices are not available here yet. Call PolicyBear to talk through your options.</p></>}<Button variant="action" size="touch" asChild><a href={`tel:+${phone}`}><Phone size={21} /> Talk to PolicyBear</a></Button><p className="general-phone">(844) 765-2327 · PolicyBear’s main line</p></div>}
-      {step === 0 && <p className="form-time">About 2 minutes. No medical exam.</p>}
-      <div className="form-trust"><span><LockKeyhole size={16} /> Secure</span><span><ShieldCheck size={17} /> No obligation</span><span><Heart size={17} /> Family first</span></div>
-      {step > 0 && <p className="question-call">Questions? <a href={`tel:+${phone}`}>Call (844) 765-2327</a></p>}
-    </form>
+
+  const chapter = chapterFor(screen)
+  return <section className={`wizard ${screen !== 'zip' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
+    {resume && <div className="resume-banner"><p>Welcome back, {answers.firstName || 'friend'}! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => setResume(false)}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(blank); localStorage.removeItem('policybear-demo'); go('zip') }}>Start over</Button></div></div>}
+    <div className="chapter-progress" aria-label="Application progress">{labels.map((label, index) => <span className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} key={label}>{index < chapter && <Check />}{label}</span>)}</div>
+    {quoteIndex >= 0 && <><div className="wizard-progress"><span>Step {quoteIndex + 1} of 8</span><span><LockKeyhole /> Private & secure</span></div><div className="progress-track"><div className="progress-fill" style={{ width: `${((quoteIndex + 1) / 8) * 100}%` }} /></div></>}
+    {screenIndex >= 10 && screenIndex <= 35 && <div className="mini-summary">Coverage ${coverage.toLocaleString()} · ${monthly.toFixed(2)}/mo <a href={`tel:${phone}`}>Need help? {phone}</a></div>}
+    {renderScreen()}
+    <div className="demo-wrap"><Button variant="quiet" className="demo-pill" aria-expanded={demo} onClick={() => setDemo(!demo)}>Demo</Button>{demo && <div className="demo-toolbar"><strong>Jump to a screen</strong><select aria-label="Demo screen" value={screen} onChange={(event) => go(event.target.value as JourneyStep)}>{journeySteps.map((item) => <option value={item} key={item}>{item.replaceAll('-', ' ')}</option>)}</select><strong>Force decision</strong><div>{(['approved', 'graded', 'declined'] as Outcome[]).map((item) => <Button variant={forced === item ? 'action' : 'quiet'} key={item} onClick={() => setForced(item)}>{item}</Button>)}</div></div>}</div>
   </section>
+}
+
+function NextButton() { return <Button variant="action" size="touch" className="continue-button">Continue <ArrowRight /></Button> }
+function CheckRow({ checked, onChange, children }: { checked: boolean; onChange: (value: boolean) => void; children: React.ReactNode }) { return <label className="check-row"><Checkbox.Root checked={checked} onCheckedChange={(value) => onChange(value === true)}><Checkbox.Indicator><Check /></Checkbox.Indicator></Checkbox.Root><span>{children}</span></label> }
+function LoadingState({ icon, title, lines, active }: { icon: React.ReactNode; title: string; lines: string[]; active: number }) { return <div className="loading-state" role="status"><div className="loading-symbol">{icon}</div><h2>{title}</h2><p>This usually takes a few seconds.</p><div>{lines.map((line, index) => <span className={index <= active ? 'done' : ''} key={line}><Check /> {line}</span>)}</div></div> }
+function PriceCard({ price, coverage, annual, setAnnual }: { price: number; coverage: number; annual: boolean; setAnnual: (value: boolean) => void }) { return <div className="price-card"><div className="payment-toggle"><Button variant={!annual ? 'action' : 'quiet'} onClick={() => setAnnual(false)}>Monthly</Button><Button variant={annual ? 'action' : 'quiet'} onClick={() => setAnnual(true)}>Yearly</Button></div><p><strong>${price.toFixed(2)}</strong> /{annual ? 'year' : 'month'}</p><span>for <b>${coverage.toLocaleString()}</b> of lifelong coverage</span>{annual && <small>Save 5% paying yearly</small>}<ul><li><Check /> Price locked for life</li><li><Check /> No medical exam</li><li><Check /> Coverage never expires</li></ul></div> }
+function Decision({ outcome, firstName, coverage, price, onContinue, onCallback }: { outcome: Outcome; firstName: string; coverage: number; price: number; onContinue: () => void; onCallback: () => void }) {
+  if (outcome === 'declined') return <div className="wizard-content"><div className="decision-symbol warm"><Heart /></div><h2>We couldn’t approve this plan online — but you still have options.</h2><div className="option-card"><strong>Guaranteed Issue</strong><p>No health questions. You can’t be turned down for health reasons.</p><Button variant="action" size="touch" onClick={onContinue}>See guaranteed coverage <ArrowRight /></Button></div><div className="option-card"><strong>Talk to a licensed agent</strong><p>An agent can compare other plans for you.</p><Button variant="quiet" onClick={onCallback}>Request a call back</Button></div></div>
+  const graded = outcome === 'graded'
+  return <div className="wizard-content"><div className="decision-symbol"><Check /></div><h2>{graded ? `Good news, ${firstName || 'friend'} — you’re approved for graded coverage.` : `Congratulations, ${firstName || 'friend'}! You’re approved.`}</h2>{graded && <div className="info-panel">For the first 2 years, the full benefit is paid for accidental loss; for other causes, a partial benefit applies. From year 3, your family receives the full ${coverage.toLocaleString()}. [CARRIER_TO_CONFIRM]</div>}<div className="summary-card"><span>{graded ? 'Graded coverage' : 'Immediate full coverage'}</span><strong>${coverage.toLocaleString()} · ${price.toFixed(2)}/month</strong><small>{graded ? 'Benefit schedule shown above' : 'Full benefit from day one [CARRIER_TO_CONFIRM]'}</small></div><Button variant="action" size="touch" className="wide-button" onClick={onContinue}>{graded ? 'Accept and continue' : 'Continue to set up your policy'} <ArrowRight /></Button></div>
 }
