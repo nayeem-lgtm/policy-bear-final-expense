@@ -143,7 +143,12 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     advance(index === 7 ? 'health-review' : (`h${index + 2}` as JourneyStep))
   }
   const validDOB = age >= 50 && age <= 85 && Boolean(answers.day && answers.month && answers.year)
-  const field = (key: StringAnswerKey, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => <label className="field-label">{label}<input className="text-field" value={answers[key]} onChange={(event) => update(key, event.target.value)} maxLength={100} {...props} /></label>
+  const field = (key: StringAnswerKey, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => {
+    const numeric = ['zip', 'weight', 'routing', 'account', 'accountConfirm', 'card', 'paymentZip'].includes(key)
+    const telephone = ['phone', 'beneficiaryPhone'].includes(key)
+    const autofill: Partial<Record<StringAnswerKey, string>> = { firstName: 'given-name', middleName: 'additional-name', lastName: 'family-name', email: 'email', phone: 'tel', zip: 'postal-code', signature: 'name' }
+    return <label className="field-label">{label}<input className="text-field" name={key} inputMode={numeric ? 'numeric' : telephone ? 'tel' : undefined} autoComplete={autofill[key] || 'off'} enterKeyHint="next" value={answers[key]} onChange={(event) => update(key, event.target.value)} maxLength={100} {...props} /></label>
+  }
   const select = (key: StringAnswerKey, label: string, options: string[], disabled = false) => <label className="field-label">{label}<select value={answers[key]} disabled={disabled} onChange={(event) => update(key, event.target.value)}><option value="">{label}</option>{options.map((option) => <option key={option}>{option}</option>)}</select></label>
   const cards = (key: StringAnswerKey, options: string[], next?: JourneyStep) => <Radio.Root aria-label={key} value={answers[key]} onValueChange={(value) => choose(key, value, next)} className="answer-list">{options.map((option) => <Radio.Item className="answer-card" key={option} value={option}><span className="answer-copy"><strong>{option}</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root>
   const submitNext = (next: JourneyStep, valid = true, message = 'Please complete the required fields.') => (event: React.FormEvent) => { event.preventDefault(); if (!valid) { setError(message); return } go(next) }
