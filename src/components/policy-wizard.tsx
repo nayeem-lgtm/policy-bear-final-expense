@@ -110,6 +110,9 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   useEffect(() => {
     if (!ready) return
     heading.current?.focus({ preventScroll: true })
+    if (screen !== 'zip' && window.matchMedia('(max-width: 800px)').matches) {
+      document.getElementById('get-covered')?.scrollIntoView({ block: 'start', behavior: 'instant' })
+    }
   }, [ready, screen])
 
   useEffect(() => {
@@ -140,7 +143,12 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     advance(index === 7 ? 'health-review' : (`h${index + 2}` as JourneyStep))
   }
   const validDOB = age >= 50 && age <= 85 && Boolean(answers.day && answers.month && answers.year)
-  const field = (key: StringAnswerKey, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => <label className="field-label">{label}<input className="text-field" value={answers[key]} onChange={(event) => update(key, event.target.value)} maxLength={100} {...props} /></label>
+  const field = (key: StringAnswerKey, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => {
+    const numeric = ['zip', 'weight', 'routing', 'account', 'accountConfirm', 'card', 'paymentZip'].includes(key)
+    const telephone = ['phone', 'beneficiaryPhone'].includes(key)
+    const autofill: Partial<Record<StringAnswerKey, string>> = { firstName: 'given-name', middleName: 'additional-name', lastName: 'family-name', email: 'email', phone: 'tel', zip: 'postal-code', signature: 'name' }
+    return <label className="field-label">{label}<input className="text-field" name={key} inputMode={numeric ? 'numeric' : telephone ? 'tel' : undefined} autoComplete={autofill[key] || 'off'} enterKeyHint="next" value={answers[key]} onChange={(event) => update(key, event.target.value)} maxLength={100} {...props} /></label>
+  }
   const select = (key: StringAnswerKey, label: string, options: string[], disabled = false) => <label className="field-label">{label}<select value={answers[key]} disabled={disabled} onChange={(event) => update(key, event.target.value)}><option value="">{label}</option>{options.map((option) => <option key={option}>{option}</option>)}</select></label>
   const cards = (key: StringAnswerKey, options: string[], next?: JourneyStep) => <Radio.Root aria-label={key} value={answers[key]} onValueChange={(value) => choose(key, value, next)} className="answer-list">{options.map((option) => <Radio.Item className="answer-card" key={option} value={option}><span className="answer-copy"><strong>{option}</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root>
   const submitNext = (next: JourneyStep, valid = true, message = 'Please complete the required fields.') => (event: React.FormEvent) => { event.preventDefault(); if (!valid) { setError(message); return } go(next) }
@@ -209,7 +217,7 @@ function DrawSignature({ onChange }: { onChange: (drawn: boolean) => void }) {
 
   const point = (event: React.PointerEvent<HTMLCanvasElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect()
-    return { x: event.clientX - bounds.left, y: event.clientY - bounds.top }
+    return { x: (event.clientX - bounds.left) * event.currentTarget.width / bounds.width, y: (event.clientY - bounds.top) * event.currentTarget.height / bounds.height }
   }
   const start = (event: React.PointerEvent<HTMLCanvasElement>) => {
     const context = event.currentTarget.getContext('2d')
@@ -228,7 +236,7 @@ function DrawSignature({ onChange }: { onChange: (drawn: boolean) => void }) {
     context.lineWidth = 3
     context.lineCap = 'round'
     context.lineJoin = 'round'
-    context.strokeStyle = '#0f123c'
+    context.strokeStyle = getComputedStyle(event.currentTarget).getPropertyValue('--brand-deep').trim()
     context.lineTo(position.x, position.y)
     context.stroke()
     onChange(true)
