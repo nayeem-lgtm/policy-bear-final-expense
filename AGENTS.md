@@ -12,4 +12,5 @@
 - Keep the final expense landing page at `/`, with a dedicated browser-safe wizard component using URL hashes for the brief's question steps; this preserves phone Back navigation without duplicating content routes.
 - Keep the complete final expense journey presentation-only: browser-generated mock pricing and decisions, no network submissions, and never persist SSN or payment details.
 - Keep form focus changes tied to screen navigation only, never to answer updates, so typing remains uninterrupted.
+- Keep electronic signing browser-only, offering typed style previews and an ephemeral draw pad without persisting drawn signatures.
 - Define PolicyBear visual styles and role colors centrally in `src/styles.css`; controls use the shared Button and accessible radio primitives for consistent, readable interaction.

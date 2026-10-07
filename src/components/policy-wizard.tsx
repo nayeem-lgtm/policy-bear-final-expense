@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, ClipboardCheck, Eye, EyeOff, Heart, Landmark, LockKeyhole, Minus, Phone, Plus, ShieldCheck, Sparkles, User, Users } from 'lucide-react'
+import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, ClipboardCheck, Eye, EyeOff, Heart, Landmark, LockKeyhole, Minus, PenLine, Phone, Plus, RotateCcw, ShieldCheck, Sparkles, User, Users } from 'lucide-react'
 import * as Radio from '@radix-ui/react-radio-group'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
@@ -38,6 +38,9 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const [confirmed, setConfirmed] = useState(false)
   const [documents, setDocuments] = useState(false)
   const [signed, setSigned] = useState(false)
+  const [signatureMode, setSignatureMode] = useState<'type' | 'draw'>('type')
+  const [signatureStyle, setSignatureStyle] = useState(0)
+  const [hasDrawing, setHasDrawing] = useState(false)
   const [authorized, setAuthorized] = useState(false)
   const [code, setCode] = useState('')
   const [loadingLine, setLoadingLine] = useState(0)
@@ -157,7 +160,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     if (screen === 'draft') return shell('When would you like your payment taken each month?', '', <>{cards('draftDate', ['1st of the month', '3rd of the month (Social Security day)', '2nd Wednesday', '3rd Wednesday', '4th Wednesday', 'Pick a date'])}<div className="summary-card"><span>First payment</span><strong>{answers.draftDate}</strong></div><Button variant="action" size="touch" className="continue-button" onClick={() => go('review')}>Continue <ArrowRight /></Button></>)
     if (screen === 'review') { const reviewRows: Array<[string, string, JourneyStep]> = [['About you', `${answers.firstName} ${answers.lastName}`, 'personal'], ['Address', `${answers.street}, ${answers.city}`, 'address'], ['Health answers', `${answers.health.filter((value) => value === 'Yes').length} yes answers`, 'health-review'], ['Coverage & price', `$${coverage.toLocaleString()} · $${monthly.toFixed(2)}/month`, 'price'], ['Beneficiary', answers.beneficiaryType === 'A person' ? `${answers.beneficiaryFirst} ${answers.beneficiaryLast}` : answers.beneficiaryType, 'beneficiary'], ['Other insurance', answers.otherInsurance, 'insurance'], ['Payment', `${answers.paymentMethod} •••• ${answers.account.slice(-4) || answers.card.slice(-4)}`, 'payment'], ['Draft date', answers.draftDate, 'draft']]; return shell('Review your application', 'Check the details below before you sign.', <>{reviewRows.map(([label, value, target]) => <div className="review-row" key={label}><span><small>{label}</small>{value || 'Not provided'}</span><Button type="button" variant="quiet" onClick={() => go(target)}>Edit</Button></div>)}<Button variant="action" size="touch" className="continue-button" onClick={() => go('disclosures')}>Looks good — continue to sign <ArrowRight /></Button></>) }
     if (screen === 'disclosures') return shell('Please review your documents', '', <>{['Application', 'Authorization to release health information', 'Bank draft authorization', '[STATE_NOTICES]'].map((document) => <details className="document-row" key={document}><summary>{document}<ChevronDown /></summary><p>Prototype document text for review. Final carrier document will replace this placeholder.</p><Button variant="quiet">Download PDF (mock)</Button></details>)}<CheckRow checked={documents} onChange={setDocuments}>I have read and agree to the documents above.</CheckRow><Button variant="action" size="touch" className="continue-button" disabled={!documents} onClick={() => go('signature')}>Continue <ArrowRight /></Button></>)
-    if (screen === 'signature') return shell('Sign your application', 'Type your full legal name below.', <>{field('signature', 'Full legal name')}<div className="signature-preview">{answers.signature || 'Your signature'}</div><p className="valid-note">Dated {new Date().toLocaleDateString()}</p><CheckRow checked={signed} onChange={setSigned}>I agree to sign electronically and that my typed name is my legal signature.</CheckRow><Button variant="action" size="touch" className="continue-button" disabled={!signed || answers.signature.trim().length < 3} onClick={() => go('verify')}>Continue <ArrowRight /></Button></>)
+    if (screen === 'signature') return shell('Sign your application', 'Choose how you would like to sign.', <><div className="signature-mode" role="group" aria-label="Signature method"><Button type="button" variant={signatureMode === 'type' ? 'action' : 'quiet'} onClick={() => setSignatureMode('type')}>Type signature</Button><Button type="button" variant={signatureMode === 'draw' ? 'action' : 'quiet'} onClick={() => setSignatureMode('draw')}><PenLine /> Draw signature</Button></div>{signatureMode === 'type' ? <>{field('signature', 'Full legal name')}<p className="field-prompt">Choose a signature style</p><div className="signature-styles" role="radiogroup" aria-label="Signature style">{['Classic', 'Smooth', 'Simple'].map((label, index) => <Button type="button" variant="quiet" role="radio" aria-checked={signatureStyle === index} className={signatureStyle === index ? 'selected' : ''} onClick={() => setSignatureStyle(index)} key={label}><span className={`signature-sample signature-style-${index}`}>{answers.signature || 'Your name'}</span><small>{label}</small></Button>)}</div><div className={`signature-preview signature-style-${signatureStyle}`}>{answers.signature || 'Your signature'}</div></> : <DrawSignature onChange={setHasDrawing} />}<p className="valid-note">Dated {new Date().toLocaleDateString()}</p><CheckRow checked={signed} onChange={setSigned}>I agree to sign electronically and that this is my legal signature.</CheckRow><Button variant="action" size="touch" className="continue-button" disabled={!signed || (signatureMode === 'type' ? answers.signature.trim().length < 3 : !hasDrawing)} onClick={() => go('verify')}>Continue <ArrowRight /></Button></>)
     if (screen === 'verify') return shell('Verify it’s you', `We sent a 6-digit code to ${answers.phone ? `(***) ***-${answers.phone.replace(/\D/g, '').slice(-4)}` : '(•••) •••-1234'} (mock).`, <><label className="field-label">Verification code<input className="text-field code-field" value={code} onChange={(event) => setCode(event.target.value.replace(/\D/g, '').slice(0, 6))} inputMode="numeric" maxLength={6} autoComplete="one-time-code" /></label><p className="question-call">Any 6 digits work in this prototype.</p><Button variant="quiet" className="wide-button">Send by email instead</Button><Button variant="action" size="touch" className="continue-button" disabled={code.length !== 6} onClick={() => go('submitting')}>Sign and submit <ArrowRight /></Button></>)
     if (screen === 'submitting') return <LoadingState icon={<Sparkles />} title="Submitting your application…" lines={['Reviewing your signature', 'Issuing your policy…', 'All done!']} active={loadingLine} />
     if (screen === 'issued') return shell(`Congratulations, ${answers.firstName || 'friend'}. Your family is protected.`, '', <><div className="success-symbol"><Check /></div><div className="policy-card"><span>Policy number <strong>{policyNumber || 'PB-FE-000000'}</strong></span><span>Coverage <strong>${coverage.toLocaleString()}</strong></span><span>Monthly premium <strong>${monthly.toFixed(2)}</strong></span><span>First draft <strong>{answers.draftDate}</strong></span><span>Beneficiary <strong>{answers.beneficiaryFirst || answers.beneficiaryType}</strong></span><span>Coverage type <strong>{answers.coverageType || (outcome === 'graded' ? 'Graded' : 'Immediate')}</strong></span></div><div className="next-list"><strong>What happens next</strong><span>Your policy documents will be emailed to {answers.email || 'your email'}.</span><span>Save our number {phone}.</span><span>Tell your beneficiary where to find your policy.</span></div><Button variant="action" size="touch" className="wide-button" onClick={() => window.print()}>Print this page</Button></>, { back: false })
@@ -178,6 +181,46 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
 
 function NextButton() { return <Button variant="action" size="touch" className="continue-button">Continue <ArrowRight /></Button> }
 function CheckRow({ checked, onChange, children }: { checked: boolean; onChange: (value: boolean) => void; children: React.ReactNode }) { return <label className="check-row"><Checkbox.Root checked={checked} onCheckedChange={(value) => onChange(value === true)}><Checkbox.Indicator><Check /></Checkbox.Indicator></Checkbox.Root><span>{children}</span></label> }
+function DrawSignature({ onChange }: { onChange: (drawn: boolean) => void }) {
+  const canvas = useRef<HTMLCanvasElement>(null)
+  const drawing = useRef(false)
+
+  const point = (event: React.PointerEvent<HTMLCanvasElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect()
+    return { x: event.clientX - bounds.left, y: event.clientY - bounds.top }
+  }
+  const start = (event: React.PointerEvent<HTMLCanvasElement>) => {
+    const context = event.currentTarget.getContext('2d')
+    if (!context) return
+    const position = point(event)
+    event.currentTarget.setPointerCapture(event.pointerId)
+    context.beginPath()
+    context.moveTo(position.x, position.y)
+    drawing.current = true
+  }
+  const move = (event: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!drawing.current) return
+    const context = event.currentTarget.getContext('2d')
+    if (!context) return
+    const position = point(event)
+    context.lineWidth = 3
+    context.lineCap = 'round'
+    context.lineJoin = 'round'
+    context.strokeStyle = '#0f123c'
+    context.lineTo(position.x, position.y)
+    context.stroke()
+    onChange(true)
+  }
+  const stop = () => { drawing.current = false }
+  const clear = () => {
+    const element = canvas.current
+    const context = element?.getContext('2d')
+    if (element && context) context.clearRect(0, 0, element.width, element.height)
+    onChange(false)
+  }
+
+  return <div className="draw-signature"><div className="draw-heading"><span>Draw your signature below</span><Button type="button" variant="quiet" onClick={clear}><RotateCcw /> Clear</Button></div><canvas ref={canvas} width="470" height="180" aria-label="Draw your signature" onPointerDown={start} onPointerMove={move} onPointerUp={stop} onPointerCancel={stop} onPointerLeave={stop} /><p>Use your finger, mouse, or trackpad.</p></div>
+}
 function LoadingState({ icon, title, lines, active }: { icon: React.ReactNode; title: string; lines: string[]; active: number }) { return <div className="loading-state" role="status"><div className="loading-symbol">{icon}</div><h2>{title}</h2><p>This usually takes a few seconds.</p><div>{lines.map((line, index) => <span className={index <= active ? 'done' : ''} key={line}><Check /> {line}</span>)}</div></div> }
 function PriceCard({ price, coverage, annual, setAnnual }: { price: number; coverage: number; annual: boolean; setAnnual: (value: boolean) => void }) { return <div className="price-card"><div className="payment-toggle"><Button variant={!annual ? 'action' : 'quiet'} onClick={() => setAnnual(false)}>Monthly</Button><Button variant={annual ? 'action' : 'quiet'} onClick={() => setAnnual(true)}>Yearly</Button></div><p><strong>${price.toFixed(2)}</strong> /{annual ? 'year' : 'month'}</p><span>for <b>${coverage.toLocaleString()}</b> of lifelong coverage</span>{annual && <small>Save 5% paying yearly</small>}<ul><li><Check /> Price locked for life</li><li><Check /> No medical exam</li><li><Check /> Coverage never expires</li></ul></div> }
 function Decision({ outcome, firstName, coverage, price, onContinue, onCallback }: { outcome: Outcome; firstName: string; coverage: number; price: number; onContinue: () => void; onCallback: () => void }) {
