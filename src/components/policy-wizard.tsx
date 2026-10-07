@@ -6,8 +6,19 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { calculatePrice, chapterFor, determineOutcome, healthQuestions, journeySteps, sanitizedAnswers, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
-type Answers = Record<string, string> & { health: string[] }
-const blank: Answers = { zip: '', city: '', state: '', who: '', month: '', day: '', year: '', gender: '', tobacco: '', feet: '', inches: '', weight: '', coverage: '15000', firstName: '', middleName: '', lastName: '', email: '', phone: '', street: '', apt: '', country: 'United States', birthState: '', citizen: '', resident: '', owner: '', ssn: '', beneficiaryType: 'A person', beneficiaryFirst: '', beneficiaryLast: '', relationship: '', beneficiaryPhone: '', otherInsurance: '', replacing: '', paymentMethod: 'Bank account', accountName: '', accountType: 'Checking', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', draftDate: '1st of the month', signature: '', health: Array(8).fill('') }
+type Answers = {
+  zip: string; city: string; state: string; who: string; month: string; day: string; year: string
+  gender: string; tobacco: string; feet: string; inches: string; weight: string; coverage: string
+  firstName: string; middleName: string; lastName: string; email: string; phone: string
+  street: string; apt: string; country: string; birthState: string; citizen: string; resident: string
+  owner: string; ssn: string; beneficiaryType: string; beneficiaryFirst: string; beneficiaryLast: string
+  relationship: string; beneficiaryPhone: string; otherInsurance: string; replacing: string
+  paymentMethod: string; accountName: string; accountType: string; routing: string; account: string
+  accountConfirm: string; card: string; expiry: string; paymentZip: string; draftDate: string
+  signature: string; callbackTime: string; coverageType: string; health: string[]
+}
+type StringAnswerKey = Exclude<keyof Answers, 'health'>
+const blank: Answers = { zip: '', city: '', state: '', who: '', month: '', day: '', year: '', gender: '', tobacco: '', feet: '', inches: '', weight: '', coverage: '15000', firstName: '', middleName: '', lastName: '', email: '', phone: '', street: '', apt: '', country: 'United States', birthState: '', citizen: '', resident: '', owner: '', ssn: '', beneficiaryType: 'A person', beneficiaryFirst: '', beneficiaryLast: '', relationship: '', beneficiaryPhone: '', otherInsurance: '', replacing: '', paymentMethod: 'Bank account', accountName: '', accountType: 'Checking', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', draftDate: '1st of the month', signature: '', callbackTime: '', coverageType: '', health: Array(8).fill('') }
 const quoteSteps: JourneyStep[] = ['zip', 'who', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'contact']
 const labels = ['Quote', 'About you', 'Health', 'Payment', 'Sign']
 const phone = '[FE_PHONE]'
@@ -50,7 +61,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     try {
       const saved = JSON.parse(localStorage.getItem('policybear-demo') || 'null')
       if (saved?.answers && Date.now() - saved.at < 7 * 86400000) {
-        setAnswers({ ...blank, ...saved.answers, health: [...blank.health, ...(saved.answers.health || [])].slice(0, 8) })
+        setAnswers({ ...blank, ...(saved.answers as Partial<Answers>), ssn: '', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', health: [...blank.health, ...(Array.isArray(saved.answers.health) ? saved.answers.health : [])].slice(0, 8) })
         setResume(true)
       }
     } catch { /* Browsing privacy settings should not block the demo. */ }
@@ -82,19 +93,19 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     return () => { clearTimeout(first); clearTimeout(second); clearTimeout(finish) }
   }, [screen])
 
-  const update = (key: string, value: string) => { setAnswers((current) => ({ ...current, [key]: value })); setError('') }
+  const update = (key: StringAnswerKey, value: string) => { setAnswers((current) => ({ ...current, [key]: value })); setError('') }
   const go = (next: JourneyStep) => { setError(''); setResume(false); location.hash = `step-${next}`; setScreen(next) }
   const advance = (next: JourneyStep) => window.setTimeout(() => go(next), 300)
-  const back = () => go(journeySteps[Math.max(0, screenIndex - 1)])
-  const choose = (key: string, value: string, next?: JourneyStep) => { update(key, value); if (next) advance(next) }
+  const back = () => { const previous = journeySteps[Math.max(0, screenIndex - 1)]; if (previous) go(previous) }
+  const choose = (key: StringAnswerKey, value: string, next?: JourneyStep) => { update(key, value); if (next) advance(next) }
   const healthChoice = (index: number, value: string) => {
     setAnswers((current) => ({ ...current, health: current.health.map((answer, i) => i === index ? value : answer) }))
     advance(index === 7 ? 'health-review' : (`h${index + 2}` as JourneyStep))
   }
   const validDOB = age >= 50 && age <= 85 && Boolean(answers.day && answers.month && answers.year)
-  const field = (key: string, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => <label className="field-label">{label}<input className="text-field" value={answers[key] || ''} onChange={(event) => update(key, event.target.value)} maxLength={100} {...props} /></label>
-  const select = (key: string, label: string, options: string[], disabled = false) => <label className="field-label">{label}<select value={answers[key] || ''} disabled={disabled} onChange={(event) => update(key, event.target.value)}><option value="">{label}</option>{options.map((option) => <option key={option}>{option}</option>)}</select></label>
-  const cards = (key: string, options: string[], next?: JourneyStep) => <Radio.Root aria-label={key} value={answers[key] || ''} onValueChange={(value) => choose(key, value, next)} className="answer-list">{options.map((option) => <Radio.Item className="answer-card" key={option} value={option}><span className="answer-copy"><strong>{option}</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root>
+  const field = (key: StringAnswerKey, label: string, props: React.InputHTMLAttributes<HTMLInputElement> = {}) => <label className="field-label">{label}<input className="text-field" value={answers[key]} onChange={(event) => update(key, event.target.value)} maxLength={100} {...props} /></label>
+  const select = (key: StringAnswerKey, label: string, options: string[], disabled = false) => <label className="field-label">{label}<select value={answers[key]} disabled={disabled} onChange={(event) => update(key, event.target.value)}><option value="">{label}</option>{options.map((option) => <option key={option}>{option}</option>)}</select></label>
+  const cards = (key: StringAnswerKey, options: string[], next?: JourneyStep) => <Radio.Root aria-label={key} value={answers[key]} onValueChange={(value) => choose(key, value, next)} className="answer-list">{options.map((option) => <Radio.Item className="answer-card" key={option} value={option}><span className="answer-copy"><strong>{option}</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root>
   const submitNext = (next: JourneyStep, valid = true, message = 'Please complete the required fields.') => (event: React.FormEvent) => { event.preventDefault(); if (!valid) { setError(message); return } go(next) }
   const trust = <div className="form-trust"><span><LockKeyhole /> Secure & private</span><span><Check /> No medical exam</span><span><Check /> Rates never go up</span></div>
 
@@ -123,7 +134,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     if (screen === 'address') return shell("What's your home address?", '', <form onSubmit={submitNext('identity', Boolean(answers.street && answers.city))}>{field('street', 'Street address')}{field('apt', 'Apt (optional)')}<div className="two-fields">{field('city', 'City')}{field('state', 'State')}</div>{field('zip', 'ZIP code', { inputMode: 'numeric', maxLength: 5 })}<NextButton /></form>)
     if (screen === 'identity') return shell('A few identity details', 'The insurance company needs these details to issue your policy and confirm your identity.', <form onSubmit={submitNext('health-intro', Boolean(answers.country && answers.citizen && answers.owner && answers.ssn.length >= 4))}>{select('country', 'Country of birth', ['United States', 'Canada', 'Other'])}{answers.country === 'United States' && field('birthState', 'State of birth')}{cards('citizen', ['Yes — U.S. citizen', 'No'])}{answers.citizen === 'No' && cards('resident', ['Yes — resident over 2 years', 'No — neither'])}<label className="field-label">Social Security number<div className="secure-field"><input value={answers.ssn} type={showSSN ? 'text' : 'password'} inputMode="numeric" maxLength={11} onChange={(event) => update('ssn', event.target.value.replace(/[^\d-]/g, ''))} /><Button type="button" variant="quiet" aria-label={showSSN ? 'Hide number' : 'Show number'} onClick={() => setShowSSN(!showSSN)}>{showSSN ? <EyeOff /> : <Eye />}</Button></div></label><p className="valid-note"><LockKeyhole /> Encrypted and never saved in this demo.</p><p className="field-prompt">Will you be the policy owner and the person paying?</p>{cards('owner', ['Yes', 'No'])}{(answers.resident === 'No — neither' || answers.owner === 'No') ? <Button type="button" variant="action" size="touch" className="wide-button" onClick={() => go('ineligible')}>See how an agent can help</Button> : <NextButton />}</form>)
     if (screen === 'health-intro') return shell('Now a few yes-or-no health questions', 'Answer honestly — it protects your coverage. There’s no exam and no needles. About 2 minutes.', <><div className="large-symbol"><Heart /><ClipboardCheck /></div><p className="placeholder-note">Sample questions for this prototype. [CARRIER_HEALTH_QUESTIONS]</p><Button variant="action" size="touch" className="continue-button" onClick={() => go('h1')}>Start health questions <ArrowRight /></Button></>)
-    if (/^h[1-8]$/.test(screen)) { const index = Number(screen.slice(1)) - 1; return shell(healthQuestions[index], `Health question ${index + 1} of 8`, cards(`health-${index}`, ['No', 'Yes']) && <Radio.Root aria-label={`Health question ${index + 1}`} value={answers.health[index]} onValueChange={(value) => healthChoice(index, value)} className="answer-list"><Radio.Item className="answer-card" value="No"><strong>No</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item><Radio.Item className="answer-card" value="Yes"><strong>Yes</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item></Radio.Root>) }
+    if (/^h[1-8]$/.test(screen)) { const index = Number(screen.slice(1)) - 1; const question = healthQuestions[index] ?? 'Health question'; return shell(question, `Health question ${index + 1} of 8`, <Radio.Root aria-label={`Health question ${index + 1}`} value={answers.health[index] || ''} onValueChange={(value) => healthChoice(index, value)} className="answer-list"><Radio.Item className="answer-card" value="No"><strong>No</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item><Radio.Item className="answer-card" value="Yes"><strong>Yes</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item></Radio.Root>) }
     if (screen === 'health-review') return shell('Review your health answers', 'Please make sure each answer is true and complete.', <>{healthQuestions.map((question, index) => <div className="review-row" key={question}><span><small>Question {index + 1}</small>{question}</span><strong>{answers.health[index] || '—'}</strong><Button variant="quiet" onClick={() => go(`h${index + 1}` as JourneyStep)}>Edit</Button></div>)}<CheckRow checked={confirmed} onChange={setConfirmed}>My answers are true and complete to the best of my knowledge.</CheckRow><Button variant="action" size="touch" className="continue-button" disabled={!confirmed} onClick={() => go('underwriting')}>Get my decision <ArrowRight /></Button></>)
     if (screen === 'underwriting') return <LoadingState icon={<ShieldCheck />} title="Reviewing your application" lines={['Reviewing your answers', 'Checking eligibility', 'Preparing your decision']} active={loadingLine} />
     if (screen === 'decision') return <Decision outcome={outcome} firstName={answers.firstName} coverage={coverage} price={monthly} onContinue={() => go(outcome === 'declined' ? 'gi-offer' : 'beneficiary')} onCallback={() => go('callback')} />
