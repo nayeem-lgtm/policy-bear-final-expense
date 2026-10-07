@@ -58,15 +58,20 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const shownPrice = annual ? monthly * 12 * .95 : monthly
 
   useEffect(() => {
+    let savedStep: JourneyStep | undefined
     try {
       const saved = JSON.parse(localStorage.getItem('policybear-demo') || 'null')
       if (saved?.answers && Date.now() - saved.at < 7 * 86400000) {
-        setAnswers({ ...blank, ...(saved.answers as Partial<Answers>), ssn: '', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', health: [...blank.health, ...(Array.isArray(saved.answers.health) ? saved.answers.health : [])].slice(0, 8) })
+        const restored = { ...blank, ...(saved.answers as Partial<Answers>), ssn: '', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', health: [...blank.health, ...(Array.isArray(saved.answers.health) ? saved.answers.health : [])].slice(0, 8) }
+        setAnswers(restored)
+        localStorage.setItem('policybear-demo', JSON.stringify({ answers: sanitizedAnswers(restored), screen: saved.screen, at: Date.now() }))
+        if (journeySteps.includes(saved.screen)) savedStep = saved.screen
         setResume(true)
       }
     } catch { /* Browsing privacy settings should not block the demo. */ }
     const fromHash = location.hash.replace('#step-', '') as JourneyStep
     if (journeySteps.includes(fromHash)) setScreen(fromHash)
+    else if (savedStep) setScreen(savedStep)
     setReady(true)
     const hashChange = () => { const next = location.hash.replace('#step-', '') as JourneyStep; if (journeySteps.includes(next)) setScreen(next) }
     window.addEventListener('hashchange', hashChange)
