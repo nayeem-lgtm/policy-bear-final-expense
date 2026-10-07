@@ -302,8 +302,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .coverage-summary > span > span { color: var(--muted-foreground); font-size: 16px; }
 .agent-next > a { display: flex; width: 100%; }
 .general-phone, .connection-note { font-size: 16px; color: var(--muted-foreground); margin: 14px 0; }
-.chapter-progress { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 18px; }
-.chapter-progress span { display: flex; align-items: center; justify-content: center; gap: 4px; min-height: 34px; border-bottom: 3px solid var(--border); color: var(--muted-foreground); font-size: 16px; text-align: center; }
+.chapter-progress { display: grid; grid-template-columns: .9fr 1.25fr .9fr 1.15fr .8fr; gap: 4px; margin-bottom: 18px; }
+.chapter-progress span { display: flex; align-items: center; justify-content: center; gap: 4px; min-height: 34px; border-bottom: 3px solid var(--border); color: var(--muted-foreground); font-size: 16px; text-align: center; white-space: nowrap; }
 .chapter-progress span.current { color: var(--brand-deep); border-color: var(--primary); font-weight: 700; }
 .chapter-progress span.complete { color: var(--success); border-color: var(--success); }
 .chapter-progress svg { width: 15px; height: 15px; }
