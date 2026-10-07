@@ -10,5 +10,5 @@
 <!-- LOVABLE:END -->
 
 - Keep the final expense landing page at `/`, with a dedicated browser-safe wizard component using URL hashes for the brief's question steps; this preserves phone Back navigation without duplicating content routes.
-- Keep the first delivery presentation-only through question seven; contact submission and live pricing must be connected before exposing a working lead form or price.
+- Keep the complete final expense journey presentation-only: browser-generated mock pricing and decisions, no network submissions, and never persist SSN or payment details.
 - Define PolicyBear visual styles and role colors centrally in `src/styles.css`; controls use the shared Button and accessible radio primitives for consistent, readable interaction.
