@@ -7,3 +7,4 @@
 - [x] Build beneficiary, insurance, payment, draft-date, review, e-sign, verification, and policy-issued screens.
 - [x] Build Guaranteed Issue, ineligible, callback, returning-visitor, and Demo toolbar paths.
 - [x] Verify every screen at mobile width, keyboard focus, reduced motion, and browser-only persistence.
+- [x] Fix blocked fields and next-step navigation across the complete journey.
