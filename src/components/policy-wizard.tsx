@@ -85,8 +85,12 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     if (!ready) return
     try { localStorage.setItem('policybear-demo', JSON.stringify({ answers: sanitizedAnswers(answers), screen, at: Date.now() })) } catch { /* Continue without persistence. */ }
     onStepChange(screen === 'zip' ? 0 : 1)
-    heading.current?.focus({ preventScroll: true })
   }, [answers, onStepChange, ready, screen])
+
+  useEffect(() => {
+    if (!ready) return
+    heading.current?.focus({ preventScroll: true })
+  }, [ready, screen])
 
   useEffect(() => {
     if (!['loading', 'underwriting', 'submitting'].includes(screen)) return

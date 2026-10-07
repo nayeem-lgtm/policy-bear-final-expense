@@ -165,10 +165,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .header-inner { max-width: 1328px; padding: 0 40px; margin: auto; height: 100%; display: flex; align-items: center; gap: 32px; }
 .brand-link { flex-shrink: 0; display: flex; align-items: center; }
 .brand-link img { width: 230px; height: auto; }
-.header-product { border-left: 1px solid var(--border); padding-left: 28px; font-size: 16px; color: var(--muted-foreground); }
-.header-call { margin-left: auto; display: flex; align-items: center; gap: 12px; color: var(--brand-deep); text-decoration: none; line-height: 1.4; }
-.phone-circle { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--brand-soft-blue); color: var(--primary); }
-.call-caption { display: block; font-size: 16px; color: var(--muted-foreground); }
+.header-call { margin-left: auto; display: flex; align-items: center; gap: 11px; min-height: 62px; padding: 7px 20px 7px 8px; border: 1px solid color-mix(in oklab, var(--brand-deep) 12%, transparent); box-shadow: 0 8px 20px color-mix(in oklab, var(--brand-action) 30%, transparent); color: var(--brand-deep); text-decoration: none; line-height: 1.25; }
+.header-call:hover { transform: translateY(-1px); box-shadow: 0 10px 24px color-mix(in oklab, var(--brand-action) 38%, transparent); }
+.phone-circle { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: var(--brand-deep); color: var(--light-ink); }
+.call-caption { display: block; font-size: 14px; color: var(--brand-deep); font-weight: 600; }
 .header-call strong { font-size: 21px; }
 .landing-hero { position: relative; min-height: 705px; isolation: isolate; background: var(--brand-light); }
 .hero-photo { position: absolute; z-index: -3; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 43%; }
@@ -373,9 +373,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes step-enter { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes choice { 50% { transform: scale(.98); } }
 @media (min-width: 1500px) { .landing-hero { min-height: 735px; } .hero-inner { padding-top: 80px; } }
-@media (max-width: 1100px) { .hero-inner { gap: 30px; grid-template-columns: minmax(0, 1fr) 390px; padding: 52px 28px 68px; } .hero-copy h1 { font-size: 42px; } .hero-description { font-size: 18px; } .hero-benefits { font-size: 16px; } .header-inner { padding: 0 28px; } .header-product { font-size: 16px; padding-left: 20px; } .brand-link img { width: 205px; } .wizard { padding: 24px; } .form-trust { font-size: 16px; flex-wrap: wrap; justify-content: center; gap: 12px; } .hero-family-note { max-width: 270px; } }
+@media (max-width: 1100px) { .hero-inner { gap: 30px; grid-template-columns: minmax(0, 1fr) 390px; padding: 52px 28px 68px; } .hero-copy h1 { font-size: 42px; } .hero-description { font-size: 18px; } .hero-benefits { font-size: 16px; } .header-inner { padding: 0 28px; } .brand-link img { width: 205px; } .wizard { padding: 24px; } .form-trust { font-size: 16px; flex-wrap: wrap; justify-content: center; gap: 12px; } .hero-family-note { max-width: 270px; } }
 @media (max-width: 800px) {
-  .site-header { height: 78px; } .header-inner { padding: 0 20px; gap: 14px; } .brand-link img { width: 175px; } .header-product { display: none; } .header-call { gap: 8px; } .header-call strong { font-size: 16px; } .call-caption { font-size: 16px; } .phone-circle { width: 36px; height: 36px; }
+  .site-header { height: 78px; } .header-inner { padding: 0 20px; gap: 14px; } .brand-link img { width: 175px; } .header-call { gap: 8px; min-height: 54px; padding: 5px 13px 5px 6px; } .header-call strong { font-size: 16px; } .call-caption { font-size: 13px; } .phone-circle { width: 40px; height: 40px; }
   .landing-hero { min-height: 0; background: var(--brand-light); } .hero-photo { height: 390px; width: 100%; object-position: center; opacity: .25; } .hero-scrim { height: 395px; background: linear-gradient(0deg, var(--brand-light) 0%, color-mix(in oklab, var(--brand-light) 65%, transparent) 50%, color-mix(in oklab, var(--brand-light) 80%, transparent) 100%); }
   .hero-inner { display: flex; flex-direction: column; align-items: stretch; gap: 30px; padding: 36px 20px; max-width: 600px; } .hero-copy { padding: 0; } .eyebrow { font-size: 16px; margin-bottom: 18px; } .hero-copy h1 { font-size: 38px; line-height: 1.17; margin-bottom: 18px; } .hero-description { font-size: 18px; margin-bottom: 22px; } .desktop-break { display: none; } .hero-benefits { font-size: 18px; gap: 10px; } .hero-family-note { display: none; } .photo-caption { display: none; }
   .wizard { padding: 24px; } .wizard-content h2 { font-size: 28px; } .form-trust { gap: 10px; flex-wrap: nowrap; justify-content: space-between; } .assurance-band > div { padding: 25px 20px; flex-wrap: wrap; justify-content: center; gap: 16px 24px; } .assurance-band span { font-size: 16px; } .assurance-band svg { width: 21px; height: 21px; }
