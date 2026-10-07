@@ -27,7 +27,7 @@ function Index() {
   const [step, setStep] = useState(0)
   const changeStep = useCallback((value: number) => setStep(value), [])
   return <div className="policy-page">
-    <header className="site-header"><div className="header-inner"><a href="/" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></a><span className="header-product">Final expense life insurance</span><a className="header-call" href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Talk to PolicyBear</span><strong>(844) 765-2327</strong></span></a></div></header>
+    <header className="site-header"><div className="header-inner"><a href="/" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></a><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Call now</span><strong>(844) 765-2327</strong></span></a></Button></div></header>
     <main>
       <section className={step === 0 ? 'landing-hero' : 'funnel-section'}>
         {step === 0 && <><img className="hero-photo" src={family} width={1536} height={1024} alt="Grandparents sharing a happy afternoon with their grandchildren" fetchPriority="high" /><div className="hero-scrim" /></>}
