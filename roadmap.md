@@ -8,4 +8,4 @@
 - [x] Build Guaranteed Issue, ineligible, callback, returning-visitor, and Demo toolbar paths.
 - [x] Verify every screen at mobile width, keyboard focus, reduced motion, and browser-only persistence.
 - [x] Fix blocked fields and next-step navigation across the complete journey.
-- [ ] Improve phone layouts, touch controls, address suggestions, and signature drawing; verify the mobile journey.
+- [x] Improve phone layouts, touch controls, address suggestions, and signature drawing; verify the mobile journey.
