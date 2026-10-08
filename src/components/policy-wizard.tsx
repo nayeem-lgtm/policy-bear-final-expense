@@ -3,7 +3,7 @@ import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, ClipboardCheck,
 import * as Radio from '@radix-ui/react-radio-group'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
-import { Link } from '@tanstack/react-router'
+import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
@@ -36,6 +36,7 @@ const demoAddresses: AddressSuggestion[] = [
 ]
 
 export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) => void }) {
+  const routeHash = useRouterState({ select: (state) => state.location.hash })
   const [screen, setScreen] = useState<JourneyStep>('zip')
   const [answers, setAnswers] = useState<Answers>(blank)
   const [error, setError] = useState('')
@@ -109,6 +110,14 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     window.addEventListener('hashchange', hashChange)
     return () => window.removeEventListener('hashchange', hashChange)
   }, [])
+
+  useEffect(() => {
+    const next = routeHash.replace(/^#?step-/, '') as JourneyStep
+    if (!journeySteps.includes(next)) return
+    setScreen(next)
+    setError('')
+    setResume(false)
+  }, [routeHash])
 
   useEffect(() => {
     if (!ready) return
