@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DisclaimersRouteImport } from './routes/disclaimers'
 import { Route as LicensingRouteImport } from './routes/licensing'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DisclaimersRoute = DisclaimersRouteImport.update({
@@ -31,30 +37,34 @@ const LicensingRoute = LicensingRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/licensing': typeof LicensingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/licensing': typeof LicensingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/licensing': typeof LicensingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/disclaimers' | '/licensing'
+  fullPaths: '/' | '/contact' | '/disclaimers' | '/licensing'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/disclaimers' | '/licensing'
-  id: '__root__' | '/' | '/disclaimers' | '/licensing'
+  to: '/' | '/contact' | '/disclaimers' | '/licensing'
+  id: '__root__' | '/' | '/contact' | '/disclaimers' | '/licensing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   DisclaimersRoute: typeof DisclaimersRoute
   LicensingRoute: typeof LicensingRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/disclaimers': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   DisclaimersRoute: DisclaimersRoute,
   LicensingRoute: LicensingRoute,
 }
