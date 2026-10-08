@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Check, Heart, HeartHandshake, ClipboardCheck, Phone, ShieldCheck, ClipboardList, CircleDollarSign, ChevronDown } from 'lucide-react'
+import { ArrowRight, Check, Heart, HeartHandshake, Phone, ShieldCheck, ClipboardList, CircleDollarSign, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/family.jpg'
-import { PolicyHeader, PolicyFooter } from '@/components/policy-site'
+import { PolicyHeader, PolicyFooter, PolicyTrustMarks } from '@/components/policy-site'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -41,7 +41,7 @@ function Index() {
         {step === 0 && <div className="photo-caption"><Heart size={17} /> More time for what matters.</div>}
       </section>
       {step === 0 && <>
-        <section className="assurance-band" aria-label="Coverage benefits"><div><span><ShieldCheck /><strong>Plan for funeral costs</strong></span><span><HeartHandshake /><strong>Help with final bills</strong></span><span><ClipboardCheck /><strong>Your beneficiary, your choice</strong></span></div></section>
+        <section className="policy-trust-band" aria-label="Explore final expense with confidence"><PolicyTrustMarks /></section>
         <section className="how-section" id="how-it-works"><div className="section-heading"><span className="section-eyebrow">Simple from the very first step</span><h2>A little easier. A little more peace of mind.</h2><p>Explore final expense coverage for the costs your family may face.</p></div><ol className="how-grid"><li><div className="how-icon"><ClipboardList /><span>1</span></div><h3>Answer a few questions</h3><p>A few details help illustrate final expense options for your age and budget.</p></li><li><div className="how-icon"><CircleDollarSign /><span>2</span></div><h3>See your price</h3><p>Compare a sample final expense premium and coverage amount.</p></li><li><div className="how-icon"><ShieldCheck /><span>3</span></div><h3>Apply online</h3><p>Review beneficiary choices and sample final expense policy details.</p></li></ol></section>
         <section className="faq-section"><div className="faq-inner"><div className="faq-heading"><span className="section-eyebrow">Clear answers. No surprises.</span><h2>A few things you<br /> might be wondering.</h2><p>Have another question? We're here for you.</p><a className="faq-call" href="tel:+18447652327"><Phone size={20} /> (844) 765-2327</a></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div></div></section>
         <section className="closing-section"><HeartHandshake size={34} /><h2>Plan for final expenses. Start with one simple step.</h2><Button asChild variant="action" size="touch"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button><p>No medical exam. No obligation.</p></section>
