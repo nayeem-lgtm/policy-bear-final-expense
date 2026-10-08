@@ -32,7 +32,7 @@ export function PolicyFooter() {
       </div>
       <nav className="pb-footer-col" aria-label="Resources">
         <h2>Resources</h2>
-        <Link to="/disclaimers">Disclosures</Link>
+        <Link to="/disclaimers">Final expense disclosure</Link>
         <Link to="/licensing">Licensing</Link>
         <Link to="/privacy-policy">Privacy policy</Link>
       </nav>
@@ -61,13 +61,13 @@ export function PolicyFooter() {
       <nav aria-label="Legal">
         <Link to="/privacy-policy">Privacy policy</Link>
         <Link to="/terms-conditions">Terms of service</Link>
-        <Link to="/disclaimers">Disclaimer</Link>
+        <Link to="/disclaimer">Disclaimer</Link>
       </nav>
     </div>
     <p className="pb-footer-fine">PolicyBear is a licensed life insurance agency. We are not affiliated with or endorsed by the U.S. Government or any government agency. This website provides general information about final expense life insurance and is not intended as specific insurance advice. Prices shown are illustrations only—no application or payment is submitted.</p>
   </div></footer>
 }
 
-export function LegalPage({ title, intro, children }: { title: string; intro: string; children: React.ReactNode }) {
-  return <div className="policy-page"><PolicyHeader /><main className="legal-page"><Link to="/" className="legal-back">← Back to final expense coverage</Link><span className="section-eyebrow">PolicyBear · Final expense</span><h1>{title}</h1><p className="legal-intro">{intro}</p><div className="legal-content">{children}</div></main><PolicyFooter /></div>
+export function LegalPage({ title, intro, date, children }: { title: string; intro: string; date?: string; children: React.ReactNode }) {
+  return <div className="policy-page"><PolicyHeader /><main className="legal-page"><Link to="/" className="legal-back">← Back to final expense coverage</Link><span className="section-eyebrow">PolicyBear · Final expense</span><h1>{title}</h1>{date && <p className="legal-date">{date}</p>}<p className="legal-intro">{intro}</p><div className="legal-content">{children}</div></main><PolicyFooter /></div>
 }

@@ -22,4 +22,5 @@
 - [x] Research authoritative disclosures and add a polished legal footer and information pages.
 - [x] Verify legal navigation and phone presentation.
 - [x] Rebuild footer like the original site; add privacy policy and terms pages with life insurance wording.
-- [ ] Replace licensing placeholders and get owner/legal sign-off on adapted policies — blocked on verified agency license details, issuing carrier and state availability.
+- [ ] Obtain licensed attorney/compliance approval for owner-supplied legal pages before launch — blocked on owner/legal sign-off.
+- [x] Replace all five legal pages with supplied October 2026 content and verify organized desktop/phone layouts and navigation.
