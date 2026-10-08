@@ -1,19 +1,26 @@
+// ============= Full file contents =============
+
 import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, Phone, ClipboardCheck, HeartHandshake, FileCheck2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
+
+const TRUST_MARKS = [
+  { icon: ClipboardCheck, title: 'No medical exam', detail: 'For illustrated final expense plans' },
+  { icon: HeartHandshake, title: 'No obligation', detail: 'Explore at your own pace' },
+  { icon: FileCheck2, title: 'Clear disclosures', detail: 'Review details before deciding' },
+]
 
 export function PolicyHeader() {
   return <header className="site-header"><div className="header-inner"><Link to="/" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Call now</span><strong>(844) 765-2327</strong></span></a></Button></div></header>
 }
 
 export function PolicyTrustMarks({ compact = false }: { compact?: boolean }) {
-  const marks = [
-    { icon: ClipboardCheck, title: 'No medical exam', detail: 'For illustrated final expense plans' },
-    { icon: HeartHandshake, title: 'No obligation', detail: 'Explore at your own pace' },
-    { icon: FileCheck2, title: 'Clear disclosures', detail: 'Review details before deciding' },
-  ]
-  return <ul className={`policy-trust-marks${compact ? ' policy-trust-compact' : ''}`} aria-label="Final expense reassurance">{marks.map(({ icon: Icon, title, detail }) => <li key={title}><span className="trust-mark-icon" aria-hidden="true"><Icon /></span><span className="trust-mark-copy"><strong>{title}</strong>{!compact && <span>{detail}</span>}</span></li>)}</ul>
+  return <ul className={`policy-trust-marks${compact ? ' policy-trust-compact' : ''}`} aria-label="Final expense reassurance">{TRUST_MARKS.map(({ icon: Icon, title, detail }) => <li key={title}><span className="trust-mark-icon" aria-hidden="true"><Icon /></span><span className="trust-mark-copy"><strong>{title}</strong>{!compact && <span>{detail}</span>}</span></li>)}</ul>
+}
+
+export function PolicyTrustBadges() {
+  return <div className="footer-trust"><p className="footer-trust-label">What you can count on</p><ul className="footer-trust-badges" aria-label="Final expense reassurance">{TRUST_MARKS.map(({ icon: Icon, title, detail }) => <li className="trust-badge" key={title}><span className="trust-badge-seal" aria-hidden="true"><Icon /></span><span className="trust-badge-copy"><strong>{title}</strong><span>{detail}</span></span></li>)}</ul></div>
 }
 
 export function PolicyFooter() {
@@ -39,7 +46,7 @@ export function PolicyFooter() {
         </div>
       </nav>
     </div>
-    <PolicyTrustMarks compact />
+    <PolicyTrustBadges />
     <p className="footer-demo-note">Illustration only—not an insurance offer. No application or payment is submitted. <Link to="/disclaimers">Read full disclosures →</Link></p>
     <div className="footer-bottom"><p>© {new Date().getFullYear()} PolicyBear. All rights reserved.</p><p>Not affiliated with any government agency.</p></div>
   </div></footer>

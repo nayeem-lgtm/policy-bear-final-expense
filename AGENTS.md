@@ -16,6 +16,6 @@
 - Keep electronic signing browser-only, offering typed style previews and an ephemeral draw pad without persisting drawn signatures.
 - Define PolicyBear visual styles and role colors centrally in `src/styles.css`; controls use the shared Button and accessible radio primitives for consistent, readable interaction.
 - Share the PolicyBear header and legal footer through the browser-safe policy-site module on the landing and legal content routes, so legal navigation and disclosures remain consistent.
-- Share non-certification reassurance marks through the browser-safe policy-site module, so landing and footer messaging stays consistent without implying third-party accreditation.
+- Share one non-certification reassurance list through the browser-safe policy-site module, driving both the strip under the header and the aligned badge tiles in the footer, so messaging stays consistent without implying third-party accreditation.
 - Keep the contact page browser-only with the existing phone contact and no submission form; this preserves the presentation-only scope without undelivered messages.
 - Link existing owner-hosted terms and privacy documents rather than fabricating binding legal terms or data-handling promises; keep app-owned final expense disclosures and licensing resources on dedicated content routes.
