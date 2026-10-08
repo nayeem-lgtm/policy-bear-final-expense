@@ -507,7 +507,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .footer-phone { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; margin-top: 14px; color: var(--primary); font-weight: 700; font-size: 20px; }
 .footer-phone svg { width: 19px; height: 19px; }
 .footer-brand .footer-phone-note { font-size: 15px; margin-top: 2px; }
-.legal-footer h2 { color: var(--brand-deep); font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 32px; margin-bottom: 6px; }
+.legal-footer h2 { color: var(--brand-deep); font-size: 15px; font-weight: 700; letter-spacing: .02em; line-height: 32px; margin-bottom: 6px; }
 .footer-link-group { display: flex; flex-direction: column; align-items: flex-start; }
 .footer-link-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
 .footer-link-group a { min-height: 40px; display: inline-flex; align-items: center; gap: 7px; color: var(--primary); font-size: 15px; }
@@ -550,7 +550,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .footer-leads { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .footer-brand { grid-column: auto; }
   .footer-link-list { grid-template-columns: minmax(0, 1fr); }
-  .legal-footer .footer-disclosure-title { text-transform: none; letter-spacing: 0; font-size: 15px; line-height: 1.4; }
+  .legal-footer .footer-disclosure-title { font-size: 15px; line-height: 1.4; }
   .footer-disclosure p { font-size: 15px; }
   .footer-bottom { padding-bottom: 10px; }
   .legal-back { margin-bottom: 20px; }
