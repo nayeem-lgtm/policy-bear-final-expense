@@ -27,18 +27,20 @@ export function PolicyFooter() {
   return <footer className="pb-footer"><div className="pb-footer-inner">
     <div className="pb-footer-grid">
       <div className="pb-footer-brand">
-        <Link to="/" aria-label="PolicyBear home"><img src={logo.url} width="200" height="40" alt="PolicyBear" loading="lazy" /></Link>
+        <Link to="/" aria-label="PolicyBear home"><span className="pb-footer-logo" role="img" aria-label="PolicyBear" style={{ WebkitMaskImage: `url(${logo.url})`, maskImage: `url(${logo.url})` }} /></Link>
         <p>Making final expense life insurance simple, affordable and accessible for every family.</p>
       </div>
       <nav className="pb-footer-col" aria-label="Resources">
         <h2>Resources</h2>
-        <Link to="/disclaimers">Final expense disclosures</Link>
-        <Link to="/licensing">Licensing &amp; resources</Link>
+        <Link to="/disclaimers">Disclosures</Link>
+        <Link to="/licensing">Licensing</Link>
+        <Link to="/privacy-policy">Privacy policy</Link>
       </nav>
       <nav className="pb-footer-col" aria-label="Quick links">
         <h2>Quick links</h2>
         <Link to="/">Get a quote</Link>
         <Link to="/contact">Contact us</Link>
+        <Link to="/terms-conditions">Terms</Link>
       </nav>
       <div className="pb-footer-col">
         <h2>Contact</h2>
