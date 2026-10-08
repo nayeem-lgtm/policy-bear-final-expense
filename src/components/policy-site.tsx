@@ -45,7 +45,7 @@ export function PolicyFooter() {
       </div>
     </div>
     <div className="pb-footer-bottom">
-      <p>© {new Date().getFullYear()} PolicyBear. All rights reserved. Licensed life insurance agency.</p>
+      <p>© {new Date().getFullYear()} PolicyBear. All rights reserved. Licensed life insurance agency. Final expense coverage.</p>
       <nav aria-label="Legal">
         <Link to="/privacy-policy">Privacy policy</Link>
         <Link to="/terms-conditions">Terms of service</Link>
