@@ -679,6 +679,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pb-footer-col svg { width: 18px; height: 18px; color: var(--brand-action); flex-shrink: 0; }
 .pb-footer a:hover { color: var(--seal-white); text-decoration: underline; }
 .pb-footer-seals { list-style: none; display: grid; gap: 16px; justify-items: end; }
+.pb-footer-seals .seal-bbb, .pb-footer-seals .seal-hitrust { min-width: 176px; justify-content: center; }
 .pb-footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; padding-top: 22px; border-top: 1px solid color-mix(in oklab, var(--seal-sky) 35%, transparent); font-size: 16px; }
 .pb-footer-bottom nav { display: flex; gap: 28px; flex-wrap: wrap; }
 .pb-footer-bottom a { color: var(--seal-white); min-height: 44px; display: inline-flex; align-items: center; }
