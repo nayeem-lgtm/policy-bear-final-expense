@@ -8,8 +8,9 @@ export const Route = createFileRoute('/licensing')({
     { property: 'og:title', content: 'Licensing & consumer resources — PolicyBear' },
     { property: 'og:description', content: 'Verify licensing and find your state insurance department before purchasing final expense coverage.' },
     { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://policy-bear-quote-quest.lovable.app/licensing' },
     { name: 'twitter:card', content: 'summary_large_image' },
-  ] }),
+  ], links: [{ rel: 'canonical', href: 'https://policy-bear-quote-quest.lovable.app/licensing' }] }),
   component: Licensing,
 })
 
