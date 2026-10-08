@@ -1,6 +1,6 @@
 # PolicyBear final expense
 
-- [ ] Simplify and organize the footer; add and verify the contact page.
+- [x] Simplify and organize the footer; add and verify the contact page.
 
 - [x] Build branded landing page and accessible first seven questions from the brief.
 - [x] Verify ZIP, question navigation, answer recovery, and mobile presentation.
