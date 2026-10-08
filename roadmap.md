@@ -1,5 +1,7 @@
 # PolicyBear final expense
 
+- [x] Move reassurance signs directly below the header so they appear immediately, including during the question journey.
+
 - [x] Research trust credentials and add compact, non-certification reassurance signs; verify phone and desktop layouts.
 
 - [x] Simplify and organize the footer; add and verify the contact page.
