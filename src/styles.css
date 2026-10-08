@@ -235,39 +235,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .assurance-band span { display: flex; align-items: center; gap: 12px; color: var(--brand-deep); font-size: 16px; }
 .assurance-band svg { width: 26px; height: 26px; color: var(--primary); }
 .assurance-band strong { font-weight: 500; }
-.policy-trust-band { background: var(--background); border-bottom: 1px solid var(--border); }
-.policy-trust-marks { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 1248px; margin: auto; padding: 26px 40px; }
-.policy-trust-marks li { display: flex; align-items: center; justify-content: center; gap: 14px; min-width: 0; }
-.trust-mark-icon { display: grid; place-items: center; flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: var(--brand-soft-blue); color: var(--primary); border: 1px solid var(--border); }
-.trust-mark-icon svg { width: 26px; height: 26px; }
-.trust-mark-copy { display: grid; gap: 2px; }
-.trust-mark-copy strong { color: var(--brand-deep); font-size: 18px; font-weight: 700; line-height: 1.4; }
-.trust-mark-copy > span { color: var(--muted-foreground); font-size: 16px; line-height: 1.5; }
-.policy-trust-compact { padding: 16px 0 0; margin-top: 16px; border-top: 1px solid var(--border); gap: 12px; }
-.policy-trust-compact li { justify-content: flex-start; gap: 8px; }
-.policy-trust-compact .trust-mark-icon { width: 24px; height: 24px; background: none; border: 0; }
-.policy-trust-compact .trust-mark-icon svg { width: 21px; height: 21px; }
-.policy-trust-compact strong { font-size: 16px; font-weight: 600; }
-.policy-trust-compact + .footer-demo-note { border-top: 0; margin-top: 12px; padding-top: 0; }
-.policy-trust-top { background: var(--brand-soft-blue); }
-.policy-trust-top .policy-trust-marks { padding: 14px 24px; margin: auto; border-top: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.policy-trust-top .policy-trust-marks li { justify-content: center; align-items: center; flex-direction: row; }
-.policy-trust-top .trust-mark-icon { color: var(--primary); }
-@media (max-width: 800px) {
-  .policy-trust-marks { padding: 24px; gap: 16px; }
-  .policy-trust-marks li { align-items: flex-start; flex-direction: column; gap: 10px; }
-  .policy-trust-compact { padding: 16px 0 0; }
-  .policy-trust-compact li { flex-direction: row; }
-}
-@media (max-width: 560px) {
-  .policy-trust-marks { grid-template-columns: minmax(0, 1fr); padding: 20px; gap: 18px; }
-  .policy-trust-marks li { flex-direction: row; align-items: center; justify-content: flex-start; }
-  .policy-trust-compact { padding: 14px 0 0; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .policy-trust-compact li:last-child { grid-column: 1 / -1; }
-  .policy-trust-top .policy-trust-marks { padding: 12px; gap: 10px; }
-  .policy-trust-top .policy-trust-marks li { flex-direction: column; gap: 5px; text-align: center; }
-  .policy-trust-top .policy-trust-marks li:last-child { grid-column: auto; }
-}
 .how-section { max-width: 1248px; margin: auto; padding: 68px 40px 74px; }
 .section-heading { text-align: center; }
 .section-eyebrow { color: var(--primary); font-size: 16px; font-weight: 600; display: block; margin-bottom: 12px; }
@@ -590,16 +557,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .footer-demo-note a { color: var(--primary); white-space: nowrap; }
 .footer-demo-note a:hover { text-decoration: underline; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; color: var(--muted-foreground); font-size: 14px; }
-.trust-badges { max-width: 1160px; margin: auto; padding: 26px 40px 32px; }
-.trust-badges-label { color: var(--brand-deep); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
-.trust-badges-grid { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-.trust-badge { display: flex; align-items: center; gap: 11px; min-width: 0; background: var(--background); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; box-shadow: 0 1px 2px color-mix(in oklab, var(--brand-deep) 8%, transparent); }
-.trust-badge-seal { position: relative; display: grid; place-items: center; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; background: var(--brand-soft-blue); color: var(--primary); border: 2px solid color-mix(in oklab, var(--primary) 50%, transparent); }
-.trust-badge-seal::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; border: 1px dashed color-mix(in oklab, var(--primary) 38%, transparent); }
-.trust-badge-seal svg { position: relative; width: 17px; height: 17px; }
-.trust-badge-copy { display: grid; gap: 2px; min-width: 0; }
-.trust-badge-copy strong { color: var(--brand-deep); font-size: 15px; font-weight: 700; line-height: 1.3; }
-.trust-badge-copy > span { color: var(--muted-foreground); font-size: 13.5px; line-height: 1.45; }
 .contact-page { max-width: 1160px; margin: auto; padding: 40px 40px 72px; }
 .contact-page h1 { color: var(--brand-deep); font-size: 42px; font-weight: 700; line-height: 1.2; }
 .contact-intro { color: var(--muted-foreground); max-width: 620px; margin-top: 18px; font-size: 20px; }
@@ -677,12 +634,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .footer-brand { grid-column: 1 / -1; }
   .footer-disclosure-body { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .footer-bottom { flex-direction: column; gap: 6px; }
-  .trust-badges-grid { gap: 10px; }
-  .trust-badge { padding: 11px 12px; gap: 10px; }
-  .trust-badge-seal { width: 34px; height: 34px; }
-  .trust-badge-seal svg { width: 15px; height: 15px; }
-  .trust-badge-copy strong { font-size: 14px; }
-  .trust-badge-copy > span { font-size: 13px; }
   .contact-page { padding: 28px 24px 48px; }
   .contact-page h1 { font-size: 34px; }
   .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
@@ -698,10 +649,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .legal-footer .footer-disclosure-title { font-size: 15px; line-height: 1.4; }
   .footer-disclosure p { font-size: 15px; }
   .footer-bottom { padding-bottom: 10px; }
-  .trust-badges { padding: 20px 20px 26px; }
-  .trust-badges-label { font-size: 12px; margin-bottom: 10px; }
-  .trust-badges-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .trust-badge { padding: 10px 12px; }
   .legal-back { margin-bottom: 20px; }
   .license-details > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 }
