@@ -21,4 +21,5 @@
 - [x] Focus landing and journey wording on final expense coverage.
 - [x] Research authoritative disclosures and add a polished legal footer and information pages.
 - [x] Verify legal navigation and phone presentation.
-- [ ] Replace ACA-specific owner-hosted legal policies and licensing placeholders before real launch — blocked on owner-approved final expense terms/privacy, verified agency license details, issuing carrier and state availability.
+- [x] Rebuild footer like the original site; add privacy policy and terms pages with life insurance wording.
+- [ ] Replace licensing placeholders and get owner/legal sign-off on adapted policies — blocked on verified agency license details, issuing carrier and state availability.
