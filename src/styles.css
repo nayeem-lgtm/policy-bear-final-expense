@@ -509,6 +509,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .footer-link-group a { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-size: 16px; }
 .footer-link-group a:hover, .legal-content a:hover { text-decoration: underline; }
 .footer-link-group svg { width: 16px; height: 16px; }
+.footer-policy-note { font-size: 16px; color: var(--muted-foreground); line-height: 1.6; margin-top: 12px; }
 .footer-support > a { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; color: var(--primary); font-weight: 700; font-size: 20px; }
 .footer-support > a svg { width: 21px; height: 21px; }
 .footer-disclosure { display: flex; align-items: flex-start; gap: 16px; border-block: 1px solid var(--border); padding: 26px 0; }
