@@ -1,5 +1,7 @@
 # PolicyBear final expense
 
+- [ ] Verify all pages and journey screens on phone widths; correct clipping and keep public wording final-expense-focused.
+
 - [x] Present the reassurance signs as aligned badge tiles in a band below the main photo and form, out of the footer; verify desktop, tablet and phone.
 
 - [x] Move reassurance signs directly below the header so they appear immediately, including during the question journey.
