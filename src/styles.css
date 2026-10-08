@@ -146,6 +146,7 @@
 :root {
   --font-body: 'Inter', sans-serif;
   --brand-deep: oklch(0.211 0.077 279);
+  --seal-panel: rgb(15 39 89);
   --brand-action: oklch(0.827 0.169 88);
   --brand-action-hover: oklch(0.77 0.163 88);
   --brand-light: oklch(0.981 0.01 292);
@@ -561,7 +562,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .footer-disclosure p { color: var(--muted-foreground); font-size: 15px; line-height: 1.65; }
 .footer-fine { grid-column: 1 / -1; border-top: 1px solid var(--border); margin-top: 14px; padding-top: 12px; }
 .footer-fine strong { color: var(--brand-deep); }
-.footer-seals { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 26px; padding: 16px 28px; border-radius: 16px; background: var(--brand-deep); }
+.footer-seals { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 26px; padding: 16px 28px; border-radius: 16px; background: var(--seal-panel); }
 .footer-seals-label { color: var(--brand-action); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
 .footer-seals-list { list-style: none; display: flex; align-items: center; justify-content: flex-end; gap: 32px; flex-wrap: wrap; }
 .footer-seals-list li { display: flex; align-items: center; height: 64px; }
