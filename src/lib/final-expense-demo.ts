@@ -1,7 +1,9 @@
 export type Outcome = 'approved' | 'graded' | 'declined'
 
+export const quoteSteps = ['zip', 'who', 'contact', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'opt-in'] as const
+
 export const journeySteps = [
-  'zip', 'who', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'contact', 'loading', 'price',
+  ...quoteSteps, 'loading', 'price',
   'personal', 'address', 'identity', 'health-intro', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8',
   'health-review', 'underwriting', 'decision', 'gi-offer', 'beneficiary', 'insurance', 'payment', 'draft',
   'review', 'disclosures', 'signature', 'verify', 'submitting', 'issued', 'callback', 'ineligible',
@@ -73,10 +75,10 @@ export function determineOutcome(health: string[]): Outcome {
 
 export function chapterFor(step: JourneyStep) {
   const index = journeySteps.indexOf(step)
-  if (index <= 9) return 0
-  if (index <= 12) return 1
-  if (index <= 24) return 2
-  if (index <= 29) return 3
+  if (index < journeySteps.indexOf('personal')) return 0
+  if (index < journeySteps.indexOf('health-intro')) return 1
+  if (index < journeySteps.indexOf('gi-offer')) return 2
+  if (index < journeySteps.indexOf('review')) return 3
   return 4
 }
 
