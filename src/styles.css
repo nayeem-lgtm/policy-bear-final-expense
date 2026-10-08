@@ -359,6 +359,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .large-symbol { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; position: relative; margin: 28px auto; background: var(--brand-soft-blue); color: var(--primary); }
 .large-symbol svg { width: 38px; height: 38px; }
 .large-symbol svg + svg { position: absolute; width: 25px; right: 12px; bottom: 10px; color: var(--brand-action-hover); }
+.health-intro-hero { position: relative; display: grid; place-items: center; padding: 26px 0 6px; }
+.health-intro-hero::before { content: ""; position: absolute; width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle, color-mix(in oklab, var(--brand-soft-blue) 70%, transparent), transparent 72%); }
+.health-intro-hero .large-symbol { margin: 0; box-shadow: 0 0 0 10px var(--brand-soft-blue); }
+.health-intro-points { list-style: none; margin: 22px auto 6px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 560px; }
+.health-intro-points li { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 14px 10px; border-radius: 14px; background: color-mix(in oklab, var(--brand-soft-blue) 55%, transparent); border: 1px solid color-mix(in oklab, var(--primary) 12%, transparent); font-size: 15px; font-weight: 600; color: var(--foreground); }
+.health-intro-ico { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft-blue); color: var(--primary); }
+.health-intro-ico svg { width: 18px; height: 18px; }
+@media (max-width: 560px) { .health-intro-points { grid-template-columns: 1fr; gap: 8px; } .health-intro-points li { flex-direction: row; justify-content: flex-start; text-align: left; padding: 12px 14px; } }
 .loading-state { text-align: center; padding: 40px 8px; }
 .loading-state h2 { font-size: 30px; color: var(--brand-deep); margin: 18px 0 6px; }
 .loading-state > p { font-size: 16px; color: var(--muted-foreground); }
