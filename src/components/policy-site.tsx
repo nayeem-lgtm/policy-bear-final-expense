@@ -1,7 +1,7 @@
 // ============= Full file contents =============
 
 import { Link } from '@tanstack/react-router'
-import { ArrowUpRight, Phone, ClipboardCheck, HeartHandshake, FileCheck2 } from 'lucide-react'
+import { Mail, Clock, Phone, ClipboardCheck, HeartHandshake, FileCheck2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
 
@@ -24,38 +24,45 @@ export function PolicyTrustBadges() {
 }
 
 export function PolicyFooter() {
-  return <footer className="legal-footer"><div className="legal-footer-inner">
-    <div className="footer-leads">
-      <div className="footer-brand">
-        <Link to="/" aria-label="PolicyBear home"><img src={logo.url} width="158" height="32" alt="PolicyBear" loading="lazy" /></Link>
-        <p>Final expense. Family peace of mind.</p>
+  return <footer className="pb-footer"><div className="pb-footer-inner">
+    <div className="pb-footer-grid">
+      <div className="pb-footer-brand">
+        <Link to="/" aria-label="PolicyBear home"><img src={logo.url} width="200" height="40" alt="PolicyBear" loading="lazy" /></Link>
+        <p>Making final expense life insurance simple, affordable and accessible for every family.</p>
       </div>
-      <nav className="footer-link-group" aria-label="Legal information">
-        <h2>Legal &amp; privacy</h2>
-        <div className="footer-link-list">
-          <a href="https://policybear.com/terms-conditions" target="_blank" rel="noreferrer">Terms &amp; conditions <ArrowUpRight /></a>
-          <a href="https://policybear.com/privacy-policy" target="_blank" rel="noreferrer">Privacy policy <ArrowUpRight /></a>
-        </div>
+      <nav className="pb-footer-col" aria-label="Resources">
+        <h2>Resources</h2>
+        <Link to="/disclaimers">Final expense disclosures</Link>
+        <Link to="/licensing">Licensing &amp; resources</Link>
       </nav>
-      <nav className="footer-link-group" aria-label="Support and resources">
-        <h2>Help &amp; resources</h2>
-        <div className="footer-link-list">
-          <Link to="/contact">Contact us</Link>
-          <Link to="/disclaimers">Final expense disclosures</Link>
-          <Link to="/licensing">Licensing &amp; resources</Link>
-        </div>
+      <nav className="pb-footer-col" aria-label="Quick links">
+        <h2>Quick links</h2>
+        <Link to="/">Get a quote</Link>
+        <Link to="/contact">Contact us</Link>
       </nav>
-    </div>
-    <div className="footer-seals" aria-label="Accreditation and security">
-      <p className="footer-seals-label">Accredited &amp; secured</p>
-      <ul className="footer-seals-list">
+      <div className="pb-footer-col">
+        <h2>Contact</h2>
+        <a href="mailto:info@policybear.com"><Mail aria-hidden="true" />info@policybear.com</a>
+        <a href="tel:+18447652327"><Phone aria-hidden="true" />(844) POL-BEAR</a>
+        <span><Clock aria-hidden="true" />Mon–Fri: 8AM–8PM EST</span>
+      </div>
+      <div className="pb-footer-seals-wrap" aria-label="Accreditation and security">
+        <ul className="pb-footer-seals">
         <li><span className="seal seal-bbb" role="img" aria-label="BBB Accredited Business"><span className="seal-bbb-mark"><svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 1c3 3 4 5 1 8-2 2-3 4-1 6-4-1-6-4-4-8 1-2 3-3 4-6Zm-6 17h12l-2 3H8Zm1 5h10l-1.5 3h-7Z" fill="currentColor"/></svg><b>BBB</b></span><span className="seal-bbb-text">ACCREDITED<br />BUSINESS</span></span></li>
         <li><span className="seal seal-hitrust" role="img" aria-label="HITRUST i1 Certified"><span className="seal-hitrust-i1">i1</span><span className="seal-hitrust-text"><b>HITRUST</b><small>CERTIFIED</small></span></span></li>
         <li><span className="seal seal-geotrust" role="img" aria-label="GeoTrust Secured, powered by DigiCert"><span className="seal-geo-pill"><span className="seal-geo-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg></span><span className="seal-geo-text">GeoTrust<b>SECURED</b></span></span><small>powered by <b>digicert</b></small></span></li>
       </ul>
+      </div>
     </div>
-    <p className="footer-demo-note">Illustration only—not an insurance offer. No application or payment is submitted. <Link to="/disclaimers">Read full disclosures →</Link></p>
-    <div className="footer-bottom"><p>© {new Date().getFullYear()} PolicyBear. All rights reserved.</p><p>Not affiliated with any government agency.</p></div>
+    <div className="pb-footer-bottom">
+      <p>© {new Date().getFullYear()} PolicyBear. All rights reserved. Licensed life insurance agency.</p>
+      <nav aria-label="Legal">
+        <Link to="/privacy-policy">Privacy policy</Link>
+        <Link to="/terms-conditions">Terms of service</Link>
+        <Link to="/disclaimers">Disclaimer</Link>
+      </nav>
+    </div>
+    <p className="pb-footer-fine">PolicyBear is a licensed life insurance agency. We are not affiliated with or endorsed by the U.S. Government or any government agency. This website provides general information about final expense life insurance and is not intended as specific insurance advice. Prices shown are illustrations only—no application or payment is submitted.</p>
   </div></footer>
 }
 

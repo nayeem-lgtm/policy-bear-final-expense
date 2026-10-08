@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DisclaimersRouteImport } from './routes/disclaimers'
 import { Route as LicensingRouteImport } from './routes/licensing'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as TermsConditionsRouteImport } from './routes/terms-conditions'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +36,32 @@ const LicensingRoute = LicensingRouteImport.update({
   path: '/licensing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsConditionsRoute = TermsConditionsRouteImport.update({
+  id: '/terms-conditions',
+  path: '/terms-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/licensing': typeof LicensingRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-conditions': typeof TermsConditionsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/licensing': typeof LicensingRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-conditions': typeof TermsConditionsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +69,34 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/licensing': typeof LicensingRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-conditions': typeof TermsConditionsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/disclaimers' | '/licensing'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/disclaimers'
+    | '/licensing'
+    | '/privacy-policy'
+    | '/terms-conditions'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/disclaimers' | '/licensing'
-  id: '__root__' | '/' | '/contact' | '/disclaimers' | '/licensing'
+  to:
+    | '/'
+    | '/contact'
+    | '/disclaimers'
+    | '/licensing'
+    | '/privacy-policy'
+    | '/terms-conditions'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/disclaimers'
+    | '/licensing'
+    | '/privacy-policy'
+    | '/terms-conditions'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +104,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DisclaimersRoute: typeof DisclaimersRoute
   LicensingRoute: typeof LicensingRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  TermsConditionsRoute: typeof TermsConditionsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +138,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LicensingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-conditions': {
+      id: '/terms-conditions'
+      path: '/terms-conditions'
+      fullPath: '/terms-conditions'
+      preLoaderRoute: typeof TermsConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +160,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DisclaimersRoute: DisclaimersRoute,
   LicensingRoute: LicensingRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  TermsConditionsRoute: TermsConditionsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
