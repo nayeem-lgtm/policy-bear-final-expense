@@ -230,6 +230,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .assurance-band span { display: flex; align-items: center; gap: 12px; color: var(--brand-deep); font-size: 16px; }
 .assurance-band svg { width: 26px; height: 26px; color: var(--primary); }
 .assurance-band strong { font-weight: 500; }
+.policy-trust-band { background: var(--background); border-bottom: 1px solid var(--border); }
+.policy-trust-marks { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 1248px; margin: auto; padding: 26px 40px; }
+.policy-trust-marks li { display: flex; align-items: center; justify-content: center; gap: 14px; min-width: 0; }
+.trust-mark-icon { display: grid; place-items: center; flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: var(--brand-soft-blue); color: var(--primary); border: 1px solid var(--border); }
+.trust-mark-icon svg { width: 26px; height: 26px; }
+.trust-mark-copy { display: grid; gap: 2px; }
+.trust-mark-copy strong { color: var(--brand-deep); font-size: 18px; font-weight: 700; line-height: 1.4; }
+.trust-mark-copy > span { color: var(--muted-foreground); font-size: 16px; line-height: 1.5; }
+.policy-trust-compact { padding: 16px 0 0; margin-top: 16px; border-top: 1px solid var(--border); gap: 12px; }
+.policy-trust-compact li { justify-content: flex-start; gap: 8px; }
+.policy-trust-compact .trust-mark-icon { width: 24px; height: 24px; background: none; border: 0; }
+.policy-trust-compact .trust-mark-icon svg { width: 21px; height: 21px; }
+.policy-trust-compact strong { font-size: 16px; font-weight: 600; }
+.policy-trust-compact + .footer-demo-note { border-top: 0; margin-top: 12px; padding-top: 0; }
+@media (max-width: 800px) {
+  .policy-trust-marks { padding: 24px; gap: 16px; }
+  .policy-trust-marks li { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .policy-trust-compact { padding: 16px 0 0; }
+  .policy-trust-compact li { flex-direction: row; }
+}
+@media (max-width: 560px) {
+  .policy-trust-marks { grid-template-columns: minmax(0, 1fr); padding: 20px; gap: 18px; }
+  .policy-trust-marks li { flex-direction: row; align-items: center; justify-content: flex-start; }
+  .policy-trust-compact { padding: 14px 0 0; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .policy-trust-compact li:last-child { grid-column: 1 / -1; }
+}
 .how-section { max-width: 1248px; margin: auto; padding: 68px 40px 74px; }
 .section-heading { text-align: center; }
 .section-eyebrow { color: var(--primary); font-size: 16px; font-weight: 600; display: block; margin-bottom: 12px; }

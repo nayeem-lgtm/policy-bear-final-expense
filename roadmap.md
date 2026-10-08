@@ -1,5 +1,7 @@
 # PolicyBear final expense
 
+- [ ] Research trust credentials and add compact, non-certification reassurance signs; verify phone and desktop layouts.
+
 - [x] Simplify and organize the footer; add and verify the contact page.
 
 - [x] Build branded landing page and accessible first seven questions from the brief.
