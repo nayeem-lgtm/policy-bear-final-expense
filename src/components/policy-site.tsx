@@ -12,7 +12,7 @@ const TRUST_MARKS = [
 ]
 
 export function PolicyHeader() {
-  return <header className="site-header"><div className="header-inner"><Link to="/" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Call now</span><strong>(844) 765-2327</strong></span></a></Button></div></header>
+  return <header className="site-header"><div className="header-inner"><Link to="/" hash="step-zip" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Call now</span><strong>(844) 765-2327</strong></span></a></Button></div></header>
 }
 
 export function PolicyTrustMarks({ compact = false }: { compact?: boolean }) {
@@ -27,7 +27,7 @@ export function PolicyFooter() {
   return <footer className="pb-footer"><div className="pb-footer-inner">
     <div className="pb-footer-grid">
       <div className="pb-footer-brand">
-        <Link to="/" aria-label="PolicyBear home"><span className="pb-footer-logo" role="img" aria-label="PolicyBear" style={{ WebkitMaskImage: `url(${logo.url})`, maskImage: `url(${logo.url})` }} /></Link>
+        <Link to="/" hash="step-zip" aria-label="PolicyBear home"><span className="pb-footer-logo" role="img" aria-label="PolicyBear" style={{ WebkitMaskImage: `url(${logo.url})`, maskImage: `url(${logo.url})` }} /></Link>
         <p>Making final expense life insurance simple, affordable and accessible for every family.</p>
       </div>
       <nav className="pb-footer-col" aria-label="Resources">
