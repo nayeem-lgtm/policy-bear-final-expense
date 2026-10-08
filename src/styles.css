@@ -698,8 +698,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .legal-footer .footer-disclosure-title { font-size: 15px; line-height: 1.4; }
   .footer-disclosure p { font-size: 15px; }
   .footer-bottom { padding-bottom: 10px; }
-  .trust-badges { padding: 24px 20px 30px; }
-  .trust-badges-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .trust-badges { padding: 20px 20px 26px; }
+  .trust-badges-label { font-size: 12px; margin-bottom: 10px; }
+  .trust-badges-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .trust-badge { padding: 10px 12px; }
   .legal-back { margin-bottom: 20px; }
   .license-details > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 }
