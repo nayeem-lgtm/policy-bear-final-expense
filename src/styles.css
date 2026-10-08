@@ -610,6 +610,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .footer-brand { grid-column: 1 / -1; }
   .footer-disclosure-body { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .footer-bottom { flex-direction: column; gap: 6px; }
+  .footer-trust-badges { gap: 10px; }
+  .trust-badge { padding: 14px; gap: 12px; }
+  .trust-badge-seal { width: 46px; height: 46px; }
+  .trust-badge-seal svg { width: 21px; height: 21px; }
+  .trust-badge-copy strong { font-size: 16px; }
+  .trust-badge-copy > span { font-size: 14px; }
   .contact-page { padding: 28px 24px 48px; }
   .contact-page h1 { font-size: 34px; }
   .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
@@ -625,6 +631,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .legal-footer .footer-disclosure-title { font-size: 15px; line-height: 1.4; }
   .footer-disclosure p { font-size: 15px; }
   .footer-bottom { padding-bottom: 10px; }
+  .footer-trust { margin-top: 22px; padding-top: 18px; }
+  .footer-trust-badges { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .legal-back { margin-bottom: 20px; }
   .license-details > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 }
