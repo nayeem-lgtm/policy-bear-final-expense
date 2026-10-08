@@ -4,15 +4,6 @@ import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, Phone, ClipboardCheck, HeartHandshake, FileCheck2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
-import sealBbb from '@/assets/seal-bbb.asset.json'
-import sealHitrust from '@/assets/seal-hitrust.asset.json'
-import sealGeotrust from '@/assets/seal-geotrust.asset.json'
-
-const SEALS = [
-  { src: sealBbb.url, width: 248, height: 100, alt: 'BBB Accredited Business' },
-  { src: sealHitrust.url, width: 246, height: 82, alt: 'HITRUST i1 Certified' },
-  { src: sealGeotrust.url, width: 240, height: 124, alt: 'GeoTrust Secured, powered by DigiCert' },
-]
 
 const TRUST_MARKS = [
   { icon: ClipboardCheck, title: 'No medical exam', detail: 'For illustrated final expense plans' },
@@ -57,7 +48,11 @@ export function PolicyFooter() {
     </div>
     <div className="footer-seals" aria-label="Accreditation and security">
       <p className="footer-seals-label">Accredited &amp; secured</p>
-      <ul className="footer-seals-list">{SEALS.map((seal) => <li key={seal.alt}><img src={seal.src} width={seal.width} height={seal.height} alt={seal.alt} loading="lazy" /></li>)}</ul>
+      <ul className="footer-seals-list">
+        <li><span className="seal seal-bbb" role="img" aria-label="BBB Accredited Business"><span className="seal-bbb-mark"><svg viewBox="0 0 24 32" aria-hidden="true"><path d="M12 1c3 3 4 5 1 8-2 2-3 4-1 6-4-1-6-4-4-8 1-2 3-3 4-6Zm-6 17h12l-2 3H8Zm1 5h10l-1.5 3h-7Z" fill="currentColor"/></svg><b>BBB</b></span><span className="seal-bbb-text">ACCREDITED<br />BUSINESS</span></span></li>
+        <li><span className="seal seal-hitrust" role="img" aria-label="HITRUST i1 Certified"><span className="seal-hitrust-i1">i1</span><span className="seal-hitrust-text"><b>HITRUST</b><small>CERTIFIED</small></span></span></li>
+        <li><span className="seal seal-geotrust" role="img" aria-label="GeoTrust Secured, powered by DigiCert"><span className="seal-geo-pill"><span className="seal-geo-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg></span><span className="seal-geo-text">GeoTrust<b>SECURED</b></span></span><small>powered by <b>digicert</b></small></span></li>
+      </ul>
     </div>
     <p className="footer-demo-note">Illustration only—not an insurance offer. No application or payment is submitted. <Link to="/disclaimers">Read full disclosures →</Link></p>
     <div className="footer-bottom"><p>© {new Date().getFullYear()} PolicyBear. All rights reserved.</p><p>Not affiliated with any government agency.</p></div>

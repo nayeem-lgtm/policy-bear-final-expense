@@ -4,7 +4,7 @@ import { ArrowRight, Check, Heart, HeartHandshake, Phone, ShieldCheck, Clipboard
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/family.jpg'
-import { PolicyHeader, PolicyFooter, PolicyTrustMarks, PolicyTrustBadges } from '@/components/policy-site'
+import { PolicyHeader, PolicyFooter, PolicyTrustBadges } from '@/components/policy-site'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -32,7 +32,6 @@ function Index() {
   return <div className="policy-page">
     <PolicyHeader />
     <main>
-      <section className="policy-trust-band policy-trust-top" aria-label="Explore final expense with confidence"><PolicyTrustMarks compact /></section>
       <section className={step === 0 ? 'landing-hero' : 'funnel-section'}>
         {step === 0 && <><img className="hero-photo" src={family} width={1536} height={1024} alt="Grandparents sharing a happy afternoon with their grandchildren" fetchPriority="high" /><div className="hero-scrim" /></>}
         <div className={step === 0 ? 'hero-inner' : 'funnel-inner'}>
