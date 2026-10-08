@@ -4,6 +4,15 @@ import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, Phone, ClipboardCheck, HeartHandshake, FileCheck2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
+import sealBbb from '@/assets/seal-bbb.asset.json'
+import sealHitrust from '@/assets/seal-hitrust.asset.json'
+import sealGeotrust from '@/assets/seal-geotrust.asset.json'
+
+const SEALS = [
+  { src: sealBbb.url, width: 248, height: 100, alt: 'BBB Accredited Business' },
+  { src: sealHitrust.url, width: 246, height: 82, alt: 'HITRUST i1 Certified' },
+  { src: sealGeotrust.url, width: 240, height: 124, alt: 'GeoTrust Secured, powered by DigiCert' },
+]
 
 const TRUST_MARKS = [
   { icon: ClipboardCheck, title: 'No medical exam', detail: 'For illustrated final expense plans' },
@@ -45,6 +54,10 @@ export function PolicyFooter() {
           <Link to="/licensing">Licensing &amp; resources</Link>
         </div>
       </nav>
+    </div>
+    <div className="footer-seals" aria-label="Accreditation and security">
+      <p className="footer-seals-label">Accredited &amp; secured</p>
+      <ul className="footer-seals-list">{SEALS.map((seal) => <li key={seal.alt}><img src={seal.src} width={seal.width} height={seal.height} alt={seal.alt} loading="lazy" /></li>)}</ul>
     </div>
     <p className="footer-demo-note">Illustration only—not an insurance offer. No application or payment is submitted. <Link to="/disclaimers">Read full disclosures →</Link></p>
     <div className="footer-bottom"><p>© {new Date().getFullYear()} PolicyBear. All rights reserved.</p><p>Not affiliated with any government agency.</p></div>
