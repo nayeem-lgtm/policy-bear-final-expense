@@ -75,10 +75,18 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const monthly = calculatePrice(age || 68, answers.gender || 'Female', coverage, answers.tobacco, coverageType)
   const shownPrice = annual ? monthly * 12 * .95 : monthly
   const addressSuggestions = useMemo(() => {
-    const query = answers.street.trim().toLowerCase()
+    const raw = answers.street.trim()
+    const query = raw.toLowerCase()
     if (query.length < 2) return []
-    return demoAddresses.filter((address) => `${address.street} ${address.city} ${address.state} ${address.zip}`.toLowerCase().includes(query)).slice(0, 4)
-  }, [answers.street])
+    const titled = raw.replace(/\s+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+    const hasSuffix = /\b(st|street|ave|avenue|rd|road|dr|drive|ln|lane|blvd|ct|court|way|pl|place)\.?$/i.test(raw)
+    const local = { city: answers.city || 'Your city', state: answers.state || 'US', zip: answers.zip || '00000' }
+    const generated: AddressSuggestion[] = hasSuffix
+      ? [{ street: titled, ...local }]
+      : ['Street', 'Avenue', 'Road', 'Drive'].map((suffix) => ({ street: `${titled} ${suffix}`, ...local }))
+    const matches = demoAddresses.filter((address) => `${address.street} ${address.city} ${address.state} ${address.zip}`.toLowerCase().includes(query))
+    return [...generated, ...matches].slice(0, 5)
+  }, [answers.street, answers.city, answers.state, answers.zip])
 
   useEffect(() => {
     let savedStep: JourneyStep | undefined
