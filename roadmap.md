@@ -1,6 +1,6 @@
 # PolicyBear final expense
 
-- [ ] Verify all pages and journey screens on phone widths; correct clipping and keep public wording final-expense-focused.
+- [x] Verified seven public pages and 38 journey screens at 320, 375, 430, 768 and 1280px; corrected narrow footer clipping and narrowed public wording to final expense while preserving supplied legal copy.
 
 - [x] Present the reassurance signs as aligned badge tiles in a band below the main photo and form, out of the footer; verify desktop, tablet and phone.
 
