@@ -702,3 +702,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .pb-footer-bottom { flex-direction: column; align-items: flex-start; }
   .pb-footer-bottom nav { gap: 4px 20px; }
 }
+
+/* ============ Health questions ============ */
+.health-progress { display: flex; align-items: center; gap: 12px; margin: 2px 0 18px; }
+.health-progress .progress-track { flex: 1; margin: 0; }
+.health-progress > span { font-size: 16px; color: var(--muted-foreground); white-space: nowrap; }
+.health-topic { display: inline-flex; align-items: center; gap: 8px; background: var(--brand-soft-blue); color: var(--brand-deep); font-size: 15px; font-weight: 600; letter-spacing: .02em; padding: 7px 14px; border-radius: 999px; }
+.health-explain { color: var(--muted-foreground); font-size: 17px; line-height: 1.6; margin: 12px 0 2px; }
+.health-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0 10px; }
+.health-choices .answer-card { justify-content: space-between; padding: 22px 18px; min-height: 86px; }
+.health-choices .answer-card strong { font-size: 22px; }
+.health-choices .answer-card small { display: block; color: var(--muted-foreground); font-size: 15px; font-weight: 400; margin-top: 3px; }
+.health-reassure { display: flex; gap: 10px; align-items: flex-start; background: var(--brand-soft-blue); border-radius: 12px; padding: 14px 16px; font-size: 16px; line-height: 1.55; color: var(--brand-deep); margin: 10px 0 6px; }
+.health-reassure svg { color: var(--primary); flex-shrink: 0; width: 20px; }
+.health-intro-list { list-style: none; display: grid; gap: 14px; margin: 20px 0 8px; padding: 0; }
+.health-intro-list li { display: flex; align-items: center; gap: 12px; font-size: 18px; line-height: 1.5; color: var(--brand-deep); }
+.health-intro-list svg { color: var(--primary); flex-shrink: 0; width: 22px; }
+@media (max-width: 560px) {
+  .health-choices { gap: 10px; margin-top: 18px; }
+  .health-choices .answer-card { padding: 16px 12px; min-height: 78px; }
+  .health-choices .answer-card strong { font-size: 20px; }
+  .health-explain { font-size: 16px; }
+}

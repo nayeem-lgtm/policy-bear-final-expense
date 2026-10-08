@@ -10,14 +10,46 @@ export const journeySteps = [
 export type JourneyStep = (typeof journeySteps)[number]
 
 export const healthQuestions = [
-  'Are you currently in a hospital, nursing home or hospice, or receiving home health care?',
-  'Has a doctor told you that you have a terminal illness, or do you need an organ transplant?',
-  'Do you currently need kidney dialysis or oxygen equipment to help you breathe?',
-  "Have you ever been diagnosed with or treated for ALS, Alzheimer’s disease or dementia?",
-  'In the past 2 years, have you been diagnosed with or treated for cancer (other than basal cell skin cancer), a heart attack, stroke or congestive heart failure?',
-  'In the past 2 years, have you been treated for COPD, emphysema, or chronic lung disease?',
-  'In the past 2 years, have you had diabetes complications (such as amputation, neuropathy or insulin before age 50)?',
-  'In the past 2 years, have you been treated for alcohol or drug abuse, or liver disease such as cirrhosis or hepatitis?',
+  {
+    topic: 'Your care right now',
+    question: 'Are you in a hospital, nursing home or hospice right now, or getting home health care?',
+    explain: 'This is about care happening today — a current stay, or home care arranged by a doctor or nurse.',
+  },
+  {
+    topic: 'Serious illness',
+    question: 'Has a doctor told you that you have a terminal illness, or that you need an organ transplant?',
+    explain: 'This is only about what a doctor has told you directly.',
+  },
+  {
+    topic: 'Equipment you use',
+    question: 'Do you use kidney dialysis or oxygen equipment today?',
+    explain: 'Only equipment you use now — a short hospital stay in the past doesn’t count.',
+  },
+  {
+    topic: 'Memory & nerve conditions',
+    question: 'Have you ever been diagnosed with ALS, Alzheimer’s disease or dementia?',
+    explain: 'ALS is also known as Lou Gehrig’s disease.',
+  },
+  {
+    topic: 'Cancer, heart & stroke',
+    question: 'In the past 2 years, have you been diagnosed with or treated for cancer (other than a common skin cancer), a heart attack, a stroke, or congestive heart failure?',
+    explain: 'A small skin cancer removed at a routine check-up usually doesn’t count.',
+  },
+  {
+    topic: 'Breathing',
+    question: 'In the past 2 years, have you been treated for COPD, emphysema or another chronic lung disease?',
+    explain: 'Treatment can include an inhaler, oxygen or hospital care.',
+  },
+  {
+    topic: 'Diabetes',
+    question: 'In the past 2 years, has diabetes caused you serious problems — such as an amputation, nerve damage, or needing insulin before age 50?',
+    explain: 'Diabetes kept in check with pills or diet usually doesn’t count.',
+  },
+  {
+    topic: 'Alcohol, drugs & liver',
+    question: 'In the past 2 years, have you been treated for alcohol or drug abuse, or for a liver disease such as cirrhosis or hepatitis?',
+    explain: 'Treatment includes care at a clinic, hospital or support program.',
+  },
 ] as const
 
 const rates = [
