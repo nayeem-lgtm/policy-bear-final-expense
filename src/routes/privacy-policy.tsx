@@ -1,0 +1,34 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { LegalPage } from '@/components/policy-site'
+
+const URL = 'https://policy-bear-quote-quest.lovable.app/privacy-policy'
+
+export const Route = createFileRoute('/privacy-policy')({
+  head: () => ({ meta: [
+    { title: 'Privacy policy — PolicyBear' },
+    { name: 'description', content: 'How PolicyBear, an independent life insurance agency, collects, uses, shares and protects your personal information.' },
+    { property: 'og:title', content: 'Privacy policy — PolicyBear' },
+    { property: 'og:description', content: 'Learn how PolicyBear handles your personal information when you explore final expense life insurance.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: URL },
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ], links: [{ rel: 'canonical', href: URL }] }),
+  component: PrivacyPolicy,
+})
+
+function PrivacyPolicy() {
+  return <LegalPage title="Privacy policy" intro="Effective date: Aug. 29, 2025. Your privacy matters to us. This policy explains what we collect, why, and the choices you have.">
+    <section><h2>1. Scope &amp; applicability</h2><p>This Privacy Policy applies to all websites, mobile apps, forms, communication channels and digital services offered by PolicyBear. It also covers information collected when you visit our website, use our quote or application tools, contact us by phone, SMS or email, submit forms or sign up for newsletters, or interact with our advertisements.</p><p>PolicyBear is a privately owned, independent life insurance agency. We are not affiliated with any government agency.</p></section>
+    <section><h2>2. What information we collect</h2><p><strong>Personal information:</strong> name, email address, phone number, date of birth, mailing address, beneficiary details, and Social Security Number (only when an insurance carrier requires it for an application).</p><p><strong>Health information:</strong> answers to health questions, medical history, current health conditions, and medications — used only so an insurance carrier can determine eligibility for life insurance coverage.</p><p><strong>Technical &amp; usage information:</strong> device type, IP address, browser and operating system, pages visited and time spent, and clicks, scrolls and form interactions (through cookies and analytics tools).</p></section>
+    <section><h2>3. How we use your information</h2><p>We use your information to match you with life insurance and final expense coverage that fits your needs, help you apply with insurance carriers, send updates, reminders or service-related communications, provide customer support, improve our website and services through analytics, and comply with legal and regulatory requirements.</p><p>We may also send occasional marketing messages. You can always opt out.</p></section>
+    <section><h2>4. How we share your information</h2><p>We are protective of your data, but we may need to share it with licensed insurance agents and carriers who provide your coverage; third-party service providers who help us operate (such as email systems, CRM databases and website analytics tools); legal authorities, when required by law or to protect our rights; and another company in the event of a merger, acquisition or asset sale — we will notify you of any material changes in data ownership or practices.</p><p><strong>We never sell your personal information. Ever.</strong></p></section>
+    <section><h2>5. Your rights and choices</h2><p>Depending on your location and applicable laws, such as the California Consumer Privacy Act (CCPA), you may have the right to access the personal information we have about you, request corrections or updates, ask us to delete your information, opt out of marketing communications, and limit how certain data is used or shared.</p><p><strong>Your California privacy rights:</strong> California residents may know what personal information we collect, use and disclose; request deletion (with certain exceptions); opt out of the sale of personal data (we do not sell your data); request a copy of their data; and designate an authorized agent. We also comply with other state privacy laws, such as the New York SHIELD Act.</p><p><strong>How to make a request:</strong> call <a href="tel:+18447652327">(844) POL-BEAR</a> or email <a href="mailto:help@policybear.com">help@policybear.com</a>. We may need to verify your identity before processing your request.</p></section>
+    <section><h2>6. How we protect your data</h2><p>We use industry-standard security measures, including SSL encryption, secure cloud storage, access controls for sensitive data, and staff training on data handling. No system is 100% secure, so we encourage you to protect your devices and passwords.</p></section>
+    <section><h2>7. Health information</h2><p>We take the health information you share seriously. We use it only for purposes related to your life insurance application, limit who can access it within our organization, and require service providers who handle it to keep it confidential and secure.</p></section>
+    <section><h2>8. Data retention</h2><p>We keep your information only as long as necessary to serve you (for example quotes, applications and support), meet legal or contractual obligations, and comply with regulatory retention timelines. When data is no longer needed, we securely delete or anonymize it.</p></section>
+    <section><h2>9. Cookies and tracking tools</h2><p>We use cookies and other tracking tools to analyze website traffic, improve your browsing experience, and support advertising and remarketing campaigns. You can adjust cookie preferences in your browser settings. We do not respond to “Do Not Track” signals because no industry standard exists for interpreting them, but we provide opt-out options through cookie settings where available. We use analytics tools such as Google Analytics and may use Facebook or other ad platforms.</p></section>
+    <section><h2>10. Children’s privacy</h2><p>Our services are intended for adults. We do not knowingly collect data from children under 13. If we learn that a child’s information has been submitted, we will promptly delete it.</p></section>
+    <section><h2>11. Notification of changes</h2><p>If we update this Privacy Policy, we will post the revised version with a new effective date at the top. If changes are significant, we may notify you by email or on the site.</p></section>
+    <section><h2>12. Contact us</h2><p><strong>PolicyBear – Privacy Team</strong><br /><a href="tel:+18447652327">(844) POL-BEAR</a> · <a href="mailto:help@policybear.com">help@policybear.com</a><br />222 S. Rainbow Boulevard STE 216, Las Vegas, NV 89145<br />Mon–Fri: 8AM–8PM EST</p></section>
+  </LegalPage>
+}
