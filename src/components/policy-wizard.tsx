@@ -142,7 +142,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const back = () => { const previous = journeySteps[Math.max(0, screenIndex - 1)]; if (previous) go(previous) }
   const choose = (key: StringAnswerKey, value: string, next?: JourneyStep) => { update(key, value); if (next) advance(next) }
   const chooseAddress = (address: AddressSuggestion) => {
-    setAnswers((current) => ({ ...current, street: address.street, city: address.city, state: address.state, zip: address.zip }))
+    setAnswers((current) => ({ ...current, street: address.street, city: address.city || current.city, state: address.state || current.state, zip: address.zip || current.zip }))
     setAddressMenuOpen(false)
     setError('')
   }
