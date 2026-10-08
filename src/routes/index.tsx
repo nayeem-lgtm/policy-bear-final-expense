@@ -15,8 +15,8 @@ export const Route = createFileRoute('/')({
     { property: 'og:description', content: 'Explore final expense insurance for funeral costs and final bills through a simple, supportive illustrative experience.' },
     { property: 'og:type', content: 'website' },
     { name: 'twitter:card', content: 'summary_large_image' },
-    { property: 'og:url', content: '/' },
-  ], links: [{ rel: 'canonical', href: '/' }] }),
+    { property: 'og:url', content: 'https://policy-bear-quote-quest.lovable.app/' },
+  ], links: [{ rel: 'canonical', href: 'https://policy-bear-quote-quest.lovable.app/' }] }),
 })
 const faqs = [
   ['What is final expense insurance?', 'Final expense insurance is life insurance intended to help your loved ones with funeral, burial, cremation and other final bills. Your named beneficiary receives benefits under the policy and decides how to use them.'],
