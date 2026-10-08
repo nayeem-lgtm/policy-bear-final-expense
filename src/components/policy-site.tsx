@@ -9,13 +9,31 @@ export function PolicyHeader() {
 
 export function PolicyFooter() {
   return <footer className="legal-footer"><div className="legal-footer-inner">
-    <div className="legal-footer-top">
-      <div className="footer-brand"><Link to="/" aria-label="PolicyBear home"><img src={logo.url} width="200" height="40" alt="PolicyBear" loading="lazy" /></Link><p>A little planning for final expenses.<br />A little peace of mind for your family.</p></div>
-      <nav className="footer-link-group" aria-label="Legal information"><h2>Legal & privacy</h2><a href="https://policybear.com/terms-conditions" target="_blank" rel="noreferrer">Terms & conditions <ArrowUpRight /></a><a href="https://policybear.com/privacy-policy" target="_blank" rel="noreferrer">Privacy policy <ArrowUpRight /></a><Link to="/disclaimers">Final expense disclosures</Link><Link to="/licensing">Licensing & consumer resources</Link><p className="footer-policy-note">Existing PolicyBear policies describe ACA services. Final expense updates are pending owner approval.</p></nav>
-      <div className="footer-support"><h2>Talk it through</h2><a href="tel:+18447652327"><Phone /> (844) 765-2327</a><p>PolicyBear’s main phone line.<br />Ask about final expense availability.</p></div>
+    <div className="footer-leads">
+      <div className="footer-brand">
+        <Link to="/" aria-label="PolicyBear home"><img src={logo.url} width="158" height="32" alt="PolicyBear" loading="lazy" /></Link>
+        <p>A little planning for final expenses.<br />A little peace of mind for your family.</p>
+        <a className="footer-phone" href="tel:+18447652327"><Phone /> (844) 765-2327</a>
+        <p className="footer-phone-note">PolicyBear’s main phone line. Ask about final expense availability.</p>
+      </div>
+      <nav className="footer-link-group" aria-label="Legal information">
+        <h2>Legal &amp; privacy</h2>
+        <div className="footer-link-list">
+          <a href="https://policybear.com/terms-conditions" target="_blank" rel="noreferrer">Terms &amp; conditions <ArrowUpRight /></a>
+          <a href="https://policybear.com/privacy-policy" target="_blank" rel="noreferrer">Privacy policy <ArrowUpRight /></a>
+          <Link to="/disclaimers">Final expense disclosures</Link>
+          <Link to="/licensing">Licensing &amp; consumer resources</Link>
+        </div>
+      </nav>
     </div>
-    <div className="footer-disclosure"><ShieldCheck aria-hidden="true" /><div><h2>Important final expense information</h2><p>Final expense insurance is life insurance intended to help with funeral, burial, cremation and other final bills. It is not a prepaid funeral plan. Benefits are paid to the named beneficiary according to the policy; they are not restricted to funeral costs.</p><p>Availability, eligibility, premiums and benefits depend on the insurer, your state and the policy. Some plans have limited benefits during an initial waiting period. Premiums must be paid to keep coverage in force. Review the actual policy for exclusions, limitations and benefit schedules.</p></div></div>
-    <div className="footer-demo-notice"><strong>Illustrative experience only.</strong> Prices, approvals, signatures and policy numbers on this site are demonstrations, not insurance offers or issued coverage. No application or payment is submitted. Do not enter real Social Security, bank or card details.</div>
+    <div className="footer-disclosure">
+      <h2 className="footer-disclosure-title"><ShieldCheck aria-hidden="true" /> Important final expense information</h2>
+      <div className="footer-disclosure-body">
+        <p>Final expense insurance is life insurance that helps with funeral, burial, cremation and other final bills. It is not a prepaid funeral plan; benefits are paid to the named beneficiary.</p>
+        <p>Availability, eligibility, premiums and benefits depend on the insurer, your state and the policy. Some plans have limited benefits during an initial waiting period, and premiums must be paid to keep coverage in force.</p>
+        <p className="footer-fine"><strong>Illustrative experience only.</strong> Prices, approvals, signatures and policy numbers are demonstrations, not insurance offers or issued coverage. No application or payment is submitted; do not enter real Social Security, bank or card details. Existing PolicyBear policies describe ACA services; final expense updates are pending owner approval.</p>
+      </div>
+    </div>
     <div className="footer-bottom"><p>© {new Date().getFullYear()} PolicyBear. All rights reserved.</p><p>Not affiliated with any government agency.</p></div>
   </div></footer>
 }
