@@ -9,3 +9,6 @@
 - [x] Verify every screen at mobile width, keyboard focus, reduced motion, and browser-only persistence.
 - [x] Fix blocked fields and next-step navigation across the complete journey.
 - [x] Improve phone layouts, touch controls, address suggestions, and signature drawing; verify the mobile journey.
+- [ ] Focus landing and journey wording on final expense coverage.
+- [ ] Research authoritative disclosures and add a polished legal footer and information pages.
+- [ ] Verify legal navigation and phone presentation.
