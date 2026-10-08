@@ -670,7 +670,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .seal-geotrust small b { color: var(--seal-sky); }
 .pb-footer { background: var(--seal-panel); color: var(--seal-muted); }
 .pb-footer-inner { max-width: 1160px; margin: auto; padding: 64px 40px 24px; }
-.pb-footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.25fr auto; gap: 48px; align-items: start; }
+.pb-footer-grid { display: grid; grid-template-columns: 1.45fr .85fr .85fr 1.3fr auto; gap: 40px; align-items: start; }
 .pb-footer-logo { display: block; width: 200px; height: 40px; background: var(--brand-action); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: left center; mask-position: left center; }
 .pb-footer-brand p { margin-top: 26px; font-size: 17px; line-height: 1.5; color: var(--seal-muted); max-width: 270px; }
 .pb-footer h2 { font-family: Merriweather, Georgia, serif; color: var(--seal-white); font-size: 21px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
