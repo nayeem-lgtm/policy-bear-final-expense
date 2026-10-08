@@ -244,6 +244,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .policy-trust-compact .trust-mark-icon svg { width: 21px; height: 21px; }
 .policy-trust-compact strong { font-size: 16px; font-weight: 600; }
 .policy-trust-compact + .footer-demo-note { border-top: 0; margin-top: 12px; padding-top: 0; }
+.policy-trust-top { background: var(--brand-soft-blue); }
+.policy-trust-top .policy-trust-marks { padding: 14px 24px; margin: auto; border-top: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.policy-trust-top .policy-trust-marks li { justify-content: center; align-items: center; flex-direction: row; }
+.policy-trust-top .trust-mark-icon { color: var(--primary); }
 @media (max-width: 800px) {
   .policy-trust-marks { padding: 24px; gap: 16px; }
   .policy-trust-marks li { align-items: flex-start; flex-direction: column; gap: 10px; }
@@ -255,6 +259,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .policy-trust-marks li { flex-direction: row; align-items: center; justify-content: flex-start; }
   .policy-trust-compact { padding: 14px 0 0; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .policy-trust-compact li:last-child { grid-column: 1 / -1; }
+  .policy-trust-top .policy-trust-marks { padding: 12px; gap: 10px; }
+  .policy-trust-top .policy-trust-marks li { flex-direction: column; gap: 5px; text-align: center; }
+  .policy-trust-top .policy-trust-marks li:last-child { grid-column: auto; }
 }
 .how-section { max-width: 1248px; margin: auto; padding: 68px 40px 74px; }
 .section-heading { text-align: center; }
