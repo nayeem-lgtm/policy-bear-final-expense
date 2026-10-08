@@ -20,7 +20,7 @@ export function PolicyTrustMarks({ compact = false }: { compact?: boolean }) {
 }
 
 export function PolicyTrustBadges() {
-  return <div className="footer-trust"><p className="footer-trust-label">What you can count on</p><ul className="footer-trust-badges" aria-label="Final expense reassurance">{TRUST_MARKS.map(({ icon: Icon, title, detail }) => <li className="trust-badge" key={title}><span className="trust-badge-seal" aria-hidden="true"><Icon /></span><span className="trust-badge-copy"><strong>{title}</strong><span>{detail}</span></span></li>)}</ul></div>
+  return <div className="trust-badges"><p className="trust-badges-label">What you can count on</p><ul className="trust-badges-grid" aria-label="Final expense reassurance">{TRUST_MARKS.map(({ icon: Icon, title, detail }) => <li className="trust-badge" key={title}><span className="trust-badge-seal" aria-hidden="true"><Icon /></span><span className="trust-badge-copy"><strong>{title}</strong><span>{detail}</span></span></li>)}</ul></div>
 }
 
 export function PolicyFooter() {
@@ -46,7 +46,6 @@ export function PolicyFooter() {
         </div>
       </nav>
     </div>
-    <PolicyTrustBadges />
     <p className="footer-demo-note">Illustration only—not an insurance offer. No application or payment is submitted. <Link to="/disclaimers">Read full disclosures →</Link></p>
     <div className="footer-bottom"><p>© {new Date().getFullYear()} PolicyBear. All rights reserved.</p><p>Not affiliated with any government agency.</p></div>
   </div></footer>

@@ -1,6 +1,6 @@
 # PolicyBear final expense
 
-- [x] Present the reassurance signs as aligned badge tiles in the footer; verify desktop, tablet and phone.
+- [x] Present the reassurance signs as aligned badge tiles in a band below the main photo and form, out of the footer; verify desktop, tablet and phone.
 
 - [x] Move reassurance signs directly below the header so they appear immediately, including during the question journey.
 
