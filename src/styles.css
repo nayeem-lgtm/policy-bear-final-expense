@@ -372,6 +372,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .check-row > button { width: 25px; height: 25px; flex: 0 0 25px; border: 2px solid var(--input); border-radius: 5px; display: grid; place-items: center; margin-top: 2px; }
 .check-row > button[data-state=checked] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
 .check-row svg { width: 17px; height: 17px; }
+.contact-consent .check-row { margin-bottom: 12px; }
+.consent-paragraph { display: block; }
+.consent-paragraph + .consent-paragraph { margin-top: 10px; }
+.contact-consent a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.contact-consent a:hover { color: var(--brand-deep); }
+.contact-consent a:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; border-radius: 2px; }
+.consent-resources { margin: 0 0 20px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 16px; line-height: 1.55; }
+.consent-resources a { display: inline-flex; align-items: center; gap: 6px; }
+.consent-resources svg { width: 16px; height: 16px; }
+.consent-resources > span { display: block; margin-top: 6px; color: var(--muted-foreground); }
 .valid-note { display: flex; align-items: center; gap: 7px; color: var(--success); min-height: 34px; font-size: 16px; margin: 6px 0 12px; }
 .valid-note svg { width: 18px; }
 .fine-print, .placeholder-note { color: var(--muted-foreground); font-size: 16px; margin: 16px 0; }
