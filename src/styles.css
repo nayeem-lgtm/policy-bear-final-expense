@@ -1019,7 +1019,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .header-call .call-caption { display: block; font-size: 14px; font-weight: 500; line-height: 1.2; margin: 0; }
 .header-call strong { font-size: 26px; line-height: 1.1; color: var(--primary); font-weight: 750; }
 .header-call-bear { position: relative; display: block; align-self: stretch; width: 104px; flex-shrink: 0; overflow: hidden; }
-.header-call-bear img { position: absolute; width: auto; max-width: none; height: calc(100% + 10px); bottom: -16px; left: 50%; transform: translateX(-50%); object-fit: contain; }
+.header-call-bear img { position: absolute; width: 100%; height: auto; max-width: none; bottom: 0; left: 50%; transform: translateX(-50%); }
 
 /* Agents available indicator */
 .agents-available { display: inline-flex; align-items: center; gap: 5px; margin-top: 0; font-size: 11px; line-height: 1.2; font-weight: 500; letter-spacing: 0; color: var(--muted-foreground); }
@@ -1048,6 +1048,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .brand-link img { width: 85px; }
   .header-call strong { font-size: 17px; }
   .header-call-bear { width: 55px; }
-  .header-call-bear img { height: calc(100% - 2px); bottom: -8px; }
 }
 @media (prefers-reduced-motion: reduce) { .agent-dot::after { animation: none; } }
