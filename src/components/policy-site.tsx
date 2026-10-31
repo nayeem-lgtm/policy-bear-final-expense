@@ -18,7 +18,7 @@ export function PolicyFooter() {
   return <footer className="pb-footer"><div className="pb-footer-inner">
     <div className="pb-footer-grid">
       <div className="pb-footer-brand">
-        <Link to="/" hash="step-zip" aria-label="PolicyBear home"><span className="pb-footer-logo" role="img" aria-label="PolicyBear" style={{ WebkitMaskImage: `url(${logo.url})`, maskImage: `url(${logo.url})` }} /></Link>
+        <Link to="/" hash="step-zip" aria-label="PolicyBear home"><img src={logo.url} width="238" height="47" alt="PolicyBear" className="pb-footer-logo" /></Link>
         <p>Final expense coverage.<br />For funeral costs and final bills.</p>
         <ul className="pb-footer-social" aria-label="PolicyBear on social media">
           <li><a className="social-facebook" href="https://www.facebook.com/policybearofficial/" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on Facebook"><Facebook aria-hidden="true" /></a></li>
