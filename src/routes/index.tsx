@@ -1,3 +1,4 @@
+import bearGuide from '@/assets/bear-guide.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
 import { ArrowRight, Phone, ShieldCheck, ClipboardList, CircleDollarSign, ChevronDown } from 'lucide-react'
@@ -35,6 +36,7 @@ function Index() {
       {step === 0 && <section className="hero-banner"><img className="hero-photo" src={family} width={1536} height={1024} alt="An older couple sharing a quiet moment at home as their granddaughter shows them her drawing" fetchPriority="high" /><div className="hero-scrim" /><div className="hero-banner-copy"><h1>Protect your family from <span>final expenses.</span></h1><p>Coverage from $5,000 to $55,000 for funeral costs, cremation and final bills.</p></div></section>}
       <section className={step === 0 ? 'quote-stage' : 'funnel-section'}>
         <div className={step === 0 ? 'quote-stage-inner' : 'funnel-inner'}>
+          {step === 0 && <aside className="bear-guide" aria-hidden="true"><div className="bear-guide-bubble"><strong>Hi, I'm PolicyBear!</strong> Start here — I'll guide you step by step.</div><img src={bearGuide} width={643} height={787} alt="" /></aside>}
           <PolicyWizard onStepChange={changeStep} />
           {step === 0 && <p className="hero-tagline">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="tagline-glow">instant decisions</span> and <span className="tagline-glow">life-changing coverage</span></p>}
         </div>

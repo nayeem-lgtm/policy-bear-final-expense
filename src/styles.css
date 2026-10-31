@@ -1058,3 +1058,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-tagline .tagline-glow { white-space: normal; }
 }
 @media (prefers-reduced-motion: reduce) { .agent-dot::after { animation: none; } }
+
+/* PolicyBear guide beside the quote form */
+.bear-guide { position: absolute; left: calc(100% + 8px); bottom: 40px; width: 250px; pointer-events: none; z-index: 1; }
+.bear-guide img { width: 100%; height: auto; display: block; filter: drop-shadow(0 18px 24px color-mix(in oklab, var(--brand-deep) 28%, transparent)); transform-origin: bottom center; animation: bear-guide-in .7s cubic-bezier(.2,.8,.2,1) both, bear-guide-sway 5s ease-in-out .7s infinite; }
+.bear-guide-bubble { position: relative; margin: 0 0 12px -40px; padding: 12px 16px; background: var(--card); color: var(--foreground); border: 2px solid var(--primary); border-left: 6px solid var(--brand-action); border-radius: 16px; font-size: 14px; line-height: 1.35; box-shadow: 0 12px 28px -14px color-mix(in oklab, var(--brand-deep) 45%, transparent); animation: bear-guide-in .7s .25s both; }
+.bear-guide-bubble strong { display: block; color: var(--primary); font-size: 15px; }
+.bear-guide-bubble::after { content: ""; position: absolute; bottom: -9px; left: 70px; width: 16px; height: 16px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: rotate(45deg); }
+@keyframes bear-guide-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes bear-guide-sway { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-1.5deg) translateY(-3px); } }
+@media (max-width: 1180px) { .bear-guide { width: 190px; } .bear-guide-bubble { font-size: 12.5px; margin-left: -20px; } }
+@media (max-width: 1040px) { .bear-guide { position: relative; left: auto; bottom: auto; width: auto; display: flex; align-items: flex-end; justify-content: center; gap: 8px; margin: 0 auto -6px; max-width: 420px; z-index: 2; }
+  .bear-guide img { width: 120px; order: 2; } .bear-guide-bubble { margin: 0 0 40px; order: 1; flex: 1; } .bear-guide-bubble::after { left: auto; right: -9px; bottom: 22px; transform: rotate(-45deg); } }
+@media (prefers-reduced-motion: reduce) { .bear-guide img, .bear-guide-bubble { animation: none; } }
