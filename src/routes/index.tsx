@@ -40,7 +40,7 @@ function Index() {
             {step === 0 && <aside className="bear-guide" aria-hidden="true"><div className="bear-guide-bubble"><strong>Hi, I'm PolicyBear!</strong> Start here — I'll guide you step by step.</div><img src={bearGuide} width={643} height={787} alt="" /></aside>}
             <PolicyWizard onStepChange={changeStep} />
           </div>
-          {step === 0 && <p className="hero-tagline">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="tagline-glow">instant decisions</span> and <span className="tagline-glow">life-changing coverage</span></p>}
+          {step === 0 && <p className="hero-tagline">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="tagline-glow">instant decisions</span> and <span className="tagline-glow">life‑changing coverage</span></p>}
         </div>
       </section>
       {step === 0 && <>
