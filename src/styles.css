@@ -897,21 +897,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .chapter-progress { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin-bottom: 22px; counter-reset: chapter; }
 .chapter-progress span {
   counter-increment: chapter;
-  display: inline-flex; align-items: center; gap: 7px;
-  min-height: 36px; padding: 0 13px 0 8px;
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 30px; padding: 0 11px 0 6px;
   border: 0; border-bottom: 0;
   border-radius: 999px;
   background: var(--brand-soft-blue);
   color: color-mix(in oklab, var(--brand-deep) 62%, transparent);
-  font-size: 14px; font-weight: 600; white-space: nowrap;
+  font-size: 13px; font-weight: 600; white-space: nowrap;
   transition: background 200ms, color 200ms, box-shadow 200ms;
 }
 .chapter-progress span::before {
   content: counter(chapter);
   display: grid; place-items: center;
-  width: 22px; height: 22px; border-radius: 50%;
+  width: 19px; height: 19px; border-radius: 50%;
   background: var(--background);
-  font-size: 12px; font-weight: 700;
+  font-size: 11px; font-weight: 700;
 }
 .chapter-progress span.current {
   background: var(--primary); color: var(--primary-foreground);
@@ -923,8 +923,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   color: var(--success);
 }
 .chapter-progress span.complete::before { display: none; }
-.chapter-progress span.complete { padding-left: 16px; }
-.chapter-progress svg { display: inline; width: 15px; height: 15px; }
+.chapter-progress span.complete { padding-left: 13px; }
+.chapter-progress svg { display: inline; width: 13px; height: 13px; }
 
 /* Progress bar */
 .wizard .progress-track { height: 14px; margin: 6px 0 16px; }
@@ -999,7 +999,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-banner-copy p { font-size: 17px; }
   .quote-stage .wizard, .funnel-section .wizard { border-radius: 16px; padding: 24px 18px 28px; }
   .chapter-progress { gap: 6px; margin-bottom: 18px; }
-  .chapter-progress span { min-height: 34px; padding: 0 12px 0 7px; font-size: 14px; }
+  .chapter-progress span { min-height: 29px; padding: 0 10px 0 5px; font-size: 13px; }
   .chapter-progress span::before { width: 21px; height: 21px; font-size: 12px; }
   .chapter-progress span.complete { padding-left: 12px; }
   .wizard .progress-track { height: 12px; }
