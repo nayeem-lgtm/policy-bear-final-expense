@@ -5,7 +5,7 @@ import { Link } from '@tanstack/react-router'
 import { Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
-import bearMascot from '@/assets/bear-mascot.png'
+import bearMascot from '@/assets/bear-header-portrait.png'
 
 
 export function PolicyHeader() {
