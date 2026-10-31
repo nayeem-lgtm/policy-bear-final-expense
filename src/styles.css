@@ -759,7 +759,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .site-navigation a:hover, .site-navigation a[aria-current=page] { color: var(--primary); text-decoration: underline; text-underline-offset: 7px; }
 .navigation-toggle { display: none; }
 .pb-footer-inner { padding-bottom: 60px; }
-.policy-action.header-call { margin-left: 0; animation: call-breathe 2.8s ease-in-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 7px 22px 7px 7px; gap: 12px; }
+.policy-action.header-call { margin-left: 0; outline: 3px solid transparent; animation: call-breathe 2.8s ease-in-out infinite, call-pulse-ring 2.8s ease-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 7px 22px 7px 7px; gap: 12px; }
 .header-call .phone-circle { background: var(--primary); color: var(--primary-foreground); width: 40px; height: 40px; box-shadow: none; }
 .header-call .phone-circle::before { inset: -4px; border-color: color-mix(in oklab, var(--primary) 55%, transparent); animation: call-ripple 2.8s ease-out infinite; }
 .header-call .call-caption { color: var(--brand-deep); font-size: 12px; font-weight: 500; margin-bottom: 4px; }
