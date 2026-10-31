@@ -18,7 +18,7 @@ export const Route = createFileRoute('/contact')({
 
 function ContactPage() {
   return <div className="policy-page"><PolicyHeader />
-    <main className="contact-page">
+    <main id="main-content" className="contact-page">
       <Link to="/" className="legal-back">← Back to final expense coverage</Link>
       <span className="section-eyebrow">We’re here for your questions</span>
       <h1>Contact PolicyBear</h1>

@@ -1,13 +1,16 @@
 // ============= Full file contents =============
 
 import { Link } from '@tanstack/react-router'
-import { Mail, Clock, Phone } from 'lucide-react'
+import { Mail, Clock, Phone, Menu, X } from 'lucide-react'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
 
 
 export function PolicyHeader() {
-  return <header className="site-header"><div className="header-inner"><Link to="/" hash="step-zip" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Call now</span><strong>(844) 765-2327</strong></span></a></Button></div></header>
+  const [menuOpen, setMenuOpen] = useState(false)
+  const closeMenu = () => setMenuOpen(false)
+  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-zip" onClick={closeMenu} aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><nav id="site-navigation" className={`site-navigation ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation"><Link to="/" hash="step-zip" onClick={closeMenu}>Final expense</Link><Link to="/licensing" onClick={closeMenu}>Licensing</Link><Link to="/contact" onClick={closeMenu}>Contact us</Link></nav><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Talk with PolicyBear</span><strong>(844) 765-2327</strong></span></a></Button><Button variant="quiet" size="icon" className="navigation-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} aria-controls="site-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button></div></header>
 }
 
 
@@ -16,25 +19,27 @@ export function PolicyFooter() {
     <div className="pb-footer-grid">
       <div className="pb-footer-brand">
         <Link to="/" hash="step-zip" aria-label="PolicyBear home"><span className="pb-footer-logo" role="img" aria-label="PolicyBear" style={{ WebkitMaskImage: `url(${logo.url})`, maskImage: `url(${logo.url})` }} /></Link>
-        <p>Making final expense life insurance simple, affordable and accessible for every family.</p>
+        <p>Final expense coverage.<br />For funeral costs and final bills.</p>
+        <Link to="/licensing" className="pb-footer-license">Licensed life insurance agency</Link>
       </div>
-      <nav className="pb-footer-col" aria-label="Resources">
-        <h2>Resources</h2>
+      <nav className="pb-footer-col" aria-label="Final expense resources">
+        <h2>Final expense</h2>
+        <Link to="/" hash="step-zip">Get a quote</Link>
         <Link to="/disclaimers">Final expense disclosure</Link>
         <Link to="/licensing">Licensing</Link>
-        <Link to="/privacy-policy">Privacy policy</Link>
       </nav>
-      <nav className="pb-footer-col" aria-label="Quick links">
-        <h2>Quick links</h2>
-        <Link to="/">Get a quote</Link>
-        <Link to="/contact">Contact us</Link>
-        <Link to="/terms-conditions">Terms</Link>
+      <nav className="pb-footer-col" aria-label="Policies and legal">
+        <h2>Policies & legal</h2>
+        <Link to="/privacy-policy">Privacy policy</Link>
+        <Link to="/terms-conditions">Terms & conditions</Link>
+        <Link to="/disclaimer">Disclaimer</Link>
       </nav>
       <div className="pb-footer-col">
-        <h2>Contact</h2>
+        <h2>Talk with us</h2>
+        <Link to="/contact">Contact PolicyBear</Link>
         <a href="mailto:info@policybear.com"><Mail aria-hidden="true" />info@policybear.com</a>
-        <a href="tel:+18447652327"><Phone aria-hidden="true" />(844) POL-BEAR</a>
-        <span><Clock aria-hidden="true" />Mon–Fri: 8AM–8PM EST</span>
+        <a href="tel:+18447652327"><Phone aria-hidden="true" />(844) 765-2327</a>
+        <span><Clock aria-hidden="true" />Mon–Fri, 8am–8pm Eastern</span>
       </div>
       <div className="pb-footer-seals-wrap" aria-label="Accreditation and security">
         <ul className="pb-footer-seals">
@@ -45,11 +50,9 @@ export function PolicyFooter() {
       </div>
     </div>
     <div className="pb-footer-bottom">
-      <p>© {new Date().getFullYear()} PolicyBear. All rights reserved. Licensed life insurance agency. Final expense coverage.</p>
+      <p>© {new Date().getFullYear()} PolicyBear. All rights reserved.</p>
       <nav aria-label="Legal">
-        <Link to="/privacy-policy">Privacy policy</Link>
-        <Link to="/terms-conditions">Terms of service</Link>
-        <Link to="/disclaimer">Disclaimer</Link>
+        <Link to="/" hash="step-zip" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>Back to quote ↑</Link>
       </nav>
     </div>
     <p className="pb-footer-fine">PolicyBear is a licensed life insurance agency. We are not affiliated with or endorsed by the U.S. Government or any government agency. This website provides general information about final expense life insurance and is not intended as specific insurance advice. Prices shown are illustrations only—no application or payment is submitted.</p>
@@ -57,5 +60,5 @@ export function PolicyFooter() {
 }
 
 export function LegalPage({ title, intro, date, children }: { title: string; intro: string; date?: string; children: React.ReactNode }) {
-  return <div className="policy-page"><PolicyHeader /><main className="legal-page"><Link to="/" className="legal-back">← Back to final expense coverage</Link><span className="section-eyebrow">PolicyBear · Final expense</span><h1>{title}</h1>{date && <p className="legal-date">{date}</p>}<p className="legal-intro">{intro}</p><div className="legal-content">{children}</div></main><PolicyFooter /></div>
+  return <div className="policy-page"><PolicyHeader /><main id="main-content" className="legal-page"><Link to="/" hash="step-zip" className="legal-back">← Back to final expense coverage</Link><span className="section-eyebrow">PolicyBear · Final expense</span><h1>{title}</h1>{date && <p className="legal-date">{date}</p>}<p className="legal-intro">{intro}</p><div className="legal-content">{children}</div></main><PolicyFooter /></div>
 }
