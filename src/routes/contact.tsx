@@ -28,7 +28,7 @@ function ContactPage() {
           <span className="contact-symbol"><Phone aria-hidden="true" /></span>
           <h2 id="contact-call-title">Let’s talk</h2>
           <p>Call PolicyBear’s main line and ask about final expense coverage and availability.</p>
-          <a className="contact-number" href="tel:+18447652327">(844) 765-2327</a>
+          <a className="contact-number" href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327">(844) POL-BEAR</a>
           <Button asChild variant="action" size="touch"><a href="tel:+18447652327"><Phone size={20} /> Call PolicyBear</a></Button>
         </section>
         <section className="contact-details-section" aria-labelledby="contact-questions-title">
