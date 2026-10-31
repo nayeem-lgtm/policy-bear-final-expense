@@ -999,7 +999,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-banner-copy p { font-size: 17px; }
   .quote-stage .wizard, .funnel-section .wizard { border-radius: 16px; padding: 24px 18px 28px; }
   .chapter-progress { gap: 6px; margin-bottom: 18px; }
-  .chapter-progress span { min-height: 34px; padding: 0 12px 0 7px; font-size: 14px; }
+  .chapter-progress span { min-height: 29px; padding: 0 10px 0 5px; font-size: 13px; }
   .chapter-progress span::before { width: 21px; height: 21px; font-size: 12px; }
   .chapter-progress span.complete { padding-left: 12px; }
   .wizard .progress-track { height: 12px; }
