@@ -1,6 +1,6 @@
 # PolicyBear final expense
 
-- [ ] Replace the family photo with a relatable older couple sharing an everyday moment with their granddaughter; verify the live page.
+- [x] Replace the family photo with a relatable older couple sharing an everyday moment with their granddaughter; verify the live page and keep faces visible beside the questions.
 
 - [x] Stack footer seals at the far right and refine the amber call button; verify alignment on desktop and phones.
 
