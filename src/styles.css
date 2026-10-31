@@ -1012,3 +1012,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .bear-circle::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid color-mix(in oklab, var(--primary) 55%, transparent); opacity: 0; animation: call-ripple 2.8s ease-out infinite; pointer-events: none; }
 .bear-circle img { position: absolute; left: 48%; top: -3%; width: 215%; max-width: none; height: auto; transform: translateX(-50%); }
 @media (max-width: 760px) { .bear-circle { width: 42px; height: 42px; } }
+
+/* Agents available indicator */
+.agents-available { display: inline-flex; align-items: center; gap: 5px; margin-top: 3px; font-size: 10.5px; font-weight: 600; letter-spacing: .02em; color: color-mix(in oklab, var(--brand-deep) 78%, transparent); }
+.agent-dot { position: relative; width: 7px; height: 7px; border-radius: 50%; background: oklch(0.62 0.17 155); flex-shrink: 0; }
+.agent-dot::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid oklch(0.62 0.17 155); opacity: 0; animation: agent-beep 1.6s ease-out infinite; }
+@keyframes agent-beep {
+  0% { transform: scale(.5); opacity: .9; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+@media (max-width: 760px) { .agents-available { font-size: 9.5px; margin-top: 2px; } .agent-dot { width: 6px; height: 6px; } }
