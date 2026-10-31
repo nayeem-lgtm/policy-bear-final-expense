@@ -750,6 +750,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .pb-footer-bottom nav { gap: 4px 20px; }
   .pb-footer-fine { font-size: 16px; padding-bottom: env(safe-area-inset-bottom); }
   .pb-footer-brand p { font-size: 18px; }
+  .how-grid li { padding: 24px 20px; border-radius: 18px; }
+  .how-grid p { font-size: 17px; }
 }
 
 /* Restrained PolicyBear presentation and shared navigation. */
