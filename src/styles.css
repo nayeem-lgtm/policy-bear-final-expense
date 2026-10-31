@@ -1041,11 +1041,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 640px) {
   .header-inner { padding-inline: 12px; }
   .brand-link img { width: 105px; }
-  .header-call strong { font-size: 25px; }
+  .header-call strong { font-size: 22px; }
   .header-call .call-caption { font-size: 12px; }
 }
 @media (max-width: 350px) {
   .brand-link img { width: 85px; }
-  .header-call strong { font-size: 22px; }
+  .header-call strong { font-size: 19px; }
 }
 @media (prefers-reduced-motion: reduce) { .agent-dot::after { animation: none; } }
