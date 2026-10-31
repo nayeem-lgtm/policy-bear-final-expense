@@ -17,11 +17,11 @@ describe('Quote sequence', () => {
     expect(quoteSteps.at(-1)).toBe('opt-in')
     expect(journeySteps.slice(journeySteps.indexOf('coverage'), journeySteps.indexOf('price') + 1)).toEqual(['coverage', 'opt-in', 'loading', 'price'])
   })
-  it('keeps application chapter boundaries correct after reordering', () => {
+  it('maps the four owner-named chapters to the right screens', () => {
     expect(chapterFor('price')).toBe(0)
-    expect(chapterFor('personal')).toBe(1)
-    expect(chapterFor('health-intro')).toBe(2)
-    expect(chapterFor('payment')).toBe(3)
-    expect(chapterFor('signature')).toBe(4)
+    expect(chapterFor('personal')).toBe(0)
+    expect(chapterFor('health-intro')).toBe(1)
+    expect(chapterFor('payment')).toBe(2)
+    expect(chapterFor('signature')).toBe(3)
   })
 })

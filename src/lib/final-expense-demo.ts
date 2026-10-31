@@ -79,11 +79,10 @@ export function determineOutcome(health: string[]): Outcome {
 
 export function chapterFor(step: JourneyStep) {
   const index = journeySteps.indexOf(step)
-  if (index < journeySteps.indexOf('personal')) return 0
-  if (index < journeySteps.indexOf('health-intro')) return 1
-  if (index < journeySteps.indexOf('gi-offer')) return 2
-  if (index < journeySteps.indexOf('review')) return 3
-  return 4
+  if (index < journeySteps.indexOf('health-intro')) return 0
+  if (index < journeySteps.indexOf('gi-offer')) return 1
+  if (index < journeySteps.indexOf('review')) return 2
+  return 3
 }
 
 export const safeSavedKeys = [
