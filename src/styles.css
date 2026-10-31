@@ -463,7 +463,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .landing-hero { min-height: 0; background: var(--brand-light); } .hero-photo { height: 390px; width: 100%; object-position: center; opacity: .25; } .hero-scrim { height: 395px; background: linear-gradient(0deg, var(--brand-light) 0%, color-mix(in oklab, var(--brand-light) 65%, transparent) 50%, color-mix(in oklab, var(--brand-light) 80%, transparent) 100%); }
   .hero-inner { display: flex; flex-direction: column; align-items: stretch; gap: 30px; padding: 36px 20px; max-width: 600px; } .hero-copy { padding: 0; } .eyebrow { font-size: 16px; margin-bottom: 18px; } .hero-copy h1 { font-size: 38px; line-height: 1.17; margin-bottom: 18px; } .hero-description { font-size: 18px; margin-bottom: 22px; } .desktop-break { display: none; } .hero-benefits { font-size: 18px; gap: 10px; } .hero-family-note { display: none; } .photo-caption { display: none; }
   .wizard { padding: 24px; } .wizard-content h2 { font-size: 28px; } .form-trust { gap: 10px; flex-wrap: nowrap; justify-content: space-between; } .assurance-band > div { padding: 25px 20px; flex-wrap: wrap; justify-content: center; gap: 16px 24px; } .assurance-band span { font-size: 16px; } .assurance-band svg { width: 21px; height: 21px; }
-  .how-section { padding: 48px 24px; } .section-heading h2, .faq-heading h2 { font-size: 28px; } .how-grid { grid-template-columns: 1fr; gap: 34px; margin-top: 36px; } .how-icon { margin-bottom: 16px; } .how-grid p { font-size: 18px; max-width: 370px; } .faq-inner { grid-template-columns: 1fr; gap: 24px; padding: 44px 24px; } .faq-heading h2 br { display: none; } .closing-section h2 { font-size: 26px; } .site-footer { padding: 28px 24px; } .footer-top { flex-direction: column; align-items: flex-start; gap: 12px; } .footer-top nav { flex-wrap: wrap; gap: 8px 20px; } .funnel-section { padding-top: 28px; min-height: 640px; } .date-fields { gap: 8px; } .wizard-standalone { padding: 24px; }
+  .faq-heading h2 { font-size: 28px; } .faq-inner { grid-template-columns: 1fr; gap: 24px; padding: 44px 24px; } .faq-heading h2 br { display: none; } .closing-section h2 { font-size: 26px; } .site-footer { padding: 28px 24px; } .footer-top { flex-direction: column; align-items: flex-start; gap: 12px; } .footer-top nav { flex-wrap: wrap; gap: 8px 20px; } .funnel-section { padding-top: 28px; min-height: 640px; } .date-fields { gap: 8px; } .wizard-standalone { padding: 24px; }
 }
 @media (max-width: 410px) { .brand-link img { width: 145px; } .header-inner { padding: 0 16px; } .policy-action.header-call { padding-right: 13px; } .phone-circle { display: none; } .hero-copy h1 { font-size: 34px; } .hero-inner { padding: 30px 20px; } .wizard { padding: 22px 18px; } .form-trust { flex-wrap: wrap; justify-content: center; gap: 10px; } .wizard-progress { font-size: 16px; gap: 6px; } .answer-grid { gap: 16px 10px; } .answer-grid .answer-card { padding: 22px 10px; } .answer-grid .radio-circle { display: none; } .answer-card[data-state=checked] .radio-circle { display: grid; } .date-fields { grid-template-columns: 1.3fr .75fr 1fr; gap: 7px; } .field-label select { padding: 0 5px; font-size: 16px; } }
 @media (max-width: 560px) {
@@ -752,8 +752,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .pb-footer-bottom nav { gap: 4px 20px; }
   .pb-footer-fine { font-size: 16px; padding-bottom: env(safe-area-inset-bottom); }
   .pb-footer-brand p { font-size: 18px; }
-  .how-grid li { padding: 24px 20px; border-radius: 18px; }
-  .how-grid p { font-size: 17px; }
 }
 
 /* Restrained PolicyBear presentation and shared navigation. */
@@ -779,14 +777,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .answer-card[data-state=checked] { animation: none; }
 .loading-symbol, .decision-symbol { animation: none; }
 .brand-light-surface { background: var(--brand-light); }
-.how-icon { background: transparent; border-radius: 0; width: 48px; height: 48px; }
-.how-icon > span { width: 24px; height: 24px; right: -8px; top: -4px; }
-.section-heading { text-align: left; }
-.how-grid { text-align: left; gap: 24px; }
-.how-grid li { background: var(--card); border: 1px solid color-mix(in oklab, var(--brand-soft-blue) 78%, transparent); border-radius: 20px; padding: 30px 28px; box-shadow: 0 10px 28px -18px color-mix(in oklab, var(--brand-deep) 18%, transparent); transition: transform 180ms ease, box-shadow 220ms ease; }
-.how-grid li:hover { transform: translateY(-3px); box-shadow: 0 18px 38px -20px color-mix(in oklab, var(--brand-deep) 28%, transparent); }
-.how-icon { margin: 0 0 20px; }
-.how-grid p { margin: 0; max-width: 350px; font-size: 18px; line-height: 1.65; }
+.section-eyebrow { color: var(--primary); font-size: 16px; font-weight: 600; display: block; margin-bottom: 12px; }
+.faq-heading h2 { font-size: 34px; color: var(--brand-deep); font-weight: 700; line-height: 1.3; }
 .closing-section { flex-direction: row; justify-content: space-between; gap: 32px; text-align: left; max-width: 1248px; margin: auto; padding: 48px 40px; }
 .closing-section h2 { font-size: 26px; max-width: 650px; margin: 0; }
 .closing-section .policy-action { min-width: 240px; flex-shrink: 0; }
@@ -823,7 +815,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .navigation-toggle { min-width: 40px; padding: 0; }
   .closing-section { flex-direction: column; align-items: flex-start; padding: 36px 24px; gap: 24px; }
   .closing-section .policy-action { min-width: 0; }
-  .how-grid { gap: 30px; }
   .hero-photo { opacity: .5; }
 }
 @media (max-width: 350px) {
