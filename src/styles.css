@@ -728,7 +728,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .site-navigation a { display: inline-flex; align-items: center; min-height: 48px; color: var(--brand-deep); font-size: 16px; font-weight: 500; text-decoration: none; }
 .site-navigation a:hover, .site-navigation a[aria-current=page] { color: var(--primary); text-decoration: underline; text-underline-offset: 7px; }
 .navigation-toggle { display: none; }
-.pb-footer-inner { padding-bottom: 24px; }
+.pb-footer-inner { padding-bottom: 60px; }
 .policy-action.header-call { margin-left: 0; animation: none; border-radius: 999px; background: linear-gradient(145deg, color-mix(in oklab, var(--brand-action) 82%, var(--background)), var(--brand-action)); box-shadow: 0 3px 0 color-mix(in oklab, var(--brand-action-hover) 70%, transparent); padding: 6px 20px 6px 6px; }
 .policy-action.header-call::before { animation-duration: 12s; }
 .phone-circle svg { animation-duration: 12s; }
