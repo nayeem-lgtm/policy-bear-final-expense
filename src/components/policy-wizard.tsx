@@ -128,9 +128,14 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   useEffect(() => {
     if (!ready) return
     heading.current?.focus({ preventScroll: true })
-    if (screen !== 'zip' && window.matchMedia('(max-width: 800px)').matches) {
-      document.getElementById('get-covered')?.scrollIntoView({ block: 'start', behavior: 'instant' })
-    }
+    if (screen === 'zip' || !window.matchMedia('(max-width: 800px)').matches) return
+    let second = 0
+    const first = requestAnimationFrame(() => {
+      second = requestAnimationFrame(() => {
+        document.getElementById('get-covered')?.scrollIntoView({ block: 'start', behavior: 'instant' })
+      })
+    })
+    return () => { cancelAnimationFrame(first); if (second) cancelAnimationFrame(second) }
   }, [ready, screen])
 
   useEffect(() => {
@@ -222,7 +227,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   return <section className={`wizard ${screen !== 'zip' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
     {resume && <div className="resume-banner"><p>Welcome back, {answers.firstName || 'friend'}! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => setResume(false)}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(blank); localStorage.removeItem('policybear-demo'); go('zip') }}>Start over</Button></div></div>}
     <div className="chapter-progress" aria-label="Application progress">{labels.map((label, index) => <span className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} key={label}>{index < chapter && <Check />}{label}</span>)}</div>
-    {quoteIndex >= 0 && <><div className="wizard-progress"><span>Step {quoteIndex + 1} of {quoteSteps.length}</span></div><div className="progress-track"><div className="progress-fill" style={{ width: `${((quoteIndex + 1) / quoteSteps.length) * 100}%` }} /></div></>}
+    {quoteIndex >= 0 && <><div className="wizard-progress"><span>Step {quoteIndex + 1} of {quoteSteps.length}</span><span className="wizard-progress-pct">{Math.round(((quoteIndex + 1) / quoteSteps.length) * 100)}% complete</span></div><div className="progress-track"><div className="progress-fill" style={{ width: `${((quoteIndex + 1) / quoteSteps.length) * 100}%` }} /></div></>}
     {screenIndex >= journeySteps.indexOf('personal') && screenIndex <= journeySteps.indexOf('issued') && <div className="mini-summary">Coverage ${coverage.toLocaleString()} · ${monthly.toFixed(2)}/mo <a href={`tel:${phone}`}>Need help? {phone}</a></div>}
     {renderScreen()}
     <div className="demo-wrap"><Button variant="quiet" className="demo-pill" aria-expanded={demo} onClick={() => setDemo(!demo)}>Demo</Button>{demo && <div className="demo-toolbar"><strong>Jump to a screen</strong><select aria-label="Demo screen" value={screen} onChange={(event) => go(event.target.value as JourneyStep)}>{journeySteps.map((item) => <option value={item} key={item}>{item.replaceAll('-', ' ')}</option>)}</select><strong>Force decision</strong><div>{(['approved', 'graded', 'declined'] as Outcome[]).map((item) => <Button variant={forced === item ? 'action' : 'quiet'} key={item} onClick={() => setForced(item)}>{item}</Button>)}</div></div>}</div>
