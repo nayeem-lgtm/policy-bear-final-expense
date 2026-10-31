@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { chapterFor, journeySteps, quoteSteps } from '@/lib/final-expense-demo'
+import { COVERAGE_MAX, COVERAGE_MIN, chapterFor, journeySteps, quoteSteps } from '@/lib/final-expense-demo'
+
+describe('Coverage range', () => {
+  it('runs from $5,000 to $55,000 as the owner offers it', () => {
+    expect(COVERAGE_MIN).toBe(5000)
+    expect(COVERAGE_MAX).toBe(55000)
+  })
+})
 
 describe('Quote sequence', () => {
   it('collects contact details immediately after the second step', () => {
