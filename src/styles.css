@@ -692,7 +692,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pb-footer-inner { max-width: 1328px; margin: auto; padding: 28px 40px 18px; }
 .pb-footer-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr) 160px; gap: 16px 24px; align-items: start; }
 .pb-footer-grid > * { min-width: 0; }
-.pb-footer-logo { display: block; width: 200px; height: 40px; background: var(--brand-deep); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: left center; mask-position: left center; }
+.pb-footer-logo { display: block; width: 205px; height: auto; }
 .pb-footer-brand p { margin-top: 10px; font-size: 16px; line-height: 1.55; color: var(--footer-foreground); max-width: 270px; }
 .pb-footer-social { list-style: none; margin: 14px 0 0; padding: 0; display: flex; gap: 10px; flex-wrap: wrap; }
 .pb-footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; color: #fff; border: 0; background: var(--brand-deep); transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease; }
@@ -712,7 +712,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pb-footer a:focus-visible { outline-color: var(--brand-action); }
 .pb-footer-seals-wrap { grid-column: 5; padding-top: 4px; justify-self: end; }
 .pb-footer-seals { list-style: none; display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
-.pb-footer-seals .seal { width: 160px; height: 52px; min-width: 0; justify-content: center; transform-origin: right center; }
+.pb-footer-seals .seal { width: 160px; height: 52px; min-width: 0; justify-content: center; transform-origin: right center; box-shadow: 0 3px 10px oklch(0.211 0.077 279 / 16%), 0 0 0 1px oklch(0.211 0.077 279 / 10%); }
 .pb-footer-seals .seal-bbb-text { padding-inline: 9px; font-size: 12px; }
 .pb-footer-seals .seal-hitrust { padding-inline: 9px; gap: 6px; }
 .pb-footer-seals .seal-hitrust-text b { font-size: 21px; }
