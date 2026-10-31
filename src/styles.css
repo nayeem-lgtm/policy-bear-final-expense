@@ -717,8 +717,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .pb-footer-inner { padding: 24px 20px 16px; }
   .pb-footer-grid { grid-template-columns: minmax(0, 1fr) 140px; gap: 12px 16px; }
   .pb-footer-grid > .pb-footer-col { grid-column: 1; }
+  .pb-footer-grid > .pb-footer-col:nth-child(3) { grid-column: 1 / -1; }
   .pb-footer-grid > .pb-footer-col:nth-child(4) { grid-column: 1 / -1; }
-  .pb-footer-seals-wrap { grid-column: 2; grid-row: 2 / 4; }
+  .pb-footer-seals-wrap { grid-column: 2; grid-row: 2; }
   .pb-footer-seals { align-items: flex-end; gap: 12px; }
   .pb-footer-bottom { flex-direction: row; align-items: center; }
   .pb-footer-bottom nav { gap: 4px 20px; }
