@@ -254,6 +254,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .coverage-strip-item + .coverage-strip-item::before { content: ""; position: absolute; inset-inline-start: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 64px; background: color-mix(in oklab, var(--brand-deep) 13%, var(--background)); }
 .coverage-strip-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 999px; color: var(--primary); background: color-mix(in oklab, var(--primary) 9%, var(--card)); }
 .coverage-strip-text { margin: 0; text-align: center; font-size: 15.5px; font-weight: 700; line-height: 1.35; letter-spacing: -0.005em; color: var(--brand-deep); }
+.coverage-strip-text .ln { display: block; }
 .coverage-strip-text .hl { color: var(--primary); }
 .coverage-strip-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @keyframes coverage-strip-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
@@ -1066,6 +1067,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-tagline .tagline-glow { white-space: normal; }
   .coverage-strip { flex-direction: column; max-width: 400px; margin-top: 26px; }
   .coverage-strip-item { flex-direction: row; justify-content: center; gap: 11px; padding: 13px 6px; }
+  .coverage-strip-text .ln { display: inline; }
   .coverage-strip-item + .coverage-strip-item::before { top: 0; transform: none; width: 100%; height: 1px; }
   .coverage-strip-icon { width: 34px; height: 34px; }
   .coverage-strip-text { font-size: 14.5px; }
