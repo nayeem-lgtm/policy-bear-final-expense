@@ -14,7 +14,7 @@ export function PolicyHeader() {
     const id = setInterval(() => setAgents(2 + Math.floor(Math.random() * 7)), 4500)
     return () => clearInterval(id)
   }, [])
-  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-zip" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><span className="header-call-wrap"><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="header-call-copy"><span className="call-caption">Talk with PolicyBear</span><strong>(844) 765-2327</strong><span className="agents-available"><span className="agent-dot" />{agents} agents available</span></span><span className="header-call-bear"><img src={bearMascot} width={832} height={738} alt="" /></span></a></Button></span></div></header>
+  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-zip" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><span className="header-call-wrap"><Button asChild variant="action" className="header-call"><a href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><span className="header-call-copy"><span className="call-caption">Talk with PolicyBear</span><strong>(844) POL-BEAR</strong><span className="agents-available"><span className="agent-dot" />{agents} agents available</span></span><span className="header-call-bear"><img src={bearMascot} width={832} height={738} alt="" /></span></a></Button></span></div></header>
 }
 
 
@@ -47,7 +47,7 @@ export function PolicyFooter() {
       <div className="pb-footer-col">
         <h2>Talk with us</h2>
         <a href="mailto:info@policybear.com"><Mail aria-hidden="true" />info@policybear.com</a>
-        <a href="tel:+18447652327"><Phone aria-hidden="true" />(844) 765-2327</a>
+        <a href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><Phone aria-hidden="true" />(844) POL-BEAR</a>
       </div>
       <div className="pb-footer-seals-wrap" aria-label="Accreditation and security">
         <ul className="pb-footer-seals">
