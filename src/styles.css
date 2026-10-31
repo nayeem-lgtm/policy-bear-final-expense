@@ -873,24 +873,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .hero-banner-copy p { font-size: 21px; }
 
 /* Chapter stepper pills */
-.chapter-progress { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 22px; counter-reset: chapter; }
+.chapter-progress { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; margin-bottom: 22px; counter-reset: chapter; }
 .chapter-progress span {
   counter-increment: chapter;
-  display: inline-flex; align-items: center; gap: 8px;
-  min-height: 38px; padding: 0 16px 0 9px;
+  display: inline-flex; align-items: center; gap: 7px;
+  min-height: 36px; padding: 0 13px 0 8px;
   border: 0; border-bottom: 0;
   border-radius: 999px;
   background: var(--brand-soft-blue);
   color: color-mix(in oklab, var(--brand-deep) 62%, transparent);
-  font-size: 15px; font-weight: 600; white-space: nowrap;
+  font-size: 14px; font-weight: 600; white-space: nowrap;
   transition: background 200ms, color 200ms, box-shadow 200ms;
 }
 .chapter-progress span::before {
   content: counter(chapter);
   display: grid; place-items: center;
-  width: 23px; height: 23px; border-radius: 50%;
+  width: 22px; height: 22px; border-radius: 50%;
   background: var(--background);
-  font-size: 13px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
 }
 .chapter-progress span.current {
   background: var(--primary); color: var(--primary-foreground);
