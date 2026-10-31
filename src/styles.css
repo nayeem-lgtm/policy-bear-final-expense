@@ -440,13 +440,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes step-enter { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes choice { 50% { transform: scale(.98); } }
 @keyframes call-breathe {
-  0%, 100% { transform: scale(1); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent), 0 0 0 0 color-mix(in oklab, var(--brand-action) 38%, transparent); }
-  18% { transform: scale(1.025); box-shadow: 0 2px 0 var(--brand-action-hover), 0 8px 20px color-mix(in oklab, var(--brand-action) 32%, transparent), 0 0 0 5px color-mix(in oklab, var(--brand-action) 24%, transparent); }
-  48% { transform: scale(1); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent), 0 0 0 12px color-mix(in oklab, var(--brand-action) 0%, transparent); }
+  0%, 100% { transform: scale(1); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent), 0 0 0 0 color-mix(in oklab, var(--brand-action) 55%, transparent); }
+  18% { transform: scale(1.035); box-shadow: 0 2px 0 var(--brand-action-hover), 0 8px 20px color-mix(in oklab, var(--brand-action) 32%, transparent), 0 0 0 6px color-mix(in oklab, var(--brand-action) 42%, transparent); }
+  48% { transform: scale(1); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent), 0 0 0 16px color-mix(in oklab, var(--brand-action) 0%, transparent); }
   49%, 80% { transform: scale(1); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent), 0 0 0 0 color-mix(in oklab, var(--brand-action) 0%, transparent); }
 }
 @keyframes call-sheen { 0%, 54% { transform: translateX(0) skewX(-16deg); } 86%, 100% { transform: translateX(560%) skewX(-16deg); } }
 @keyframes call-ripple { 0% { transform: scale(.42); opacity: 0; } 14% { opacity: .85; } 62%, 100% { transform: scale(1.04); opacity: 0; } }
+@keyframes call-pulse-ring {
+  0% { outline-color: color-mix(in oklab, var(--brand-action) 80%, transparent); outline-offset: 3px; }
+  62% { outline-color: color-mix(in oklab, var(--brand-action) 0%, transparent); outline-offset: 15px; }
+  100% { outline-color: color-mix(in oklab, var(--brand-action) 0%, transparent); outline-offset: 3px; }
+}
 @keyframes phone-ring { 0%, 56%, 100% { transform: rotate(0deg); } 60% { transform: rotate(-17deg); } 65% { transform: rotate(14deg); } 70% { transform: rotate(-10deg); } 75% { transform: rotate(7deg); } 80% { transform: rotate(-3deg); } 85% { transform: rotate(0deg); } }
 @media (min-width: 1500px) { .landing-hero { min-height: 735px; } .hero-inner { padding-top: 80px; } }
 @media (max-width: 1100px) { .hero-inner { gap: 30px; grid-template-columns: minmax(0, 1fr) 390px; padding: 52px 28px 68px; } .hero-copy h1 { font-size: 42px; } .hero-description { font-size: 18px; } .hero-benefits { font-size: 16px; } .header-inner { padding: 0 28px; } .brand-link img { width: 205px; } .wizard { padding: 24px; } .form-trust { font-size: 16px; flex-wrap: wrap; justify-content: center; gap: 12px; } .hero-family-note { max-width: 270px; } }
