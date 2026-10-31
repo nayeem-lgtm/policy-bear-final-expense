@@ -5,7 +5,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
-import { calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
+import { COVERAGE_MAX, COVERAGE_MIN, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
 type Answers = {
   zip: string; city: string; state: string; who: string; month: string; day: string; year: string
