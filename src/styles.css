@@ -271,7 +271,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .footer-top a { min-height: 44px; display: inline-flex; align-items: center; }
 .site-footer > p { font-size: 16px; color: var(--muted-foreground); margin-top: 10px; line-height: 1.75; }
 .funnel-section { background: var(--brand-light); min-height: 690px; padding: 48px 20px 64px; }
-.funnel-inner { width: 100%; max-width: 560px; margin: auto; }
+.funnel-inner { width: 100%; max-width: 640px; margin: auto; }
 .wizard-standalone { padding: 30px 32px; }
 .back-button { margin: -12px 0 12px -8px; }
 .answer-list { display: grid; gap: 12px; margin: 24px 0 12px; }
