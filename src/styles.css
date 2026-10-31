@@ -434,7 +434,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes success-pop { from { opacity: 0; transform: scale(.7); } }
 @keyframes step-enter { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes choice { 50% { transform: scale(.98); } }
-@keyframes call-breathe { 0%, 100% { box-shadow: 0 8px 22px -9px color-mix(in oklab, var(--brand-action-hover) 55%, transparent), 0 0 0 0 color-mix(in oklab, var(--brand-action) 30%, transparent); } 55% { box-shadow: 0 10px 26px -9px color-mix(in oklab, var(--brand-action-hover) 62%, transparent), 0 0 20px 4px color-mix(in oklab, var(--brand-action) 34%, transparent); } }
+@keyframes call-breathe { 0%, 100% { box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent), 0 0 0 0 color-mix(in oklab, var(--brand-action) 28%, transparent); transform: scale(1); } 55% { box-shadow: 0 2px 0 var(--brand-action-hover), 0 8px 18px color-mix(in oklab, var(--brand-action) 26%, transparent), 0 0 22px 5px color-mix(in oklab, var(--brand-action) 36%, transparent); transform: scale(1.035); } }
 @keyframes call-sheen { 0%, 54% { transform: translateX(0) skewX(-16deg); } 86%, 100% { transform: translateX(560%) skewX(-16deg); } }
 @keyframes call-ripple { 0% { transform: scale(.42); opacity: 0; } 14% { opacity: .85; } 62%, 100% { transform: scale(1.04); opacity: 0; } }
 @keyframes phone-ring { 0%, 56%, 100% { transform: rotate(0deg); } 60% { transform: rotate(-17deg); } 65% { transform: rotate(14deg); } 70% { transform: rotate(-10deg); } 75% { transform: rotate(7deg); } 80% { transform: rotate(-3deg); } 85% { transform: rotate(0deg); } }
@@ -739,14 +739,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .site-navigation a:hover, .site-navigation a[aria-current=page] { color: var(--primary); text-decoration: underline; text-underline-offset: 7px; }
 .navigation-toggle { display: none; }
 .pb-footer-inner { padding-bottom: 60px; }
-.policy-action.header-call { margin-left: 0; animation: none; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 7px 22px 7px 7px; gap: 12px; }
+.policy-action.header-call { margin-left: 0; animation: call-breathe 2.8s ease-in-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 7px 22px 7px 7px; gap: 12px; }
 .header-call .phone-circle { background: var(--primary); color: var(--primary-foreground); width: 40px; height: 40px; box-shadow: none; }
+.header-call .phone-circle::before { border-color: color-mix(in oklab, var(--primary) 55%, transparent); animation: call-ripple 2.8s ease-out infinite; }
 .header-call .call-caption { color: var(--brand-deep); font-size: 12px; font-weight: 500; margin-bottom: 4px; }
 .header-call strong { line-height: 1.2; }
-.policy-action.header-call::before { animation-duration: 12s; }
-.phone-circle svg { animation-duration: 12s; }
-.phone-circle::before { animation: none; }
-.policy-action.header-call:hover { box-shadow: 0 4px 0 color-mix(in oklab, var(--brand-action-hover) 70%, transparent); transform: translateY(-1px); }
+.policy-action.header-call::before { animation: call-sheen 4.8s ease-in-out infinite; }
+.phone-circle svg { animation: phone-ring 2.8s ease-in-out infinite; }
+.policy-action.header-call:hover { animation: none; box-shadow: 0 4px 0 color-mix(in oklab, var(--brand-action-hover) 70%, transparent), 0 0 0 5px color-mix(in oklab, var(--brand-action) 22%, transparent), 0 12px 26px -10px color-mix(in oklab, var(--brand-action-hover) 65%, transparent); transform: translateY(-2px); }
+.policy-action.header-call:hover .phone-circle svg { animation-duration: .9s; }
 .wizard { border-radius: 8px; }
 .wizard-content { animation: none; }
 .answer-card, .text-field, .secure-field, .field-label select, .zip-field, .weight-field, .policy-action { border-radius: 8px; }
