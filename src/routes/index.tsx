@@ -41,6 +41,7 @@ function Index() {
             <PolicyWizard onStepChange={changeStep} />
           </div>
           {step === 0 && <p className="hero-tagline">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="tagline-glow">instant decisions</span> and <span className="tagline-glow">life‑changing coverage</span></p>}
+          {step === 0 && <div className="coverage-note"><p className="coverage-note-label">Immediate full coverage</p><p className="coverage-note-ages"><span className="coverage-note-word">Ages</span><span className="coverage-note-figure">50</span><span className="coverage-note-rule" aria-hidden="true" /><span className="coverage-note-sr">to</span><span className="coverage-note-figure">85</span></p></div>}
         </div>
       </section>
       {step === 0 && <>
