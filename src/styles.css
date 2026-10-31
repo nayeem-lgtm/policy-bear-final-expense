@@ -459,6 +459,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   62% { outline-color: color-mix(in oklab, var(--brand-action) 0%, transparent); outline-offset: 15px; }
   100% { outline-color: color-mix(in oklab, var(--brand-action) 0%, transparent); outline-offset: 3px; }
 }
+@keyframes heartbeat { 0%, 42%, 100% { transform: scale(1); opacity: .85; } 10% { transform: scale(1.28); opacity: 1; } 20% { transform: scale(1); } 30% { transform: scale(1.18); opacity: 1; } }
+@keyframes spark-blink { 0%, 100% { opacity: .25; } 12% { opacity: 1; } 32% { opacity: .25; } }
 @keyframes phone-ring { 0%, 56%, 100% { transform: rotate(0deg); } 60% { transform: rotate(-17deg); } 65% { transform: rotate(14deg); } 70% { transform: rotate(-10deg); } 75% { transform: rotate(7deg); } 80% { transform: rotate(-3deg); } 85% { transform: rotate(0deg); } }
 @media (min-width: 1500px) { .landing-hero { min-height: 735px; } .hero-inner { padding-top: 80px; } }
 @media (max-width: 1100px) { .hero-inner { gap: 30px; grid-template-columns: minmax(0, 1fr) 390px; padding: 52px 28px 68px; } .hero-copy h1 { font-size: 42px; } .hero-description { font-size: 18px; } .hero-benefits { font-size: 16px; } .header-inner { padding: 0 28px; } .brand-link img { width: 205px; } .wizard { padding: 24px; } .form-trust { font-size: 16px; flex-wrap: wrap; justify-content: center; gap: 12px; } .hero-family-note { max-width: 270px; } }
@@ -766,7 +768,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .site-navigation a:hover, .site-navigation a[aria-current=page] { color: var(--primary); text-decoration: underline; text-underline-offset: 7px; }
 .navigation-toggle { display: none; }
 .pb-footer-inner { padding-bottom: 60px; }
-.policy-action.header-call { margin-left: 0; outline: 3px solid transparent; animation: call-breathe 2.8s ease-in-out infinite, call-pulse-ring 2.8s ease-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 7px 22px 7px 7px; gap: 12px; }
+.header-call-wrap { margin-left: 0; }
+.policy-action.header-call { outline: 3px solid transparent; animation: call-breathe 2.8s ease-in-out infinite, call-pulse-ring 2.8s ease-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 7px 18px 7px 7px; gap: 12px; }
 .header-call .phone-circle { background: var(--primary); color: var(--primary-foreground); width: 40px; height: 40px; box-shadow: none; }
 .header-call .phone-circle::before { inset: -4px; border-color: color-mix(in oklab, var(--primary) 55%, transparent); animation: call-ripple 2.8s ease-out infinite; }
 .header-call .call-caption { color: var(--brand-deep); font-size: 12px; font-weight: 500; margin-bottom: 4px; }
