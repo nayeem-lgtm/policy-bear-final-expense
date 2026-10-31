@@ -859,7 +859,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .hero-banner-copy h1 span { color: var(--brand-action); }
 .hero-banner-copy p { font-size: 20px; line-height: 1.5; opacity: .95; }
 .quote-stage { background: linear-gradient(180deg, var(--brand-light), var(--background) 70%); padding: 0 20px 56px; }
-.quote-stage-inner { max-width: 640px; margin: -48px auto 0; position: relative; }
+.quote-stage-inner { max-width: 640px; margin: -96px auto 0; position: relative; }
 .quote-stage .wizard, .funnel-section .wizard { border-radius: 16px; padding: 30px 40px 32px; box-shadow: 0 24px 50px -24px color-mix(in oklab, var(--brand-deep) 40%, transparent); }
 .wizard .progress-track { height: 12px; border-radius: 999px; margin: 10px 0 30px; box-shadow: inset 0 1px 2px color-mix(in oklab, var(--brand-deep) 15%, transparent); }
 .wizard .progress-fill { border-radius: 999px; background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary) 70%, var(--brand-action))); transition: width 450ms cubic-bezier(.3,.8,.3,1); }
