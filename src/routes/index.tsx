@@ -32,7 +32,7 @@ function Index() {
   return <div className="policy-page">
     <PolicyHeader />
     <main id="main-content">
-      {step === 0 && <section className="hero-banner"><img className="hero-photo" src={family} width={1536} height={1024} alt="An older couple sharing a quiet moment at home as their granddaughter shows them her drawing" fetchPriority="high" /><div className="hero-scrim" /><div className="hero-banner-copy"><h1>Protect your family from <span>final expenses.</span></h1><p>Coverage from $5,000 to $40,000 for funeral costs, cremation and final bills.</p></div></section>}
+      {step === 0 && <section className="hero-banner"><img className="hero-photo" src={family} width={1536} height={1024} alt="An older couple sharing a quiet moment at home as their granddaughter shows them her drawing" fetchPriority="high" /><div className="hero-scrim" /><div className="hero-banner-copy"><h1>Protect your family from <span>final expenses.</span></h1><p>Coverage from $5,000 to $55,000 for funeral costs, cremation and final bills.</p></div></section>}
       <section className={step === 0 ? 'quote-stage' : 'funnel-section'}>
         <div className={step === 0 ? 'quote-stage-inner' : 'funnel-inner'}>
           <PolicyWizard onStepChange={changeStep} />
