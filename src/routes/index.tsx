@@ -1,7 +1,7 @@
 import bearGuide from '@/assets/bear-guide.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Phone, ChevronDown } from 'lucide-react'
+import { ArrowRight, Phone, ChevronDown, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
@@ -41,7 +41,7 @@ function Index() {
             <PolicyWizard onStepChange={changeStep} />
           </div>
           {step === 0 && <p className="hero-tagline">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="tagline-glow">instant decisions</span> and <span className="tagline-glow">life‑changing coverage</span></p>}
-          {step === 0 && <div className="coverage-note"><p className="coverage-note-label">Immediate full coverage</p><p className="coverage-note-ages"><span className="coverage-note-word">Ages</span><span className="coverage-note-figure">50</span><span className="coverage-note-rule" aria-hidden="true" /><span className="coverage-note-sr">to</span><span className="coverage-note-figure">85</span></p></div>}
+          {step === 0 && <div className="coverage-note"><p className="coverage-note-flag"><span className="coverage-note-flag-icon" aria-hidden="true"><Check size={11} strokeWidth={3} /></span>No medical exam required</p><p className="coverage-note-label">Immediate full coverage</p><p className="coverage-note-ages"><span className="coverage-note-word">Ages</span><span className="coverage-note-figure">50</span><span className="coverage-note-rule" aria-hidden="true" /><span className="coverage-note-sr">to</span><span className="coverage-note-figure">85</span></p></div>}
         </div>
       </section>
       {step === 0 && <>
