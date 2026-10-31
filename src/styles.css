@@ -1069,7 +1069,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .bear-guide-bubble::after { content: ""; position: absolute; bottom: -9px; left: 70px; width: 16px; height: 16px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: rotate(45deg); }
 @keyframes bear-guide-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @keyframes bear-guide-sway { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-1.5deg) translateY(-3px); } }
-@media (max-width: 1180px) { .bear-guide { width: 180px; bottom: 0; } .bear-guide-bubble { font-size: 12.5px; margin-left: -20px; } }
+@media (max-width: 1180px) { .bear-guide { width: 180px; bottom: 0; } .bear-guide-bubble { font-size: 12.5px; } }
 /* Narrower screens: the bear shrinks to fit the empty strip beside the form instead of stacking above it. */
 @media (max-width: 1080px) { .bear-guide { width: max(76px, min(120px, calc((100vw - 640px) / 2 - 30px))); left: calc(100% + 8px); bottom: 6px; } .bear-guide-bubble { display: none; } }
 @media (max-width: 860px) { .bear-guide { display: none; } }
