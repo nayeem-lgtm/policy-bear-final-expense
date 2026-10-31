@@ -1041,11 +1041,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .brand-link img { width: 105px; }
   .header-call strong { font-size: 19px; }
   .header-call .call-caption { font-size: 11px; }
-  .header-call-bear { width: 64px; }
 }
 @media (max-width: 350px) {
   .brand-link img { width: 85px; }
   .header-call strong { font-size: 17px; }
-  .header-call-bear { width: 55px; }
 }
 @media (prefers-reduced-motion: reduce) { .agent-dot::after { animation: none; } }
