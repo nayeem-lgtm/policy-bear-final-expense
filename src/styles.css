@@ -923,8 +923,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   color: var(--success);
 }
 .chapter-progress span.complete::before { display: none; }
-.chapter-progress span.complete { padding-left: 13px; }
-.chapter-progress svg { display: inline; width: 13px; height: 13px; }
+.chapter-progress span.complete { padding-left: 10px; }
+.chapter-progress svg { display: inline; width: 11px; height: 11px; }
 
 /* Progress bar */
 .wizard .progress-track { height: 14px; margin: 6px 0 16px; }
