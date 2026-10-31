@@ -1,5 +1,8 @@
 # PolicyBear final expense
 
+- [ ] Compact the footer, relocate its notice to Disclaimer, refine the call button, and verify phone and desktop.
+- [ ] Add Inc. 500 recognition alongside existing seals — blocked on the official listing/certificate and award year.
+
 - [x] Refresh the landing and journey presentation for a natural feel, improve navigation, and align the footer with the brand; verify desktop and phone flows.
 
 - [x] Moved quote contact details after step two, retained opt-in as the final quote step, and verified the complete quote plus saved answers on Back.

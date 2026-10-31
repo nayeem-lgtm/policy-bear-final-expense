@@ -18,6 +18,7 @@ export function LegalDocumentPage({ documentKey }: { documentKey: keyof typeof l
   const document = legalDocuments[documentKey]
   return <LegalPage title={document.title} intro={document.intro[0] ?? ''} date={document.date}>
     {document.intro.slice(1).map(paragraph => <p className="legal-opening" key={paragraph}>{paragraph}</p>)}
+    {documentKey === 'disclaimer' && <section aria-labelledby="website-notice-title"><h2 id="website-notice-title">Website and coverage notice</h2><p>PolicyBear is a licensed life insurance agency. We are not affiliated with or endorsed by the U.S. Government or any government agency. This website provides general information about final expense life insurance and is not intended as specific insurance advice. Prices shown are illustrations only—no application or payment is submitted.</p></section>}
     <p className="legal-demo-notice"><strong>About this preview:</strong> This journey uses simulated prices and decisions. No application or payment is submitted, and an approval screen does not create coverage. The supplied legal text below describes Policy Bear’s services.</p>
     <div className="legal-document-layout">
       <nav className="legal-toc" aria-label="On this page"><h2>On this page</h2><ol>{document.sections.map((section, index) => <li key={section.title}><a href={`#legal-section-${index + 1}`}>{section.title}</a></li>)}</ol></nav>
