@@ -129,7 +129,10 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     if (!ready) return
     heading.current?.focus({ preventScroll: true })
     if (screen !== 'zip' && window.matchMedia('(max-width: 800px)').matches) {
-      document.getElementById('get-covered')?.scrollIntoView({ block: 'start', behavior: 'instant' })
+      const frame = requestAnimationFrame(() => requestAnimationFrame(() => {
+        document.getElementById('get-covered')?.scrollIntoView({ block: 'start', behavior: 'instant' })
+      }))
+      return () => cancelAnimationFrame(frame)
     }
   }, [ready, screen])
 
