@@ -4,10 +4,11 @@ import { Link } from '@tanstack/react-router'
 import { Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
+import bearMascot from '@/assets/bear-mascot.png'
 
 
 export function PolicyHeader() {
-  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-zip" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><span className="header-call-wrap"><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Talk with PolicyBear</span><strong>(844) 765-2327</strong></span></a></Button></span></div></header>
+  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-zip" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><span className="header-call-wrap"><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="bear-circle"><img src={bearMascot} width={96} height={96} alt="" /><span className="bear-phone-badge"><Phone size={11} strokeWidth={2.6} /></span></span><span><span className="call-caption">Talk with PolicyBear</span><strong>(844) 765-2327</strong></span></a></Button></span></div></header>
 }
 
 
