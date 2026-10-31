@@ -927,9 +927,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .chapter-progress svg { display: inline; width: 15px; height: 15px; }
 
 /* Progress bar */
-.wizard-progress { display: flex; align-items: center; justify-content: flex-end; gap: 10px; font-size: 15px; font-weight: 700; letter-spacing: .02em; color: var(--primary); }
-.wizard-progress .wizard-progress-pct { font-size: 14px; font-weight: 600; color: var(--muted-foreground); letter-spacing: 0; }
-.wizard .progress-track { height: 14px; }
+.wizard .progress-track { height: 14px; margin: 6px 0 16px; }
 .wizard .progress-fill { position: relative; overflow: hidden; box-shadow: 0 3px 10px -3px color-mix(in oklab, var(--primary) 55%, transparent); }
 .wizard .progress-fill::after {
   content: ''; position: absolute; inset: 0;
