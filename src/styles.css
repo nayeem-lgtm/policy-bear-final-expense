@@ -1034,7 +1034,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 760px) {
   .header-call strong { font-size: 21px; }
   .header-call .call-caption { font-size: 12px; }
-  .header-call-bear { width: 78px; }
   .agents-available { font-size: 10px; }
 }
 @media (max-width: 640px) {
