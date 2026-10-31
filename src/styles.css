@@ -941,8 +941,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes bar-sheen { 55%, 100% { transform: translateX(110%); } }
 
 /* Question type */
-.wizard-content h2 { letter-spacing: -.015em; }
-.question-helper { font-size: 17px; }
+.wizard-content h2 { font-size: 24px; letter-spacing: -.015em; margin-bottom: 5px; }
+.question-helper { font-size: 15px; margin-bottom: 14px; }
 
 /* Inputs */
 .text-field, .secure-field, .field-label select {
