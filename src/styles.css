@@ -892,7 +892,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .quote-stage { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 7%, var(--brand-light)), var(--background) 80%); }
 .hero-banner { min-height: 400px; }
 .hero-banner .hero-scrim { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 40%, transparent) 0%, color-mix(in oklab, var(--brand-deep) 58%, transparent) 55%, color-mix(in oklab, var(--brand-deep) 74%, transparent) 100%); }
-.hero-banner-copy h1 { font-size: 54px; }
+.hero-banner-copy h1 { font-size: 50px; }
 .hero-banner-copy p { font-size: 21px; }
 
 /* Chapter stepper pills */
