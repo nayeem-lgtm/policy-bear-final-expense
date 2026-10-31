@@ -1,5 +1,7 @@
 # PolicyBear final expense
 
+- [ ] Stack footer seals at the far right and refine the amber call button; verify alignment on desktop and phones.
+
 - [x] Compact the footer, relocate its notice to Disclaimer, refine the call button, and verify phone and desktop.
 - [ ] Add Inc. 500 recognition alongside existing seals — blocked on the official listing/certificate and award year.
 
