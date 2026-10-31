@@ -1,7 +1,7 @@
 // ============= Full file contents =============
 
 import { Link } from '@tanstack/react-router'
-import { Mail, Phone, Menu, X, Facebook, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react'
+import { Mail, Phone, Menu, X, Facebook, Instagram, Linkedin, Youtube, Twitter, Activity } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
@@ -10,7 +10,7 @@ import logo from '@/assets/policybear-logo.asset.json'
 export function PolicyHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
-  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-zip" onClick={closeMenu} aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><nav id="site-navigation" className={`site-navigation ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation"><Link to="/" hash="step-zip" onClick={closeMenu}>Final expense</Link><Link to="/licensing" onClick={closeMenu}>Licensing</Link><Link to="/contact" onClick={closeMenu}>Contact us</Link></nav><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Talk with PolicyBear</span><strong>(844) 765-2327</strong></span></a></Button><Button variant="quiet" size="icon" className="navigation-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} aria-controls="site-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button></div></header>
+  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-zip" onClick={closeMenu} aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><nav id="site-navigation" className={`site-navigation ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation"><Link to="/" hash="step-zip" onClick={closeMenu}>Final expense</Link><Link to="/licensing" onClick={closeMenu}>Licensing</Link><Link to="/contact" onClick={closeMenu}>Contact us</Link></nav><span className="header-call-wrap"><Button asChild variant="action" className="header-call"><a href="tel:+18447652327"><span className="phone-circle"><Phone size={21} /></span><span><span className="call-caption">Talk with PolicyBear</span><strong>(844) 765-2327</strong></span><Activity size={19} className="call-pulse-icon" aria-hidden="true" /></a></Button><span className="call-sparks" aria-hidden="true"><i /><i /><i /></span></span><Button variant="quiet" size="icon" className="navigation-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} aria-controls="site-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button></div></header>
 }
 
 

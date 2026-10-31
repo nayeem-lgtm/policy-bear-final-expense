@@ -175,7 +175,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .header-inner { max-width: 1328px; padding: 0 40px; margin: auto; height: 100%; display: flex; align-items: center; gap: 32px; }
 .brand-link { flex-shrink: 0; display: flex; align-items: center; }
 .brand-link img { width: 230px; height: auto; }
-.policy-action.header-call { position: relative; isolation: isolate; margin-left: auto; display: flex; align-items: center; gap: 13px; min-height: 56px; padding: 6px 22px 6px 6px; border: 1px solid color-mix(in oklab, var(--brand-action-hover) 65%, transparent); border-radius: 999px; background: linear-gradient(145deg, color-mix(in oklab, var(--brand-action) 82%, var(--background)), var(--brand-action)); box-shadow: 0 8px 22px -9px color-mix(in oklab, var(--brand-action-hover) 55%, transparent); color: var(--brand-deep); text-decoration: none; line-height: 1.2; overflow: hidden; outline: 3px solid transparent; animation: call-breathe 3.6s ease-in-out infinite, call-pulse-ring 3.6s ease-out infinite; transition: background 180ms, transform 180ms, box-shadow 220ms, border-color 180ms; }
+.header-call-wrap { position: relative; display: inline-flex; margin-left: auto; }
+.policy-action.header-call { position: relative; isolation: isolate; display: flex; align-items: center; gap: 13px; min-height: 56px; padding: 6px 18px 6px 6px; border: 1px solid color-mix(in oklab, var(--brand-action-hover) 65%, transparent); border-radius: 999px; background: linear-gradient(145deg, color-mix(in oklab, var(--brand-action) 82%, var(--background)), var(--brand-action)); box-shadow: 0 8px 22px -9px color-mix(in oklab, var(--brand-action-hover) 55%, transparent); color: var(--brand-deep); text-decoration: none; line-height: 1.2; overflow: hidden; outline: 3px solid transparent; animation: call-breathe 3.6s ease-in-out infinite, call-pulse-ring 3.6s ease-out infinite; transition: background 180ms, transform 180ms, box-shadow 220ms, border-color 180ms; }
 .policy-action.header-call::before { content: ''; position: absolute; z-index: 0; top: -70%; bottom: -70%; left: -52%; width: 28%; background: linear-gradient(100deg, transparent, color-mix(in oklab, var(--light-ink) 65%, transparent), transparent); transform: translateX(0) skewX(-16deg); animation: call-sheen 5.2s ease-in-out infinite; pointer-events: none; }
 .policy-action.header-call::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(to bottom, color-mix(in oklab, var(--background) 22%, transparent), transparent 55%); pointer-events: none; }
 .policy-action.header-call:hover { background: linear-gradient(145deg, color-mix(in oklab, var(--brand-action) 74%, var(--background)), color-mix(in oklab, var(--brand-action) 94%, var(--background))); border-color: color-mix(in oklab, var(--brand-action-hover) 88%, transparent); transform: translateY(-2px); box-shadow: 0 14px 30px -10px color-mix(in oklab, var(--brand-action-hover) 72%, transparent), 0 0 0 5px color-mix(in oklab, var(--brand-action) 20%, transparent); animation: none; }
@@ -187,6 +188,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .phone-circle::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid color-mix(in oklab, var(--brand-action) 62%, transparent); opacity: 0; animation: call-ripple 3.6s ease-out infinite; pointer-events: none; }
 .call-caption { display: block; font-size: 12px; color: color-mix(in oklab, var(--brand-deep) 72%, transparent); font-weight: 700; }
 .header-call strong { display: block; font-size: 18px; line-height: 1.05; }
+.call-pulse-icon { flex-shrink: 0; color: var(--brand-deep); opacity: .85; animation: heartbeat 1.7s ease-in-out infinite; }
+.call-sparks { position: absolute; top: -9px; right: 10px; width: 34px; height: 20px; pointer-events: none; z-index: 2; }
+.call-sparks i { position: absolute; bottom: 0; width: 3.5px; height: 11px; border-radius: 3px; background: var(--brand-deep); transform-origin: bottom center; opacity: .25; animation: spark-blink 2.4s ease-in-out infinite; }
+.call-sparks i:nth-child(1) { right: 26px; transform: rotate(-40deg) translateY(-2px); }
+.call-sparks i:nth-child(2) { right: 15px; height: 13px; transform: translateY(-5px); animation-delay: .18s; }
+.call-sparks i:nth-child(3) { right: 4px; transform: rotate(40deg) translateY(-2px); animation-delay: .36s; }
 .landing-hero { position: relative; min-height: 705px; isolation: isolate; background: var(--brand-light); }
 .hero-photo { position: absolute; z-index: -3; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 43%; }
 .hero-scrim { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, var(--brand-light) 0%, color-mix(in oklab, var(--brand-light) 97%, transparent) 26%, color-mix(in oklab, var(--brand-light) 80%, transparent) 39%, color-mix(in oklab, var(--brand-light) 8%, transparent) 61%, transparent 100%); }
@@ -452,6 +459,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   62% { outline-color: color-mix(in oklab, var(--brand-action) 0%, transparent); outline-offset: 15px; }
   100% { outline-color: color-mix(in oklab, var(--brand-action) 0%, transparent); outline-offset: 3px; }
 }
+@keyframes heartbeat { 0%, 42%, 100% { transform: scale(1); opacity: .85; } 10% { transform: scale(1.28); opacity: 1; } 20% { transform: scale(1); } 30% { transform: scale(1.18); opacity: 1; } }
+@keyframes spark-blink { 0%, 100% { opacity: .25; } 12% { opacity: 1; } 32% { opacity: .25; } }
 @keyframes phone-ring { 0%, 56%, 100% { transform: rotate(0deg); } 60% { transform: rotate(-17deg); } 65% { transform: rotate(14deg); } 70% { transform: rotate(-10deg); } 75% { transform: rotate(7deg); } 80% { transform: rotate(-3deg); } 85% { transform: rotate(0deg); } }
 @media (min-width: 1500px) { .landing-hero { min-height: 735px; } .hero-inner { padding-top: 80px; } }
 @media (max-width: 1100px) { .hero-inner { gap: 30px; grid-template-columns: minmax(0, 1fr) 390px; padding: 52px 28px 68px; } .hero-copy h1 { font-size: 42px; } .hero-description { font-size: 18px; } .hero-benefits { font-size: 16px; } .header-inner { padding: 0 28px; } .brand-link img { width: 205px; } .wizard { padding: 24px; } .form-trust { font-size: 16px; flex-wrap: wrap; justify-content: center; gap: 12px; } .hero-family-note { max-width: 270px; } }
@@ -759,7 +768,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .site-navigation a:hover, .site-navigation a[aria-current=page] { color: var(--primary); text-decoration: underline; text-underline-offset: 7px; }
 .navigation-toggle { display: none; }
 .pb-footer-inner { padding-bottom: 60px; }
-.policy-action.header-call { margin-left: 0; outline: 3px solid transparent; animation: call-breathe 2.8s ease-in-out infinite, call-pulse-ring 2.8s ease-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 7px 22px 7px 7px; gap: 12px; }
+.header-call-wrap { margin-left: 0; }
+.policy-action.header-call { outline: 3px solid transparent; animation: call-breathe 2.8s ease-in-out infinite, call-pulse-ring 2.8s ease-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 7px 18px 7px 7px; gap: 12px; }
 .header-call .phone-circle { background: var(--primary); color: var(--primary-foreground); width: 40px; height: 40px; box-shadow: none; }
 .header-call .phone-circle::before { inset: -4px; border-color: color-mix(in oklab, var(--primary) 55%, transparent); animation: call-ripple 2.8s ease-out infinite; }
 .header-call .call-caption { color: var(--brand-deep); font-size: 12px; font-weight: 500; margin-bottom: 4px; }
