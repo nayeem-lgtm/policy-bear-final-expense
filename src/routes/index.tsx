@@ -32,11 +32,11 @@ function Index() {
   return <div className="policy-page">
     <PolicyHeader />
     <main id="main-content">
-      <section className={step === 0 ? 'landing-hero' : 'funnel-section'}>
-        {step === 0 && <><img className="hero-photo" src={family} width={1536} height={1024} alt="An older couple sharing a quiet moment at home as their granddaughter shows them her drawing" fetchPriority="high" /><div className="hero-scrim" /></>}
-        <div className={step === 0 ? 'hero-inner' : 'funnel-inner'}>
-          {step === 0 && <div className="hero-copy"><h1>Protect your family<br className="desktop-break" /> from <span>final expenses.</span></h1><p className="hero-description">Coverage from $5,000 to $40,000 to help with funeral costs, cremation and final bills.</p><ul className="hero-benefits"><li><span><Check /></span>Explore coverage that fits your budget</li><li><span><Check /></span>Choose who receives the benefit</li><li><span><Check /></span>No medical exam for illustrated plans</li></ul></div>}
+      {step === 0 && <section className="hero-banner"><img className="hero-photo" src={family} width={1536} height={1024} alt="An older couple sharing a quiet moment at home as their granddaughter shows them her drawing" fetchPriority="high" /><div className="hero-scrim" /><div className="hero-banner-copy"><h1>Protect your family from <span>final expenses.</span></h1><p>Coverage from $5,000 to $40,000 for funeral costs, cremation and final bills.</p></div></section>}
+      <section className={step === 0 ? 'quote-stage' : 'funnel-section'}>
+        <div className={step === 0 ? 'quote-stage-inner' : 'funnel-inner'}>
           <PolicyWizard onStepChange={changeStep} />
+          {step === 0 && <ul className="hero-benefits stage-benefits"><li><span><Check /></span>Fits your budget</li><li><span><Check /></span>You choose the beneficiary</li><li><span><Check /></span>No medical exam for illustrated plans</li></ul>}
         </div>
       </section>
       {step === 0 && <>
