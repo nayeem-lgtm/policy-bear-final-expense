@@ -1071,6 +1071,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes bear-guide-sway { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-1.5deg) translateY(-3px); } }
 @media (max-width: 1180px) { .bear-guide { width: 210px; bottom: 0; } .bear-guide-bubble { font-size: 12.5px; } }
 /* Narrower screens: the bear shrinks to fit the empty strip beside the form instead of stacking above it. */
-@media (max-width: 1080px) { .quote-stage-inner, .funnel-inner { max-width: 600px; } .bear-guide { width: max(84px, min(170px, calc((100vw - 600px) / 2 - 20px))); left: calc(100% + 8px); bottom: 6px; } .bear-guide-bubble { display: none; } }
+@media (max-width: 1080px) { .quote-stage-inner, .funnel-inner { max-width: 600px; } .bear-guide { width: max(84px, min(170px, calc((100vw - 600px) / 2 - 28px))); left: calc(100% + 4px); bottom: 24px; } .bear-guide-bubble { display: none; } }
 @media (max-width: 860px) { .bear-guide { display: none; } }
 @media (prefers-reduced-motion: reduce) { .bear-guide img, .bear-guide-bubble { animation: none; } }
