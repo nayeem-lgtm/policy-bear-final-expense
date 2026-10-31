@@ -778,9 +778,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .how-icon { background: transparent; border-radius: 0; width: 48px; height: 48px; }
 .how-icon > span { width: 24px; height: 24px; right: -8px; top: -4px; }
 .section-heading { text-align: left; }
-.how-grid { text-align: left; gap: 40px; }
+.how-grid { text-align: left; gap: 24px; }
+.how-grid li { background: var(--card); border: 1px solid color-mix(in oklab, var(--brand-soft-blue) 78%, transparent); border-radius: 20px; padding: 30px 28px; box-shadow: 0 10px 28px -18px color-mix(in oklab, var(--brand-deep) 18%, transparent); transition: transform 180ms ease, box-shadow 220ms ease; }
+.how-grid li:hover { transform: translateY(-3px); box-shadow: 0 18px 38px -20px color-mix(in oklab, var(--brand-deep) 28%, transparent); }
 .how-icon { margin: 0 0 20px; }
-.how-grid p { margin: 0; max-width: 350px; font-size: 18px; line-height: 1.65; }
 .closing-section { flex-direction: row; justify-content: space-between; gap: 32px; text-align: left; max-width: 1248px; margin: auto; padding: 48px 40px; }
 .closing-section h2 { font-size: 26px; max-width: 650px; margin: 0; }
 .closing-section .policy-action { min-width: 240px; flex-shrink: 0; }
