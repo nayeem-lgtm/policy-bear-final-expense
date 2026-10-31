@@ -1,7 +1,7 @@
 // ============= Full file contents =============
 
 import { Link } from '@tanstack/react-router'
-import { Mail, Clock, Phone, Menu, X } from 'lucide-react'
+import { Mail, Phone, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
@@ -20,7 +20,6 @@ export function PolicyFooter() {
       <div className="pb-footer-brand">
         <Link to="/" hash="step-zip" aria-label="PolicyBear home"><span className="pb-footer-logo" role="img" aria-label="PolicyBear" style={{ WebkitMaskImage: `url(${logo.url})`, maskImage: `url(${logo.url})` }} /></Link>
         <p>Final expense coverage.<br />For funeral costs and final bills.</p>
-        <Link to="/licensing" className="pb-footer-license">Licensed life insurance agency</Link>
       </div>
       <nav className="pb-footer-col" aria-label="Final expense resources">
         <h2>Final expense</h2>
@@ -36,10 +35,8 @@ export function PolicyFooter() {
       </nav>
       <div className="pb-footer-col">
         <h2>Talk with us</h2>
-        <Link to="/contact">Contact PolicyBear</Link>
         <a href="mailto:info@policybear.com"><Mail aria-hidden="true" />info@policybear.com</a>
         <a href="tel:+18447652327"><Phone aria-hidden="true" />(844) 765-2327</a>
-        <span><Clock aria-hidden="true" />Mon–Fri, 8am–8pm Eastern</span>
       </div>
       <div className="pb-footer-seals-wrap" aria-label="Accreditation and security">
         <ul className="pb-footer-seals">
@@ -55,7 +52,6 @@ export function PolicyFooter() {
         <Link to="/" hash="step-zip" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>Back to quote ↑</Link>
       </nav>
     </div>
-    <p className="pb-footer-fine">PolicyBear is a licensed life insurance agency. We are not affiliated with or endorsed by the U.S. Government or any government agency. This website provides general information about final expense life insurance and is not intended as specific insurance advice. Prices shown are illustrations only—no application or payment is submitted.</p>
   </div></footer>
 }
 
