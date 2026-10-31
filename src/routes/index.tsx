@@ -43,7 +43,7 @@ function Index() {
         </div>
       </section>
       {step === 0 && <>
-        <section className="statement-band" id="platform"><div className="statement-inner"><p className="statement-kicker"><span className="statement-kicker-rule" aria-hidden="true" />The PolicyBear platform</p><h2 className="statement">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="statement-mark">instant decisions</span> and <span className="statement-mark">life‑changing coverage</span>.</h2></div></section>
+        <section className="statement-band" id="platform"><span className="statement-eyebrow"><span className="statement-spark" />PolicyBear</span><h2 className="statement">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="statement-highlight">instant decisions</span> and <span className="statement-highlight">life-changing coverage</span>.</h2><span className="statement-rule" aria-hidden="true" /></section>
         <section className="faq-section" id="questions"><div className="faq-inner"><div className="faq-heading"><h2>Final expense<br /> questions, answered.</h2><p>Want to talk through your options?</p><a className="faq-call" href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><Phone size={20} /> (844) POL-BEAR</a></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div></div></section>
         <section className="closing-section"><h2>Find a starting point for your final expense coverage.</h2><Button asChild variant="action" size="touch"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button></section>
       </>}
