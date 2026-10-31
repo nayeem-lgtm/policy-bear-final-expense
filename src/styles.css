@@ -722,12 +722,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 /* Restrained PolicyBear presentation and shared navigation. */
-.skip-link { position: absolute; left: 20px; top: -100px; padding: 12px 20px; background: var(--primary); color: var(--primary-foreground); z-index: 50; border-radius: 4px; }
-.skip-link:focus { top: 12px; }
+.skip-link { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; background: var(--primary); color: var(--primary-foreground); z-index: 50; border-radius: 4px; }
+.skip-link:focus { left: 20px; top: 12px; width: auto; height: auto; padding: 12px 20px; clip-path: none; }
 .site-navigation { display: flex; align-items: center; justify-content: center; gap: 24px; margin-left: auto; }
 .site-navigation a { display: inline-flex; align-items: center; min-height: 48px; color: var(--brand-deep); font-size: 16px; font-weight: 500; text-decoration: none; }
 .site-navigation a:hover, .site-navigation a[aria-current=page] { color: var(--primary); text-decoration: underline; text-underline-offset: 7px; }
 .navigation-toggle { display: none; }
+.pb-footer-inner { padding-bottom: 64px; }
 .policy-action.header-call { margin-left: 0; animation: none; box-shadow: none; }
 .policy-action.header-call::before { animation-duration: 12s; }
 .phone-circle svg { animation-duration: 12s; }
@@ -763,6 +764,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .site-navigation a { min-height: 56px; }
 }
 @media (max-width: 640px) {
+  .pb-footer-inner { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
   .header-inner { padding-inline: 16px; gap: 8px; }
   .brand-link img { width: 136px; }
   .header-call strong { font-size: 14px; }

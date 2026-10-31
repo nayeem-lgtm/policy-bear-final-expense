@@ -116,6 +116,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     setScreen(next)
     setError('')
     setResume(false)
+    if (next === 'zip') window.scrollTo({ top: 0, behavior: 'instant' })
   }, [routeHash])
 
   useEffect(() => {
