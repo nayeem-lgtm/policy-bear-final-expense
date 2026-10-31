@@ -1,6 +1,6 @@
 # PolicyBear final expense
 
-- [ ] Refresh the landing and journey presentation for a natural feel, improve navigation, and align the footer with the brand; verify desktop and phone flows.
+- [x] Refresh the landing and journey presentation for a natural feel, improve navigation, and align the footer with the brand; verify desktop and phone flows.
 
 - [x] Moved quote contact details after step two, retained opt-in as the final quote step, and verified the complete quote plus saved answers on Back.
 

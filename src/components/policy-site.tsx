@@ -52,7 +52,7 @@ export function PolicyFooter() {
     <div className="pb-footer-bottom">
       <p>© {new Date().getFullYear()} PolicyBear. All rights reserved.</p>
       <nav aria-label="Legal">
-        <Link to="/" hash="step-zip">Back to quote ↑</Link>
+        <Link to="/" hash="step-zip" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>Back to quote ↑</Link>
       </nav>
     </div>
     <p className="pb-footer-fine">PolicyBear is a licensed life insurance agency. We are not affiliated with or endorsed by the U.S. Government or any government agency. This website provides general information about final expense life insurance and is not intended as specific insurance advice. Prices shown are illustrations only—no application or payment is submitted.</p>
