@@ -21,7 +21,7 @@ type Answers = {
 type StringAnswerKey = Exclude<keyof Answers, 'health'>
 type AddressSuggestion = { street: string; city: string; state: string; zip: string }
 const blank: Answers = { zip: '', city: '', state: '', who: '', month: '', day: '', year: '', gender: '', tobacco: '', feet: '', inches: '', weight: '', coverage: '15000', firstName: '', middleName: '', lastName: '', email: '', phone: '', street: '', apt: '', country: 'United States', birthState: '', citizen: '', resident: '', owner: '', ssn: '', beneficiaryType: 'A person', beneficiaryFirst: '', beneficiaryLast: '', relationship: '', beneficiaryPhone: '', otherInsurance: '', replacing: '', paymentMethod: 'Bank account', accountName: '', accountType: 'Checking', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', draftDate: '1st of the month', signature: '', callbackTime: '', coverageType: '', health: Array(8).fill('') }
-const labels = ['Quote', 'About you', 'Health', 'Payment', 'Sign']
+const labels = ['Basic Info', 'Pre-Qualification', 'Application', 'Finalize']
 const phone = '[FE_PHONE]'
 const demoAddresses: AddressSuggestion[] = [
   { street: '123 Main Street', city: 'Orlando', state: 'FL', zip: '32801' },
