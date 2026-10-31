@@ -21,11 +21,11 @@ export function PolicyFooter() {
         <Link to="/" hash="step-zip" aria-label="PolicyBear home"><span className="pb-footer-logo" role="img" aria-label="PolicyBear" style={{ WebkitMaskImage: `url(${logo.url})`, maskImage: `url(${logo.url})` }} /></Link>
         <p>Final expense coverage.<br />For funeral costs and final bills.</p>
         <ul className="pb-footer-social" aria-label="PolicyBear on social media">
-          <li><a href="https://www.facebook.com/policybearofficial/" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on Facebook"><Facebook aria-hidden="true" /></a></li>
-          <li><a href="https://www.instagram.com/policybear/" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on Instagram"><Instagram aria-hidden="true" /></a></li>
-          <li><a href="https://x.com/policybearllc" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on X"><Twitter aria-hidden="true" /></a></li>
-          <li><a href="https://www.linkedin.com/company/policy-bear" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on LinkedIn"><Linkedin aria-hidden="true" /></a></li>
-          <li><a href="https://www.youtube.com/@policybearofficial" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on YouTube"><Youtube aria-hidden="true" /></a></li>
+          <li><a className="social-facebook" href="https://www.facebook.com/policybearofficial/" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on Facebook"><Facebook aria-hidden="true" /></a></li>
+          <li><a className="social-instagram" href="https://www.instagram.com/policybear/" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on Instagram"><Instagram aria-hidden="true" /></a></li>
+          <li><a className="social-x" href="https://x.com/policybearllc" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on X"><Twitter aria-hidden="true" /></a></li>
+          <li><a className="social-linkedin" href="https://www.linkedin.com/company/policy-bear" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on LinkedIn"><Linkedin aria-hidden="true" /></a></li>
+          <li><a className="social-youtube" href="https://www.youtube.com/@policybearofficial" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on YouTube"><Youtube aria-hidden="true" /></a></li>
         </ul>
       </div>
       <nav className="pb-footer-col" aria-label="Final expense resources">
