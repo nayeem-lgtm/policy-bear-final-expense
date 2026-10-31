@@ -1,8 +1,7 @@
 // ============= Full file contents =============
 
 import { Link } from '@tanstack/react-router'
-import { Mail, Phone, Menu, X, Facebook, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react'
-import { useState } from 'react'
+import { Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
 
