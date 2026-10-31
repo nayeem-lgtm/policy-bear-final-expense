@@ -1,5 +1,7 @@
 # PolicyBear final expense
 
+- [ ] Refresh the landing and journey presentation for a natural feel, improve navigation, and align the footer with the brand; verify desktop and phone flows.
+
 - [x] Moved quote contact details after step two, retained opt-in as the final quote step, and verified the complete quote plus saved answers on Back.
 
 - [x] Verified seven public pages and 38 journey screens at 320, 375, 430, 768 and 1280px; corrected narrow footer clipping and narrowed public wording to final expense while preserving supplied legal copy.
