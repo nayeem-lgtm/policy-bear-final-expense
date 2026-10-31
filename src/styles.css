@@ -827,3 +827,33 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .health-choices .answer-card strong { font-size: 20px; }
   .health-explain { font-size: 16px; }
 }
+
+/* ===== Banner + centered quote stage ===== */
+.hero-banner { position: relative; isolation: isolate; min-height: 340px; display: grid; place-items: center; overflow: hidden; background: var(--brand-deep); }
+.hero-banner .hero-photo { opacity: 1; object-position: center 40%; }
+.hero-banner .hero-scrim { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 55%, transparent) 0%, color-mix(in oklab, var(--brand-deep) 72%, transparent) 100%); }
+.hero-banner-copy { max-width: 880px; padding: 56px 24px; text-align: center; color: var(--light-ink); }
+.hero-banner-copy h1 { font-size: 50px; line-height: 1.12; font-weight: 800; letter-spacing: -.01em; margin: 0 0 14px; text-shadow: 0 2px 18px color-mix(in oklab, var(--brand-deep) 60%, transparent); }
+.hero-banner-copy h1 span { color: var(--brand-action); }
+.hero-banner-copy p { font-size: 20px; line-height: 1.5; opacity: .95; }
+.quote-stage { background: linear-gradient(180deg, var(--brand-light), var(--background) 70%); padding: 0 20px 56px; }
+.quote-stage-inner { max-width: 640px; margin: -48px auto 0; position: relative; }
+.quote-stage .wizard, .funnel-section .wizard { border-radius: 16px; padding: 30px 40px 32px; box-shadow: 0 24px 50px -24px color-mix(in oklab, var(--brand-deep) 40%, transparent); }
+.wizard .progress-track { height: 12px; border-radius: 999px; margin: 10px 0 30px; box-shadow: inset 0 1px 2px color-mix(in oklab, var(--brand-deep) 15%, transparent); }
+.wizard .progress-fill { border-radius: 999px; background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary) 70%, var(--brand-action))); transition: width 450ms cubic-bezier(.3,.8,.3,1); }
+.wizard-progress { font-size: 15px; font-weight: 700; letter-spacing: .02em; color: var(--primary); }
+.wizard-content h2 { text-align: center; font-size: 30px; }
+.quote-stage .question-helper, .funnel-section .question-helper { text-align: center; }
+.wizard .continue-button { justify-content: center; gap: 10px; min-height: 62px; font-size: 20px; }
+.stage-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; margin-top: 26px; font-size: 16px; }
+@media (max-width: 760px) {
+  .hero-banner { min-height: 230px; }
+  .hero-banner-copy { padding: 36px 18px 60px; }
+  .hero-banner-copy h1 { font-size: 32px; }
+  .hero-banner-copy p { font-size: 17px; }
+  .quote-stage { padding: 0 12px 40px; }
+  .quote-stage-inner { margin-top: -36px; }
+  .quote-stage .wizard, .hero-inner > .wizard { margin: 0; padding: 24px 18px 26px; border: 1px solid var(--border); border-radius: 14px; }
+  .wizard-content h2 { font-size: 25px; }
+  .stage-benefits { flex-direction: column; align-items: flex-start; padding-left: 8px; }
+}
