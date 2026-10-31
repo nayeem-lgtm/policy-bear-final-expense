@@ -855,7 +855,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .hero-banner .hero-photo { opacity: 1; object-position: center 40%; }
 .hero-banner .hero-scrim { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 55%, transparent) 0%, color-mix(in oklab, var(--brand-deep) 72%, transparent) 100%); }
 .hero-banner-copy { max-width: 1120px; padding: 56px 24px; text-align: center; color: var(--light-ink); }
-.hero-banner-copy h1 { font-size: clamp(30px, 4.3vw, 50px); line-height: 1.12; font-weight: 800; letter-spacing: -.01em; margin: 0 0 14px; text-shadow: 0 2px 18px color-mix(in oklab, var(--brand-deep) 60%, transparent); }
+.hero-banner-copy h1 { font-size: clamp(28px, 3.9vw, 45px); line-height: 1.12; font-weight: 800; letter-spacing: -.01em; margin: 0 0 14px; text-shadow: 0 2px 18px color-mix(in oklab, var(--brand-deep) 60%, transparent); }
 @media (min-width: 761px) { .hero-banner-copy h1 { white-space: nowrap; } }
 .hero-banner-copy h1 span { color: var(--brand-action); }
 .hero-banner-copy p { font-size: 20px; line-height: 1.5; opacity: .95; }
