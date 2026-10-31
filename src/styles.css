@@ -248,19 +248,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .hero-tagline { margin: 30px auto 6px; max-width: 760px; text-align: center; font-size: 23px; line-height: 1.45; letter-spacing: -0.01em; color: var(--brand-deep); }
 .hero-tagline strong { font-weight: 800; color: var(--brand-deep); }
 .hero-tagline .tagline-glow { font-weight: 750; background: linear-gradient(94deg, var(--primary) 8%, oklch(0.62 0.19 264) 55%, var(--primary) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap; }
-/* Coverage note — the ages line under the hero tagline */
-.coverage-note { display: flex; flex-direction: column; align-items: center; gap: 11px; margin: 28px auto 8px; animation: coverage-note-in .8s ease-out both; }
-.coverage-note-flag { display: inline-flex; align-items: center; gap: 9px; margin: 0; font-size: 13.5px; font-weight: 600; letter-spacing: .01em; color: color-mix(in oklab, var(--brand-deep) 72%, var(--background)); }
-.coverage-note-flag-icon { display: inline-grid; place-items: center; width: 19px; height: 19px; border-radius: 999px; color: color-mix(in oklab, var(--brand-action) 82%, var(--brand-deep)); background: color-mix(in oklab, var(--brand-action) 13%, transparent); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--brand-action) 32%, transparent); }
-.coverage-note-label { display: inline-flex; align-items: center; gap: 14px; margin: 0; padding-inline-start: .32em; font-size: 11.5px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: color-mix(in oklab, var(--brand-deep) 58%, var(--background)); }
-.coverage-note-label::before, .coverage-note-label::after { content: ""; flex: none; width: 30px; height: 1px; background: color-mix(in oklab, var(--brand-action) 75%, transparent); }
-.coverage-note-ages { display: inline-flex; align-items: center; gap: 12px; margin: 0; }
-.coverage-note-word { font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: color-mix(in oklab, var(--brand-deep) 52%, var(--background)); }
-.coverage-note-figure { font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--brand-deep); font-variant-numeric: tabular-nums; }
-.coverage-note-rule { flex: none; width: 44px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--brand-action), color-mix(in oklab, var(--primary) 65%, var(--brand-action))); animation: coverage-rule-draw .9s .18s cubic-bezier(.2, .8, .2, 1) both; }
-.coverage-note-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-@keyframes coverage-note-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-@keyframes coverage-rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+/* Coverage strip — three assurances under the hero tagline */
+.coverage-strip { display: flex; list-style: none; max-width: 880px; margin: 34px auto 10px; padding: 0; animation: coverage-strip-in .8s ease-out both; }
+.coverage-strip-item { position: relative; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 13px; padding: 6px 16px; }
+.coverage-strip-item + .coverage-strip-item::before { content: ""; position: absolute; inset-inline-start: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 64px; background: color-mix(in oklab, var(--brand-deep) 13%, var(--background)); }
+.coverage-strip-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 999px; color: var(--primary); background: color-mix(in oklab, var(--primary) 9%, var(--card)); }
+.coverage-strip-text { margin: 0; text-align: center; font-size: 15.5px; font-weight: 700; line-height: 1.35; letter-spacing: -0.005em; color: var(--brand-deep); }
+.coverage-strip-text .ln { display: block; }
+.coverage-strip-text .hl { color: var(--primary); }
+.coverage-strip-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@keyframes coverage-strip-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .faq-section { background: var(--brand-light); }
 .faq-inner { max-width: 1248px; padding: 68px 40px; margin: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; }
 .faq-heading p { font-size: 16px; color: var(--muted-foreground); margin-top: 20px; }
@@ -1068,15 +1065,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 760px) {
   .hero-tagline { margin-top: 22px; font-size: 18px; padding-inline: 4px; }
   .hero-tagline .tagline-glow { white-space: normal; }
-  .coverage-note { gap: 9px; margin-top: 22px; }
-  .coverage-note-flag { gap: 7px; font-size: 12.5px; }
-  .coverage-note-flag-icon { width: 17px; height: 17px; }
-  .coverage-note-label { gap: 10px; font-size: 10.5px; letter-spacing: .24em; padding-inline-start: .24em; }
-  .coverage-note-label::before, .coverage-note-label::after { width: 18px; }
-  .coverage-note-ages { gap: 9px; }
-  .coverage-note-figure { font-size: 25px; }
-  .coverage-note-rule { width: 30px; }
+  .coverage-strip { flex-direction: column; max-width: 400px; margin-top: 26px; }
+  .coverage-strip-item { flex-direction: row; justify-content: center; gap: 11px; padding: 13px 6px; }
+  .coverage-strip-text .ln { display: inline; }
+  .coverage-strip-item + .coverage-strip-item::before { top: 0; transform: none; width: 100%; height: 1px; }
+  .coverage-strip-icon { width: 34px; height: 34px; }
+  .coverage-strip-text { font-size: 14.5px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .coverage-note, .coverage-note-rule { animation: none; }
+  .coverage-strip { animation: none; }
 }
