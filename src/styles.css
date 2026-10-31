@@ -1066,6 +1066,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .statement { font-size: clamp(26px, 7.4vw, 34px); margin-top: 22px; }
   .statement-eyebrow { font-size: 11.5px; letter-spacing: .18em; padding: 7px 14px 7px 11px; }
   .statement-rule { margin-top: 28px; }
+  .statement-highlight { white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) {
   .statement-band::before, .statement-spark, .statement-highlight { animation: none; }
