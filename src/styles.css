@@ -197,7 +197,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .hero-benefits svg { width: 16px; height: 16px; stroke-width: 3; }
 .hero-family-note { display: flex; align-items: center; gap: 10px; color: var(--muted-foreground); font-size: 16px; margin-top: 34px; }
 .hero-family-note svg { color: var(--primary); }
-.family-moment { display: block; width: 100%; max-width: 520px; height: 220px; object-fit: cover; object-position: center 40%; margin-top: 26px; }
 .photo-caption { position: absolute; bottom: 26px; right: 40px; display: flex; align-items: center; gap: 8px; color: var(--light-ink); font-size: 16px; text-shadow: 0 1px 5px var(--photo-shade); }
 .wizard { background: var(--background); border: 1px solid var(--border); box-shadow: var(--wizard-shadow); border-radius: 16px; padding: 27px 30px 25px; scroll-margin-top: 110px; }
 .wizard-progress { display: flex; justify-content: space-between; gap: 10px; font-size: 16px; font-weight: 500; color: var(--muted-foreground); }
