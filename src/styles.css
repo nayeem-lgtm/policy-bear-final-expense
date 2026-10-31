@@ -1048,6 +1048,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .brand-link img { width: 85px; }
   .header-call strong { font-size: 17px; }
   .header-call-bear { width: 55px; }
-  .header-call-bear img { height: calc(100% - 2px); bottom: -8px; }
 }
 @media (prefers-reduced-motion: reduce) { .agent-dot::after { animation: none; } }
