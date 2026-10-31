@@ -1067,3 +1067,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 1080px) { .quote-stage-inner, .funnel-inner { max-width: 600px; } .bear-guide { width: max(84px, min(170px, calc((100vw - 600px) / 2 - 28px))); left: calc(100% + 4px); bottom: 24px; } .bear-guide-bubble { display: none; } }
 @media (max-width: 860px) { .bear-guide { display: none; } }
 @media (prefers-reduced-motion: reduce) { .bear-guide img, .bear-guide-bubble { animation: none; } }
+
+/* Statement band responsive tuning */
+@media (max-width: 760px) {
+  .statement-band { padding: 62px 20px 66px; }
+  .statement { font-size: clamp(26px, 7.4vw, 34px); margin-top: 22px; }
+  .statement-eyebrow { font-size: 11.5px; letter-spacing: .18em; padding: 7px 14px 7px 11px; }
+  .statement-rule { margin-top: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .statement-band::before, .statement-spark, .statement-highlight { animation: none; }
+}
