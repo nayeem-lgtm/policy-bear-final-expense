@@ -1066,4 +1066,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 760px) {
   .hero-tagline { margin-top: 22px; font-size: 18px; padding-inline: 4px; }
   .hero-tagline .tagline-glow { white-space: normal; }
+  .coverage-note { gap: 10px; margin-top: 22px; }
+  .coverage-note-label { gap: 10px; font-size: 10.5px; letter-spacing: .24em; padding-inline-start: .24em; }
+  .coverage-note-label::before, .coverage-note-label::after { width: 18px; }
+  .coverage-note-ages { gap: 9px; }
+  .coverage-note-figure { font-size: 25px; }
+  .coverage-note-rule { width: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .coverage-note, .coverage-note-rule { animation: none; }
 }
