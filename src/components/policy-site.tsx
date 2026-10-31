@@ -1,7 +1,7 @@
 // ============= Full file contents =============
 
 import { Link } from '@tanstack/react-router'
-import { Mail, Phone, Menu, X } from 'lucide-react'
+import { Mail, Phone, Menu, X, Facebook, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
@@ -20,6 +20,13 @@ export function PolicyFooter() {
       <div className="pb-footer-brand">
         <Link to="/" hash="step-zip" aria-label="PolicyBear home"><span className="pb-footer-logo" role="img" aria-label="PolicyBear" style={{ WebkitMaskImage: `url(${logo.url})`, maskImage: `url(${logo.url})` }} /></Link>
         <p>Final expense coverage.<br />For funeral costs and final bills.</p>
+        <ul className="pb-footer-social" aria-label="PolicyBear on social media">
+          <li><a href="https://www.facebook.com/policybearofficial/" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on Facebook"><Facebook aria-hidden="true" /></a></li>
+          <li><a href="https://www.instagram.com/policybear/" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on Instagram"><Instagram aria-hidden="true" /></a></li>
+          <li><a href="https://x.com/policybearllc" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on X"><Twitter aria-hidden="true" /></a></li>
+          <li><a href="https://www.linkedin.com/company/policy-bear" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on LinkedIn"><Linkedin aria-hidden="true" /></a></li>
+          <li><a href="https://www.youtube.com/@policybearofficial" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on YouTube"><Youtube aria-hidden="true" /></a></li>
+        </ul>
       </div>
       <nav className="pb-footer-col" aria-label="Final expense resources">
         <h2>Final expense</h2>
