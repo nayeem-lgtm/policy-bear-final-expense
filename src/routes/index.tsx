@@ -35,6 +35,7 @@ function Index() {
       <section className={step === 0 ? 'landing-hero' : 'funnel-section'}>
         {step === 0 && <><img className="hero-photo" src={family} width={1536} height={1024} alt="An older couple sharing a quiet moment at home as their granddaughter shows them her drawing" fetchPriority="high" /><div className="hero-scrim" /></>}
         <div className={step === 0 ? 'hero-inner' : 'funnel-inner'}>
+          {step === 0 && <div className="hero-copy"><div className="eyebrow">PolicyBear · Final expense insurance</div><h1>Protect your family<br className="desktop-break" /> from <span>final expenses.</span></h1><p className="hero-description">Coverage from $5,000 to $40,000 to help with funeral costs, cremation and final bills.</p><ul className="hero-benefits"><li><span><Check /></span>Explore coverage that fits your budget</li><li><span><Check /></span>Choose who receives the benefit</li><li><span><Check /></span>No medical exam for illustrated plans</li></ul><img className="family-moment" src={family} width={1536} height={1024} alt="Grandparents enjoying their granddaughter’s drawing together at their kitchen table" /></div>}
           <PolicyWizard onStepChange={changeStep} />
         </div>
       </section>
