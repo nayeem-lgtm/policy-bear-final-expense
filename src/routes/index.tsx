@@ -1,7 +1,7 @@
 import bearGuide from '@/assets/bear-guide.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Phone, ShieldCheck, ClipboardList, CircleDollarSign, ChevronDown } from 'lucide-react'
+import { ArrowRight, Phone, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
@@ -40,11 +40,10 @@ function Index() {
             {step === 0 && <aside className="bear-guide" aria-hidden="true"><div className="bear-guide-bubble"><strong>Hi, I'm PolicyBear!</strong> Start here — I'll guide you step by step.</div><img src={bearGuide} width={643} height={787} alt="" /></aside>}
             <PolicyWizard onStepChange={changeStep} />
           </div>
-          {step === 0 && <p className="hero-tagline">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="tagline-glow">instant decisions</span> and <span className="tagline-glow">life-changing coverage</span></p>}
         </div>
       </section>
       {step === 0 && <>
-        <section className="how-section" id="how-it-works"><div className="section-heading"><h2>Explore your final expense options</h2><p>Start with a few details, then review the coverage and price.</p></div><ol className="how-grid"><li><div className="how-icon"><ClipboardList /><span>1</span></div><h3>Tell us about yourself</h3><p>Your age, location and coverage amount help shape your final expense illustration.</p></li><li><div className="how-icon"><CircleDollarSign /><span>2</span></div><h3>Review your price</h3><p>See a sample monthly premium and adjust the coverage to suit your budget.</p></li><li><div className="how-icon"><ShieldCheck /><span>3</span></div><h3>Review policy details</h3><p>Explore beneficiary choices, health questions and the sample application.</p></li></ol></section>
+        <section className="statement-band" id="platform"><span className="statement-eyebrow"><span className="statement-spark" />PolicyBear</span><h2 className="statement">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="statement-highlight">instant decisions</span> and <span className="statement-highlight">life-changing coverage</span>.</h2><span className="statement-rule" aria-hidden="true" /></section>
         <section className="faq-section" id="questions"><div className="faq-inner"><div className="faq-heading"><h2>Final expense<br /> questions, answered.</h2><p>Want to talk through your options?</p><a className="faq-call" href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><Phone size={20} /> (844) POL-BEAR</a></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div></div></section>
         <section className="closing-section"><h2>Find a starting point for your final expense coverage.</h2><Button asChild variant="action" size="touch"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button></section>
       </>}
