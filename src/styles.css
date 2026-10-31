@@ -1067,7 +1067,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .bear-guide-bubble::after { content: ""; position: absolute; bottom: -9px; left: 70px; width: 16px; height: 16px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: rotate(45deg); }
 @keyframes bear-guide-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @keyframes bear-guide-sway { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-1.5deg) translateY(-3px); } }
-@media (max-width: 1180px) { .bear-guide { width: 190px; } .bear-guide-bubble { font-size: 12.5px; margin-left: -20px; } }
-@media (max-width: 1040px) { .bear-guide { position: relative; left: auto; bottom: auto; width: auto; display: flex; align-items: flex-end; justify-content: center; gap: 8px; margin: 0 auto -6px; max-width: 420px; z-index: 2; }
-  .bear-guide img { width: 120px; order: 2; } .bear-guide-bubble { margin: 0 0 40px; order: 1; flex: 1; } .bear-guide-bubble::after { left: auto; right: -9px; bottom: 22px; transform: rotate(-45deg); } }
+@media (max-width: 1180px) { .bear-guide { width: 180px; bottom: 30px; } .bear-guide-bubble { font-size: 12.5px; margin-left: -20px; } }
+/* Narrower screens: the bear shrinks to fit the empty strip beside the form instead of stacking above it. */
+@media (max-width: 1080px) { .bear-guide { width: clamp(84px, calc((100vw - 640px) / 2 - 18px), 170px); left: calc(100% + 8px); bottom: 22px; } .bear-guide-bubble { display: none; } }
+@media (max-width: 860px) { .bear-guide { display: none; } }
 @media (prefers-reduced-motion: reduce) { .bear-guide img, .bear-guide-bubble { animation: none; } }
