@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Check, Phone, ShieldCheck, ClipboardList, CircleDollarSign, ChevronDown } from 'lucide-react'
+import { ArrowRight, Phone, ShieldCheck, ClipboardList, CircleDollarSign, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
@@ -36,7 +36,7 @@ function Index() {
       <section className={step === 0 ? 'quote-stage' : 'funnel-section'}>
         <div className={step === 0 ? 'quote-stage-inner' : 'funnel-inner'}>
           <PolicyWizard onStepChange={changeStep} />
-          {step === 0 && <ul className="hero-benefits stage-benefits"><li><span><Check /></span>Fits your budget</li><li><span><Check /></span>You choose the beneficiary</li><li><span><Check /></span>No medical exam for illustrated plans</li></ul>}
+          {step === 0 && <p className="hero-tagline">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="tagline-glow">instant decisions</span> and <span className="tagline-glow">life-changing coverage</span></p>}
         </div>
       </section>
       {step === 0 && <>
