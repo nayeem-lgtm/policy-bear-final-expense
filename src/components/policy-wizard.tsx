@@ -128,12 +128,14 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   useEffect(() => {
     if (!ready) return
     heading.current?.focus({ preventScroll: true })
-    if (screen !== 'zip' && window.matchMedia('(max-width: 800px)').matches) {
-      const frame = requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (screen === 'zip' || !window.matchMedia('(max-width: 800px)').matches) return
+    let second = 0
+    const first = requestAnimationFrame(() => {
+      second = requestAnimationFrame(() => {
         document.getElementById('get-covered')?.scrollIntoView({ block: 'start', behavior: 'instant' })
-      }))
-      return () => cancelAnimationFrame(frame)
-    }
+      })
+    })
+    return () => { cancelAnimationFrame(first); if (second) cancelAnimationFrame(second) }
   }, [ready, screen])
 
   useEffect(() => {
