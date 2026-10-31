@@ -805,29 +805,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .policy-action.header-call { padding-inline: 8px; }
 }
 
-/* Keep the family scene unobstructed by the quote form. */
-.landing-hero { min-height: 0; }
-.hero-inner { display: flex; flex-direction: column; max-width: none; padding: 0; gap: 0; }
-.hero-scene { position: relative; isolation: isolate; width: 100%; min-height: 520px; overflow: hidden; }
-.hero-scene .hero-photo { opacity: 1; height: 100%; object-position: center 40%; }
-.hero-scene .hero-scrim { height: 100%; background: linear-gradient(90deg, var(--brand-light) 0%, color-mix(in oklab, var(--brand-light) 98%, transparent) 30%, color-mix(in oklab, var(--brand-light) 88%, transparent) 40%, transparent 62%); }
-.hero-scene .hero-copy { padding: 48px 40px; max-width: 1328px; margin: auto; }
-.hero-scene .hero-copy h1 { max-width: 520px; }
-.hero-scene .hero-description { max-width: 450px; }
-.hero-inner > .wizard { width: min(640px, calc(100% - 40px)); margin: 32px auto 40px; }
-@media (max-width: 1100px) and (min-width: 801px) {
-  .hero-scene .hero-copy { padding: 40px 28px; }
-  .hero-scene .hero-copy h1 { max-width: 420px; }
-  .hero-scene .hero-description { max-width: 390px; }
-}
-@media (max-width: 800px) {
-  .hero-scene { min-height: 0; padding-bottom: 260px; }
-  .hero-scene .hero-copy { padding: 28px 20px; background: var(--brand-light); }
-  .hero-scene .hero-photo { inset: auto 0 0; height: 260px; object-position: center 37%; }
-  .hero-scene .hero-scrim { display: none; }
-  .hero-inner > .wizard { margin: 24px auto 32px; padding: 24px; border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--wizard-shadow); }
-}
-
 /* ============ Health questions ============ */
 .health-progress { display: flex; align-items: center; gap: 12px; margin: 2px 0 18px; }
 .health-progress .progress-track { flex: 1; margin: 0; }
