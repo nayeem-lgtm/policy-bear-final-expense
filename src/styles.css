@@ -1020,6 +1020,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .policy-action.header-call::before, .policy-action.header-call::after { display: none; }
 .header-call-copy { display: flex; flex-direction: column; align-items: flex-end; text-align: right; justify-content: center; gap: 3px; }
+.header-call .call-caption { display: block; font-size: 15px; font-weight: 700; line-height: 1.2; margin: 0; }
+.header-call strong { display: block; font-size: 34px; line-height: 1.05; color: #1947E3; font-weight: 750; }
 
 /* Agents available indicator */
 .agents-available { display: inline-flex; align-items: center; gap: 5px; margin-top: 0; font-size: 11px; line-height: 1.2; font-weight: 500; letter-spacing: 0; color: var(--muted-foreground); }
@@ -1032,8 +1034,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   100% { transform: scale(1.4); opacity: 0; }
 }
 @media (max-width: 760px) {
-  .header-call strong { font-size: 21px; }
-  .header-call .call-caption { font-size: 12px; }
+  .header-call strong { font-size: 28px; }
+  .header-call .call-caption { font-size: 13px; }
   .agents-available { font-size: 10px; }
 }
 @media (max-width: 640px) {
