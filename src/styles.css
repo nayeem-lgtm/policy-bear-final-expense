@@ -269,7 +269,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-bear-bubble strong { display: block; color: var(--primary); font-size: 13px; }
 .faq-bear-bubble::after { content: ""; position: absolute; right: -8px; top: 50%; width: 12px; height: 12px; background: var(--card); border-top: 2px solid var(--primary); border-right: 2px solid var(--primary); transform: translateY(-50%) rotate(45deg); }
 @media (max-width: 1100px) { .faq-inner { gap: 24px; } }
-@media (max-width: 900px) { .faq-bear-wrap, .faq-bear-bubble { display: none; } }
+@media (max-width: 900px) { .faq-bear-wrap, .faq-bear-bubble { display: none; } .faq-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); } }
 @media (prefers-reduced-motion: reduce) { .faq-bear-bubble { animation: none; } }
 @keyframes bear-bubble-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .faq-list details { border-bottom: 1px solid var(--border); }
