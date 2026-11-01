@@ -262,6 +262,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-inner { max-width: 1248px; padding: 68px 40px; margin: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; }
 .faq-heading p { font-size: 16px; color: var(--muted-foreground); margin-top: 20px; }
 .faq-call { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; color: var(--primary); min-height: 48px; margin-top: 8px; }
+.faq-bear { display: block; width: min(320px, 78%); height: auto; margin: 30px auto -10px; }
+@media (max-width: 900px) { .faq-bear { display: none; } }
 .faq-list details { border-bottom: 1px solid var(--border); }
 .faq-list summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; color: var(--brand-deep); font-weight: 600; padding: 23px 0; cursor: pointer; }
 .faq-list summary::-webkit-details-marker { display: none; }
