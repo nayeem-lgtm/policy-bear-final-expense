@@ -1,5 +1,7 @@
 # PolicyBear final expense
 
+- [x] Give the questions-section bear the "Let Mr Bear / guide you step by step" bubble; verify desktop and phone.
+
 - [x] Adapt the footer to the compact, centered reference using existing PolicyBear links, contact details, socials and seals; verify contact navigation and phone layout.
 - [x] Recommend the next remix milestone: check the complete quote journey and review legal wording before launch.
 
