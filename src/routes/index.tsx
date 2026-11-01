@@ -1,4 +1,4 @@
-import bearGuide from '@/assets/bear-guide.png'
+import bearGuide from '@/assets/bear-guide-full.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
 import { ArrowRight, Phone, ChevronDown, Stethoscope, Zap, CalendarDays } from 'lucide-react'
@@ -37,7 +37,7 @@ function Index() {
       <section className={step === 0 ? 'quote-stage' : 'funnel-section'}>
         <div className={step === 0 ? 'quote-stage-inner' : 'funnel-inner'}>
           <div className="quote-form-holder">
-            {step === 0 && <aside className="bear-guide" aria-hidden="true"><div className="bear-guide-bubble"><strong>Let Mr Bear</strong> guide you step by step.</div><img src={bearGuide} width={643} height={787} alt="" /></aside>}
+            {step === 0 && <aside className="bear-guide" aria-hidden="true"><div className="bear-guide-bubble"><strong>Let Mr Bear</strong> guide you step by step.</div><img src={bearGuide} width={595} height={959} alt="" /></aside>}
             <PolicyWizard onStepChange={changeStep} />
           </div>
           {step === 0 && <p className="hero-tagline">An <strong>AI-powered, 24/7</strong> insurance platform delivering <span className="tagline-glow">instant decisions</span> and <span className="tagline-glow">life‑changing coverage</span></p>}
