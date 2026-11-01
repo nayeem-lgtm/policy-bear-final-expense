@@ -46,3 +46,5 @@
 - [x] Position the bear faded on both sides of the quote form; verify symmetry and legibility at 958, 1180 and 1280px.
 - [x] Replace the faded both-sides bears with a full-body Mr Bear standing at the form edge; verified at 958, 1120 and 1280px.
 - [x] Replace the opening ZIP question with a state picker limited to the 31 licensed states; verified on desktop and phone.
+- [x] Remove the "Want to talk through your options" line and set the questions-section bear full-height so his head and shoes align with the top and bottom of the section; verified 1280, 1050, 950 and 375px.
+
