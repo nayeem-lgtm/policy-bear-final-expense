@@ -259,14 +259,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .coverage-strip-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @keyframes coverage-strip-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .faq-section { background: var(--brand-light); }
-.faq-inner { max-width: 1248px; padding: 68px 40px; margin: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; }
+.faq-inner { max-width: 1248px; padding: 68px 40px; margin: auto; display: grid; grid-template-columns: minmax(0, 1fr) 300px minmax(0, 1.15fr); gap: 40px; align-items: stretch; }
 .faq-heading { display: flex; flex-direction: column; align-items: flex-start; }
-.faq-heading p { font-size: 16px; color: var(--muted-foreground); margin-top: 20px; }
-.faq-call { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; color: var(--primary); min-height: 48px; margin-top: 8px; }
-.faq-bear-wrap { position: relative; width: min(150px, 40%); margin: auto 0 -4px; padding-top: 24px; }
-.faq-bear { display: block; width: 100%; height: auto; }
-.faq-bear-bubble { position: relative; width: fit-content; max-width: 132px; margin: 0 0 9px; padding: 7px 10px; background: var(--card); color: var(--foreground); border: 2px solid var(--primary); border-radius: 12px; font-size: 10.5px; line-height: 1.3; text-align: center; box-shadow: 0 8px 20px -12px color-mix(in oklab, var(--brand-deep) 45%, transparent); animation: bear-bubble-in .7s .2s both; }
-.faq-bear-bubble strong { display: block; color: var(--primary); font-size: 11.5px; }
+.faq-call { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; color: var(--primary); min-height: 48px; margin-top: 28px; }
+.faq-bear-wrap { position: relative; align-self: stretch; }
+.faq-bear { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.faq-bear-bubble { position: relative; width: fit-content; max-width: 200px; margin: 26px 0 0; padding: 9px 13px; background: var(--card); color: var(--foreground); border: 2px solid var(--primary); border-radius: 12px; font-size: 12px; line-height: 1.35; text-align: center; box-shadow: 0 8px 20px -12px color-mix(in oklab, var(--brand-deep) 45%, transparent); animation: bear-bubble-in .7s .2s both; }
+.faq-bear-bubble strong { display: block; color: var(--primary); font-size: 13px; }
+.faq-bear-bubble::after { content: ""; position: absolute; right: -8px; top: 50%; width: 12px; height: 12px; background: var(--card); border-top: 2px solid var(--primary); border-right: 2px solid var(--primary); transform: translateY(-50%) rotate(45deg); }
+@media (max-width: 900px) { .faq-bear-wrap { display: none; } }
+@media (prefers-reduced-motion: reduce) { .faq-bear-bubble { animation: none; } }
 @keyframes bear-bubble-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .faq-bear-bubble::after { content: ""; position: absolute; bottom: -7px; left: 50%; width: 12px; height: 12px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: translateX(-50%) rotate(45deg); }
 @media (max-width: 900px) { .faq-bear-wrap { display: none; } }
