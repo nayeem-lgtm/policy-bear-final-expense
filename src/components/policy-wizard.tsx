@@ -198,9 +198,9 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
             {LICENSED_STATES.map((item) => <option key={item.abbr} value={item.name}>{item.name} ({item.abbr})</option>)}
           </select>
           <ChevronDown aria-hidden="true" className="state-caret" />
-          <Link to="/contact" className="state-help">Can’t find your state?</Link>
         </div>
       </label>
+      <Link to="/contact" className="state-help">Can’t find your state?</Link>
       <p className="state-chips-label">Popular locations</p>
       <div className="state-chips">{POPULAR_STATES.map((name) => <Button type="button" variant="quiet" key={name} className={answers.state === name ? 'selected' : ''} onClick={() => update('state', name)}>{name}</Button>)}</div>
       <div className="info-panel"><p>Please select your state of residence. This will be used to determine your eligibility and coverage options.</p></div>
