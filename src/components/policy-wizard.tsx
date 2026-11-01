@@ -197,6 +197,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
             <option value="">Select your state</option>
             {LICENSED_STATES.map((item) => <option key={item.abbr} value={item.name}>{item.name} ({item.abbr})</option>)}
           </select>
+          <ChevronDown aria-hidden="true" className="state-caret" />
           <Link to="/contact" className="state-help">Can’t find your state?</Link>
         </div>
       </label>
