@@ -263,11 +263,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-heading { display: flex; flex-direction: column; align-items: flex-start; }
 .faq-call { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; color: var(--primary); min-height: 48px; margin-top: 28px; }
 .faq-bear-wrap { position: relative; align-self: stretch; }
-.faq-bear { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.faq-bear-wrap::after { content: ""; position: absolute; z-index: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 64%; height: 18px; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 25%, transparent), transparent 70%); filter: blur(2px); }
+.faq-bear { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
 .faq-bear-bubble { position: relative; width: fit-content; max-width: 200px; margin: 26px 0 0; padding: 9px 13px; background: var(--card); color: var(--foreground); border: 2px solid var(--primary); border-radius: 12px; font-size: 12px; line-height: 1.35; text-align: center; box-shadow: 0 8px 20px -12px color-mix(in oklab, var(--brand-deep) 45%, transparent); animation: bear-bubble-in .7s .2s both; }
 .faq-bear-bubble strong { display: block; color: var(--primary); font-size: 13px; }
 .faq-bear-bubble::after { content: ""; position: absolute; right: -8px; top: 50%; width: 12px; height: 12px; background: var(--card); border-top: 2px solid var(--primary); border-right: 2px solid var(--primary); transform: translateY(-50%) rotate(45deg); }
-@media (max-width: 900px) { .faq-bear-wrap { display: none; } }
+@media (max-width: 1100px) { .faq-inner { grid-template-columns: minmax(0, 1fr) 230px minmax(0, 1.1fr); gap: 28px; } }
+@media (max-width: 900px) { .faq-bear-wrap { display: none; } .faq-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); } }
 @media (prefers-reduced-motion: reduce) { .faq-bear-bubble { animation: none; } }
 @keyframes bear-bubble-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .faq-list details { border-bottom: 1px solid var(--border); }
