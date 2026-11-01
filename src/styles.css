@@ -270,9 +270,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 900px) { .faq-bear-wrap { display: none; } }
 @media (prefers-reduced-motion: reduce) { .faq-bear-bubble { animation: none; } }
 @keyframes bear-bubble-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-.faq-bear-bubble::after { content: ""; position: absolute; bottom: -7px; left: 50%; width: 12px; height: 12px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: translateX(-50%) rotate(45deg); }
-@media (max-width: 900px) { .faq-bear-wrap { display: none; } }
-@media (prefers-reduced-motion: reduce) { .faq-bear-bubble { animation: none; } }
 .faq-list details { border-bottom: 1px solid var(--border); }
 .faq-list summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; color: var(--brand-deep); font-weight: 600; padding: 23px 0; cursor: pointer; }
 .faq-list summary::-webkit-details-marker { display: none; }
