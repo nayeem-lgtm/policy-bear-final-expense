@@ -200,7 +200,6 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
           <ChevronDown aria-hidden="true" className="state-caret" />
         </div>
       </label>
-      <Link to="/contact" className="state-help">Can’t find your state?</Link>
       <p className="state-chips-label">Popular locations</p>
       <div className="state-chips">{POPULAR_STATES.map((name) => <Button type="button" variant="quiet" key={name} className={answers.state === name ? 'selected' : ''} onClick={() => update('state', name)}>{name}</Button>)}</div>
       <Button variant="action" size="touch" className="continue-button">Check my options <ArrowRight /></Button>
