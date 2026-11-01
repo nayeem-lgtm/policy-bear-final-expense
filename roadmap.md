@@ -1,6 +1,6 @@
 # PolicyBear final expense
 
-- [ ] Polish phone and tablet layouts across the landing, quote journey and public pages; verify touch controls and navigation.
+- [x] Polish phone and tablet layouts across the landing, quote journey and public pages; verified the real phone quote through pricing, all 39 screens and seven public pages at 320, 375, 430, 768, 958 and 1280px with no visible overflow or runtime errors.
 
 - [x] Give the questions-section bear the "Let Mr Bear / guide you step by step" bubble; verify desktop and phone.
 - [x] Remove the bear from beside the quote form and shrink the questions-section bear; verify desktop and phone.
