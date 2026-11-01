@@ -262,8 +262,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-inner { max-width: 1248px; padding: 68px 40px; margin: auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; }
 .faq-heading p { font-size: 16px; color: var(--muted-foreground); margin-top: 20px; }
 .faq-call { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; color: var(--primary); min-height: 48px; margin-top: 8px; }
-.faq-bear { display: block; width: min(320px, 78%); height: auto; margin: 30px auto -10px; }
-@media (max-width: 900px) { .faq-bear { display: none; } }
+.faq-bear-wrap { position: relative; width: min(320px, 78%); margin: 30px auto -10px; }
+.faq-bear { display: block; width: 100%; height: auto; }
+.faq-bear-bubble { position: relative; width: fit-content; max-width: 216px; margin: 0 auto 16px; padding: 12px 16px; background: var(--card); color: var(--foreground); border: 2px solid var(--primary); border-radius: 16px; font-size: 14px; line-height: 1.35; text-align: center; box-shadow: 0 12px 28px -14px color-mix(in oklab, var(--brand-deep) 45%, transparent); animation: bear-guide-in .7s .2s both; }
+.faq-bear-bubble strong { display: block; color: var(--primary); font-size: 15px; }
+.faq-bear-bubble::after { content: ""; position: absolute; bottom: -9px; left: 50%; width: 16px; height: 16px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: translateX(-50%) rotate(45deg); }
+@media (max-width: 900px) { .faq-bear-wrap { display: none; } }
+@media (prefers-reduced-motion: reduce) { .faq-bear-bubble { animation: none; } }
 .faq-list details { border-bottom: 1px solid var(--border); }
 .faq-list summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 18px; color: var(--brand-deep); font-weight: 600; padding: 23px 0; cursor: pointer; }
 .faq-list summary::-webkit-details-marker { display: none; }
