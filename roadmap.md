@@ -42,3 +42,4 @@
 - [x] Replace all five legal pages with supplied October 2026 content and verify organized desktop/phone layouts and navigation.
 - [x] Position the bear faded on both sides of the quote form; verify symmetry and legibility at 958, 1180 and 1280px.
 - [x] Replace the faded both-sides bears with a full-body Mr Bear standing at the form edge; verified at 958, 1120 and 1280px.
+- [x] Replace the opening ZIP question with a state picker limited to the 31 licensed states; verified on desktop and phone.
