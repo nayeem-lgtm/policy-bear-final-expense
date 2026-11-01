@@ -4,7 +4,7 @@ export type Outcome = 'approved' | 'graded' | 'declined'
 export const COVERAGE_MIN = 5000
 export const COVERAGE_MAX = 55000
 
-export const quoteSteps = ['zip', 'who', 'contact', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'opt-in'] as const
+export const quoteSteps = ['state', 'who', 'contact', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'opt-in'] as const
 
 export const journeySteps = [
   ...quoteSteps, 'loading', 'price',
@@ -96,6 +96,23 @@ export function sanitizedAnswers(value: Record<string, unknown>) {
   return Object.fromEntries(safeSavedKeys.filter((key) => key in value).map((key) => [key, value[key]]))
 }
 export const US_STATES = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+
+// The only states/jurisdictions the owner sells in. The quote starts by asking for one of these.
+export const LICENSED_STATES = [
+  { name: 'Alabama', abbr: 'AL' }, { name: 'Alaska', abbr: 'AK' }, { name: 'Arizona', abbr: 'AZ' },
+  { name: 'California', abbr: 'CA' }, { name: 'Colorado', abbr: 'CO' }, { name: 'Delaware', abbr: 'DE' },
+  { name: 'District of Columbia', abbr: 'DC' }, { name: 'Idaho', abbr: 'ID' }, { name: 'Indiana', abbr: 'IN' },
+  { name: 'Iowa', abbr: 'IA' }, { name: 'Kansas', abbr: 'KS' }, { name: 'Louisiana', abbr: 'LA' },
+  { name: 'Maine', abbr: 'ME' }, { name: 'Maryland', abbr: 'MD' }, { name: 'Michigan', abbr: 'MI' },
+  { name: 'Minnesota', abbr: 'MN' }, { name: 'Missouri', abbr: 'MO' }, { name: 'Montana', abbr: 'MT' },
+  { name: 'Nevada', abbr: 'NV' }, { name: 'New Jersey', abbr: 'NJ' }, { name: 'North Dakota', abbr: 'ND' },
+  { name: 'Ohio', abbr: 'OH' }, { name: 'Oklahoma', abbr: 'OK' }, { name: 'Pennsylvania', abbr: 'PA' },
+  { name: 'Rhode Island', abbr: 'RI' }, { name: 'South Dakota', abbr: 'SD' }, { name: 'Tennessee', abbr: 'TN' },
+  { name: 'Texas', abbr: 'TX' }, { name: 'Utah', abbr: 'UT' }, { name: 'Virginia', abbr: 'VA' },
+  { name: 'Wyoming', abbr: 'WY' },
+] as const
+
+export const POPULAR_STATES = ['Texas', 'California', 'Pennsylvania', 'Ohio', 'Michigan'] as const
 
 export function formatSSN(value: string) {
   const digits = value.replace(/\D/g, '').slice(0, 9)
