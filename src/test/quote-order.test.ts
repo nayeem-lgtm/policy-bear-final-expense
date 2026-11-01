@@ -30,7 +30,9 @@ describe('Licensed states', () => {
   it('offers exactly the 31 states and districts the owner sells in', () => {
     expect(LICENSED_STATES).toHaveLength(31)
     const abbrs = LICENSED_STATES.map((item) => item.abbr)
-    expect(abbrs).toEqual([...abbrs].sort())
+    const names = LICENSED_STATES.map((item) => item.name)
+    expect(names).toEqual([...names].sort())
+    expect(new Set(abbrs).size).toBe(31)
     for (const abbr of ['AK', 'AL', 'AZ', 'CA', 'CO', 'DC', 'DE', 'IA', 'ID', 'IN', 'KS', 'LA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MT', 'ND', 'NJ', 'NV', 'OH', 'OK', 'PA', 'RI', 'SD', 'TN', 'TX', 'UT', 'VA', 'WY']) {
       expect(abbrs).toContain(abbr)
     }
