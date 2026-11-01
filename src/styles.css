@@ -152,6 +152,7 @@
   --brand-action-hover: oklch(0.77 0.163 88);
   --brand-light: oklch(0.981 0.01 292);
   --brand-soft-blue: oklch(0.951 0.023 260);
+  --tagline-highlight: oklch(0.945 0.062 95);
   --brand-cyan: oklch(0.835 0.111 221);
   --success: oklch(0.44 0.1 158);
   --photo-shade: oklch(0.2 0.02 160 / 45%);
@@ -245,9 +246,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .assurance-band svg { width: 26px; height: 26px; color: var(--primary); }
 .assurance-band strong { font-weight: 500; }
 /* Hero tagline — one line under the quote form */
-.hero-tagline { margin: 30px auto 6px; max-width: 760px; text-align: center; font-size: 23px; line-height: 1.45; letter-spacing: -0.01em; color: var(--brand-deep); }
+.hero-tagline { margin: 30px auto 6px; max-width: 760px; text-align: center; font-size: 23px; line-height: 1.7; letter-spacing: -0.01em; color: var(--brand-deep); }
 .hero-tagline strong { font-weight: 800; color: var(--brand-deep); }
-.hero-tagline .tagline-glow { font-weight: 750; background: linear-gradient(94deg, var(--primary) 8%, oklch(0.62 0.19 264) 55%, var(--primary) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap; }
+.hero-tagline .tagline-accent { font-weight: 800; background: linear-gradient(92deg, var(--primary) 6%, oklch(0.55 0.16 264) 58%, oklch(0.66 0.05 258) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-tagline .tagline-mark { font-weight: 750; color: var(--brand-deep); background: linear-gradient(180deg, transparent 14%, var(--tagline-highlight) 14%, var(--tagline-highlight) 86%, transparent 86%); border-radius: 6px; padding: 1px 7px; -webkit-box-decoration-break: clone; box-decoration-break: clone; white-space: nowrap; }
 /* Coverage strip — three assurances under the hero tagline */
 .coverage-strip { display: flex; list-style: none; max-width: 880px; margin: 34px auto 10px; padding: 0; animation: coverage-strip-in .8s ease-out both; }
 .coverage-strip-item { position: relative; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 13px; padding: 6px 16px; }
@@ -1087,7 +1089,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* Hero tagline responsive tuning */
 @media (max-width: 760px) {
   .hero-tagline { margin-top: 22px; font-size: 18px; padding-inline: 4px; }
-  .hero-tagline .tagline-glow { white-space: normal; }
+  .hero-tagline .tagline-mark { white-space: normal; padding-inline: 5px; }
   .coverage-strip { flex-direction: column; max-width: 400px; margin-top: 26px; }
   .coverage-strip-item { flex-direction: row; justify-content: center; gap: 11px; padding: 13px 6px; }
   .coverage-strip-text .ln { display: inline; }
