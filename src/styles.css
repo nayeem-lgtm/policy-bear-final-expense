@@ -1120,3 +1120,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pb-footer .pb-footer-social { gap: 22px; }
 .pb-footer .pb-footer-bottom { border-top: 0; margin-top: 4px; padding-top: 4px; font-size: 15px; }
 @media (max-width: 640px) { .pb-footer-links { gap: 0 18px; } .pb-footer-links a { font-size: 12px; } .pb-footer-contact { gap: 0 20px; } }
+.faq-bear-wrap .faq-bear-bubble { top: auto; bottom: 64%; right: 66%; }
+.faq-bear-wrap .faq-bear-bubble::after { top: 70%; }
+.pb-footer-links { gap: 0 28px; }
+.pb-footer-links a { font-size: 14px; }
+.pb-footer .pb-footer-social svg { width: 22px; height: 22px; }
