@@ -1159,7 +1159,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .chapter-progress { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; margin-bottom: 18px; }
   .chapter-progress span, .chapter-progress span.complete { flex-direction: column; justify-content: flex-start; gap: 5px; padding: 0; min-width: 0; min-height: 58px; border-radius: 0; background: transparent; box-shadow: none; white-space: normal; font-size: 12px; line-height: 1.25; color: var(--muted-foreground); }
   .chapter-progress span::before { width: 24px; height: 24px; flex-shrink: 0; font-size: 12px; background: var(--brand-soft-blue); color: var(--primary); }
-  .chapter-progress span.current { color: var(--primary); font-weight: 700; }
+  .chapter-progress span.current { color: var(--primary); font-weight: 700; background: transparent; box-shadow: none; }
   .chapter-progress span.current::before { background: var(--primary); color: var(--primary-foreground); }
   .chapter-progress span.complete { color: var(--success); }
   .chapter-progress span.complete::before { display: grid; background: color-mix(in oklab, var(--success) 12%, var(--card)); color: var(--success); }
@@ -1202,7 +1202,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .contact-number { font-size: 28px; overflow-wrap: anywhere; }
   .funnel-section { min-height: calc(100svh - 76px); padding: 16px 12px 32px; }
   .wizard { scroll-margin-top: 88px; }
-  .demo-toolbar { max-width: calc(100vw - 60px); }
+  .demo-toolbar { width: min(340px, calc(100vw - 60px)); max-width: calc(100vw - 60px); }
+  .demo-toolbar > *, .demo-toolbar > div > * { min-width: 0; }
+  .demo-toolbar select { width: 100%; }
 }
 @media (max-width: 360px) {
   .header-inner { gap: 8px; padding-inline: 12px; }
