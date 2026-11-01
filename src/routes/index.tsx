@@ -1,7 +1,7 @@
 import bearGuide from '@/assets/bear-guide-full.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Phone, ChevronDown, Stethoscope, Zap, CalendarDays } from 'lucide-react'
+import { ArrowRight, Phone, ChevronDown, Stethoscope, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
@@ -40,7 +40,7 @@ function Index() {
             <PolicyWizard onStepChange={changeStep} />
           </div>
           {step === 0 && <p className="hero-tagline">An <span className="tagline-accent">AI-powered,</span> <span className="tagline-accent">24/7</span> insurance platform delivering <span className="tagline-mark">instant decisions</span><br className="tagline-break" /> and <span className="tagline-mark">life‑changing coverage</span>.</p>}
-          {step === 0 && <ul className="coverage-strip"><li className="coverage-strip-item"><span className="coverage-strip-icon" aria-hidden="true"><Stethoscope size={20} strokeWidth={1.8} /></span><p className="coverage-strip-text"><span className="ln"><span className="hl">No medical exam</span></span> <span className="ln">required</span></p></li><li className="coverage-strip-item"><span className="coverage-strip-icon" aria-hidden="true"><Zap size={20} strokeWidth={1.8} /></span><p className="coverage-strip-text"><span className="ln"><span className="hl">Immediate</span></span> <span className="ln">full coverage</span></p></li><li className="coverage-strip-item"><span className="coverage-strip-icon" aria-hidden="true"><CalendarDays size={20} strokeWidth={1.8} /></span><p className="coverage-strip-text"><span className="ln">Ages</span> <span className="ln"><span className="hl">50<span className="coverage-strip-sr"> to </span><span aria-hidden="true">–</span>85</span></span></p></li></ul>}
+          {step === 0 && <ul className="assurance"><li className="assurance-item"><span className="assurance-icon" aria-hidden="true"><Stethoscope size={19} strokeWidth={1.9} /></span><p className="assurance-text"><b>No medical exam</b> required</p></li><li className="assurance-item"><span className="assurance-icon" aria-hidden="true"><Zap size={19} strokeWidth={1.9} /></span><p className="assurance-text">Immediate <b>full coverage</b></p></li></ul>}
         </div>
       </section>
       {step === 0 && <>
