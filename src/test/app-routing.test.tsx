@@ -9,10 +9,10 @@ import { routeTree } from "@/routeTree.gen";
 describe("App routing", () => {
   it("targets the landing question when returning home from a later step", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
-    const location = router.buildLocation({ to: "/", hash: "step-zip" });
+    const location = router.buildLocation({ to: "/", hash: "step-state" });
     expect(location.pathname).toBe("/");
-    expect(location.hash).toBe("step-zip");
-    expect(location.href).toBe("/#step-zip");
+    expect(location.hash).toBe("step-state");
+    expect(location.href).toBe("/#step-state");
   });
   it.each(["/privacy-policy", "/terms-conditions", "/disclaimer", "/licensing", "/disclaimers"])("matches the legal document at %s", (path) => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });

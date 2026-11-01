@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import logo from '@/assets/policybear-logo.asset.json'
 
 export function PolicyHeader() {
-  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-zip" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><span className="header-call-wrap"><Button asChild variant="action" className="header-call"><a href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><span className="header-call-copy"><span className="call-caption">Want To Speak Live?</span><strong>(844) POL-BEAR</strong><span className="agents-available"><span className="agent-dot" />Expert Agents Available Now</span></span></a></Button></span></div></header>
+  return <header className="site-header"><a className="skip-link" href="#main-content">Skip to content</a><div className="header-inner"><Link to="/" hash="step-state" aria-label="PolicyBear home" className="brand-link"><img src={logo.url} width="238" height="47" alt="PolicyBear" /></Link><span className="header-call-wrap"><Button asChild variant="action" className="header-call"><a href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><span className="header-call-copy"><span className="call-caption">Want To Speak Live?</span><strong>(844) POL-BEAR</strong><span className="agents-available"><span className="agent-dot" />Expert Agents Available Now</span></span></a></Button></span></div></header>
 }
 
 export function PolicyFooter() {
@@ -19,7 +19,7 @@ export function PolicyFooter() {
         </ul>
       </div>
       <nav className="pb-footer-links" aria-label="Final expense resources">
-        <Link to="/" hash="step-zip" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>Get a quote</Link>
+        <Link to="/" hash="step-state" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>Get a quote</Link>
         <Link to="/" hash="questions">FAQ</Link>
         <Link to="/licensing">Licensing</Link>
         <Link to="/privacy-policy">Privacy policy</Link>
@@ -50,5 +50,5 @@ export function PolicyFooter() {
 }
 
 export function LegalPage({ title, intro, date, children }: { title: string; intro: string; date?: string; children: React.ReactNode }) {
-  return <div className="policy-page"><PolicyHeader /><main id="main-content" className="legal-page"><Link to="/" hash="step-zip" className="legal-back">← Back to final expense coverage</Link><span className="section-eyebrow">PolicyBear · Final expense</span><h1>{title}</h1>{date && <p className="legal-date">{date}</p>}<p className="legal-intro">{intro}</p><div className="legal-content">{children}</div></main><PolicyFooter /></div>
+  return <div className="policy-page"><PolicyHeader /><main id="main-content" className="legal-page"><Link to="/" hash="step-state" className="legal-back">← Back to final expense coverage</Link><span className="section-eyebrow">PolicyBear · Final expense</span><h1>{title}</h1>{date && <p className="legal-date">{date}</p>}<p className="legal-intro">{intro}</p><div className="legal-content">{children}</div></main><PolicyFooter /></div>
 }

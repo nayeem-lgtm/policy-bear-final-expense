@@ -5,7 +5,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
-import { COVERAGE_MAX, COVERAGE_MIN, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
+import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, POPULAR_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
 type Answers = {
   zip: string; city: string; state: string; who: string; month: string; day: string; year: string
@@ -36,7 +36,7 @@ const demoAddresses: AddressSuggestion[] = [
 
 export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) => void }) {
   const routeHash = useRouterState({ select: (state) => state.location.hash })
-  const [screen, setScreen] = useState<JourneyStep>('zip')
+  const [screen, setScreen] = useState<JourneyStep>('state')
   const [answers, setAnswers] = useState<Answers>(blank)
   const [error, setError] = useState('')
   const [ready, setReady] = useState(false)
@@ -116,19 +116,19 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     setScreen(next)
     setError('')
     setResume(false)
-    if (next === 'zip') window.scrollTo({ top: 0, behavior: 'instant' })
+    if (next === 'state') window.scrollTo({ top: 0, behavior: 'instant' })
   }, [routeHash])
 
   useEffect(() => {
     if (!ready) return
     try { localStorage.setItem('policybear-demo', JSON.stringify({ answers: sanitizedAnswers(answers), screen, at: Date.now() })) } catch { /* Continue without persistence. */ }
-    onStepChange(screen === 'zip' ? 0 : 1)
+    onStepChange(screen === 'state' ? 0 : 1)
   }, [answers, onStepChange, ready, screen])
 
   useEffect(() => {
     if (!ready) return
     heading.current?.focus({ preventScroll: true })
-    if (screen === 'zip' || !window.matchMedia('(max-width: 800px)').matches) return
+    if (screen === 'state' || !window.matchMedia('(max-width: 800px)').matches) return
     let second = 0
     const first = requestAnimationFrame(() => {
       second = requestAnimationFrame(() => {
@@ -179,7 +179,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const trust = null
 
   const shell = (title: string, helper: string, content: React.ReactNode, options?: { back?: boolean; compact?: boolean }) => <>
-    {options?.back !== false && screen !== 'zip' && !['loading', 'underwriting', 'submitting'].includes(screen) && <Button variant="quiet" className="back-button" onClick={back}><ArrowLeft /> Back</Button>}
+    {options?.back !== false && screen !== 'state' && !['loading', 'underwriting', 'submitting'].includes(screen) && <Button variant="quiet" className="back-button" onClick={back}><ArrowLeft /> Back</Button>}
     <div className={`wizard-content ${options?.compact ? 'compact-content' : ''}`} key={screen}>
       <h2 id="wizard-title" ref={heading} tabIndex={-1}>{title}</h2>
       {helper && <p className="question-helper">{helper}</p>}
@@ -189,7 +189,22 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   </>
 
   function renderScreen() {
-    if (screen === 'zip') return shell("Let's start with your ZIP code", 'Prices and plans depend on where you live.', <form onSubmit={submitNext('who', /^\d{5}$/.test(answers.zip))}>{field('zip', 'ZIP code', { inputMode: 'numeric', placeholder: 'Enter your 5-digit ZIP', maxLength: 5, onChange: (event) => update('zip', event.target.value.replace(/\D/g, '').slice(0, 5)) })}{/^\d{5}$/.test(answers.zip) && <p className="valid-note"><Check /> ZIP code ready</p>}<Button variant="action" size="touch" className="continue-button">Check my options <ArrowRight /></Button>{trust}</form>, { back: false })
+    if (screen === 'state') return shell('What state do you currently reside in?', 'Plans, prices and eligibility depend on where you live.', <form onSubmit={submitNext('who', Boolean(answers.state), 'Please choose your state of residence.')}>
+      <label className="field-label">State of residence
+        <div className="state-select">
+          <MapPin aria-hidden="true" />
+          <select aria-label="State of residence" style={{ color: answers.state ? undefined : 'var(--muted-foreground)' }} value={answers.state} onChange={(event) => update('state', event.target.value)}>
+            <option value="">Select your state</option>
+            {LICENSED_STATES.map((item) => <option key={item.abbr} value={item.name}>{item.name} ({item.abbr})</option>)}
+          </select>
+          <Link to="/contact" className="state-help">Can’t find your state?</Link>
+        </div>
+      </label>
+      <p className="state-chips-label">Popular locations</p>
+      <div className="state-chips">{POPULAR_STATES.map((name) => <Button type="button" variant="quiet" key={name} className={answers.state === name ? 'selected' : ''} onClick={() => update('state', name)}>{name}</Button>)}</div>
+      <div className="info-panel"><p>Please select your state of residence. This will be used to determine your eligibility and coverage options.</p></div>
+      <Button variant="action" size="touch" className="continue-button">Check my options <ArrowRight /></Button>
+    </form>, { back: false })
     if (screen === 'who') return shell('Who is this final expense coverage for?', '', <><Radio.Root aria-label="Who coverage protects" value={answers.who} onValueChange={(value) => { update('who', value); if (value === 'Me') advance('contact') }} className="answer-list">{['Me', 'My spouse or partner', 'My mom or dad', 'Someone else'].map((option) => <Radio.Item className="answer-card" key={option} value={option}><span className="answer-copy"><strong>{option}</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root>{answers.who === 'Me' && continueTo('contact')}{answers.who && answers.who !== 'Me' && <div className="help-panel"><p>Great that you’re helping! The person being covered needs to answer and sign. Are they with you now?</p><Button variant="action" size="touch" onClick={() => go('contact')}>Yes, they’ll answer <ArrowRight /></Button><Button variant="quiet" onClick={() => go('callback')}>No, call me later</Button></div>}</>)
     if (screen === 'dob') return shell("What's your date of birth?", 'Your age is the biggest factor in your price.', <form onSubmit={submitNext('gender', validDOB, 'Please enter a valid date for someone age 50 to 85.')}><div className="date-fields">{select('month', 'Month', Array.from({ length: 12 }, (_, i) => new Date(2026, i).toLocaleString('en', { month: 'short' })))}{select('day', 'Day', Array.from({ length: 31 }, (_, i) => String(i + 1)))}{select('year', 'Year', Array.from({ length: 36 }, (_, i) => String(new Date().getFullYear() - 50 - i)))}</div>{answers.year && <p className="valid-note">You’re {age}</p>}<Button variant="action" size="touch" className="continue-button">Continue <ArrowRight /></Button>{trust}</form>)
     if (screen === 'gender') return shell('Are you male or female?', 'Final expense insurers price coverage differently for men and women.', <>{cards('gender', ['Male', 'Female'], 'tobacco')}{answers.gender && continueTo('tobacco')}</>)
@@ -219,13 +234,13 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     if (screen === 'verify') return shell('Verify it’s you', `We sent a 6-digit code to ${answers.phone ? `(***) ***-${answers.phone.replace(/\D/g, '').slice(-4)}` : '(•••) •••-1234'} (mock).`, <><label className="field-label">Verification code<input className="text-field code-field" value={code} onChange={(event) => setCode(event.target.value.replace(/\D/g, '').slice(0, 6))} inputMode="numeric" maxLength={6} autoComplete="one-time-code" /></label><p className="question-call">Any 6 digits work in this prototype.</p><Button variant="quiet" className="wide-button">Send by email instead</Button><Button variant="action" size="touch" className="continue-button" disabled={code.length !== 6} onClick={() => go('submitting')}>Sign and submit <ArrowRight /></Button></>)
     if (screen === 'submitting') return <LoadingState icon={<Sparkles />} title="Submitting your application…" lines={['Reviewing your signature', 'Issuing your policy…', 'All done!']} active={loadingLine} />
     if (screen === 'issued') return shell(`Final expense demo complete, ${answers.firstName || 'friend'}.`, '', <><div className="success-symbol"><Check /></div><div className="policy-card"><span>Policy number <strong>{policyNumber || 'PB-FE-000000'}</strong></span><span>Coverage <strong>${coverage.toLocaleString()}</strong></span><span>Monthly premium <strong>${monthly.toFixed(2)}</strong></span><span>First draft <strong>{answers.draftDate}</strong></span><span>Beneficiary <strong>{answers.beneficiaryFirst || answers.beneficiaryType}</strong></span><span>Coverage type <strong>{answers.coverageType || (outcome === 'graded' ? 'Graded' : 'Immediate')}</strong></span></div><div className="next-list"><strong>What happens next</strong><span>In a real final expense application, policy documents would be sent to {answers.email || 'your email'}.</span><span>Save our number {phone}.</span><span>Tell your beneficiary where to find your policy.</span></div><Button variant="action" size="touch" className="wide-button" onClick={() => window.print()}>Print this page</Button></>, { back: false })
-    if (screen === 'callback') return shell('Request a call back', 'Discuss final expense options with an agent. This demo does not send a callback request.', <form onSubmit={submitNext('zip', Boolean(answers.firstName && answers.phone && consent))}>{field('firstName', 'Name')}{field('phone', 'Phone', { type: 'tel' })}{cards('callbackTime', ['Morning', 'Afternoon', 'Evening'])}<ContactConsent checked={consent} onChange={setConsent} /><Button variant="action" size="touch" className="wide-button">Request my call</Button></form>)
+    if (screen === 'callback') return shell('Request a call back', 'Discuss final expense options with an agent. This demo does not send a callback request.', <form onSubmit={submitNext('state', Boolean(answers.firstName && answers.phone && consent))}>{field('firstName', 'Name')}{field('phone', 'Phone', { type: 'tel' })}{cards('callbackTime', ['Morning', 'Afternoon', 'Evening'])}<ContactConsent checked={consent} onChange={setConsent} /><Button variant="action" size="touch" className="wide-button">Request my call</Button></form>)
     return shell('An agent can help set this up for you', 'You still have options. Talk with a licensed agent for personal help.', <><Button asChild variant="action" size="touch" className="wide-button"><a href={`tel:${phone}`}><Phone /> Call {phone}</a></Button><Button variant="quiet" className="wide-button" onClick={() => go('callback')}>Request a call back</Button></>)
   }
 
   const chapter = chapterFor(screen)
-  return <section className={`wizard ${screen !== 'zip' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
-    {resume && <div className="resume-banner"><p>Welcome back, {answers.firstName || 'friend'}! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => setResume(false)}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(blank); localStorage.removeItem('policybear-demo'); go('zip') }}>Start over</Button></div></div>}
+  return <section className={`wizard ${screen !== 'state' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
+    {resume && <div className="resume-banner"><p>Welcome back, {answers.firstName || 'friend'}! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => setResume(false)}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(blank); localStorage.removeItem('policybear-demo'); go('state') }}>Start over</Button></div></div>}
     <div className="chapter-progress" aria-label="Application progress">{labels.map((label, index) => <span className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} key={label}>{index < chapter && <Check />}{label}</span>)}</div>
     {quoteIndex >= 0 && <div className="progress-track"><div className="progress-fill" style={{ width: `${((quoteIndex + 1) / quoteSteps.length) * 100}%` }} /></div>}
     {screenIndex >= journeySteps.indexOf('personal') && screenIndex <= journeySteps.indexOf('issued') && <div className="mini-summary">Coverage ${coverage.toLocaleString()} · ${monthly.toFixed(2)}/mo <a href={`tel:${phone}`}>Need help? {phone}</a></div>}
