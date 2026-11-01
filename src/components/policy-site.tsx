@@ -20,20 +20,17 @@ export function PolicyFooter() {
       </div>
       <nav className="pb-footer-links" aria-label="Final expense resources">
         <Link to="/" hash="step-state" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>Get a quote</Link>
-        <Link to="/" hash="questions">FAQ</Link>
+        <Link to="/disclaimers">Final expense disclosure</Link>
         <Link to="/licensing">Licensing</Link>
         <Link to="/privacy-policy">Privacy policy</Link>
         <Link to="/terms-conditions">Terms & conditions</Link>
-        <Link to="/contact">Contact us</Link>
-      </nav>
-      <nav className="pb-footer-links pb-footer-legal" aria-label="Disclosures and legal">
-        <Link to="/disclaimers">Final expense disclosure</Link>
         <Link to="/disclaimer">Disclaimer</Link>
+        <Link to="/contact">Contact us</Link>
       </nav>
       <div className="pb-footer-connect">
         <div className="pb-footer-contact">
-          <a href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><Phone aria-hidden="true" />(844) POL-BEAR</a>
           <a href="mailto:info@policybear.com"><Mail aria-hidden="true" />info@policybear.com</a>
+          <a href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><Phone aria-hidden="true" />(844) POL-BEAR</a>
         </div>
         <ul className="pb-footer-social" aria-label="PolicyBear on social media">
           <li><a className="social-facebook" href="https://www.facebook.com/policybearofficial/" target="_blank" rel="noopener noreferrer" aria-label="PolicyBear on Facebook"><Facebook aria-hidden="true" /></a></li>
