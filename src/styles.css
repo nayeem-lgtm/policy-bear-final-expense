@@ -152,6 +152,7 @@
   --brand-action-hover: oklch(0.77 0.163 88);
   --brand-light: oklch(0.981 0.01 292);
   --brand-soft-blue: oklch(0.951 0.023 260);
+  --tagline-highlight: oklch(0.945 0.062 95);
   --brand-cyan: oklch(0.835 0.111 221);
   --success: oklch(0.44 0.1 158);
   --photo-shade: oklch(0.2 0.02 160 / 45%);
@@ -1088,7 +1089,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* Hero tagline responsive tuning */
 @media (max-width: 760px) {
   .hero-tagline { margin-top: 22px; font-size: 18px; padding-inline: 4px; }
-  .hero-tagline .tagline-glow { white-space: normal; }
+  .hero-tagline .tagline-mark { white-space: normal; padding-inline: 5px; }
   .coverage-strip { flex-direction: column; max-width: 400px; margin-top: 26px; }
   .coverage-strip-item { flex-direction: row; justify-content: center; gap: 11px; padding: 13px 6px; }
   .coverage-strip-text .ln { display: inline; }
