@@ -1072,21 +1072,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* PolicyBear guide beside the quote form */
 .quote-form-holder { position: relative; }
-/* The bear stands faded in the empty strip on either side of the form, so he reads as a soft backdrop. */
-.bear-guide { position: absolute; bottom: -60px; width: 280px; pointer-events: none; z-index: 1; }
-.bear-guide--right { left: calc(100% + 10px); }
-.bear-guide--left { right: calc(100% + 10px); }
-.bear-guide img { width: 100%; height: auto; display: block; opacity: .35; filter: drop-shadow(0 10px 14px color-mix(in oklab, var(--brand-deep) 12%, transparent)); transform-origin: bottom center; animation: bear-guide-appear .8s cubic-bezier(.2,.8,.2,1) both, bear-guide-sway 5s ease-in-out .8s infinite; -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 99%); mask-image: linear-gradient(to bottom, #000 76%, transparent 99%); }
-.bear-guide::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -4px; height: 14px; border-radius: 50%; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 16%, transparent), transparent 72%); }
-.bear-guide-bubble { position: relative; width: fit-content; max-width: 100%; margin: 0 0 12px 2px; padding: 12px 16px; background: var(--card); color: var(--foreground); border: 2px solid var(--primary); border-left: 6px solid var(--brand-action); border-radius: 16px; font-size: 14px; line-height: 1.35; box-shadow: 0 12px 28px -14px color-mix(in oklab, var(--brand-deep) 45%, transparent); animation: bear-guide-in .7s .25s both; }
+/* Mr Bear stands at the form's right edge, leaning in at full colour. */
+.bear-guide { position: absolute; bottom: -26px; left: calc(100% - 44px); width: 300px; pointer-events: none; z-index: 3; }
+.bear-guide img { width: 100%; height: auto; display: block; filter: drop-shadow(0 16px 20px color-mix(in oklab, var(--brand-deep) 26%, transparent)); transform-origin: bottom center; animation: bear-guide-appear .8s cubic-bezier(.2,.8,.2,1) both, bear-guide-sway 6s ease-in-out .8s infinite; }
+.bear-guide::before { content: ""; position: absolute; left: 24%; right: -8%; bottom: 2%; height: 84%; border-radius: 50%; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--primary) 14%, transparent), transparent 68%); z-index: -1; }
+.bear-guide::after { content: ""; position: absolute; left: 20%; right: -2%; bottom: -6px; height: 16px; border-radius: 50%; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 22%, transparent), transparent 72%); }
+.bear-guide-bubble { position: relative; width: fit-content; max-width: 210px; margin: 0 0 12px 56px; padding: 12px 16px; background: var(--card); color: var(--foreground); border: 2px solid var(--primary); border-left: 6px solid var(--brand-action); border-radius: 16px; font-size: 14px; line-height: 1.35; box-shadow: 0 12px 28px -14px color-mix(in oklab, var(--brand-deep) 45%, transparent); animation: bear-guide-in .7s .25s both; }
 .bear-guide-bubble strong { display: block; color: var(--primary); font-size: 15px; }
 .bear-guide-bubble::after { content: ""; position: absolute; bottom: -9px; left: 50%; width: 16px; height: 16px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: translateX(-50%) rotate(45deg); }
 @keyframes bear-guide-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-@keyframes bear-guide-appear { from { opacity: 0; transform: translateY(24px); } to { opacity: .35; transform: none; } }
+@keyframes bear-guide-appear { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @keyframes bear-guide-sway { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-1.5deg) translateY(-3px); } }
-@media (max-width: 1180px) { .bear-guide { width: 210px; bottom: 0; } .bear-guide-bubble { font-size: 12.5px; } }
-/* Narrower screens: the bears shrink to fit the empty strips beside the form instead of stacking above it. */
-@media (max-width: 1080px) { .quote-stage-inner, .funnel-inner { max-width: 600px; } .bear-guide { width: max(84px, min(170px, calc((100vw - 600px) / 2 - 28px))); bottom: 24px; } .bear-guide--right { left: calc(100% + 4px); } .bear-guide--left { right: calc(100% + 4px); } .bear-guide-bubble { display: none; } }
+@media (max-width: 1180px) { .bear-guide { width: 232px; bottom: -16px; left: calc(100% - 34px); } .bear-guide-bubble { font-size: 12.5px; margin-left: 42px; } }
+/* Narrower screens: Mr Bear tucks slightly behind the form's edge so he stays big enough to notice. */
+@media (max-width: 1080px) { .quote-stage-inner, .funnel-inner { max-width: 600px; } .bear-guide { width: max(120px, min(190px, calc((100vw - 600px) / 2 + 40px))); bottom: -12px; left: calc(100% - 26px); } .bear-guide-bubble { font-size: 12px; max-width: 164px; margin-left: 10px; padding: 10px 13px; } }
 @media (max-width: 860px) { .bear-guide { display: none; } }
 @media (prefers-reduced-motion: reduce) { .bear-guide img, .bear-guide-bubble { animation: none; } }
 
