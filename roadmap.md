@@ -1,6 +1,6 @@
 # PolicyBear final expense
 
-- [ ] Adapt the footer to the compact, centered reference using existing PolicyBear links, contact details, socials and seals.
+- [x] Adapt the footer to the compact, centered reference using existing PolicyBear links, contact details, socials and seals; verify contact navigation and phone layout.
 - [x] Recommend the next remix milestone: check the complete quote journey and review legal wording before launch.
 
 - [x] Replace the family photo with a relatable older couple sharing an everyday moment with their granddaughter; verify the live page and keep faces visible beside the questions.

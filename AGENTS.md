@@ -16,7 +16,7 @@
 - Keep electronic signing browser-only, offering typed style previews and an ephemeral draw pad without persisting drawn signatures.
 - Define PolicyBear visual styles and role colors centrally in `src/styles.css`; controls use the shared Button and accessible radio primitives for consistent, readable interaction.
 - Share the PolicyBear header and legal footer through the browser-safe policy-site module on the landing and legal content routes, so legal navigation and disclosures remain consistent.
-- Keep global navigation in the shared PolicyBear header with an accessible collapsible phone menu; keep footer resources in distinct quote, legal, and contact groups to avoid duplicate navigation.
+- Keep footer resource navigation, disclosure navigation and contact/social links in separate accessible groups within the shared footer; this keeps the compact layout navigable without duplicating links.
 - Keep the landing page free of standalone reassurance badge bands or mark strips; third-party accreditation and security seals appear only in the shared footer as crisp code-drawn badges and only for credentials the owner has confirmed.
 - Keep the contact page browser-only with the existing phone contact and no submission form; this preserves the presentation-only scope without undelivered messages.
 - Render the five legal content routes from shared browser-safe structured owner-supplied copy, preserving existing public URLs; keep general disclaimer separate from final expense disclosures so each document remains independently shareable.
