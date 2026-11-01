@@ -156,7 +156,7 @@
   --success: oklch(0.44 0.1 158);
   --photo-shade: oklch(0.2 0.02 160 / 45%);
   --wizard-shadow: 0 4px 20px oklch(0.211 0.077 279 / 6%);
-  --footer-background: var(--background);
+  --footer-background: color-mix(in oklab, var(--muted) 55%, var(--background));
   --footer-foreground: var(--brand-deep);
   --footer-border: oklch(0.211 0.077 279 / 14%);
   --social-facebook: #1877F2;
@@ -762,7 +762,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .site-navigation a { display: inline-flex; align-items: center; min-height: 48px; color: var(--brand-deep); font-size: 16px; font-weight: 500; text-decoration: none; }
 .site-navigation a:hover, .site-navigation a[aria-current=page] { color: var(--primary); text-decoration: underline; text-underline-offset: 7px; }
 .navigation-toggle { display: none; }
-.pb-footer-inner { padding-bottom: 60px; }
+.pb-footer-inner { max-width: 1160px; padding: 28px 32px 24px; text-align: center; }
+.pb-footer { border-top: 1px solid var(--footer-border); }
+.pb-footer .pb-footer-seals-wrap { padding: 0; }
+.pb-footer .pb-footer-seals { flex-direction: row; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px 24px; padding: 0; margin: 0 0 18px; }
+.pb-footer .pb-footer-seals .seal { transform-origin: center; }
+.pb-footer-links { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 0 24px; }
+.pb-footer-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font-size: 14px; font-weight: 500; text-transform: uppercase; color: var(--primary); }
+.pb-footer a:hover { color: var(--primary); }
+.pb-footer-legal { gap: 0 24px; }
+.pb-footer-legal a { font-size: 13px; }
+.pb-footer-connect { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 28px; margin-top: 8px; }
+.pb-footer-contact { display: flex; justify-content: center; flex-wrap: wrap; gap: 0 20px; }
+.pb-footer-contact a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-size: 14px; }
+.pb-footer-contact svg { width: 15px; height: 15px; color: var(--primary); }
+.pb-footer .pb-footer-social { margin: 0; gap: 4px; }
+.pb-footer .pb-footer-social a { width: 36px; height: 36px; background: transparent; color: var(--primary); border-radius: 4px; }
+.pb-footer .pb-footer-social a:hover { transform: none; box-shadow: none; background: var(--brand-soft-blue); }
+.pb-footer .pb-footer-social svg { width: 17px; height: 17px; }
+.pb-footer .pb-footer-bottom { justify-content: center; margin-top: 12px; padding-top: 12px; font-size: 13px; }
+@media (max-width: 640px) {
+  .pb-footer .pb-footer-inner { padding: 24px 20px; }
+  .pb-footer .pb-footer-seals { gap: 12px; }
+  .pb-footer-links { gap: 0 16px; }
+  .pb-footer-links a { font-size: 12px; }
+  .pb-footer-connect { gap: 8px; }
+}
 .policy-action.header-call { outline: 3px solid transparent; animation: call-breathe 2.8s ease-in-out infinite, call-pulse-ring 2.8s ease-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 3px 14px 3px 3px; gap: 8px; height: auto; min-height: 0; }
 .header-call .phone-circle { background: var(--primary); color: var(--primary-foreground); width: 40px; height: 40px; box-shadow: none; }
 .header-call .phone-circle::before { inset: -4px; border-color: color-mix(in oklab, var(--primary) 55%, transparent); animation: call-ripple 2.8s ease-out infinite; }
