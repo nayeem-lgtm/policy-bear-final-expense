@@ -1126,3 +1126,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pb-footer-links a { font-size: 14px; }
 .pb-footer .pb-footer-social svg { width: 22px; height: 22px; }
 .faq-bear-wrap .faq-bear-bubble { white-space: normal; width: 124px; bottom: 68%; right: 71%; }
+.faq-heading .faq-bear-bubble { position: relative; align-self: flex-end; margin: 28px -8px 0 0; width: auto; white-space: nowrap; }
+.faq-heading .faq-bear-bubble::after { top: 50%; }
+.faq-heading .faq-bear-bubble { margin-top: 2px; }
