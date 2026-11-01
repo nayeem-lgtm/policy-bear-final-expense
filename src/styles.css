@@ -1109,3 +1109,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .state-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .state-chips button { border: 1px solid var(--input); border-radius: 999px; background: var(--muted); color: var(--foreground); font-size: 15px; font-weight: 600; padding: 9px 15px; min-height: 0; }
 .state-chips button.selected { border-color: var(--primary); background: var(--brand-soft-blue); color: var(--brand-deep); }
+/* Bubble beside the bear's head; footer stacked rows */
+.faq-bear-wrap .faq-bear-bubble { position: absolute; z-index: 2; top: 2%; right: 72%; margin: 0; white-space: nowrap; max-width: none; }
+.faq-bear-wrap .faq-bear-bubble::after { top: 60%; }
+.pb-footer-links { gap: 0 40px; }
+.pb-footer-links a { font-size: 15px; }
+.pb-footer-connect { flex-direction: column; gap: 4px; }
+.pb-footer-contact { gap: 0 40px; }
+.pb-footer-contact a { font-size: 16px; }
+.pb-footer .pb-footer-social { gap: 22px; }
+.pb-footer .pb-footer-bottom { border-top: 0; margin-top: 4px; padding-top: 4px; font-size: 15px; }
+@media (max-width: 640px) { .pb-footer-links { gap: 0 18px; } .pb-footer-links a { font-size: 12px; } .pb-footer-contact { gap: 0 20px; } }
+.faq-bear-wrap .faq-bear-bubble { top: auto; bottom: 64%; right: 66%; }
+.faq-bear-wrap .faq-bear-bubble::after { top: 70%; }
+.pb-footer-links { gap: 0 28px; }
+.pb-footer-links a { font-size: 14px; }
+.pb-footer .pb-footer-social svg { width: 22px; height: 22px; }
+.faq-bear-wrap .faq-bear-bubble { white-space: normal; width: 124px; bottom: 68%; right: 71%; }
