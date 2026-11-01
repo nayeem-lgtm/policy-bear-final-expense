@@ -246,7 +246,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .assurance-band svg { width: 26px; height: 26px; color: var(--primary); }
 .assurance-band strong { font-weight: 500; }
 /* Hero tagline — one line under the quote form */
-.hero-tagline { margin: 30px auto 6px; max-width: 760px; text-align: center; font-size: 19px; line-height: 1.65; letter-spacing: -0.015em; font-weight: 600; color: var(--brand-deep); }
+.hero-tagline { margin: 30px auto 6px; max-width: 760px; text-align: center; font-size: 19px; line-height: 1.65; letter-spacing: 0; font-weight: 600; color: var(--brand-deep); }
 .hero-tagline strong { font-weight: 700; color: var(--brand-deep); }
 .hero-tagline .tagline-accent { font-weight: 700; background: linear-gradient(92deg, var(--primary) 0%, oklch(0.510 0.140 274) 30%, oklch(0.569 0.094 264) 55%, oklch(0.620 0.055 262) 80%, oklch(0.645 0.030 262) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero-tagline .tagline-mark { font-weight: 700; color: var(--brand-deep); background: linear-gradient(180deg, transparent 0 50%, var(--tagline-highlight) 50% 100%); padding: 0 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; white-space: nowrap; }
@@ -1132,3 +1132,91 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-heading .faq-bear-bubble { position: relative; align-self: flex-end; margin: 28px -8px 0 0; width: auto; white-space: nowrap; }
 .faq-heading .faq-bear-bubble::after { top: 50%; }
 .faq-heading .faq-bear-bubble { margin-top: 2px; }
+
+/* Phone and tablet layout: one predictable cascade for the shared experience. */
+@media (max-width: 900px) {
+  .header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .header-call-wrap { min-width: 0; flex-shrink: 0; }
+  .faq-heading, .faq-list, .quote-form-holder, .funnel-inner { min-width: 0; }
+  .faq-heading h2 { font-size: 28px; }
+}
+@media (max-width: 760px) {
+  html { scroll-padding-top: 88px; }
+  .site-header { height: 76px; }
+  .header-inner { padding-inline: max(14px, env(safe-area-inset-left)); gap: 12px; }
+  .brand-link img { width: 120px; max-width: 100%; }
+  .header-call-copy { gap: 4px; }
+  .header-call strong { font-size: 22px; }
+  .header-call .call-caption { font-size: 12px; }
+  .agents-available { font-size: 10px; }
+  .hero-banner { min-height: 224px; }
+  .hero-banner-copy { padding: 30px 20px 52px; }
+  .hero-banner-copy h1 { font-size: 30px; letter-spacing: 0; line-height: 1.18; }
+  .hero-banner-copy p { font-size: 17px; line-height: 1.5; max-width: 480px; margin-inline: auto; }
+  .quote-stage { padding-inline: max(12px, env(safe-area-inset-left)); padding-bottom: 36px; }
+  .quote-stage-inner { margin-top: -28px; }
+  .quote-stage .wizard, .funnel-section .wizard { padding: 20px 18px 24px; border-radius: 12px; }
+  .chapter-progress { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; margin-bottom: 18px; }
+  .chapter-progress span, .chapter-progress span.complete { flex-direction: column; justify-content: flex-start; gap: 5px; padding: 0; min-width: 0; min-height: 58px; border-radius: 0; background: transparent; box-shadow: none; white-space: normal; font-size: 12px; line-height: 1.25; color: var(--muted-foreground); }
+  .chapter-progress span::before { width: 24px; height: 24px; flex-shrink: 0; font-size: 12px; background: var(--brand-soft-blue); color: var(--primary); }
+  .chapter-progress span.current { color: var(--primary); font-weight: 700; }
+  .chapter-progress span.current::before { background: var(--primary); color: var(--primary-foreground); }
+  .chapter-progress span.complete { color: var(--success); }
+  .chapter-progress span.complete::before { display: grid; background: color-mix(in oklab, var(--success) 12%, var(--card)); color: var(--success); }
+  .chapter-progress svg { display: none; }
+  .wizard .progress-track { height: 8px; margin-bottom: 20px; }
+  .wizard-content h2 { font-size: 24px; line-height: 1.3; letter-spacing: 0; margin-bottom: 10px; }
+  .question-helper { font-size: 16px; line-height: 1.55; margin-bottom: 20px; }
+  .wizard .continue-button, .wizard .wide-button { min-height: 58px; height: auto; font-size: 18px; border-radius: 8px; }
+  .field-label, .text-field, .secure-field, .field-label select { font-size: 16px; }
+  .text-field, .secure-field, .field-label select, .state-select { border-radius: 8px; }
+  .field-label .state-select select { border-radius: 0; font-size: 17px; }
+  .state-chips { gap: 8px; margin-bottom: 20px; }
+  .state-chips button { min-height: 44px; padding: 8px 13px; }
+  .answer-card, .answer-grid .answer-card { border-radius: 8px; }
+  .hero-tagline { margin-top: 24px; font-size: 18px; line-height: 1.7; padding-inline: 8px; text-wrap: pretty; }
+  .assurance { max-width: 350px; border-radius: 20px; margin-top: 22px; }
+  .assurance-item { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding: 12px 18px; }
+  .assurance-icon { width: 34px; height: 34px; }
+  .assurance-text { text-align: left; font-size: 15px; letter-spacing: 0; }
+  .assurance-item + .assurance-item::before { width: calc(100% - 36px); }
+  .faq-inner { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 36px 20px; }
+  .faq-heading h2 { font-size: 28px; line-height: 1.3; }
+  .faq-call { margin-top: 12px; }
+  .faq-list summary { font-size: 17px; line-height: 1.5; padding-block: 20px; }
+  .faq-list details p { line-height: 1.7; padding-bottom: 20px; }
+  .closing-section { flex-direction: column; align-items: stretch; gap: 20px; padding: 32px 20px; }
+  .closing-section h2 { font-size: 24px; line-height: 1.4; }
+  .closing-section .policy-action { width: 100%; max-width: none; min-width: 0; }
+  .pb-footer .pb-footer-inner { padding: 24px 16px calc(20px + env(safe-area-inset-bottom)); }
+  .pb-footer-links { gap: 0 18px; }
+  .pb-footer-links a { font-size: 13px; min-height: 44px; line-height: 1.45; }
+  .pb-footer-contact { gap: 0 16px; }
+  .pb-footer-contact a { font-size: 15px; }
+  .pb-footer .pb-footer-social { gap: 12px; margin-top: 6px; }
+  .pb-footer .pb-footer-social a { width: 44px; height: 44px; }
+  .pb-footer .pb-footer-bottom { font-size: 13px; margin-top: 12px; }
+  .legal-page, .contact-page { padding-inline: 20px; }
+  .legal-content p, .legal-document-body ul, .legal-document-body ol { font-size: 17px; line-height: 1.75; overflow-wrap: anywhere; }
+  .legal-back { line-height: 1.45; }
+  .contact-number { font-size: 28px; overflow-wrap: anywhere; }
+  .funnel-section { min-height: calc(100svh - 76px); padding: 16px 12px 32px; }
+  .wizard { scroll-margin-top: 88px; }
+  .demo-toolbar { max-width: calc(100vw - 60px); }
+}
+@media (max-width: 360px) {
+  .header-inner { gap: 8px; padding-inline: 12px; }
+  .brand-link img { width: 96px; }
+  .header-call strong { font-size: 20px; }
+  .header-call .call-caption { font-size: 11px; }
+  .agents-available { font-size: 9px; }
+  .hero-banner-copy h1 { font-size: 28px; }
+  .quote-stage .wizard, .funnel-section .wizard { padding-inline: 14px; }
+  .chapter-progress span { font-size: 11px; }
+  .date-fields { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr) minmax(0, 1fr); gap: 6px; }
+  .field-label select { padding-inline: 4px; }
+  .pb-footer-contact { flex-direction: column; align-items: center; }
+}
+@media (hover: none) {
+  .answer-card:hover, .wizard .continue-button:hover, .wizard .wide-button:hover { transform: none; }
+}
