@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest'
 import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, chapterFor, journeySteps, quoteSteps } from '@/lib/final-expense-demo'
 
 describe('Coverage range', () => {
-  it('runs from $5,000 to $55,000 as the owner offers it', () => {
+  it('runs from $5,000 to $50,000 as the owner offers it', () => {
     expect(COVERAGE_MIN).toBe(5000)
-    expect(COVERAGE_MAX).toBe(55000)
+    expect(COVERAGE_MAX).toBe(50000)
   })
 })
 
