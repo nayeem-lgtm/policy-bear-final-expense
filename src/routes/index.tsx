@@ -58,7 +58,7 @@ function Index() {
           <div className="closing-copy">
             <h2>Find a starting point for your <span className="closing-hl">final expense</span> coverage.</h2>
             <div className="closing-actions">
-              <a className="closing-btn closing-btn-main" href="#get-covered"><span>Check my options</span><span className="closing-btn-icon"><ArrowRight size={18} /></span></a>
+              <a className="closing-btn closing-btn-main" href="#get-covered"><span>Explore coverage</span><span className="closing-btn-icon"><ArrowRight size={18} /></span></a>
             </div>
           </div>
         </section>

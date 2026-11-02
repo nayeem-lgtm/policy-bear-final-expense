@@ -1283,14 +1283,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 900px) { .closing-copy { width: 100%; flex-direction: column; text-align: center; gap: 22px; } .closing-copy h2 { max-width: none; font-size: 26px; } }
 @media (max-width: 760px) { .closing-copy { gap: 20px; } .closing-copy h2 { font-size: 26px; } }
 @media (max-width: 520px) { .closing-copy h2 { font-size: 20px; } }
-/* Closing button v2 */
-.closing-btn-main { position: relative; overflow: hidden; padding: 0 26px; gap: 11px; border-radius: 14px; height: 54px; background: var(--primary); color: var(--primary-foreground); box-shadow: 0 16px 30px -16px var(--primary), inset 0 -3px 0 color-mix(in oklab, var(--brand-deep) 35%, transparent); }
-.closing-btn-main::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, color-mix(in oklab, var(--primary-foreground) 28%, transparent) 50%, transparent 70%); transform: translateX(-120%); animation: closing-shine 3.6s ease-in-out infinite; }
-.closing-btn-main .closing-btn-icon { width: auto; height: auto; background: none; color: var(--brand-action); }
-.closing-btn-main:hover { background: var(--brand-deep); transform: translateY(-2px); }
-@keyframes closing-shine { 0%, 55% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
-@media (prefers-reduced-motion: reduce) { .closing-btn-main::after { animation: none; } }
-@media (max-width: 760px) { .closing-btn-main { justify-content: center; } }
+/* Closing button v3 — navy pill with gold arrow chip */
+.closing-btn-main {
+  padding: 0 8px 0 26px;
+  gap: 14px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--brand-deep);
+  color: var(--primary-foreground);
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  box-shadow: 0 14px 26px -16px color-mix(in oklab, var(--brand-deep) 85%, transparent);
+}
+.closing-btn-main .closing-btn-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--brand-action);
+  color: var(--brand-deep);
+  box-shadow: inset 0 1px 0 color-mix(in oklab, var(--primary-foreground) 28%, transparent);
+}
+.closing-btn-main:hover {
+  background: color-mix(in oklab, var(--brand-deep) 88%, var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px -16px color-mix(in oklab, var(--brand-deep) 90%, transparent), 0 0 0 5px color-mix(in oklab, var(--brand-action) 22%, transparent);
+}
+.closing-btn-main:hover .closing-btn-icon { transform: translateX(3px) scale(1.05); }
+@media (max-width: 760px) { .closing-btn-main { width: auto; max-width: 100%; justify-content: center; align-self: center; } }
 
 /* Fit wizard steps in one screen */
 .funnel-section { min-height: 0; padding: 20px 20px 24px; }
@@ -1312,7 +1330,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .funnel-section .chapter-progress { margin-bottom: 8px; }
 /* Closing band: smaller type */
 .closing-copy h2 { font-size: 24px; }
-.closing-btn-main { height: 46px; font-size: 15px; padding: 0 22px; }
+.closing-btn-main { height: 46px; font-size: 15px; padding: 0 7px 0 24px; }
 @media (max-width: 900px) { .closing-copy h2 { font-size: 20px; } }
 @media (max-width: 520px) { .closing-copy h2 { font-size: 18px; } }
 /* FAQ: bigger bear, smaller questions */
