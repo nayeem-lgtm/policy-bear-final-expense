@@ -1221,7 +1221,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .question-head .question-helper { text-align: left; margin-bottom: 0; }
 .answer-list-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .answer-list-pair .answer-copy { flex-direction: row; align-items: center; gap: 11px; }
-.answer-badge { display: grid; place-items: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: color-mix(in oklab, var(--brand-deep) 7%, var(--muted)); color: var(--brand-deep); transition: background 150ms, color 150ms; }
+.answer-copy > .answer-badge { display: grid; place-items: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: color-mix(in oklab, var(--brand-deep) 7%, var(--muted)); color: var(--brand-deep); transition: background 150ms, color 150ms; }
 .answer-badge svg { width: 17px; height: 17px; }
 .answer-card[data-state=checked] .answer-badge { background: color-mix(in oklab, var(--primary) 13%, var(--background)); color: var(--primary); }
 @media (max-width: 760px) {
