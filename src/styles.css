@@ -1734,6 +1734,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .ssn-form .valid-note { min-height: 0; margin: 4px 0; font-size: 13px; }
 .ssn-form .field-prompt { margin-top: 12px; }
 .ssn-form .secure-field { min-height: 54px; }
+.ssn-form .answer-list { gap: 10px; margin: 18px 0 10px; }
+.ssn-form .answer-card { min-height: 62px; }
 @keyframes trust-pulse { 0% { opacity: .8; transform: scale(.9); } 70% { opacity: 0; transform: scale(1.25); } 100% { opacity: 0; transform: scale(1.25); } }
 @media (max-width: 620px) {
   .ssn-trust { gap: 6px; }
