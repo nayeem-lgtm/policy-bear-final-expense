@@ -1,8 +1,8 @@
 export type Outcome = 'approved' | 'graded' | 'declined'
 
-// Coverage amounts the owner offers: $5,000 to $55,000 (funeral costs, cremation, final bills).
+// Coverage amounts the owner offers: $5,000 to $50,000 (funeral costs, cremation, final bills).
 export const COVERAGE_MIN = 5000
-export const COVERAGE_MAX = 55000
+export const COVERAGE_MAX = 50000
 
 export const quoteSteps = ['state', 'who', 'contact', 'dob', 'gender', 'tobacco', 'size', 'coverage', 'opt-in'] as const
 
