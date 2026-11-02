@@ -7,6 +7,8 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import bearLogo from '@/assets/policybear-logo.asset.json'
 import bearGuide from '@/assets/bear-guide-full.png'
+import trustlockSeal from '@/assets/trustlock-complete.png.asset.json'
+import comodoSeal from '@/assets/comodo-original.png.asset.json'
 
 const bearTips: Partial<Record<string, { myth: string; fact: string }>> = {
   gender: { myth: 'Life insurance is too expensive', fact: '50% of people overestimate the cost of life insurance' },
@@ -326,11 +328,9 @@ const ssnTrustBadges = [
 
 function TrustBadges() {
   return <div className="ssn-trust">
-    <div className="ssn-trust-seal">
-      <span className="ssn-trust-lock" aria-hidden="true"><LockKeyhole /><Check /></span>
-      <span className="ssn-trust-seal-copy"><small>Verified</small><strong>Secured</strong></span>
-      <span className="ssn-trust-active"><span className="ssn-trust-live-dot" aria-hidden="true" /> Active</span>
-      <span className="ssn-trust-by"><span className="ssn-trust-by-icon" aria-hidden="true"><LockKeyhole /></span><span className="ssn-trust-by-copy"><small>Verified by</small><strong>PolicyBear</strong></span><span className="ssn-trust-by-arrow" aria-hidden="true"><ArrowRight /></span></span>
+    <div className="ssn-trust-seals" aria-label="Security verification seals">
+      <div className="ssn-seal-slot"><img className="ssn-seal-trustlock" src={trustlockSeal.url} alt="TrustLock — verified SSL secure" width="1395" height="509" /></div>
+      <div className="ssn-seal-slot"><img className="ssn-seal-comodo" src={comodoSeal.url} alt="Comodo Secured — SSL certificate seal" width="219" height="119" /></div>
     </div>
     <div className="ssn-trust-row">
       {ssnTrustBadges.map((badge) => <span className="ssn-trust-item" key={badge.title}>
