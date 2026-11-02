@@ -1098,7 +1098,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-tagline { margin-top: 22px; font-size: 18px; padding-inline: 4px; }
   .hero-tagline .tagline-mark { white-space: normal; padding-inline: 2px; }
   .tagline-break { display: none; }
-  .assurance { gap: 10px 22px; margin-top: 22px; }
+  .assurance { flex-direction: column; align-items: flex-start; width: max-content; gap: 10px; margin-top: 22px; }
   .assurance-item { font-size: 15px; }
 }
 
