@@ -326,10 +326,11 @@ const ssnTrustBadges = [
 
 function TrustBadges() {
   return <div className="ssn-trust">
-    <div className="ssn-trust-head">
-      <span className="ssn-trust-shield" aria-hidden="true"><ShieldCheck /></span>
-      <span className="ssn-trust-head-copy"><strong>Your information is protected</strong></span>
-      <span className="ssn-trust-live"><span className="ssn-trust-live-dot" aria-hidden="true" /> Secure</span>
+    <div className="ssn-trust-seal">
+      <span className="ssn-trust-lock" aria-hidden="true"><LockKeyhole /><Check /></span>
+      <span className="ssn-trust-seal-copy"><small>Verified</small><strong>Secured</strong></span>
+      <span className="ssn-trust-active"><span className="ssn-trust-live-dot" aria-hidden="true" /> Active</span>
+      <span className="ssn-trust-by"><span className="ssn-trust-by-icon" aria-hidden="true"><LockKeyhole /></span><span className="ssn-trust-by-copy"><small>Verified by</small><strong>PolicyBear</strong></span><span className="ssn-trust-by-arrow" aria-hidden="true"><ArrowRight /></span></span>
     </div>
     <div className="ssn-trust-row">
       {ssnTrustBadges.map((badge) => <span className="ssn-trust-item" key={badge.title}>
