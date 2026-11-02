@@ -1263,7 +1263,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .closing-hl { background: linear-gradient(180deg, transparent 0 58%, var(--tagline-highlight) 58% 92%, transparent 92%); padding: 0 3px; white-space: nowrap; }
 .closing-actions { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
 .closing-or { font-size: 13px; font-weight: 600; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: .12em; }
-.closing-btn { display: inline-flex; align-items: center; gap: 14px; height: 60px; border-radius: 999px; font-weight: 700; font-size: 17px; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.closing-btn { display: inline-flex; align-items: center; gap: 12px; height: 54px; border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
 .closing-btn-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; transition: transform .25s ease; }
 .closing-btn-main { padding: 0 9px 0 30px; background: var(--brand-action); color: var(--brand-deep); box-shadow: 0 14px 28px -14px color-mix(in oklab, var(--brand-action-hover) 90%, transparent), inset 0 -3px 0 color-mix(in oklab, var(--brand-action-hover) 70%, transparent); }
 .closing-btn-main .closing-btn-icon { background: var(--brand-deep); color: var(--brand-action); }
@@ -1278,12 +1278,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 760px) { .closing-section { padding: 28px 18px 34px; } .closing-copy { gap: 26px; } .closing-copy h2 { font-size: 28px; } .closing-actions { flex-direction: column; width: 100%; gap: 12px; } .closing-btn { width: 100%; justify-content: space-between; } .closing-btn-call { justify-content: flex-start; } }
 
 .closing-copy { max-width: 1140px; width: fit-content; flex-direction: row; justify-content: center; align-items: center; text-align: left; gap: 32px; }
-.closing-copy h2 { font-size: 34px; max-width: none; }
+.closing-copy h2 { font-size: 34px; max-width: none; font-weight: 700; }
 .closing-btn-main { flex-shrink: 0; white-space: nowrap; }
-@media (max-width: 900px) { .closing-copy { width: 100%; flex-direction: column; text-align: center; gap: 22px; } .closing-copy h2 { max-width: none; font-size: 30px; } }
+@media (max-width: 900px) { .closing-copy { width: 100%; flex-direction: column; text-align: center; gap: 22px; } .closing-copy h2 { max-width: none; font-size: 26px; } }
 @media (max-width: 760px) { .closing-copy { gap: 20px; } .closing-copy h2 { font-size: 26px; } }
+@media (max-width: 520px) { .closing-copy h2 { font-size: 20px; } }
 /* Closing button v2 */
-.closing-btn-main { position: relative; overflow: hidden; padding: 0 30px; gap: 12px; border-radius: 14px; height: 58px; background: var(--primary); color: var(--primary-foreground); box-shadow: 0 18px 32px -16px var(--primary), inset 0 -3px 0 color-mix(in oklab, var(--brand-deep) 35%, transparent); }
+.closing-btn-main { position: relative; overflow: hidden; padding: 0 26px; gap: 11px; border-radius: 14px; height: 54px; background: var(--primary); color: var(--primary-foreground); box-shadow: 0 16px 30px -16px var(--primary), inset 0 -3px 0 color-mix(in oklab, var(--brand-deep) 35%, transparent); }
 .closing-btn-main::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, color-mix(in oklab, var(--primary-foreground) 28%, transparent) 50%, transparent 70%); transform: translateX(-120%); animation: closing-shine 3.6s ease-in-out infinite; }
 .closing-btn-main .closing-btn-icon { width: auto; height: auto; background: none; color: var(--brand-action); }
 .closing-btn-main:hover { background: var(--brand-deep); transform: translateY(-2px); }
