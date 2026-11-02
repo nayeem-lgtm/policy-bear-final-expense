@@ -68,7 +68,7 @@ describe('Pre-qualification navigation', () => {
     fireEvent.change(screen.getByRole('textbox', { name: 'City' }), { target: { value: 'Dallas' } })
     fireEvent.change(screen.getByRole('combobox', { name: 'State' }), { target: { value: 'Texas' } })
     fireEvent.change(screen.getByRole('textbox', { name: 'ZIP code' }), { target: { value: '75201' } })
-    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }))
     expect(window.location.hash).toBe('#step-identity')
     fireEvent.click(screen.getByRole('button', { name: 'Go back to the previous question' }))
     expect(screen.getByRole('textbox', { name: 'Street address' })).toHaveValue('125 Main Street')
