@@ -64,3 +64,5 @@
 - [x] Bring back the questions section merged with Mr Bear and the two gold-check promises in one section; verified desktop, 958, 390, 320, no overflow, slim footer from step two.
 
 - [x] Split the quote chapters: Basic Info = state, gender, date of birth, coverage, tobacco; Pre-Qualification = who, contact, height/weight, opt-in; walked the live flow and updated the sequence tests.
+
+- [x] Show the final expense illustration immediately after the five Basic Info questions, move the Pre-Qualification questions (who, contact, height/weight, opt-in) after it, and delete the four question helper lines; verified the full walk in the live preview plus Back from the illustration.
