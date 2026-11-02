@@ -10,10 +10,12 @@ vi.mock('@tanstack/react-router', () => ({
 beforeEach(() => {
   vi.useFakeTimers()
   localStorage.clear()
+  vi.stubGlobal('ResizeObserver', class { observe() {} unobserve() {} disconnect() {} })
 })
 afterEach(() => {
   cleanup()
   vi.useRealTimers()
+  vi.unstubAllGlobals()
 })
 
 function open(step: string) {
