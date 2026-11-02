@@ -5,11 +5,13 @@ export const COVERAGE_MIN = 5000
 export const COVERAGE_MAX = 50000
 
 // Basic Info holds the five rating questions (state, gender, date of birth, coverage, tobacco).
-// The remaining quote questions (who, contact, size, opt-in) belong to Pre-Qualification.
-export const quoteSteps = ['state', 'gender', 'dob', 'coverage', 'tobacco', 'who', 'contact', 'size', 'opt-in'] as const
+// The illustration is shown right after them; the remaining questions are Pre-Qualification.
+export const basicInfoSteps = ['state', 'gender', 'dob', 'coverage', 'tobacco'] as const
+export const preQualSteps = ['who', 'contact', 'size', 'opt-in'] as const
+export const quoteSteps = [...basicInfoSteps, ...preQualSteps] as const
 
 export const journeySteps = [
-  ...quoteSteps, 'loading', 'price',
+  ...basicInfoSteps, 'loading', 'price', ...preQualSteps,
   'personal', 'address', 'identity', 'health-intro', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8',
   'health-review', 'underwriting', 'decision', 'gi-offer', 'beneficiary', 'insurance', 'payment', 'draft',
   'review', 'disclosures', 'signature', 'verify', 'submitting', 'issued', 'callback', 'ineligible',
@@ -81,7 +83,7 @@ export function determineOutcome(health: string[]): Outcome {
 
 export function chapterFor(step: JourneyStep) {
   const index = journeySteps.indexOf(step)
-  // Basic Info ends after the five rating questions; every later question is Pre-Qualification.
+  // Basic Info runs through the five rating questions and the illustration; every later question is Pre-Qualification.
   if (index < journeySteps.indexOf('who')) return 0
   if (index < journeySteps.indexOf('gi-offer')) return 1
   if (index < journeySteps.indexOf('review')) return 2
