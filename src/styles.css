@@ -1428,20 +1428,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (min-width: 761px) { .app-rail { height: 100%; } }
 
 /* Answer options — two across once there are three or more choices */
-.answer-list:has(> .answer-card:nth-child(3)) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.answer-list:has(> .answer-card:nth-child(3)) .answer-card { min-height: 76px; padding: 16px 15px; }
-.answer-list:has(> .answer-card:nth-child(3)) .answer-copy { flex-direction: row; align-items: center; gap: 11px; }
-.answer-list:has(> .answer-card:nth-child(3)) .answer-copy strong { font-size: 16.5px; line-height: 1.35; }
-.answer-list:has(> .answer-card:nth-child(3)) .radio-circle { width: 20px; height: 20px; }
+.answer-list:has(> .answer-card:nth-of-type(3)) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.answer-list:has(> .answer-card:nth-of-type(3)) .answer-card { min-height: 76px; padding: 16px 15px; }
+.answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy { flex-direction: row; align-items: center; gap: 11px; }
+.answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy strong { font-size: 16.5px; line-height: 1.35; }
+.answer-list:has(> .answer-card:nth-of-type(3)) .radio-circle { width: 20px; height: 20px; }
 @media (max-width: 560px) {
-  .answer-list:has(> .answer-card:nth-child(3)) { gap: 10px; }
-  .answer-list:has(> .answer-card:nth-child(3)) .answer-card { min-height: 64px; padding: 12px 10px; }
-  .answer-list:has(> .answer-card:nth-child(3)) .answer-copy { gap: 8px; }
-  .answer-list:has(> .answer-card:nth-child(3)) .answer-copy strong { font-size: 14.5px; }
-  .answer-list:has(> .answer-card:nth-child(3)) .answer-copy > .answer-badge { width: 28px; height: 28px; }
-  .answer-list:has(> .answer-card:nth-child(3)) .answer-badge svg { width: 15px; height: 15px; }
-  .answer-list:has(> .answer-card:nth-child(3)) .radio-circle { display: none; }
-  .answer-list:has(> .answer-card:nth-child(3)) .answer-card[data-state=checked] .radio-circle { display: grid; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) { gap: 10px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-card { min-height: 64px; padding: 12px 10px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy { gap: 8px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy strong { font-size: 14.5px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy > .answer-badge { width: 28px; height: 28px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-badge svg { width: 15px; height: 15px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .radio-circle { display: none; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-card[data-state=checked] .radio-circle { display: grid; }
 }
 /* Five options — the lone fifth card spans the full width */
-.answer-list:has(> .answer-card:nth-child(5)):not(:has(> .answer-card:nth-child(6))) > .answer-card:nth-child(5) { grid-column: 1 / -1; }
+.answer-list:has(> .answer-card:nth-of-type(5)):not(:has(> .answer-card:nth-of-type(6))) > .answer-card:nth-of-type(5) { grid-column: 1 / -1; }
