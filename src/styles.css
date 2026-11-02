@@ -1751,7 +1751,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .ssn-form .field-prompt { margin-top: 10px; }
 .ssn-form .secure-field { min-height: 54px; }
 .ssn-form .answer-list { gap: 8px; margin: 16px 0 8px; }
-.ssn-form .answer-card { min-height: 56px; }
+.ssn-form .answer-card { min-height: 50px; }
 @media (max-width: 620px) {
   .ssn-trust-head { padding: 7px 10px; }
   .ssn-trust-item { gap: 5px; padding: 7px 4px; }
