@@ -1,6 +1,7 @@
 // ============= Full file contents =============
 
 import bearGuide from '@/assets/bear-guide-full.png'
+import bearWave from '@/assets/bear-waving.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useRef, useState } from 'react'
 import { ArrowRight, ChevronDown, PawPrint } from 'lucide-react'
@@ -64,7 +65,7 @@ function Index() {
             <header className="faq-head">
               <h2>Final expense questions, answered.</h2>
             </header>
-            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /></div>
+            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><div className="faq-bear-stage"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /><img className="faq-bear-wave" src={bearWave} width={595} height={959} alt="" /></div></div>
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
           </div>
         </section>

@@ -272,7 +272,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-bear-wrap { grid-area: bear; position: relative; align-self: stretch; min-width: 0; margin-bottom: -44px; }
 .faq-bear-wrap::before { content: ""; position: absolute; z-index: 0; bottom: 1px; left: 50%; transform: translateX(-50%); width: 58%; height: 6px; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 45%, transparent), transparent 72%); filter: blur(1.5px); }
 .faq-bear-wrap::after { content: ""; position: absolute; z-index: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 62%; height: 14px; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 40%, transparent), transparent 68%); filter: blur(3px); }
-.faq-bear { position: absolute; bottom: 0; left: 50%; z-index: 1; display: block; transform: translateX(-50%); transform-origin: 50% 100%; width: auto; max-width: calc(100% + 26px); height: calc(100% + 30px); object-fit: contain; object-position: center bottom; }
+.faq-bear-stage { position: absolute; inset: 0; z-index: 1; transform-origin: 50% 100%; }
+.faq-bear, .faq-bear-wave { position: absolute; bottom: 0; left: 50%; display: block; transform: translateX(-50%); width: auto; max-width: calc(100% + 26px); height: calc(100% + 30px); object-fit: contain; object-position: center bottom; }
+.faq-bear-wave { opacity: 0; }
 .faq-list { grid-area: list; min-width: 0; border-top: 1px solid var(--border); }
 .faq-list details { border-bottom: 1px solid var(--border); }
 
@@ -281,22 +283,40 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-list svg { flex-shrink: 0; color: var(--primary); transition: transform 180ms; }
 .faq-list details[open] svg { transform: rotate(180deg); }
 .faq-list details p { color: var(--muted-foreground); font-size: 16px; padding-bottom: 24px; }
-/* Mr Bear idle motion: he rises into view once, then breathes gently in place. */
-@keyframes bear-rise { from { opacity: 0; transform: translateX(-50%) translateY(24px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-@keyframes bear-bob { 0%, 100% { transform: translateX(-50%) translateY(0) rotate(0.4deg); } 50% { transform: translateX(-50%) translateY(-7px) rotate(-0.4deg); } }
-@keyframes bear-shadow-pulse { 0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; } 50% { transform: translateX(-50%) scale(0.9); opacity: 0.7; } }
-.faq-bear-wrap.is-armed:not(.is-visible) .faq-bear { opacity: 0; }
-.faq-bear-wrap.is-visible .faq-bear { animation: bear-rise 820ms cubic-bezier(0.22, 0.68, 0.28, 1) both, bear-bob 5.6s ease-in-out 820ms infinite; }
-.faq-bear-wrap.is-visible::before, .faq-bear-wrap.is-visible::after { animation: bear-shadow-pulse 5.6s ease-in-out infinite; }
+/* Mr Bear idle motion: he rises into view once, then breathes gently and waves every so often. */
+@keyframes bear-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes bear-life {
+  0% { transform: translateY(0) rotate(0.4deg); }
+  12.5% { transform: translateY(-7px) rotate(-0.4deg); }
+  25% { transform: translateY(0) rotate(0.4deg); }
+  37.5% { transform: translateY(-7px) rotate(-0.4deg); }
+  50% { transform: translateY(0) rotate(0.4deg); }
+  62.5% { transform: translateY(-7px) rotate(-0.4deg); }
+  68% { transform: translateY(-2px) rotate(-1.5deg); }
+  74% { transform: translateY(-2px) rotate(0.9deg); }
+  80% { transform: translateY(-2px) rotate(-1.2deg); }
+  86% { transform: translateY(-2px) rotate(0.6deg); }
+  92%, 100% { transform: translateY(0) rotate(0.4deg); }
+}
+@keyframes bear-wave-show { 0%, 63% { opacity: 0; } 66%, 88% { opacity: 1; } 91%, 100% { opacity: 0; } }
+@keyframes bear-shadow-pulse {
+  0%, 25%, 50%, 92%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  12.5%, 37.5%, 62.5% { transform: translateX(-50%) scale(0.9); opacity: 0.7; }
+  68%, 86% { transform: translateX(-50%) scale(0.97); opacity: 0.9; }
+}
+.faq-bear-wrap.is-armed:not(.is-visible) .faq-bear-stage { opacity: 0; }
+.faq-bear-wrap.is-visible .faq-bear-stage { animation: bear-rise 820ms cubic-bezier(0.22, 0.68, 0.28, 1) both, bear-life 9s ease-in-out 820ms infinite; }
+.faq-bear-wrap.is-visible .faq-bear-wave { animation: bear-wave-show 9s ease-in-out 820ms infinite; }
+.faq-bear-wrap.is-visible::before, .faq-bear-wrap.is-visible::after { animation: bear-shadow-pulse 9s ease-in-out 820ms infinite; }
 @media (prefers-reduced-motion: reduce) {
-  .faq-bear-wrap.is-armed:not(.is-visible) .faq-bear { opacity: 1; }
-  .faq-bear-wrap.is-visible .faq-bear, .faq-bear-wrap.is-visible::before, .faq-bear-wrap.is-visible::after { animation: none; }
+  .faq-bear-wrap.is-armed:not(.is-visible) .faq-bear-stage { opacity: 1; }
+  .faq-bear-wrap.is-visible .faq-bear-stage, .faq-bear-wrap.is-visible .faq-bear-wave, .faq-bear-wrap.is-visible::before, .faq-bear-wrap.is-visible::after { animation: none; }
 }
 @media (max-width: 1100px) { .faq-inner { gap: 24px 28px; padding: 48px 32px; grid-template-columns: 330px minmax(0, 1fr); } }
 @media (max-width: 900px) {
   .faq-inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "bear" "head" "list"; gap: 6px 0; padding: 36px 24px; }
   .faq-bear-wrap { align-self: auto; width: 68px; height: 110px; margin-inline: auto; margin-bottom: 0; }
-  .faq-bear { height: 100%; }
+  .faq-bear, .faq-bear-wave { height: 100%; }
   .faq-head { gap: 14px; }
   .faq-head h2 { font-size: 26px; }
   .faq-promises { gap: 6px 20px; }
