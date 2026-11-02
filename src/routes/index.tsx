@@ -37,8 +37,8 @@ const pawTrail = [
   { left: '58%', bottom: '24px', size: 24 },
   { left: '49%', bottom: '10px', size: 26 },
   { left: '40%', bottom: '24px', size: 28 },
-  { left: '31%', bottom: '10px', size: 30 },
-  { left: '24%', bottom: '4px', size: 32 },
+  { left: '32%', bottom: '10px', size: 30 },
+  { left: '25%', bottom: '2px', size: 32 },
 ]
 
 function Index() {
