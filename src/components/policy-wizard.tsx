@@ -160,6 +160,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const contactReady = Boolean(answers.firstName.trim() && answers.lastName.trim() && z.string().email().safeParse(answers.email).success && answers.phone.replace(/\D/g, '').length >= 10)
   const identityReady = Boolean(answers.country && (answers.country !== 'United States' || answers.birthState) && (answers.citizen === 'Yes — U.S. citizen' || (answers.citizen === 'No' && answers.resident === 'Yes — resident over 2 years')))
   const sizeReady = Boolean(answers.feet && answers.inches && z.coerce.number().min(80).max(500).safeParse(answers.weight).success)
+  const ssnProtected = answers.ssn.replace(/\D/g, '').length === 9
   useEffect(() => {
     const next = screen === 'contact' && contactReady ? 'size' : screen === 'size' && sizeReady ? 'opt-in' : screen === 'opt-in' && consent ? 'address' : screen === 'identity' && identityReady ? 'ssn' : null
     if (!next || revisiting) return
@@ -243,7 +244,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
       <div className="next-row"><p className="reconnect-demo"><LockKeyhole /> Demo only — use sample address details.</p><button type="submit" className="revisit-next">Next <ArrowRight /></button></div>
     </form>, { icon: <MapPin /> })
     if (screen === 'identity') return shell('A few identity details', '', <form onSubmit={submitNext('ssn', identityReady)}>{select('country', 'Country of birth', ['United States', 'Canada', 'Other'])}{answers.country === 'United States' && select('birthState', 'State of birth', US_STATES)}<p className="field-prompt">Are you a U.S. citizen?</p>{cards('citizen', ['Yes — U.S. citizen', 'No'])}{answers.citizen === 'No' && cards('resident', ['Yes — resident over 2 years', 'No — neither'])}{answers.resident === 'No — neither' && answers.citizen === 'No' ? <Button type="button" variant="action" size="touch" className="wide-button" onClick={() => go('ineligible')}>See how an agent can help</Button> : nextLink('ssn', identityReady)}</form>)
-    if (screen === 'ssn') return shell('Social Security & policy owner', '', <form className="ssn-form" onSubmit={submitNext('health-intro', Boolean(answers.owner && answers.ssn.replace(/\D/g, '').length === 9), 'Please enter a 9-digit Social Security number and answer the policy owner question.')}><label className="field-label">Social Security number<div className="secure-field"><span className="secure-lock" aria-hidden="true"><LockKeyhole /></span><input value={answers.ssn} type={showSSN ? 'text' : 'password'} inputMode="numeric" maxLength={11} placeholder="123-45-6789" autoComplete="off" onChange={(event) => update('ssn', formatSSN(event.target.value))} /><Button type="button" variant="quiet" aria-label={showSSN ? 'Hide number' : 'Show number'} onClick={() => setShowSSN(!showSSN)}>{showSSN ? <EyeOff /> : <Eye />}</Button></div></label><TrustBadges /><p className="valid-note"><LockKeyhole /> Use sample numbers only. This field is not saved.</p><p className="field-prompt">Will you be the policy owner and the person paying?</p>{cards('owner', ['Yes', 'No'])}{answers.owner === 'No' ? <Button type="button" variant="action" size="touch" className="wide-button" onClick={() => go('ineligible')}>See how an agent can help</Button> : <NextButton />}</form>, { icon: <LockKeyhole /> })
+    if (screen === 'ssn') return shell('Social Security & policy owner', '', <form className="ssn-form" onSubmit={submitNext('health-intro', Boolean(answers.owner && ssnProtected), 'Please enter a 9-digit Social Security number and answer the policy owner question.')}><label className="field-label">Social Security number<div className={`secure-field${ssnProtected ? ' is-protected' : ''}`}><span className="secure-lock" aria-hidden="true">{ssnProtected ? <Check /> : <LockKeyhole />}</span><input value={answers.ssn} type={showSSN ? 'text' : 'password'} inputMode="numeric" maxLength={11} placeholder="123-45-6789" autoComplete="off" onChange={(event) => update('ssn', formatSSN(event.target.value))} /><Button type="button" variant="quiet" aria-label={showSSN ? 'Hide number' : 'Show number'} onClick={() => setShowSSN(!showSSN)}>{showSSN ? <EyeOff /> : <Eye />}</Button></div></label><TrustBadges /><p className="ssn-demo-note"><LockKeyhole /> Demo only — use sample numbers. Nothing is saved.</p><p className="field-prompt">Will you be the policy owner and the person paying?</p>{cards('owner', ['Yes', 'No'])}{answers.owner === 'No' ? <Button type="button" variant="action" size="touch" className="wide-button" onClick={() => go('ineligible')}>See how an agent can help</Button> : <NextButton />}</form>, { icon: <LockKeyhole /> })
     if (screen === 'health-intro') return shell('A few questions about your health', 'Eight yes-or-no questions help illustrate which final expense coverage may be available.', <Button variant="action" size="touch" className="continue-button" onClick={() => go('h1')}>Let’s begin <ArrowRight /></Button>)
     if (/^h[1-8]$/.test(screen)) { const index = Number(screen.slice(1)) - 1; const item = healthQuestions[index] ?? { topic: 'Your health', question: 'Health question', explain: '' }; return shell(item.question, '', <><div className="health-progress"><div className="progress-track"><div className="progress-fill" style={{ width: `${((index + 1) / 8) * 100}%` }} /></div><span>{index + 1} of 8</span></div><Radio.Root aria-label={`Health question ${index + 1}`} value={answers.health[index] || ''} onValueChange={(value) => healthChoice(index, value)} className="health-choices"><Radio.Item className="answer-card" value="No"><span className="answer-copy"><strong>No</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item><Radio.Item className="answer-card" value="Yes"><span className="answer-copy"><strong>Yes</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item></Radio.Root>{answers.health[index] && continueTo(index === 7 ? 'health-review' : `h${index + 2}` as JourneyStep)}</>) }
     if (screen === 'health-review') return shell('Review your health answers', 'Please make sure each answer is true and complete.', <>{healthQuestions.map((item, index) => <div className="review-row" key={item.topic}><span><small>Question {index + 1} · {item.topic}</small>{item.question}</span><strong>{answers.health[index] || '—'}</strong><Button variant="quiet" onClick={() => go(`h${index + 1}` as JourneyStep)}>Edit</Button></div>)}<CheckRow checked={confirmed} onChange={setConfirmed}>My answers are true and complete to the best of my knowledge.</CheckRow><Button variant="action" size="touch" className="continue-button" disabled={!confirmed} onClick={() => go('underwriting')}>Get my decision <ArrowRight /></Button></>)
@@ -318,17 +319,25 @@ function ContactConsent({ checked, onChange }: { checked: boolean; onChange: (va
 function NextButton() { return <div className="next-row"><button type="submit" className="revisit-next">Next <ArrowRight /></button></div> }
 
 const ssnTrustBadges = [
-  { icon: <LockKeyhole />, title: '256-bit encryption', short: '256-bit SSL', note: 'Bank-level SSL protects every keystroke' },
-  { icon: <ShieldCheck />, title: 'Never stored', short: 'Never stored', note: 'Your number isn’t saved after you leave' },
-  { icon: <Fingerprint />, title: 'Never sold or shared', short: 'Never shared', note: 'Your identity stays private with us' },
+  { icon: <LockKeyhole />, title: '256-bit encryption', short: '256-bit SSL' },
+  { icon: <ShieldCheck />, title: 'Never stored', short: 'Never stored' },
+  { icon: <Fingerprint />, title: 'Never sold or shared', short: 'Never shared' },
 ]
 
 function TrustBadges() {
   return <div className="ssn-trust">
-    {ssnTrustBadges.map((badge, index) => <div className="ssn-trust-item" key={badge.title}>
-      <span className={`ssn-trust-icon${index === 0 ? ' is-pulsing' : ''}`} aria-hidden="true">{badge.icon}</span>
-      <span className="ssn-trust-copy"><strong className="ssn-trust-full">{badge.title}</strong><strong className="ssn-trust-short">{badge.short}</strong><small>{badge.note}</small></span>
-    </div>)}
+    <div className="ssn-trust-head">
+      <span className="ssn-trust-shield" aria-hidden="true"><ShieldCheck /></span>
+      <span className="ssn-trust-head-copy"><strong>Your information is protected</strong></span>
+      <span className="ssn-trust-live"><span className="ssn-trust-live-dot" aria-hidden="true" /> Secure</span>
+    </div>
+    <div className="ssn-trust-row">
+      {ssnTrustBadges.map((badge) => <span className="ssn-trust-item" key={badge.title}>
+        <span className="ssn-trust-icon" aria-hidden="true">{badge.icon}</span>
+        <strong className="ssn-trust-full">{badge.title}</strong>
+        <strong className="ssn-trust-short">{badge.short}</strong>
+      </span>)}
+    </div>
   </div>
 }
 function CheckRow({ checked, onChange, children }: { checked: boolean; onChange: (value: boolean) => void; children: React.ReactNode }) { return <label className="check-row"><Checkbox.Root checked={checked} onCheckedChange={(value) => onChange(value === true)}><Checkbox.Indicator><Check /></Checkbox.Indicator></Checkbox.Root><span>{children}</span></label> }
