@@ -946,7 +946,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   border-radius: 999px;
   background: var(--brand-soft-blue);
   color: color-mix(in oklab, var(--brand-deep) 62%, transparent);
-  font-size: 12px; font-weight: 600; white-space: nowrap;
+  font-size: 11px; font-weight: 600; white-space: nowrap;
   transition: background 200ms, color 200ms, box-shadow 200ms;
 }
 .chapter-progress span::before {
@@ -983,7 +983,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* Question type */
 .wizard-content h2 { font-size: 24px; letter-spacing: -.015em; margin-bottom: 5px; }
-.question-helper { font-size: 15px; margin-bottom: 14px; }
+.question-helper { font-size: 13px; margin-bottom: 14px; }
 
 /* Inputs */
 .text-field, .secure-field, .field-label select {
@@ -1042,7 +1042,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-banner-copy p { font-size: 17px; }
   .quote-stage .wizard, .funnel-section .wizard { border-radius: 16px; padding: 24px 18px 28px; }
   .chapter-progress { gap: 6px; margin-bottom: 18px; }
-  .chapter-progress span { min-height: 25px; padding: 0 8px 0 4px; font-size: 12px; }
+  .chapter-progress span { min-height: 25px; padding: 0 8px 0 4px; font-size: 11px; }
   .chapter-progress span::before { width: 21px; height: 21px; font-size: 12px; }
   .chapter-progress span.complete { padding-left: 12px; }
   .wizard .progress-track { height: 12px; }
@@ -1153,7 +1153,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .quote-stage-inner { margin-top: -28px; }
   .quote-stage .wizard, .funnel-section .wizard { padding: 20px 18px 24px; border-radius: 12px; }
   .chapter-progress { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; margin-bottom: 18px; }
-  .chapter-progress span, .chapter-progress span.complete { flex-direction: column; justify-content: flex-start; gap: 5px; padding: 0; min-width: 0; min-height: 58px; border-radius: 0; background: transparent; box-shadow: none; white-space: normal; font-size: 12px; line-height: 1.25; color: var(--muted-foreground); }
+  .chapter-progress span, .chapter-progress span.complete { flex-direction: column; justify-content: flex-start; gap: 5px; padding: 0; min-width: 0; min-height: 58px; border-radius: 0; background: transparent; box-shadow: none; white-space: normal; font-size: 11px; line-height: 1.25; color: var(--muted-foreground); }
   .chapter-progress span::before { width: 24px; height: 24px; flex-shrink: 0; font-size: 12px; background: var(--brand-soft-blue); color: var(--primary); }
   .chapter-progress span.current { color: var(--primary); font-weight: 700; background: transparent; box-shadow: none; }
   .chapter-progress span.current::before { background: var(--primary); color: var(--primary-foreground); }
@@ -1162,7 +1162,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .chapter-progress svg { display: none; }
   .wizard .progress-track { height: 8px; margin-bottom: 20px; }
   .wizard-content h2 { font-size: 24px; line-height: 1.3; letter-spacing: 0; margin-bottom: 10px; }
-  .question-helper { font-size: 16px; line-height: 1.55; margin-bottom: 20px; }
+  .question-helper { font-size: 14px; line-height: 1.55; margin-bottom: 20px; }
   .wizard .continue-button, .wizard .wide-button { min-height: 58px; height: auto; font-size: 18px; border-radius: 8px; }
   .field-label, .text-field, .secure-field, .field-label select { font-size: 16px; }
   .text-field, .secure-field, .field-label select, .state-select { border-radius: 8px; }
