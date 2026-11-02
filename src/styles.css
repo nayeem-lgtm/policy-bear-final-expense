@@ -1211,3 +1211,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (hover: none) {
   .answer-card:hover, .wizard .continue-button:hover, .wizard .wide-button:hover { transform: none; }
 }
+
+/* ===== Topic-icon question header + icon answer cards ===== */
+.question-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.question-badge { display: grid; place-items: center; width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%; border: 1px solid color-mix(in oklab, var(--primary) 32%, transparent); background: color-mix(in oklab, var(--primary) 8%, var(--background)); color: var(--primary); }
+.question-badge svg { width: 22px; height: 22px; }
+.question-head-copy { min-width: 0; }
+.question-head h2 { text-align: left; margin-bottom: 4px; }
+.question-head .question-helper { text-align: left; margin-bottom: 0; }
+.answer-list-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.answer-list-pair .answer-copy { flex-direction: row; align-items: center; gap: 11px; }
+.answer-badge { display: grid; place-items: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: color-mix(in oklab, var(--brand-deep) 7%, var(--muted)); color: var(--brand-deep); transition: background 150ms, color 150ms; }
+.answer-badge svg { width: 17px; height: 17px; }
+.answer-card[data-state=checked] .answer-badge { background: color-mix(in oklab, var(--primary) 13%, var(--background)); color: var(--primary); }
+@media (max-width: 760px) {
+  .question-head { gap: 12px; margin-bottom: 16px; }
+  .question-badge { width: 40px; height: 40px; }
+  .question-badge svg { width: 19px; height: 19px; }
+  .question-head h2 { font-size: 21px; }
+  .answer-list-pair { gap: 10px; }
+  .answer-list-pair .answer-card { padding: 14px 12px; }
+  .answer-list-pair .answer-copy { gap: 8px; }
+  .answer-list-pair .answer-copy strong { font-size: 16px; }
+  .answer-badge { width: 30px; height: 30px; }
+  .answer-badge svg { width: 16px; height: 16px; }
+  .answer-list-pair .radio-circle { width: 20px; height: 20px; }
+}
+@media (max-width: 360px) {
+  .answer-list-pair .answer-card { padding: 12px 10px; }
+  .answer-list-pair .radio-circle { display: none; }
+  .answer-card[data-state=checked] .radio-circle { display: grid; }
+}
