@@ -1276,3 +1276,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .closing-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .closing-btn, .closing-btn-icon { transition: none; } }
 @media (max-width: 760px) { .closing-section { padding: 52px 18px 64px; } .closing-copy { gap: 26px; } .closing-copy h2 { font-size: 28px; } .closing-actions { flex-direction: column; width: 100%; gap: 12px; } .closing-btn { width: 100%; justify-content: space-between; } .closing-btn-call { justify-content: flex-start; } }
+
+.closing-copy { max-width: 1040px; flex-direction: row; justify-content: space-between; text-align: left; gap: 40px; }
+.closing-copy h2 { font-size: 34px; }
+.closing-btn-main { flex-shrink: 0; white-space: nowrap; }
+@media (max-width: 760px) { .closing-copy { flex-direction: column; text-align: center; gap: 24px; } .closing-copy h2 { font-size: 28px; } }
