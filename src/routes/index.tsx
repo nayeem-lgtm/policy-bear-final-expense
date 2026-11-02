@@ -58,7 +58,7 @@ function Index() {
           <div className="closing-copy">
             <h2>Find a starting point for your <span className="closing-hl">final expense</span> coverage.</h2>
             <div className="closing-actions">
-              <a className="closing-btn closing-btn-main" href="#get-covered"><span className="closing-btn-stub" aria-hidden="true"><PawPrint size={19} /></span><span>Explore coverage</span><span className="closing-btn-icon"><ArrowRight size={17} /></span></a>
+              <span className="closing-btn-shell"><a className="closing-btn closing-btn-main" href="#get-covered"><span className="closing-btn-stub" aria-hidden="true"><PawPrint size={19} /></span><span>Explore coverage</span><span className="closing-btn-icon"><ArrowRight size={17} /></span></a></span>
             </div>
           </div>
         </section>
