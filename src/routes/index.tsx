@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react'
 import { ArrowRight, Check, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
+import bearPortrait from '@/assets/bear-header-portrait.png'
 import family from '@/assets/grandparents-family-moment.jpg'
 import { PolicyHeader, PolicyFooter, SlimFooter } from '@/components/policy-site'
 
@@ -60,13 +61,24 @@ function Index() {
           </div>
         </section>
         <section className="closing-section" aria-label="Start your final expense quote">
-          <div className="closing-inner">
-            <span className="closing-eyebrow">Takes about 2 minutes</span>
-            <h2>Find a starting point for your <span className="tagline-mark">final expense</span> coverage.</h2>
-            <p className="closing-sub">No obligation. Prices shown are illustrative.</p>
-            <div className="closing-actions">
-              <Button asChild variant="action" size="touch" className="closing-cta"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button>
-              <a className="closing-call" href="tel:+18447652327" aria-label="Call (844) 765-2327">or call <strong>(844) POL-BEAR</strong></a>
+          <div className="closing-split">
+            <div className="closing-copy">
+              <span className="closing-eyebrow">Takes about 2 minutes</span>
+              <h2>Find a starting point for your <span className="closing-hl">final expense</span> coverage.</h2>
+              <p className="closing-sub">No obligation. Prices shown are illustrative.</p>
+              <div className="closing-actions">
+                <Button asChild variant="action" size="touch" className="closing-cta"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button>
+                <a className="closing-call" href="tel:+18447652327" aria-label="Call (844) 765-2327">or call <strong>(844) POL-BEAR</strong></a>
+              </div>
+            </div>
+            <div className="closing-ticket" aria-hidden="true">
+              <div className="ticket-top"><img src={bearPortrait} alt="" /><div><b>PolicyBear</b><small>Final expense preview</small></div></div>
+              <dl>
+                <div><dt>Coverage</dt><dd>$5,000 – $50,000</dd></div>
+                <div><dt>Medical exam</dt><dd>Not required</dd></div>
+                <div><dt>Decision</dt><dd>Instant</dd></div>
+              </dl>
+              <span className="ticket-stamp"><Check size={14} /> Approved</span>
             </div>
           </div>
         </section>
