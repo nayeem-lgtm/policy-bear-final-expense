@@ -1345,3 +1345,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-head h2 { font-size: 28px; }
 @media (max-width: 900px) { .faq-head h2 { font-size: 22px; } }
 @media (max-width: 520px) { .faq-head h2 { font-size: 18px; } }
+
+/* Closing button v4 — same look as the form's primary yellow button */
+.closing-section .closing-btn-main {
+  height: 50px; min-height: 50px; padding: 0 22px; gap: 10px;
+  border-radius: 12px; border: 0;
+  background: var(--brand-action); color: var(--brand-deep);
+  font-size: 16px; font-weight: 700; letter-spacing: 0;
+  box-shadow: 0 8px 18px -12px color-mix(in oklab, var(--brand-action-hover) 80%, transparent);
+  transition: background 150ms, transform 150ms, box-shadow 150ms;
+}
+.closing-section .closing-btn-main .closing-btn-icon {
+  width: auto; height: auto; background: none; box-shadow: none; color: currentColor;
+}
+.closing-section .closing-btn-main:hover {
+  background: var(--brand-action-hover); transform: translateY(-1px);
+  box-shadow: 0 10px 22px -12px color-mix(in oklab, var(--brand-action-hover) 90%, transparent);
+}
+.closing-section .closing-btn-main:hover .closing-btn-icon { transform: translateX(3px); }
+.closing-section .closing-btn-main:active { transform: scale(.99); }
+@media (max-width: 520px) { .closing-section .closing-btn-main { width: 100%; max-width: 340px; justify-content: center; } }
