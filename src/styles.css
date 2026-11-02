@@ -1398,3 +1398,35 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .policy-page:has(.funnel-section) #main-content { display: block; }
   .policy-page:has(.funnel-section) .funnel-section { display: block; }
 }
+
+/* Closing button v6 — policy ticket stub with a paw print */
+.closing-btn-shell {
+  display: inline-flex;
+  filter: drop-shadow(0 12px 18px color-mix(in oklab, var(--brand-action-hover) 42%, transparent));
+  transition: transform 180ms ease, filter 180ms ease;
+}
+.closing-btn-shell:hover { transform: translateY(-2px); filter: drop-shadow(0 16px 26px color-mix(in oklab, var(--brand-action-hover) 58%, transparent)); }
+.closing-section .closing-btn-main {
+  position: relative; height: 56px; min-height: 56px; padding: 0 16px 0 0; gap: 14px;
+  border: 0; border-radius: 14px; background: var(--brand-action); color: var(--brand-deep);
+  font-size: 16px; font-weight: 700; letter-spacing: -0.01em; box-shadow: none; transform: none;
+  -webkit-mask-image: radial-gradient(circle 9px at 56px 0, transparent 99%, #000 100%), radial-gradient(circle 9px at 56px 100%, transparent 99%, #000 100%);
+  mask-image: radial-gradient(circle 9px at 56px 0, transparent 99%, #000 100%), radial-gradient(circle 9px at 56px 100%, transparent 99%, #000 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+.closing-btn-stub {
+  display: grid; place-items: center; width: 56px; height: 100%;
+  border-right: 2px dashed color-mix(in oklab, var(--brand-deep) 30%, transparent);
+  color: var(--brand-deep);
+}
+.closing-btn-stub svg { transition: transform 220ms ease; }
+.closing-section .closing-btn-main > span:first-child { background: none; }
+.closing-section .closing-btn-main:hover > span:first-child { background-size: 0 2px; }
+.closing-section .closing-btn-main:hover { background: var(--brand-action-hover); transform: none; }
+.closing-section .closing-btn-main:hover .closing-btn-stub svg { transform: translateX(3px) rotate(-10deg); }
+.closing-section .closing-btn-main:active { transform: none; }
+@media (prefers-reduced-motion: reduce) { .closing-btn-shell, .closing-btn-stub svg { transition: none; } }
+@media (max-width: 760px) {
+  .closing-btn-shell { width: 100%; justify-content: center; }
+  .closing-section .closing-btn-main { width: 100%; max-width: 340px; justify-content: space-between; }
+}
