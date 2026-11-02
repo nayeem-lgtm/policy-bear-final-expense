@@ -15,6 +15,7 @@
 - Scroll the phone wizard into view only on screen navigation, and map signature pointer coordinates to canvas dimensions so touch strokes follow the finger at every size.
 - Keep electronic signing browser-only, offering typed style previews and an ephemeral draw pad without persisting drawn signatures.
 - Define PolicyBear visual styles and role colors centrally in `src/styles.css`; controls use the shared Button and accessible radio primitives for consistent, readable interaction.
+- Scope recipient radio-card styles separately from generic answer-card selectors and size them by their container, so narrow desktop columns and selected indicators cannot distort their layout.
 - Share the PolicyBear header and legal footer through the browser-safe policy-site module on the landing and legal content routes, so legal navigation and disclosures remain consistent.
 - Keep footer resource navigation, disclosure navigation and contact/social links in separate accessible groups within the shared footer; this keeps the compact layout navigable without duplicating links.
 - Keep the landing page free of standalone reassurance badge bands or mark strips; third-party accreditation and security seals appear only in the shared footer as crisp code-drawn badges and only for credentials the owner has confirmed.
