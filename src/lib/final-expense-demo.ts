@@ -83,7 +83,7 @@ export function determineOutcome(health: string[]): Outcome {
 
 export function chapterFor(step: JourneyStep) {
   const index = journeySteps.indexOf(step)
-  // Basic Info runs through the five rating questions and the illustration; every later question is Pre-Qualification.
+  // About You runs through the five rating questions and the illustration; every later question is Pre-Qualification.
   if (index < journeySteps.indexOf('who')) return 0
   if (index < journeySteps.indexOf('gi-offer')) return 1
   if (index < journeySteps.indexOf('review')) return 2
