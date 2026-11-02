@@ -1308,7 +1308,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   box-shadow: 0 18px 32px -16px color-mix(in oklab, var(--brand-deep) 90%, transparent), 0 0 0 5px color-mix(in oklab, var(--brand-action) 22%, transparent);
 }
 .closing-btn-main:hover .closing-btn-icon { transform: translateX(3px) scale(1.05); }
-@media (max-width: 760px) { .closing-btn-main { justify-content: space-between; } }
+@media (max-width: 760px) { .closing-btn-main { width: auto; max-width: 100%; justify-content: center; align-self: center; } }
 
 /* Fit wizard steps in one screen */
 .funnel-section { min-height: 0; padding: 20px 20px 24px; }
@@ -1330,7 +1330,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .funnel-section .chapter-progress { margin-bottom: 8px; }
 /* Closing band: smaller type */
 .closing-copy h2 { font-size: 24px; }
-.closing-btn-main { height: 46px; font-size: 15px; padding: 0 22px; }
+.closing-btn-main { height: 46px; font-size: 15px; padding: 0 7px 0 24px; }
 @media (max-width: 900px) { .closing-copy h2 { font-size: 20px; } }
 @media (max-width: 520px) { .closing-copy h2 { font-size: 18px; } }
 /* FAQ: bigger bear, smaller questions */
