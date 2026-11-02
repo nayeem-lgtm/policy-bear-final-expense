@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, Cigarette, ClipboardCheck, Eye, EyeOff, Heart, Landmark, LockKeyhole, MapPin, Mars, Minus, PenLine, Phone, Plus, RotateCcw, ShieldCheck, Sparkles, User, UserRound, Users, Venus, X } from 'lucide-react'
+import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, Clock, Cigarette, ClipboardCheck, Eye, EyeOff, Heart, Landmark, LockKeyhole, MapPin, Mars, Minus, PenLine, Phone, Plus, RotateCcw, ShieldCheck, Sparkles, User, UserRound, Users, Venus, X } from 'lucide-react'
 import * as Radio from '@radix-ui/react-radio-group'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
+import bearLogo from '@/assets/policybear-logo.asset.json'
 import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
 type Answers = {
@@ -237,6 +238,28 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   }
 
   const chapter = chapterFor(screen)
+  const appMode = chapter >= 1
+  const minutes = [1, 1, 2, 2]
+  if (appMode) return <section className="wizard-app" id="get-covered" aria-label="Final expense application">
+    <aside className="app-rail" aria-label="Application progress">
+      <Link to="/" hash="step-state" className="app-rail-logo" aria-label="PolicyBear home"><img src={bearLogo.url} width="190" height="38" alt="PolicyBear" /></Link>
+      <ol className="app-steps">{labels.map((label, index) => <li key={label} className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} aria-current={index === chapter ? 'step' : undefined}><span className="app-step-dot">{index < chapter ? <Check /> : <span />}</span><span className="app-step-copy"><strong>{label}</strong><small><Clock /> {minutes[index]} min</small></span></li>)}</ol>
+      <p className="app-rail-secure"><LockKeyhole /> Demo only · nothing is submitted</p>
+    </aside>
+    <div className="app-main">
+      <div className="app-topbar"><span>{labels[chapter]}</span><a href={`tel:${phone}`} className="app-help"><Phone /> Need help?</a></div>
+      <div className="app-body">{renderScreen()}</div>
+    </div>
+    <aside className="app-summary" aria-label="Your quote">
+      <div className="app-quote-card">
+        <div className="app-quote-head"><ShieldCheck /><div><strong>PolicyBear</strong><span>Final Expense</span></div></div>
+        <dl><div><dt>Coverage</dt><dd>${coverage.toLocaleString()}</dd></div><div><dt>Premium</dt><dd>${monthly.toFixed(2)}<small>/mo</small></dd></div></dl>
+        <Button variant="quiet" className="app-edit" onClick={() => go('price')}><PenLine /> Edit quote</Button>
+      </div>
+      <a className="app-agent" href={`tel:${phone}`}><span className="agent-dot" /><span><small>Expert agents available</small><strong>(844) POL-BEAR</strong></span></a>
+    </aside>
+  </section>
+
   return <section className={`wizard ${screen !== 'state' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
     {resume && <div className="resume-banner"><p>Welcome back, {answers.firstName || 'friend'}! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => setResume(false)}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(blank); localStorage.removeItem('policybear-demo'); go('state') }}>Start over</Button></div></div>}
     <div className="chapter-progress" aria-label="Application progress">{labels.map((label, index) => <span className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} key={label}>{index < chapter && <Check />}{label}</span>)}</div>
