@@ -966,7 +966,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   box-shadow: 0 1px 2px color-mix(in oklab, var(--brand-deep) 8%, transparent), 0 30px 60px -28px color-mix(in oklab, var(--brand-deep) 45%, transparent);
 }
 .quote-stage { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 7%, var(--brand-light)), var(--background) 80%); }
-.hero-banner { min-height: 400px; }
+.hero-banner { min-height: 300px; }
 .hero-banner .hero-scrim { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 40%, transparent) 0%, color-mix(in oklab, var(--brand-deep) 58%, transparent) 55%, color-mix(in oklab, var(--brand-deep) 74%, transparent) 100%); }
 .hero-banner-copy p { font-size: 21px; }
 
