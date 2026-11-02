@@ -1381,3 +1381,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .closing-section .closing-btn-main:hover .closing-btn-icon { transform: translateX(4px); }
 .closing-section .closing-btn-main:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; border-radius: 4px; }
 @media (max-width: 520px) { .closing-section .closing-btn-main { width: auto; justify-content: center; } }
+
+/* Footer sits at the bottom edge on wizard steps (no blank band below it) */
+.policy-page:has(.funnel-section) { display: flex; flex-direction: column; min-height: 100dvh; }
+.policy-page:has(.funnel-section) #main-content { flex: 1 1 auto; display: flex; flex-direction: column; }
+.policy-page:has(.funnel-section) .funnel-section { flex: 1 1 auto; display: flex; }
+.policy-page:has(.funnel-section) .funnel-inner { margin: auto; }
+@media (max-width: 760px) {
+  .policy-page:has(.funnel-section) { display: block; min-height: 0; }
+  .policy-page:has(.funnel-section) #main-content { display: block; }
+  .policy-page:has(.funnel-section) .funnel-section { display: block; }
+}
