@@ -5,7 +5,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
-import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, POPULAR_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
+import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
 type Answers = {
   zip: string; city: string; state: string; who: string; month: string; day: string; year: string
@@ -200,8 +200,6 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
           <ChevronDown aria-hidden="true" className="state-caret" />
         </div>
       </label>
-      <p className="state-chips-label">Popular locations</p>
-      <div className="state-chips">{POPULAR_STATES.map((name) => <Button type="button" variant="quiet" key={name} className={answers.state === name ? 'selected' : ''} onClick={() => update('state', name)}>{name}</Button>)}</div>
       <Button variant="action" size="touch" className="continue-button">Check my options <ArrowRight /></Button>
     </form>, { back: false })
     if (screen === 'who') return shell('Who is this final expense coverage for?', '', <><Radio.Root aria-label="Who coverage protects" value={answers.who} onValueChange={(value) => { update('who', value); if (value === 'Me') advance('contact') }} className="answer-list">{['Me', 'My spouse or partner', 'My mom or dad', 'Someone else'].map((option) => <Radio.Item className="answer-card" key={option} value={option}><span className="answer-copy"><strong>{option}</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root>{answers.who === 'Me' && continueTo('contact')}{answers.who && answers.who !== 'Me' && <div className="help-panel"><p>Great that you’re helping! The person being covered needs to answer and sign. Are they with you now?</p><Button variant="action" size="touch" onClick={() => go('contact')}>Yes, they’ll answer <ArrowRight /></Button><Button variant="quiet" onClick={() => go('callback')}>No, call me later</Button></div>}</>)

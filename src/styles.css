@@ -1120,10 +1120,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .state-select > svg { color: var(--muted-foreground); flex-shrink: 0; }
 .field-label .state-select select { flex: 1 1 120px; min-width: 0; height: 56px; border: 0; border-radius: 0; background: transparent; box-shadow: none; padding: 0; font-size: 18px; font-weight: 400; color: var(--foreground); appearance: none; -webkit-appearance: none; }
 .field-label .state-select select:hover { border-color: transparent; }
-.state-chips-label { margin: 12px 0 9px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-foreground); }
-.state-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.state-chips button { border: 1px solid var(--input); border-radius: 999px; background: var(--muted); color: var(--foreground); font-size: 15px; font-weight: 600; padding: 9px 15px; min-height: 0; }
-.state-chips button.selected { border-color: var(--primary); background: var(--brand-soft-blue); color: var(--brand-deep); }
 /* Bubble beside the bear's head; footer stacked rows */
 .faq-bear-wrap .faq-bear-bubble { position: absolute; z-index: 2; top: 2%; right: 72%; margin: 0; white-space: nowrap; max-width: none; }
 .faq-bear-wrap .faq-bear-bubble::after { top: 60%; }

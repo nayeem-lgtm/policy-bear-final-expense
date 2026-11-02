@@ -112,7 +112,6 @@ export const LICENSED_STATES = [
   { name: 'Wyoming', abbr: 'WY' },
 ] as const
 
-export const POPULAR_STATES = ['Texas', 'California', 'Pennsylvania', 'Ohio', 'Michigan'] as const
 
 export function formatSSN(value: string) {
   const digits = value.replace(/\D/g, '').slice(0, 9)
