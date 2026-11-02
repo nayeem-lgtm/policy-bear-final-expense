@@ -277,7 +277,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-bear, .faq-bear-blink, .faq-bear-wave { position: absolute; bottom: 0; left: 50%; display: block; transform: translateX(-50%); width: auto; max-width: calc(100% + 26px); height: calc(100% + 30px); object-fit: contain; object-position: center bottom; }
 .faq-bear-blink, .faq-bear-wave { opacity: 0; }
 .faq-bear-trail { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-.faq-bear-paw { position: absolute; color: var(--brand-action); opacity: 0; animation: bear-paw-step 9s ease-in-out infinite; }
+.faq-bear-paw { position: absolute; color: color-mix(in oklab, var(--brand-action) 78%, var(--brand-deep)); opacity: 0; animation: bear-paw-step 9s ease-in-out infinite; }
 .faq-list { grid-area: list; min-width: 0; border-top: 1px solid var(--border); }
 .faq-list details { border-bottom: 1px solid var(--border); }
 
@@ -295,7 +295,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes bear-wave-once { 0% { opacity: 0; } 12%, 78% { opacity: 1; } 92%, 100% { opacity: 0; } }
 @keyframes bear-blink { 0%, 27.9%, 29.4%, 49.9%, 51.4%, 100% { opacity: 0; } 28%, 29.3%, 50%, 51.3% { opacity: 1; } }
 @keyframes bear-shadow-pulse { 0%, 25%, 50%, 75%, 92%, 100% { transform: translateX(-50%) scale(1); opacity: 1; } 12.5%, 37.5%, 62.5%, 87.5% { transform: translateX(-50%) scale(0.9); opacity: 0.7; } 68%, 86% { transform: translateX(-50%) scale(0.97); opacity: 0.9; } }
-@keyframes bear-paw-step { 0% { opacity: 0; transform: rotate(-16deg) scale(0.6); } 5% { opacity: 0.75; transform: rotate(-16deg) scale(1); } 18%, 100% { opacity: 0; transform: rotate(-16deg) scale(1); } }
+@keyframes bear-paw-step { 0% { opacity: 0; transform: rotate(-16deg) scale(0.6); } 4% { opacity: 0.9; transform: rotate(-16deg) scale(1); } 26% { opacity: 0.9; transform: rotate(-16deg) scale(1); } 34%, 100% { opacity: 0; transform: rotate(-16deg) scale(1); } }
 .faq-bear-wrap.is-armed:not(.is-visible) .faq-bear-stage { opacity: 0; }
 .faq-bear-wrap.is-visible .faq-bear-stage { animation: bear-rise 820ms cubic-bezier(0.22, 0.68, 0.28, 1) both, bear-bob 9s ease-in-out 820ms infinite; }
 .faq-bear-wrap.is-visible .faq-bear-lean { animation: bear-lean-loop 9s ease-in-out 820ms infinite; }
