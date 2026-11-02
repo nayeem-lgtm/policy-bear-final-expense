@@ -75,3 +75,18 @@ describe('Pre-qualification navigation', () => {
     expect(screen.getByRole('textbox', { name: 'City' })).toHaveValue('Dallas')
   })
 })
+describe('Revisiting a step', () => {
+  it('shows a small Next button after going Back, with no auto-advance', () => {
+    open('size')
+    fireEvent.click(screen.getByRole('button', { name: /skip|Go back/ }))
+    expect(window.location.hash).toBe('#step-contact')
+    fireEvent.change(screen.getByRole('textbox', { name: 'First name' }), { target: { value: 'Ann' } })
+    fireEvent.change(screen.getByRole('textbox', { name: 'Last name' }), { target: { value: 'Lee' } })
+    fireEvent.change(screen.getByRole('textbox', { name: 'Email' }), { target: { value: 'ann@example.com' } })
+    fireEvent.change(screen.getByRole('textbox', { name: 'Mobile phone' }), { target: { value: '5555555555' } })
+    act(() => { vi.advanceTimersByTime(2000) })
+    expect(window.location.hash).toBe('#step-contact')
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }))
+    expect(window.location.hash).toBe('#step-size')
+  })
+})
