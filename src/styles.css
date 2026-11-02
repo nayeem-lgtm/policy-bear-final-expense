@@ -1221,7 +1221,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .header-call strong { font-size: 20px; }
   .header-call .call-caption { font-size: 11px; }
   .agents-available { font-size: 9px; }
-  .hero-banner-copy h1 { font-size: 28px; }
+  .hero-banner-copy h1 { font-size: 24px; }
   .quote-stage .wizard, .funnel-section .wizard { padding-inline: 14px; }
   .chapter-progress span { font-size: 11px; }
   .date-fields { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr) minmax(0, 1fr); gap: 6px; }
