@@ -927,7 +927,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 /* ===== Banner + centered quote stage ===== */
-.hero-banner { position: relative; isolation: isolate; min-height: 340px; display: grid; place-items: center; overflow: hidden; background: var(--brand-deep); }
+.hero-banner { position: relative; isolation: isolate; min-height: 300px; display: grid; place-items: center; overflow: hidden; background: var(--brand-deep); }
 .hero-banner .hero-photo { opacity: 1; object-position: center 40%; }
 .hero-banner .hero-scrim { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 55%, transparent) 0%, color-mix(in oklab, var(--brand-deep) 72%, transparent) 100%); }
 .hero-banner-copy { max-width: 1120px; padding: 56px 24px; text-align: center; color: var(--light-ink); }
