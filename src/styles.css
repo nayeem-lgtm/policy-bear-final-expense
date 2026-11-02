@@ -1179,8 +1179,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .field-label, .text-field, .secure-field, .field-label select { font-size: 16px; }
   .text-field, .secure-field, .field-label select, .state-select { border-radius: 8px; }
   .field-label .state-select select { border-radius: 0; font-size: 17px; }
-  .state-chips { gap: 8px; margin-bottom: 20px; }
-  .state-chips button { min-height: 44px; padding: 8px 13px; }
   .answer-card, .answer-grid .answer-card { border-radius: 8px; }
   .hero-tagline { margin-top: 24px; font-size: 18px; line-height: 1.7; padding-inline: 8px; text-wrap: pretty; }
   .assurance { max-width: 350px; border-radius: 20px; margin-top: 22px; }
