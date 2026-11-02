@@ -1653,12 +1653,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-body:has(.home-address-form), .app-body:has(.reconnect-form) { margin-block: 24px auto; padding-top: 0; }
 @media (max-width: 560px) { .address-location-row { grid-template-columns: minmax(0, 1fr) 110px; gap: 10px; } .reconnect-permission { padding-left: 12px; } }
 @media (min-width: 761px) and (max-height: 800px) {
-  .app-body:has(.home-address-form), .app-body:has(.reconnect-form) { margin-block: 12px auto; }
+  .wizard-app:has(.home-address-form) .app-main, .wizard-app:has(.reconnect-form) .app-main { padding-top: 12px; padding-bottom: 12px; }
+  .app-body:has(.home-address-form), .app-body:has(.reconnect-form) { margin-top: 4px; }
+  .home-address-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 14px; }
+  .home-address-form > .field-label:first-child, .home-address-form > .address-location-row, .home-address-form > .continue-button, .home-address-form > .reconnect-demo { grid-column: 1 / -1; }
+  .app-body:has(.home-address-form), .app-body:has(.reconnect-form) { margin-block: 4px auto; }
   .app-body:has(.home-address-form) .question-head, .app-body:has(.reconnect-form) .question-head { margin-bottom: 12px; }
   .home-address-form { margin-top: 12px; }
   .home-address-form .field-label { margin-bottom: 10px; }
   .home-address-form .text-field, .home-address-form select { min-height: 44px; height: 44px; }
-  .reconnect-number { margin: 12px 0; padding-bottom: 12px; }
+  .reconnect-number { margin: 8px 0; padding-bottom: 8px; }
   .reconnect-form .contact-consent .check-row { margin-top: 10px; }
   .reconnect-form .consent-paragraph + .consent-paragraph { margin-top: 6px; }
   .reconnect-form .consent-resources { margin-bottom: 0; padding-top: 8px; }
