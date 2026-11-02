@@ -1397,3 +1397,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-body .back-button { margin-left: -12px; }
 @media (max-width: 760px) { .app-rail { width: 100%; box-sizing: border-box; } .app-edit.app-edit { display: none; } .app-quote-card dl { justify-content: space-between; } }
 @media (max-width: 760px) { .app-summary { width: 100%; box-sizing: border-box; } .app-quote-card dl { flex: 1; } }
+/* Summary card v2 */
+.app-summary { padding: 22px 24px 22px 0; }
+.app-quote-card { display: block !important; border-radius: 18px; }
+.app-quote-brand { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 18px 18px 14px; border-bottom: 1px solid var(--border); }
+.app-quote-brand img { width: 132px; height: auto; display: block; }
+.app-quote-tag { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-deep); background: var(--tagline-highlight); padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
+.app-quote-price { padding: 18px 18px 6px; }
+.app-quote-price small { display: block; font-size: 12.5px; color: var(--muted-foreground); }
+.app-quote-price strong { font-size: 34px; font-weight: 800; letter-spacing: -.02em; color: var(--primary); line-height: 1.15; }
+.app-quote-price strong span { font-size: 14px; font-weight: 600; color: var(--muted-foreground); margin-left: 2px; }
+.app-quote-card dl { display: block !important; padding: 4px 18px 10px; }
+.app-quote-card dl div { display: flex !important; padding: 9px 0; }
+.app-quote-card dl div + div { border-top: 1px dashed var(--border) !important; }
+.app-quote-card dd { font-size: 15px; }
+.app-edit.app-edit { display: inline-flex; margin: 0 18px 16px; width: calc(100% - 36px); }
+.app-quote-card .app-agent { display: flex; border: 0; border-top: 1px solid var(--border); border-radius: 0; background: color-mix(in oklab, var(--primary) 6%, var(--card)); padding: 14px 18px; }
+.app-quote-card .app-agent > span:nth-child(2) { flex: 1; }
+.app-quote-card .app-agent > svg { width: 18px; height: 18px; color: var(--primary); }
+@media (max-width: 1180px) { .app-summary { display: block; padding: 18px 32px 0; } .app-quote-card { display: grid !important; grid-template-columns: auto 1fr auto; align-items: center; } .app-quote-brand { border: 0; padding: 12px 16px; } .app-quote-price { padding: 10px 12px; } .app-quote-price strong { font-size: 24px; } .app-quote-card dl, .app-edit.app-edit { display: none !important; } .app-quote-card .app-agent { border-top: 0; align-self: stretch; align-items: center; } }
+@media (max-width: 760px) { .app-summary { padding: 12px 16px 0; } .app-quote-card { grid-template-columns: 1fr auto; } .app-quote-brand { display: none; } .app-quote-price small { font-size: 11px; } .app-quote-price strong { font-size: 20px; } .app-quote-card .app-agent small { display: none; } .app-quote-card .app-agent strong { font-size: 14px; } }
