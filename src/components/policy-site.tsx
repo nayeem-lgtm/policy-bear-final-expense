@@ -29,7 +29,7 @@ export function PolicyFooter() {
       </nav>
       <div className="pb-footer-connect">
         <div className="pb-footer-contact">
-          <a href="mailto:info@policybear.com"><Mail aria-hidden="true" />info@policybear.com</a>
+          <a href="mailto:support@policybear.com"><Mail aria-hidden="true" />support@policybear.com</a>
           <a href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><Phone aria-hidden="true" />(844) POL-BEAR</a>
         </div>
         <ul className="pb-footer-social" aria-label="PolicyBear on social media">
