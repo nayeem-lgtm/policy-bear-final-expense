@@ -3,7 +3,7 @@
 import bearGuide from '@/assets/bear-guide-full.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Check, ChevronDown } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
@@ -59,7 +59,18 @@ function Index() {
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
           </div>
         </section>
-        <section className="closing-section"><h2>Find a starting point for your final expense coverage.</h2><Button asChild variant="action" size="touch"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button></section>
+        <section className="closing-section" aria-label="Start your final expense quote">
+          <div className="closing-card">
+            <span className="closing-glow closing-glow-a" aria-hidden="true" />
+            <span className="closing-glow closing-glow-b" aria-hidden="true" />
+            <div className="closing-copy">
+              <span className="closing-eyebrow"><Sparkles size={14} aria-hidden="true" /> Takes about 2 minutes</span>
+              <h2>Find a starting point for your <em>final expense</em> coverage.</h2>
+              <p className="closing-sub"><Check size={15} aria-hidden="true" /> No medical exam required <span className="closing-dot" aria-hidden="true" /> Instant approval</p>
+            </div>
+            <Button asChild variant="action" size="touch" className="closing-cta"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button>
+          </div>
+        </section>
       </>}
     </main>
     {step === 0 ? <PolicyFooter /> : <SlimFooter />}
