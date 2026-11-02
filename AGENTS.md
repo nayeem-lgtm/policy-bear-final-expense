@@ -23,3 +23,4 @@
 - Share contact consent across quote and callback screens, with legal links opening in new tabs so reviewing policies never interrupts entered answers; consent copy requires compliance approval before launch.
 - Auto-advance every coverage-recipient choice to contact details, preserve the insured-person guidance there, and keep marketing permission optional with an explicit continue action; this avoids extra steps without conflating reconnection and automated marketing consent.
 - Derive quote order and progress from the shared quote sequence and identify chapter boundaries by named steps, so reordered questions preserve Back navigation and chapter placement.
+- Move from contact permission directly to address entry, mapping legacy personal-detail hashes to address; reuse earlier contact answers and use manual address fields rather than fabricated lookup results in this browser-only demo.

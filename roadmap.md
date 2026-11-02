@@ -1,5 +1,7 @@
 # PolicyBear final expense
 
+- [x] Fix recipient-card alignment, simplify permission presentation, remove repeated personal-details screen and polish address entry; verified both permission paths, address entry/Back, fixed card dimensions and phone/current-screen fit; 23 tests pass.
+
 - [x] Polish recipient choices with automatic navigation and the reconnection permission step; verified full quote flow, Back, both voluntary-consent paths, desktop and phone layouts; all 20 tests pass.
 
 - [x] Replace the old questions section with Mr Bear on the left and two professionally styled coverage promises; verified at 320, 390, 958 and 1280px, all 13 tests pass.
