@@ -1310,3 +1310,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .funnel-section .wizard { margin-top: 0; }
 .funnel-section { padding-top: 12px; }
 .funnel-section .chapter-progress { margin-bottom: 8px; }
+/* Closing band: smaller type */
+.closing-copy h2 { font-size: 24px; }
+.closing-btn-main { height: 46px; font-size: 15px; padding: 0 22px; }
+@media (max-width: 900px) { .closing-copy h2 { font-size: 20px; } }
+@media (max-width: 520px) { .closing-copy h2 { font-size: 18px; } }
