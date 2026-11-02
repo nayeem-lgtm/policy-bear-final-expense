@@ -1752,14 +1752,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .ssn-form .answer-list { gap: 8px; margin: 16px 0 8px; }
 .ssn-form .answer-card { min-height: 50px; padding: 12px 18px; }
 @media (max-width: 620px) {
-  .ssn-trust-head { padding: 7px 10px; }
-  .ssn-trust-item { gap: 5px; padding: 7px 4px; }
+  .ssn-trust-head { padding: 6px 10px; }
+  .ssn-trust-item { gap: 5px; padding: 6px 4px; }
   .ssn-trust-icon { width: 18px; height: 18px; border-radius: 6px; }
   .ssn-trust-icon svg { width: 11px; height: 11px; }
   .ssn-trust-item strong { font-size: 10.5px; }
   .ssn-trust-full { display: none; }
   .ssn-trust-short { display: block; }
-  .ssn-form .secure-field { min-height: 50px; }
-  .ssn-form .answer-card { min-height: 52px; padding: 12px 14px; }
+  .ssn-demo-note { margin: 5px 0 0; }
+  .ssn-form .field-prompt { margin-top: 8px; }
+  .ssn-form .secure-field { min-height: 48px; }
+  .ssn-form .answer-list { gap: 7px; margin: 12px 0 6px; }
+  .ssn-form .answer-card { min-height: 50px; padding: 10px 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .ssn-trust-head::after, .ssn-trust-live-dot::after { animation: none; } }
