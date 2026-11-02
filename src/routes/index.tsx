@@ -49,7 +49,7 @@ function Index() {
         <section className="faq-section" id="questions" aria-label="Final expense questions and coverage promises">
           <div className="faq-inner">
             <header className="faq-head">
-              <h2>Final expense<br /> questions, answered.</h2>
+              <h2>Final expense questions, answered.</h2>
               <ul className="faq-promises">
                 <li><span className="promise-check" aria-hidden="true"><Check /></span>No medical exam <em>required</em></li>
                 <li><span className="promise-check" aria-hidden="true"><Check /></span>Instant <em>approval</em></li>
