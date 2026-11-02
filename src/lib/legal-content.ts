@@ -27,7 +27,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
           },
           {
             "kind": "paragraph",
-            "text": "Privacy questions and requests: info@policybear.com"
+            "text": "Privacy questions and requests: support@policybear.com"
           },
           {
             "kind": "paragraph",
@@ -131,7 +131,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
           },
           {
             "kind": "paragraph",
-            "text": "You can stop texts at any time by replying STOP. You can stop calls by telling the agent, calling (844) POL-BEAR, or emailing info@policybear.com. We honor requests promptly and within the time the law requires. We keep an internal Do Not Call list and check the National Do Not Call Registry where required. Message and data rates may apply. Message frequency varies."
+            "text": "You can stop texts at any time by replying STOP. You can stop calls by telling the agent, calling (844) POL-BEAR, or emailing support@policybear.com. We honor requests promptly and within the time the law requires. We keep an internal Do Not Call list and check the National Do Not Call Registry where required. Message and data rates may apply. Message frequency varies."
           },
           {
             "kind": "paragraph",
@@ -196,11 +196,11 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
           },
           {
             "kind": "paragraph",
-            "text": "Nevada residents. We do not sell covered information as defined by Nevada law (NRS Chapter 603A). You may still send an opt-out request to info@policybear.com."
+            "text": "Nevada residents. We do not sell covered information as defined by Nevada law (NRS Chapter 603A). You may still send an opt-out request to support@policybear.com."
           },
           {
             "kind": "paragraph",
-            "text": "How to make a request. Email info@policybear.com or call (844) POL-BEAR. We will verify your identity by matching information you give us with what we hold. An authorized agent may make a request for you with your signed permission. We respond within 45 days, or the period your state requires, and may extend once where the law permits. If we deny your request, you may appeal by replying to our decision with \"Appeal\" in the subject line. If you are not satisfied with the outcome, you may contact your state attorney general. We will not treat you differently for exercising your rights."
+            "text": "How to make a request. Email support@policybear.com or call (844) POL-BEAR. We will verify your identity by matching information you give us with what we hold. An authorized agent may make a request for you with your signed permission. We respond within 45 days, or the period your state requires, and may extend once where the law permits. If we deny your request, you may appeal by replying to our decision with \"Appeal\" in the subject line. If you are not satisfied with the outcome, you may contact your state attorney general. We will not treat you differently for exercising your rights."
           }
         ]
       },
@@ -236,7 +236,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
         "blocks": [
           {
             "kind": "paragraph",
-            "text": "Policy Bear · 222 S. Rainbow Boulevard, Suite 216, Las Vegas, NV 89145 · (844) POL-BEAR · info@policybear.com"
+            "text": "Policy Bear · 222 S. Rainbow Boulevard, Suite 216, Las Vegas, NV 89145 · (844) POL-BEAR · support@policybear.com"
           }
         ]
       }
@@ -305,7 +305,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
         "blocks": [
           {
             "kind": "paragraph",
-            "text": "You agree that we and the insurer may provide applications, disclosures, notices, policies and other records to you electronically, and that you may sign them electronically, under the federal ESIGN Act and state electronic transaction laws. Your electronic signature has the same effect as a handwritten one. To view records you need a device with internet access, a current web browser and a PDF reader. You may ask for paper copies at no charge, or withdraw your consent to electronic records, by calling (844) POL-BEAR or emailing info@policybear.com. Withdrawing consent may slow the processing of an application. Please keep your email address current."
+            "text": "You agree that we and the insurer may provide applications, disclosures, notices, policies and other records to you electronically, and that you may sign them electronically, under the federal ESIGN Act and state electronic transaction laws. Your electronic signature has the same effect as a handwritten one. To view records you need a device with internet access, a current web browser and a PDF reader. You may ask for paper copies at no charge, or withdraw your consent to electronic records, by calling (844) POL-BEAR or emailing support@policybear.com. Withdrawing consent may slow the processing of an application. Please keep your email address current."
           }
         ]
       },
@@ -377,7 +377,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
         "blocks": [
           {
             "kind": "paragraph",
-            "text": "Informal resolution first. Before filing a claim, please contact us at info@policybear.com or (844) POL-BEAR and describe the problem. We will try in good faith to resolve it within 60 days."
+            "text": "Informal resolution first. Before filing a claim, please contact us at support@policybear.com or (844) POL-BEAR and describe the problem. We will try in good faith to resolve it within 60 days."
           },
           {
             "kind": "paragraph",
@@ -393,7 +393,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
           },
           {
             "kind": "paragraph",
-            "text": "Your right to opt out. You may reject this arbitration agreement by emailing info@policybear.com, or by mail to 222 S. Rainbow Boulevard, Suite 216, Las Vegas, NV 89145, within 30 days after you first use the Services. Include your name, your phone number and a statement that you opt out of arbitration. Opting out does not affect any other part of these Terms."
+            "text": "Your right to opt out. You may reject this arbitration agreement by emailing support@policybear.com, or by mail to 222 S. Rainbow Boulevard, Suite 216, Las Vegas, NV 89145, within 30 days after you first use the Services. Include your name, your phone number and a statement that you opt out of arbitration. Opting out does not affect any other part of these Terms."
           },
           {
             "kind": "paragraph",
@@ -442,7 +442,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
         "blocks": [
           {
             "kind": "paragraph",
-            "text": "Policy Bear · 222 S. Rainbow Boulevard, Suite 216, Las Vegas, NV 89145 · (844) POL-BEAR · info@policybear.com"
+            "text": "Policy Bear · 222 S. Rainbow Boulevard, Suite 216, Las Vegas, NV 89145 · (844) POL-BEAR · support@policybear.com"
           }
         ]
       }
@@ -550,7 +550,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
         "blocks": [
           {
             "kind": "paragraph",
-            "text": "Call (844) POL-BEAR (Monday to Friday, 8:00 AM to 8:00 PM Eastern Time) or email info@policybear.com. You can also verify our license through your state department of insurance (see Licensing & Resources)."
+            "text": "Call (844) POL-BEAR (Monday to Friday, 8:00 AM to 8:00 PM Eastern Time) or email support@policybear.com. You can also verify our license through your state department of insurance (see Licensing & Resources)."
           }
         ]
       }
@@ -603,7 +603,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
               ],
               [
                 "Email",
-                "info@policybear.com"
+                "support@policybear.com"
               ]
             ]
           }
@@ -731,7 +731,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
             "kind": "list",
             "items": [
               "Phone: (844) POL-BEAR, Monday to Friday, 8:00 AM to 8:00 PM Eastern Time",
-              "Email: info@policybear.com",
+              "Email: support@policybear.com",
               "Mail: Policy Bear, Attn: Compliance, 222 S. Rainbow Boulevard, Suite 216, Las Vegas, NV 89145"
             ]
           },
@@ -944,7 +944,7 @@ export const legalDocuments: Record<"privacy" | "terms" | "disclaimer" | "licens
         "blocks": [
           {
             "kind": "paragraph",
-            "text": "Call a licensed Policy Bear agent at (844) POL-BEAR, Monday to Friday, 8:00 AM to 8:00 PM Eastern Time, or email info@policybear.com. You can also contact your state department of insurance (see Licensing & Resources)."
+            "text": "Call a licensed Policy Bear agent at (844) POL-BEAR, Monday to Friday, 8:00 AM to 8:00 PM Eastern Time, or email support@policybear.com. You can also contact your state department of insurance (see Licensing & Resources)."
           }
         ]
       }
