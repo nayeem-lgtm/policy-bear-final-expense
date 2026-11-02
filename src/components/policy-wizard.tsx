@@ -247,7 +247,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
       <p className="app-rail-secure"><LockKeyhole /> Demo only · nothing is submitted</p>
     </aside>
     <div className="app-main">
-      <div className="app-topbar"><span>{labels[chapter]}</span><a href={`tel:${phone}`} className="app-help"><Phone /> Need help?</a></div>
+      <div className="app-topbar"><span>{labels[chapter]}</span><a href="tel:+18447652327" className="app-help"><Phone /> Need help?</a></div>
       <div className="app-body">{renderScreen()}</div>
     </div>
     <aside className="app-summary" aria-label="Your quote">
@@ -256,7 +256,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
         <dl><div><dt>Coverage</dt><dd>${coverage.toLocaleString()}</dd></div><div><dt>Premium</dt><dd>${monthly.toFixed(2)}<small>/mo</small></dd></div></dl>
         <Button variant="quiet" className="app-edit" onClick={() => go('price')}><PenLine /> Edit quote</Button>
       </div>
-      <a className="app-agent" href={`tel:${phone}`}><span className="agent-dot" /><span><small>Expert agents available</small><strong>(844) POL-BEAR</strong></span></a>
+      <a className="app-agent" href="tel:+18447652327"><span className="agent-dot" /><span><small>Expert agents available</small><strong>(844) POL-BEAR</strong></span></a>
     </aside>
   </section>
 
