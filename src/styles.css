@@ -802,6 +802,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .pb-footer-links a { font-size: 12px; }
   .pb-footer-connect { gap: 8px; }
 }
+.pb-footer-slim { background: var(--background); border-top: 1px solid var(--footer-border); color: var(--muted-foreground); }
+.pb-footer-slim-inner { max-width: 1160px; margin: auto; padding: 22px 32px calc(22px + env(safe-area-inset-bottom)); text-align: center; display: grid; gap: 8px; }
+.pb-footer-slim-copy { margin: 0; font-size: 14px; line-height: 1.5; }
+.pb-footer-slim-links { display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 14px; }
+.pb-footer-slim-links a { display: inline-flex; align-items: center; min-height: 32px; color: var(--primary); }
+.pb-footer-slim-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.pb-footer-slim-links span { width: 1px; height: 14px; background: var(--footer-border); }
+@media (max-width: 640px) {
+  .pb-footer-slim-inner { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); }
+  .pb-footer-slim-links { gap: 10px; }
+}
+
 .policy-action.header-call { outline: 3px solid transparent; animation: call-breathe 2.8s ease-in-out infinite, call-pulse-ring 2.8s ease-out infinite; border-radius: 999px; background: linear-gradient(160deg, color-mix(in oklab, var(--brand-action) 75%, var(--background)), var(--brand-action)); border: 1px solid var(--brand-action-hover); box-shadow: 0 2px 0 var(--brand-action-hover), 0 5px 14px color-mix(in oklab, var(--brand-action) 20%, transparent); padding: 3px 14px 3px 3px; gap: 8px; height: auto; min-height: 0; }
 .header-call .phone-circle { background: var(--primary); color: var(--primary-foreground); width: 40px; height: 40px; box-shadow: none; }
 .header-call .phone-circle::before { inset: -4px; border-color: color-mix(in oklab, var(--primary) 55%, transparent); animation: call-ripple 2.8s ease-out infinite; }

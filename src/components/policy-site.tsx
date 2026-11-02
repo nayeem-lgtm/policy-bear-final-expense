@@ -46,6 +46,18 @@ export function PolicyFooter() {
   </div></footer>
 }
 
+export function SlimFooter() {
+  return <footer className="pb-footer-slim"><div className="pb-footer-slim-inner">
+    <p className="pb-footer-slim-copy">Copyright © {new Date().getFullYear()} PolicyBear</p>
+    <nav className="pb-footer-slim-links" aria-label="Legal">
+      <Link to="/terms-conditions">Terms &amp; Conditions</Link>
+      <span aria-hidden="true" />
+      <Link to="/privacy-policy">Privacy Policy</Link>
+    </nav>
+  </div></footer>
+}
+
+
 export function LegalPage({ title, intro, date, children }: { title: string; intro: string; date?: string; children: React.ReactNode }) {
   return <div className="policy-page"><PolicyHeader /><main id="main-content" className="legal-page"><Link to="/" hash="step-state" className="legal-back">← Back to final expense coverage</Link><span className="section-eyebrow">PolicyBear · Final expense</span><h1>{title}</h1>{date && <p className="legal-date">{date}</p>}<p className="legal-intro">{intro}</p><div className="legal-content">{children}</div></main><PolicyFooter /></div>
 }

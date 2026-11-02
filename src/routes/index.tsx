@@ -5,7 +5,7 @@ import { ArrowRight, Phone, ChevronDown, Stethoscope, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
-import { PolicyHeader, PolicyFooter } from '@/components/policy-site'
+import { PolicyHeader, PolicyFooter, SlimFooter } from '@/components/policy-site'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -48,6 +48,6 @@ function Index() {
         <section className="closing-section"><h2>Find a starting point for your final expense coverage.</h2><Button asChild variant="action" size="touch"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button></section>
       </>}
     </main>
-    <PolicyFooter />
+    {step === 0 ? <PolicyFooter /> : <SlimFooter />}
   </div>
 }

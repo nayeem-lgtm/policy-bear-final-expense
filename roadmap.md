@@ -50,3 +50,5 @@
 - [x] Replace the opening ZIP question with a state picker limited to the 31 licensed states; verified on desktop and phone.
 - [x] Remove the "Want to talk through your options" line and set the questions-section bear full-height so his head and shoes align with the top and bottom of the section; verified 1280, 1050, 950 and 375px.
 
+
+- [x] Show only a slim copyright + Terms/Privacy footer from the second quote step onward; full footer returns on step one. Verified desktop, phone, and Back navigation.
