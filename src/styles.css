@@ -1394,3 +1394,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .app-main { order: 2; padding: 14px 16px 32px; }
   .app-body .wizard-content h2 { font-size: 22px; }
 }
+.app-body .back-button { margin-left: -12px; }
+@media (max-width: 760px) { .app-rail { width: 100%; box-sizing: border-box; } .app-edit.app-edit { display: none; } .app-quote-card dl { justify-content: space-between; } }
