@@ -1,5 +1,7 @@
 # PolicyBear final expense
 
+- [x] Replace the old questions section with Mr Bear on the left and two professionally styled coverage promises; verified at 320, 390, 958 and 1280px, all 13 tests pass.
+
 - [x] Polish phone and tablet layouts across the landing, quote journey and public pages; verified the real phone quote through pricing, all 39 screens and seven public pages at 320, 375, 430, 768, 958 and 1280px with no visible overflow or runtime errors.
 
 - [x] Give the questions-section bear the "Let Mr Bear / guide you step by step" bubble; verify desktop and phone.
