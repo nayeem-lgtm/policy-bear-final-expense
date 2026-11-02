@@ -316,7 +316,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 900px) {
   .faq-inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "bear" "head" "list"; gap: 6px 0; padding: 36px 24px; }
   .faq-bear-wrap { align-self: auto; width: 68px; height: 110px; margin-inline: auto; margin-bottom: 0; }
-  .faq-bear { height: 100%; }
+  .faq-bear, .faq-bear-wave { height: 100%; }
   .faq-head { gap: 14px; }
   .faq-head h2 { font-size: 26px; }
   .faq-promises { gap: 6px 20px; }
