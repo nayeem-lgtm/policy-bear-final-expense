@@ -1686,3 +1686,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .reconnect-demo { margin-top: 8px; }
   .app-body:has(.home-address-form) .continue-button { min-height: 48px; height: 48px; }
 }
+
+/* Pre-qualification auto-advance hint and skip link */
+.auto-next { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 14px 0 0; padding: 10px 14px; border-radius: 12px; background: var(--muted); color: var(--muted-foreground); font-size: 14px; text-align: center; transition: background .25s, color .25s; }
+.auto-next svg { width: 16px; height: 16px; }
+.auto-next.is-ready { background: color-mix(in oklab, var(--primary) 10%, transparent); color: var(--primary); font-weight: 700; }
+.skip-link { display: inline-flex; align-items: center; justify-content: center; gap: 6px; align-self: center; margin: 16px auto 0; padding: 10px 16px; border: 0; border-radius: 999px; background: transparent; color: var(--primary); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in oklab, var(--primary) 35%, transparent); }
+.skip-link:hover { background: color-mix(in oklab, var(--primary) 8%, transparent); }
+.skip-link:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.skip-link svg { width: 16px; height: 16px; transition: transform .2s; }
+.skip-link:hover svg { transform: translateX(3px); }
+.reconnect-form { display: flex; flex-direction: column; }
+@media (prefers-reduced-motion: reduce) { .skip-link svg, .auto-next { transition: none; } }
