@@ -1459,7 +1459,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .bear-tip-img { width: 190px; height: auto; filter: drop-shadow(0 16px 18px color-mix(in oklab, var(--foreground) 18%, transparent)); }
 @keyframes bear-tip-in { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .bear-tip-bubble { animation: none; } }
-@media (max-width: 900px) {
+@media (max-width: 1100px) and (min-width: 761px) {
+  .basic-stage { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 24px; }
+  .bear-tip-img { width: 150px; }
+}
+@media (max-width: 760px) {
   .basic-stage { grid-template-columns: 1fr; gap: 16px; }
   .bear-tip { order: 2; flex-direction: row; align-items: flex-end; max-width: 640px; margin: 0 auto; padding: 0 12px; }
   .bear-tip-img { width: 72px; flex: none; }
