@@ -41,7 +41,7 @@ function Index() {
           <div className="quote-form-holder">
             <PolicyWizard onStepChange={changeStep} />
           </div>
-          {step === 0 && <p className="hero-tagline">An <span className="tagline-accent">AI-powered</span> insurance experience, available <span className="tagline-accent">24/7</span>, delivering <span className="tagline-mark">instant decisions</span><br className="tagline-break" /> and coverage with <span className="tagline-mark">no medical exam required</span>.</p>}
+          {step === 0 && <p className="hero-tagline">An <span className="tagline-accent">AI-powered,</span> <span className="tagline-accent">24/7</span> insurance platform with <span className="tagline-mark">instant decisions</span><br className="tagline-break" /> and <span className="tagline-mark">no medical exam required</span>.</p>}
         </div>
       </section>
       {step === 0 && <>
