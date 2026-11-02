@@ -294,9 +294,9 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
       <div className="app-quote-card">
         <div className="app-quote-brand"><img src={bearLogo.url} width="150" height="30" alt="PolicyBear" /><span className="app-quote-tag">Final Expense</span></div>
         <div className="app-quote-price"><small>Your monthly premium</small><strong>${monthly.toFixed(2)}<span>/mo</span></strong></div>
-        <dl><div><dt>Coverage</dt><dd>${coverage.toLocaleString()}</dd></div><div><dt>Plan</dt><dd>Whole life</dd></div></dl>
+        <dl><div><dt>Coverage</dt><dd>${coverage.toLocaleString()}</dd></div></dl>
+        <div className="app-quote-chips"><span><ShieldCheck /> Level premium</span><span><Check /> No medical exam</span></div>
         <Button variant="quiet" className="app-edit" onClick={() => go('price')}><PenLine /> Edit quote</Button>
-        <a className="app-agent" href="tel:+18447652327"><span className="agent-dot" /><span><small>Licensed agents available</small><strong>(844) POL-BEAR</strong></span><Phone /></a>
       </div>
     </aside>}
   </section>

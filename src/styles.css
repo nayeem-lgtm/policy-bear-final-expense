@@ -1471,24 +1471,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 760px) { .app-summary { width: 100%; box-sizing: border-box; } .app-quote-card dl { flex: 1; } }
 /* Summary card v2 */
 .app-summary { padding: 22px 24px 22px 0; }
-.app-quote-card { display: block !important; border-radius: 18px; }
-.app-quote-brand { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 18px 18px 14px; border-bottom: 1px solid var(--border); }
+.app-quote-card { display: block !important; border-radius: 20px; border: 0; background: linear-gradient(180deg, color-mix(in oklab, var(--primary) 7%, var(--card)) 0%, var(--card) 42%); box-shadow: 0 24px 48px -24px color-mix(in oklab, var(--primary) 45%, transparent), 0 0 0 1px color-mix(in oklab, var(--primary) 14%, transparent); position: relative; }
+.app-quote-card::before { content: ''; position: absolute; inset: 0 0 auto; height: 5px; border-radius: 20px 20px 0 0; background: linear-gradient(90deg, var(--primary), var(--brand-action)); }
+.app-quote-brand { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 22px 20px 14px; border-bottom: 1px dashed var(--border); }
 .app-quote-brand img { width: 132px; height: auto; display: block; }
 .app-quote-tag { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-deep); background: var(--tagline-highlight); padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
-.app-quote-price { padding: 18px 18px 6px; }
-.app-quote-price small { display: block; font-size: 12.5px; color: var(--muted-foreground); }
-.app-quote-price strong { font-size: 34px; font-weight: 800; letter-spacing: -.02em; color: var(--primary); line-height: 1.15; }
-.app-quote-price strong span { font-size: 14px; font-weight: 600; color: var(--muted-foreground); margin-left: 2px; }
-.app-quote-card dl { display: block !important; padding: 4px 18px 10px; }
-.app-quote-card dl div { display: flex !important; padding: 9px 0; }
-.app-quote-card dl div + div { border-top: 1px dashed var(--border) !important; }
-.app-quote-card dd { font-size: 15px; }
-.app-edit.app-edit { display: inline-flex; margin: 0 18px 16px; width: calc(100% - 36px); }
-.app-quote-card .app-agent { display: flex; border: 0; border-top: 1px solid var(--border); border-radius: 0; background: color-mix(in oklab, var(--primary) 6%, var(--card)); padding: 14px 18px; }
-.app-quote-card .app-agent > span:nth-child(2) { flex: 1; }
-.app-quote-card .app-agent > svg { width: 18px; height: 18px; color: var(--primary); }
-@media (max-width: 1180px) { .app-summary { display: block; padding: 18px 32px 0; } .app-quote-card { display: grid !important; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; } .app-quote-brand { border: 0; padding: 12px 16px; min-width: 0; } .app-quote-brand img { width: 104px; } .app-quote-tag { display: none; } .app-quote-price { padding: 10px 12px; min-width: 0; } .app-quote-price small { white-space: nowrap; } .app-quote-price strong { font-size: 24px; } .app-quote-card dl, .app-edit.app-edit { display: none !important; } .app-quote-card .app-agent { border-top: 0; align-self: stretch; align-items: center; } }
-@media (max-width: 760px) { .app-summary { padding: 12px 16px 0; } .app-quote-card { grid-template-columns: 1fr auto; } .app-quote-brand { display: none; } .app-quote-price small { font-size: 11px; } .app-quote-price strong { font-size: 20px; } .app-quote-card .app-agent small { display: none; } .app-quote-card .app-agent strong { font-size: 14px; } }
+.app-quote-price { padding: 20px 20px 8px; text-align: center; }
+.app-quote-price small { display: block; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted-foreground); }
+.app-quote-price strong { font-size: 44px; font-weight: 800; letter-spacing: -.02em; color: var(--primary); line-height: 1.15; }
+.app-quote-price strong span { font-size: 15px; font-weight: 600; color: var(--muted-foreground); margin-left: 2px; }
+.app-quote-card dl { display: block !important; padding: 6px 20px 12px; }
+.app-quote-card dl div { display: flex !important; justify-content: center; gap: 10px; padding: 4px 0; }
+.app-quote-card dt { font-size: 14px; }
+.app-quote-card dd { font-size: 17px; }
+.app-quote-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 2px 20px 16px; }
+.app-quote-chips span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--brand-deep); background: color-mix(in oklab, var(--primary) 8%, var(--card)); border: 1px solid color-mix(in oklab, var(--primary) 18%, transparent); padding: 6px 12px; border-radius: 999px; }
+.app-quote-chips svg { width: 13px; height: 13px; color: var(--success); }
+.app-edit.app-edit { display: inline-flex; margin: 0 20px 18px; width: calc(100% - 40px); }
+@media (max-width: 1180px) { .app-summary { display: block; padding: 18px 32px 0; } .app-quote-card { display: grid !important; grid-template-columns: auto minmax(0, 1fr); align-items: center; } .app-quote-card::before { inset: 0 auto 0 0; width: 5px; height: auto; border-radius: 20px 0 0 20px; background: linear-gradient(180deg, var(--primary), var(--brand-action)); } .app-quote-brand { border: 0; padding: 12px 16px; min-width: 0; } .app-quote-brand img { width: 104px; } .app-quote-tag { display: none; } .app-quote-price { padding: 10px 12px; min-width: 0; text-align: left; } .app-quote-price small { white-space: nowrap; } .app-quote-price strong { font-size: 24px; } .app-quote-card dl, .app-quote-chips, .app-edit.app-edit { display: none !important; } }
+@media (max-width: 760px) { .app-summary { padding: 12px 16px 0; } .app-quote-card { grid-template-columns: 1fr; } .app-quote-brand { display: none; } .app-quote-price { text-align: center; } .app-quote-price small { font-size: 11px; } .app-quote-price strong { font-size: 20px; } }
 .app-quote-brand img { width: 118px; } .app-quote-tag { font-size: 9.5px; padding: 3px 7px; letter-spacing: .06em; }
 /* Before the illustration there is no quote to show, so the panel's column is given back to the question. */
 .wizard-app.no-quote { grid-template-columns: 250px minmax(0, 1fr); }
