@@ -1729,6 +1729,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .ssn-trust-icon.is-pulsing::after { content: ''; position: absolute; inset: -3px; border-radius: 10px; border: 1px solid color-mix(in oklab, var(--primary) 40%, transparent); animation: trust-pulse 2.8s ease-out infinite; }
 .ssn-trust-copy { display: grid; gap: 1px; min-width: 0; }
 .ssn-trust-copy strong { font-size: 12px; font-weight: 700; color: var(--brand-deep); }
+.ssn-trust-short { display: none; }
 .ssn-trust-copy small { font-size: 10.5px; line-height: 1.2; color: var(--muted-foreground); }
 .ssn-form .valid-note { min-height: 0; margin: 4px 0; font-size: 13px; }
 .ssn-form .field-prompt { margin-top: 12px; }
@@ -1736,10 +1737,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes trust-pulse { 0% { opacity: .8; transform: scale(.9); } 70% { opacity: 0; transform: scale(1.25); } 100% { opacity: 0; transform: scale(1.25); } }
 @media (max-width: 620px) {
   .ssn-trust { gap: 6px; }
-  .ssn-trust-item { gap: 6px; padding: 6px; }
-  .ssn-trust-icon { width: 20px; height: 20px; border-radius: 6px; }
+  .ssn-trust-item { gap: 6px; padding: 7px 6px; }
+  .ssn-trust-icon { width: 18px; height: 18px; border-radius: 6px; }
   .ssn-trust-icon svg { width: 12px; height: 12px; }
   .ssn-trust-copy small { display: none; }
-  .ssn-trust-copy strong { font-size: 10px; }
+  .ssn-trust-copy strong { font-size: 10.5px; }
+  .ssn-trust-full { display: none; }
+  .ssn-trust-short { display: block; }
+  .ssn-form .secure-field { min-height: 50px; }
+  .ssn-form .answer-list { gap: 8px; margin: 14px 0 8px; }
+  .ssn-form .answer-card { min-height: 54px; padding: 12px 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .ssn-trust-icon.is-pulsing::after { animation: none; opacity: .35; } }

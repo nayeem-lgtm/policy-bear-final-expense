@@ -318,16 +318,16 @@ function ContactConsent({ checked, onChange }: { checked: boolean; onChange: (va
 function NextButton() { return <div className="next-row"><button type="submit" className="revisit-next">Next <ArrowRight /></button></div> }
 
 const ssnTrustBadges = [
-  { icon: <LockKeyhole />, title: '256-bit encryption', note: 'Bank-level SSL protects every keystroke' },
-  { icon: <ShieldCheck />, title: 'Never stored', note: 'Your number isn’t saved after you leave' },
-  { icon: <Fingerprint />, title: 'Never sold or shared', note: 'Your identity stays private with us' },
+  { icon: <LockKeyhole />, title: '256-bit encryption', short: '256-bit SSL', note: 'Bank-level SSL protects every keystroke' },
+  { icon: <ShieldCheck />, title: 'Never stored', short: 'Never stored', note: 'Your number isn’t saved after you leave' },
+  { icon: <Fingerprint />, title: 'Never sold or shared', short: 'Never shared', note: 'Your identity stays private with us' },
 ]
 
 function TrustBadges() {
   return <div className="ssn-trust">
     {ssnTrustBadges.map((badge, index) => <div className="ssn-trust-item" key={badge.title}>
       <span className={`ssn-trust-icon${index === 0 ? ' is-pulsing' : ''}`} aria-hidden="true">{badge.icon}</span>
-      <span className="ssn-trust-copy"><strong>{badge.title}</strong><small>{badge.note}</small></span>
+      <span className="ssn-trust-copy"><strong className="ssn-trust-full">{badge.title}</strong><strong className="ssn-trust-short">{badge.short}</strong><small>{badge.note}</small></span>
     </div>)}
   </div>
 }
