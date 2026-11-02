@@ -1307,3 +1307,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .funnel-section .wizard form { gap: 8px; }
 .funnel-section .continue-button, .funnel-section .wide-button { min-height: 50px; margin-top: 6px; }
 .funnel-section .wizard { margin-top: 0; }
+.funnel-section { padding-top: 12px; }
+.funnel-section .chapter-progress { margin-bottom: 8px; }
