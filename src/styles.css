@@ -272,7 +272,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-bear-wrap { grid-area: bear; position: relative; align-self: stretch; min-width: 0; margin-bottom: -44px; }
 .faq-bear-wrap::before { content: ""; position: absolute; z-index: 0; bottom: 1px; left: 50%; transform: translateX(-50%); width: 58%; height: 6px; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 45%, transparent), transparent 72%); filter: blur(1.5px); }
 .faq-bear-wrap::after { content: ""; position: absolute; z-index: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 62%; height: 14px; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 40%, transparent), transparent 68%); filter: blur(3px); }
-.faq-bear { position: absolute; inset: 0; z-index: 1; display: block; margin: auto; width: auto; max-width: calc(100% + 26px); height: 100%; object-fit: contain; object-position: center bottom; }
+.faq-bear { position: absolute; top: 0; left: 50%; z-index: 1; display: block; transform: translateX(-50%); width: auto; max-width: calc(100% + 26px); height: 100%; object-fit: contain; object-position: center bottom; }
 .faq-list { grid-area: list; min-width: 0; border-top: 1px solid var(--border); }
 .faq-list details { border-bottom: 1px solid var(--border); }
 
@@ -281,7 +281,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-list svg { flex-shrink: 0; color: var(--primary); transition: transform 180ms; }
 .faq-list details[open] svg { transform: rotate(180deg); }
 .faq-list details p { color: var(--muted-foreground); font-size: 16px; padding-bottom: 24px; }
-@media (max-width: 1100px) { .faq-inner { gap: 24px 28px; padding: 48px 32px; grid-template-columns: 288px minmax(0, 1fr); } }
+@media (max-width: 1100px) { .faq-inner { gap: 24px 28px; padding: 48px 32px; grid-template-columns: 330px minmax(0, 1fr); } }
 @media (max-width: 900px) {
   .faq-inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "bear" "head" "list"; gap: 6px 0; padding: 36px 24px; }
   .faq-bear-wrap { align-self: auto; width: 68px; height: 110px; margin-inline: auto; margin-bottom: 0; }
