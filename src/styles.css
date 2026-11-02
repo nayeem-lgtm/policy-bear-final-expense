@@ -1466,3 +1466,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .bear-tip-bubble::after { left: -11px; bottom: 18px; transform: rotate(135deg); }
   .bear-tip-bubble p { font-size: 14.5px; }
 }
+.bear-tip-kicker { display: block; font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+.bear-tip-title.is-myth { border-bottom-color: var(--destructive); color: var(--foreground); }
+.bear-tip-title.is-fact { border-bottom-color: var(--success, oklch(0.6 0.15 150)); color: var(--foreground); margin-top: 12px; }
+.bear-tip-fact { font-weight: 700; }
+@media (max-width: 900px) { .bear-tip-kicker { font-size: 15px; margin-bottom: 6px; } .bear-tip-title.is-fact { margin-top: 8px; } }

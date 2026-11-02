@@ -8,11 +8,11 @@ import { Button } from '@/components/ui/button'
 import bearLogo from '@/assets/policybear-logo.asset.json'
 import bearGuide from '@/assets/bear-guide-full.png'
 
-const bearTips: Partial<Record<string, { title: string; text: string }>> = {
-  gender: { title: 'Quick fact', text: 'Insurers price men and women a little differently, so this helps us show a fairer illustration.' },
-  dob: { title: 'Did you know?', text: 'Your age is the biggest factor in your price. Locking in coverage sooner usually means a lower rate.' },
-  coverage: { title: 'Mr Bear’s tip', text: 'Many families plan for funeral, burial or cremation costs plus a little extra for final bills.' },
-  tobacco: { title: 'Good to know', text: 'Smokers can still get covered. Answering honestly keeps your coverage solid for your family.' },
+const bearTips: Partial<Record<string, { myth: string; fact: string }>> = {
+  gender: { myth: 'Life insurance is too expensive', fact: '50% of people overestimate the cost of life insurance' },
+  dob: { myth: 'Applying for life insurance is a hassle', fact: 'Applying for life insurance is fast and easy' },
+  coverage: { myth: 'The group life insurance I get at work is enough', fact: 'Group life insurance may not cover your family’s needs' },
+  tobacco: { myth: 'I don’t have dependents so I don’t need life insurance', fact: 'Life insurance will pay off student loans or mortgages in the event of your death' },
 }
 
 import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
@@ -285,7 +285,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   if (!tip) return wizardSection
   return <div className="basic-stage">
     <aside className="bear-tip" aria-label="Tip from Mr Bear">
-      <div className="bear-tip-bubble" key={screen}><span className="bear-tip-title">{tip.title}</span><p>{tip.text}</p></div>
+      <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
       <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
     </aside>
     {wizardSection}
