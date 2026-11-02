@@ -1290,3 +1290,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes closing-shine { 0%, 55% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
 @media (prefers-reduced-motion: reduce) { .closing-btn-main::after { animation: none; } }
 @media (max-width: 760px) { .closing-btn-main { justify-content: center; } }
+
+/* Fit wizard steps in one screen */
+.funnel-section { min-height: 0; padding: 20px 20px 24px; }
+.funnel-section .wizard { padding: 20px 36px 22px; }
+.funnel-section .chapter-progress { margin-bottom: 12px; }
+.funnel-section .wizard h2 { margin-top: 4px; margin-bottom: 8px; }
+.funnel-section .wizard label { margin-top: 0; }
+.funnel-section .wizard input:not([type=radio]):not([type=checkbox]):not([type=range]), .funnel-section .wizard select { min-height: 46px; height: 46px; }
+.funnel-section .wizard form, .funnel-section .wizard .field-grid { gap: 10px; }
+.pb-footer-slim-inner { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 6px 14px; padding-block: 12px calc(12px + env(safe-area-inset-bottom)); }
+.pb-footer-slim-copy::after { content: ""; display: inline-block; width: 1px; height: 14px; margin-left: 14px; vertical-align: middle; background: var(--footer-border); }
+@media (max-width: 760px) { .funnel-section { padding: 0 0 20px; min-height: 0; } .funnel-section .wizard { padding: 18px 16px 20px; } }

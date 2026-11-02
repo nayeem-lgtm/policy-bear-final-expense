@@ -128,11 +128,11 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   useEffect(() => {
     if (!ready) return
     heading.current?.focus({ preventScroll: true })
-    if (screen === 'state' || !window.matchMedia('(max-width: 800px)').matches) return
+    if (screen === 'state') return
     let second = 0
     const first = requestAnimationFrame(() => {
       second = requestAnimationFrame(() => {
-        document.getElementById('get-covered')?.scrollIntoView({ block: 'start', behavior: 'instant' })
+        window.scrollTo({ top: 0, behavior: 'instant' })
       })
     })
     return () => { cancelAnimationFrame(first); if (second) cancelAnimationFrame(second) }
