@@ -449,13 +449,50 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .health-intro-ico { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft-blue); color: var(--primary); }
 .health-intro-ico svg { width: 18px; height: 18px; }
 @media (max-width: 560px) { .health-intro-points { grid-template-columns: 1fr; gap: 8px; } .health-intro-points li { flex-direction: row; justify-content: flex-start; text-align: left; padding: 12px 14px; } }
-.loading-state { text-align: center; padding: 40px 8px; }
-.loading-state h2 { font-size: 30px; color: var(--brand-deep); margin: 18px 0 6px; }
+.loading-state { text-align: center; padding: 34px 8px 40px; --load-ms: 2200ms; }
+.loading-state h2 { font-size: 30px; color: var(--brand-deep); margin: 14px 0 6px; }
 .loading-state > p { font-size: 16px; color: var(--muted-foreground); }
-.loading-state > div:last-child { display: grid; gap: 14px; max-width: 330px; margin: 28px auto 0; text-align: left; }
-.loading-state > div:last-child span { display: flex; gap: 10px; align-items: center; opacity: .35; transition: opacity 250ms; }
-.loading-state > div:last-child span.done { opacity: 1; color: var(--brand-deep); }
-.loading-state > div:last-child svg { color: var(--success); }
+/* Progress dial: arc fills over the real wait, gold tip orbits the ring. */
+.load-dial { position: relative; width: 132px; height: 132px; margin: 4px auto 2px; }
+.load-dial::before { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: radial-gradient(circle, color-mix(in oklab, var(--brand-soft-blue) 88%, transparent), transparent 70%); animation: load-glow 2.2s ease-in-out infinite; }
+.load-ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.load-ring circle { fill: none; stroke-width: 6; stroke-linecap: round; }
+.load-ring-track { stroke: color-mix(in oklab, var(--primary) 11%, var(--background)); }
+.load-ring-fill { stroke: var(--primary); stroke-dasharray: 276.5; stroke-dashoffset: 276.5; animation: load-fill var(--load-ms) cubic-bezier(.35, 0, .2, 1) forwards; filter: drop-shadow(0 0 6px color-mix(in oklab, var(--primary) 40%, transparent)); }
+.load-ring-orbit { position: absolute; inset: 0; animation: load-orbit var(--load-ms) cubic-bezier(.35, 0, .2, 1) forwards; }
+.load-ring-orbit i { position: absolute; top: -3px; left: 50%; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--brand-action); box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand-action) 22%, transparent); }
+.loading-state .loading-symbol { position: absolute; inset: 20px; width: auto; height: auto; margin: 0; animation: load-breathe 1.9s ease-in-out infinite; }
+/* Step list: pending dot, spinning arc while working, check pops when done. */
+.load-bar { position: relative; height: 6px; border-radius: 999px; overflow: hidden; max-width: 330px; margin: 20px auto 0; background: color-mix(in oklab, var(--primary) 10%, var(--background)); }
+.load-bar span { position: absolute; inset: 0; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg, var(--primary), var(--brand-action)); animation: load-grow var(--load-ms) cubic-bezier(.35, 0, .2, 1) forwards; }
+.load-bar::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 25%, color-mix(in oklab, var(--background) 75%, transparent) 50%, transparent 75%); animation: load-sheen 1.5s ease-in-out infinite; }
+.load-lines { list-style: none; margin: 24px auto 0; padding: 0; display: grid; gap: 13px; max-width: 330px; text-align: left; }
+.load-lines li { display: flex; gap: 12px; align-items: center; font-size: 16px; color: var(--muted-foreground); opacity: .45; transition: opacity 250ms, color 250ms; }
+.load-lines li.done, .load-lines li.working { opacity: 1; color: var(--brand-deep); }
+.load-mark { position: relative; flex: none; width: 25px; height: 25px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in oklab, var(--primary) 7%, var(--background)); border: 1px solid color-mix(in oklab, var(--primary) 16%, transparent); transition: background 250ms, border-color 250ms; }
+.load-mark svg { width: 15px; height: 15px; color: var(--success); opacity: 0; transform: scale(.4); transition: opacity 180ms, transform 320ms cubic-bezier(.34, 1.56, .64, 1); }
+.load-lines li.done .load-mark { background: color-mix(in oklab, var(--success) 15%, var(--background)); border-color: color-mix(in oklab, var(--success) 38%, transparent); }
+.load-lines li.done .load-mark svg { opacity: 1; transform: scale(1); }
+.load-lines li.done .load-mark::after { content: ""; position: absolute; inset: -1px; border-radius: 50%; border: 2px solid color-mix(in oklab, var(--success) 55%, transparent); animation: load-ripple 620ms ease-out forwards; }
+.load-lines li.working .load-mark { background: transparent; border-color: transparent; }
+.load-lines li.working .load-mark::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid color-mix(in oklab, var(--primary) 20%, transparent); border-top-color: var(--primary); animation: load-spin .72s linear infinite; }
+.load-lines li.working .load-line-copy { background: linear-gradient(90deg, var(--brand-deep) 0 30%, color-mix(in oklab, var(--primary) 70%, var(--brand-deep)) 50%, var(--brand-deep) 70% 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: load-shimmer 1.7s linear infinite; }
+@keyframes load-fill { from { stroke-dashoffset: 276.5; } to { stroke-dashoffset: 10; } }
+@keyframes load-orbit { from { transform: rotate(0deg); } to { transform: rotate(350deg); } }
+@keyframes load-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes load-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+@keyframes load-glow { 0%, 100% { opacity: .5; transform: scale(.93); } 50% { opacity: 1; transform: scale(1.07); } }
+@keyframes load-spin { to { transform: rotate(360deg); } }
+@keyframes load-ripple { from { transform: scale(.85); opacity: .9; } to { transform: scale(1.9); opacity: 0; } }
+@keyframes load-sheen { 0% { transform: translateX(-100%); } 62%, 100% { transform: translateX(100%); } }
+@keyframes load-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .load-ring-fill { stroke-dashoffset: 124; }
+  .load-bar span { transform: scaleX(.55); }
+  .load-ring-orbit { display: none; }
+  .load-lines li.working .load-mark::before { border-top-color: var(--primary); }
+  .load-lines li.working .load-line-copy { background: none; color: var(--brand-deep); }
+}
 .loading-symbol, .decision-symbol, .success-symbol { width: 78px; height: 78px; margin: auto; display: grid; place-items: center; border-radius: 50%; background: var(--brand-soft-blue); color: var(--primary); animation: gentle-pulse 1.5s ease-in-out infinite; }
 .loading-symbol svg, .decision-symbol svg, .success-symbol svg { width: 38px; height: 38px; }
 .decision-symbol { background: color-mix(in oklab, var(--success) 14%, var(--background)); color: var(--success); margin-bottom: 20px; }
