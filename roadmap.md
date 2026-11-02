@@ -52,3 +52,5 @@
 
 
 - [x] Show only a slim copyright + Terms/Privacy footer from the second quote step onward; full footer returns on step one. Verified desktop, phone, and Back navigation.
+
+- [x] Remove the "Popular locations" quick-pick chips from the state question; verify desktop and phone spacing.
