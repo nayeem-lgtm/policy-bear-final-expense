@@ -32,6 +32,20 @@ const faqs = [
 function Index() {
   const [step, setStep] = useState(0)
   const changeStep = useCallback((value: number) => setStep(value), [])
+  const bearObserver = useRef<IntersectionObserver | null>(null)
+  const attachBear = useCallback((node: HTMLDivElement | null) => {
+    bearObserver.current?.disconnect()
+    if (!node || typeof IntersectionObserver === 'undefined') return
+    node.classList.add('is-armed')
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        node.classList.add('is-visible')
+        observer.disconnect()
+      }
+    }, { threshold: 0.2 })
+    observer.observe(node)
+    bearObserver.current = observer
+  }, [])
   return <div className="policy-page">
     <PolicyHeader />
     <main id="main-content" className={step === 0 ? undefined : 'funnel-mode'}>
@@ -50,7 +64,7 @@ function Index() {
             <header className="faq-head">
               <h2>Final expense questions, answered.</h2>
             </header>
-            <div className="faq-bear-wrap" aria-hidden="true"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /></div>
+            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><img className="faq-bear" src={bearGuide} width={599} height={959} alt="" /></div>
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
           </div>
         </section>
