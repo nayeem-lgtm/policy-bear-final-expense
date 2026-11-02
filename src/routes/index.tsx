@@ -3,7 +3,7 @@
 import bearGuide from '@/assets/bear-guide-full.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Check, ChevronDown, Sparkles } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
@@ -60,14 +60,10 @@ function Index() {
           </div>
         </section>
         <section className="closing-section" aria-label="Start your final expense quote">
-          <div className="closing-card">
-            <span className="closing-glow closing-glow-a" aria-hidden="true" />
-            <span className="closing-glow closing-glow-b" aria-hidden="true" />
-            <div className="closing-copy">
-              <span className="closing-eyebrow"><Sparkles size={14} aria-hidden="true" /> Takes about 2 minutes</span>
-              <h2>Find a starting point for your <em>final expense</em> coverage.</h2>
-              <p className="closing-sub"><Check size={15} aria-hidden="true" /> No medical exam required <span className="closing-dot" aria-hidden="true" /> Instant approval</p>
-            </div>
+          <div className="closing-inner">
+            <span className="closing-eyebrow">Takes about 2 minutes</span>
+            <h2>Find a starting point for your final expense coverage.</h2>
+            <p className="closing-sub">No obligation. Prices shown are illustrative.</p>
             <Button asChild variant="action" size="touch" className="closing-cta"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button>
           </div>
         </section>
