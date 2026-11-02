@@ -1255,3 +1255,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .answer-list-pair .radio-circle { display: none; }
   .answer-card[data-state=checked] .radio-circle { display: grid; }
 }
+
+/* Closing card */
+.closing-section { padding: 72px 24px 84px; background: var(--background); }
+.closing-inner { position: relative; overflow: hidden; max-width: 880px; padding: 52px 40px 48px; border-radius: 28px; border: 1px solid color-mix(in oklab, var(--primary) 16%, transparent);
+  background: radial-gradient(120% 140% at 0% 0%, color-mix(in oklab, var(--primary) 9%, var(--background)) 0%, var(--background) 55%), radial-gradient(90% 120% at 100% 100%, color-mix(in oklab, var(--tagline-highlight) 55%, var(--background)) 0%, transparent 60%);
+  box-shadow: 0 30px 60px -40px color-mix(in oklab, var(--primary) 45%, transparent); }
+.closing-inner::before { content: ''; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, var(--primary), var(--tagline-highlight)); }
+.closing-eyebrow { padding: 6px 14px; border-radius: 999px; background: var(--background); border: 1px solid color-mix(in oklab, var(--primary) 18%, transparent); color: var(--primary); }
+.closing-inner h2 { font-size: 34px; max-width: 640px; }
+.closing-inner h2 .tagline-mark { white-space: nowrap; }
+.closing-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 6px; }
+.closing-call { font-size: 14px; color: var(--muted-foreground); text-decoration: none; }
+.closing-call strong { color: var(--primary); font-weight: 700; }
+.closing-call:hover strong { text-decoration: underline; }
+@media (max-width: 760px) { .closing-section { padding: 40px 16px 48px; } .closing-inner { padding: 38px 20px 32px; border-radius: 22px; } .closing-inner h2 { font-size: 24px; } .closing-actions { width: 100%; } }
