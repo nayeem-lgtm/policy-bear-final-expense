@@ -70,3 +70,5 @@
 - Bear in questions section made bigger (300px column, 440px floor); "Explore coverage" restyled as a gold policy-ticket stub with paw print, notches and dashed perforation.
 
 - Questions section: all text moved to the right column (heading above the accordion), Mr Bear now spans the full left column with his head at the section top and shoes near the bottom; verified closed and expanded states at 901-1562px.
+
+- Mr Bear pulled up ~30px out of the section content box and given idle motion: one-time rise/fade on scroll into view, then a gentle 7px bob with 0.4deg sway and a pulsing ground shadow; reduced-motion respected. Verified at 390-1562px.
