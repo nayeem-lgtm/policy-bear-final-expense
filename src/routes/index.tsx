@@ -72,13 +72,10 @@ function Index() {
             </header>
             <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><div className="faq-bear-stage"><div className="faq-bear-lean"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /></div></div></div>
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
-          </div>
-        </section>
-        <section className="closing-section" aria-label="Start your final expense quote">
-          <div className="closing-copy">
-            <h2>Find a starting point for your <span className="closing-hl">final expense</span> coverage.</h2>
-            <div className="closing-actions">
-              <span className="closing-btn-shell"><a className="closing-btn closing-btn-main" href="#get-covered"><span className="closing-btn-stub" aria-hidden="true"><PawPrint size={19} /></span><span>Explore coverage</span><span className="closing-btn-icon"><ArrowRight size={17} /></span></a></span>
+            <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
+            <div className="faq-cta">
+              <h2>Find a starting point for your <span className="faq-cta-hl">final expense</span> coverage.</h2>
+              <a className="faq-cta-btn" href="#get-covered"><span className="faq-cta-paw" aria-hidden="true"><PawPrint size={18} /></span><span>Explore coverage</span><span className="faq-cta-arrow"><ArrowRight size={16} /></span></a>
             </div>
           </div>
         </section>
