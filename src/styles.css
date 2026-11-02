@@ -281,7 +281,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-list svg { flex-shrink: 0; color: var(--primary); transition: transform 180ms; }
 .faq-list details[open] svg { transform: rotate(180deg); }
 .faq-list details p { color: var(--muted-foreground); font-size: 16px; padding-bottom: 24px; }
-@media (max-width: 1100px) { .faq-inner { gap: 24px 28px; padding: 48px 32px; grid-template-columns: 250px minmax(0, 1fr); } }
+@media (max-width: 1100px) { .faq-inner { gap: 24px 28px; padding: 48px 32px; grid-template-columns: 288px minmax(0, 1fr); } }
 @media (max-width: 900px) {
   .faq-inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "bear" "head" "list"; gap: 6px 0; padding: 36px 24px; }
   .faq-bear-wrap { align-self: auto; width: 68px; height: 110px; margin-inline: auto; }
