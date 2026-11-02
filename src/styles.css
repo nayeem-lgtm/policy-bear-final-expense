@@ -1233,7 +1233,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .answer-list-pair .answer-card { padding: 14px 12px; }
   .answer-list-pair .answer-copy { gap: 8px; }
   .answer-list-pair .answer-copy strong { font-size: 16px; }
-  .answer-badge { width: 30px; height: 30px; }
+  .answer-copy > .answer-badge { width: 30px; height: 30px; }
   .answer-badge svg { width: 16px; height: 16px; }
   .answer-list-pair .radio-circle { width: 20px; height: 20px; }
 }
