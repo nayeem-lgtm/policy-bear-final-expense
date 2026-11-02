@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, Clock, Cigarette, ClipboardCheck, Eye, EyeOff, Heart, Landmark, LockKeyhole, MapPin, Mars, Minus, Moon, PenLine, Phone, Plus, RotateCcw, ShieldCheck, Sparkles, Sun, Sunrise, User, UserRound, Users, Venus, X } from 'lucide-react'
+import { AlertCircle, ArrowLeft, ArrowRight, Check, ChevronDown, Clock, Cigarette, ClipboardCheck, Eye, EyeOff, Fingerprint, Heart, Landmark, LockKeyhole, MapPin, Mars, Minus, Moon, PenLine, Phone, Plus, RotateCcw, ShieldCheck, Sparkles, Sun, Sunrise, User, UserRound, Users, Venus, X } from 'lucide-react'
 import * as Radio from '@radix-ui/react-radio-group'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { z } from 'zod'
@@ -316,6 +316,21 @@ function ContactConsent({ checked, onChange }: { checked: boolean; onChange: (va
   </div>
 }
 function NextButton() { return <div className="next-row"><button type="submit" className="revisit-next">Next <ArrowRight /></button></div> }
+
+const ssnTrustBadges = [
+  { icon: <LockKeyhole />, title: '256-bit encryption', note: 'Bank-level SSL protects every keystroke' },
+  { icon: <ShieldCheck />, title: 'Never stored', note: 'Your number isn’t saved after you leave' },
+  { icon: <Fingerprint />, title: 'Never sold or shared', note: 'Your identity stays private with us' },
+]
+
+function TrustBadges() {
+  return <div className="ssn-trust">
+    {ssnTrustBadges.map((badge, index) => <div className="ssn-trust-item" key={badge.title}>
+      <span className={`ssn-trust-icon${index === 0 ? ' is-pulsing' : ''}`} aria-hidden="true">{badge.icon}</span>
+      <span className="ssn-trust-copy"><strong>{badge.title}</strong><small>{badge.note}</small></span>
+    </div>)}
+  </div>
+}
 function CheckRow({ checked, onChange, children }: { checked: boolean; onChange: (value: boolean) => void; children: React.ReactNode }) { return <label className="check-row"><Checkbox.Root checked={checked} onCheckedChange={(value) => onChange(value === true)}><Checkbox.Indicator><Check /></Checkbox.Indicator></Checkbox.Root><span>{children}</span></label> }
 function DrawSignature({ onChange }: { onChange: (drawn: boolean) => void }) {
   const canvas = useRef<HTMLCanvasElement>(null)
