@@ -252,11 +252,12 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     </div>
     <aside className="app-summary" aria-label="Your quote">
       <div className="app-quote-card">
-        <div className="app-quote-head"><ShieldCheck /><div><strong>PolicyBear</strong><span>Final Expense</span></div></div>
-        <dl><div><dt>Coverage</dt><dd>${coverage.toLocaleString()}</dd></div><div><dt>Premium</dt><dd>${monthly.toFixed(2)}<small>/mo</small></dd></div></dl>
+        <div className="app-quote-brand"><img src={bearLogo.url} width="150" height="30" alt="PolicyBear" /><span className="app-quote-tag">Final Expense</span></div>
+        <div className="app-quote-price"><small>Your monthly premium</small><strong>${monthly.toFixed(2)}<span>/mo</span></strong></div>
+        <dl><div><dt>Coverage</dt><dd>${coverage.toLocaleString()}</dd></div><div><dt>Plan</dt><dd>Whole life</dd></div></dl>
         <Button variant="quiet" className="app-edit" onClick={() => go('price')}><PenLine /> Edit quote</Button>
+        <a className="app-agent" href="tel:+18447652327"><span className="agent-dot" /><span><small>Expert agents available</small><strong>(844) POL-BEAR</strong></span><Phone /></a>
       </div>
-      <a className="app-agent" href="tel:+18447652327"><span className="agent-dot" /><span><small>Expert agents available</small><strong>(844) POL-BEAR</strong></span></a>
     </aside>
   </section>
 
