@@ -6,6 +6,15 @@ import { z } from 'zod'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import bearLogo from '@/assets/policybear-logo.asset.json'
+import bearGuide from '@/assets/bear-guide-full.png'
+
+const bearTips: Partial<Record<string, { title: string; text: string }>> = {
+  gender: { title: 'Quick fact', text: 'Insurers price men and women a little differently, so this helps us show a fairer illustration.' },
+  dob: { title: 'Did you know?', text: 'Your age is the biggest factor in your price. Locking in coverage sooner usually means a lower rate.' },
+  coverage: { title: 'Mr Bear’s tip', text: 'Many families plan for funeral, burial or cremation costs plus a little extra for final bills.' },
+  tobacco: { title: 'Good to know', text: 'Smokers can still get covered. Answering honestly keeps your coverage solid for your family.' },
+}
+
 import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
 type Answers = {
@@ -264,7 +273,8 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     </aside>
   </section>
 
-  return <section className={`wizard ${screen !== 'state' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
+  const tip = bearTips[screen]
+  const wizardSection = <section className={`wizard ${screen !== 'state' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
     {resume && <div className="resume-banner"><p>Welcome back, {answers.firstName || 'friend'}! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => setResume(false)}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(blank); localStorage.removeItem('policybear-demo'); go('state') }}>Start over</Button></div></div>}
     <div className="chapter-progress" aria-label="Application progress">{labels.map((label, index) => <span className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} key={label}>{index < chapter && <Check />}{label}</span>)}</div>
     {quoteIndex >= 0 && <div className="progress-track"><div className="progress-fill" style={{ width: `${((quoteIndex + 1) / quoteSteps.length) * 100}%` }} /></div>}
@@ -272,6 +282,14 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     {renderScreen()}
     <div className="demo-wrap"><Button variant="quiet" className="demo-pill" aria-expanded={demo} onClick={() => setDemo(!demo)}>Demo</Button>{demo && <div className="demo-toolbar"><strong>Jump to a screen</strong><select aria-label="Demo screen" value={screen} onChange={(event) => go(event.target.value as JourneyStep)}>{journeySteps.map((item) => <option value={item} key={item}>{item.replaceAll('-', ' ')}</option>)}</select><strong>Force decision</strong><div>{(['approved', 'graded', 'declined'] as Outcome[]).map((item) => <Button variant={forced === item ? 'action' : 'quiet'} key={item} onClick={() => setForced(item)}>{item}</Button>)}</div></div>}</div>
   </section>
+  if (!tip) return wizardSection
+  return <div className="basic-stage">
+    <aside className="bear-tip" aria-label="Tip from Mr Bear">
+      <div className="bear-tip-bubble" key={screen}><span className="bear-tip-title">{tip.title}</span><p>{tip.text}</p></div>
+      <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
+    </aside>
+    {wizardSection}
+  </div>
 }
 
 function ContactConsent({ checked, onChange }: { checked: boolean; onChange: (value: boolean) => void }) {
