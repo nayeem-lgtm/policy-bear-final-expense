@@ -269,7 +269,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-promises li { display: flex; align-items: center; gap: 11px; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: var(--brand-deep); }
 
 .faq-promises em { font-style: normal; color: var(--primary); }
-.faq-bear-wrap { grid-area: bear; position: relative; align-self: stretch; min-width: 0; }
+.faq-bear-wrap { grid-area: bear; position: relative; align-self: stretch; min-width: 0; margin-bottom: -44px; }
 .faq-bear-wrap::before { content: ""; position: absolute; z-index: 0; bottom: 1px; left: 50%; transform: translateX(-50%); width: 58%; height: 6px; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 45%, transparent), transparent 72%); filter: blur(1.5px); }
 .faq-bear-wrap::after { content: ""; position: absolute; z-index: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 62%; height: 14px; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--brand-deep) 40%, transparent), transparent 68%); filter: blur(3px); }
 .faq-bear { position: absolute; inset: 0; z-index: 1; display: block; margin: auto; width: auto; max-width: calc(100% + 26px); height: 100%; object-fit: contain; object-position: center bottom; }
