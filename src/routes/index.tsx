@@ -2,6 +2,7 @@
 
 import bearGuide from '@/assets/bear-guide-full.png'
 import bearWave from '@/assets/bear-waving.png'
+import bearBlink from '@/assets/bear-blink.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useRef, useState } from 'react'
 import { ArrowRight, ChevronDown, PawPrint } from 'lucide-react'
@@ -28,6 +29,13 @@ const faqs = [
   ['Will I need a medical exam?', 'The final expense plans illustrated here do not require a medical exam. Some plans still ask health questions. Eligibility depends on the insurer, plan and state.'],
   ['Does the full benefit start right away?', 'Not always. Some final expense plans limit benefits for death from natural causes during an initial waiting period. Check the actual policy for when full benefits begin and any exclusions.'],
   ['Will my price go up as I get older?', 'Some final expense whole life plans have guaranteed level premiums. Confirm that guarantee in the policy, and keep required payments up to date to maintain coverage.'],
+]
+
+const pawTrail = [
+  { left: '1%', bottom: '5%', size: 14 },
+  { left: '10%', bottom: '12%', size: 16 },
+  { left: '19%', bottom: '5%', size: 18 },
+  { left: '28%', bottom: '12%', size: 20 },
 ]
 
 function Index() {
