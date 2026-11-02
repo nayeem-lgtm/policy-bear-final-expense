@@ -87,8 +87,9 @@ function Index() {
             <header className="faq-head">
               <h2>Final expense questions, answered.</h2>
             </header>
-            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><div className="faq-bear-stage"><div className="faq-bear-lean"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /><img className="faq-bear-blink" src={bearBlink} width={595} height={959} alt="" /><img className="faq-bear-wave" src={bearWave} width={595} height={959} alt="" /></div></div><span className="faq-bear-trail">{pawTrail.map((paw, index) => <PawPrint key={paw.left} className="faq-bear-paw" size={paw.size} style={{ left: paw.left, bottom: paw.bottom, animationDelay: `${0.82 + index * 0.28}s` }} />)}</span></div>
+            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><div className="faq-bear-stage"><div className="faq-bear-lean"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /><img className="faq-bear-blink" src={bearBlink} width={595} height={959} alt="" /><img className="faq-bear-wave" src={bearWave} width={595} height={959} alt="" /></div></div></div>
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
+            <span className="faq-bear-trail" aria-hidden="true">{pawTrail.map((paw, index) => <PawPrint key={paw.left} className="faq-bear-paw" size={paw.size} style={{ left: paw.left, bottom: paw.bottom, animationDelay: `${0.82 + index * 0.28}s` }} />)}</span>
           </div>
         </section>
         <section className="closing-section" aria-label="Start your final expense quote">
