@@ -261,8 +261,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* One section: heading + promises, Mr Bear, and the questions */
 .faq-section { background: var(--brand-light); border-block: 1px solid var(--border); }
-.faq-inner { max-width: 1000px; padding: 56px 40px; margin: auto; display: grid; gap: 30px 40px; grid-template-columns: 300px minmax(0, 1fr); grid-template-areas: "head head" "bear list"; align-items: stretch; }
-.faq-head { grid-area: head; display: flex; flex-direction: column; align-items: center; gap: 20px; min-width: 0; }
+.faq-inner { max-width: 1000px; padding: 56px 40px; margin: auto; display: grid; gap: 30px 40px; grid-template-columns: 340px minmax(0, 1fr); grid-template-areas: "bear head" "bear list"; align-items: stretch; }
+.faq-head { grid-area: head; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; min-width: 0; }
 .faq-head h2 { margin: 0; font-size: 34px; color: var(--brand-deep); font-weight: 700; line-height: 1.25; letter-spacing: -0.015em; }
 
 .faq-promises { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 28px; min-width: 0; }
