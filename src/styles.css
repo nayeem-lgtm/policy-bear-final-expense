@@ -1418,3 +1418,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 1180px) { .app-summary { display: block; padding: 18px 32px 0; } .app-quote-card { display: grid !important; grid-template-columns: auto 1fr auto; align-items: center; } .app-quote-brand { border: 0; padding: 12px 16px; } .app-quote-price { padding: 10px 12px; } .app-quote-price strong { font-size: 24px; } .app-quote-card dl, .app-edit.app-edit { display: none !important; } .app-quote-card .app-agent { border-top: 0; align-self: stretch; align-items: center; } }
 @media (max-width: 760px) { .app-summary { padding: 12px 16px 0; } .app-quote-card { grid-template-columns: 1fr auto; } .app-quote-brand { display: none; } .app-quote-price small { font-size: 11px; } .app-quote-price strong { font-size: 20px; } .app-quote-card .app-agent small { display: none; } .app-quote-card .app-agent strong { font-size: 14px; } }
 .app-quote-brand img { width: 118px; } .app-quote-tag { font-size: 9.5px; padding: 3px 7px; letter-spacing: .06em; }
+
+/* Application workspace — the slim footer stays in view, no scrolling needed */
+.policy-page:has(.wizard-app) main { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+.funnel-section:has(.wizard-app) { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+.funnel-inner:has(.wizard-app) { flex: 1 1 auto; display: flex; flex-direction: column; margin: 0; }
+.quote-form-holder:has(.wizard-app) { flex: 1 1 auto; display: flex; }
+.wizard-app { flex: 1 1 auto; min-height: 0; }
+@media (min-width: 761px) { .app-rail { height: 100%; } }
+
+/* Answer options — two across once there are three or more choices */
+.answer-list:has(> .answer-card:nth-of-type(3)) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.answer-list:has(> .answer-card:nth-of-type(3)) .answer-card { min-height: 76px; padding: 16px 15px; }
+.answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy { flex-direction: row; align-items: center; gap: 11px; }
+.answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy strong { font-size: 16.5px; line-height: 1.35; }
+.answer-list:has(> .answer-card:nth-of-type(3)) .radio-circle { width: 20px; height: 20px; }
+@media (max-width: 560px) {
+  .answer-list:has(> .answer-card:nth-of-type(3)) { gap: 10px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-card { min-height: 64px; padding: 12px 10px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy { gap: 8px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy strong { font-size: 14.5px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-copy > .answer-badge { width: 28px; height: 28px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-badge svg { width: 15px; height: 15px; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .radio-circle { display: none; }
+  .answer-list:has(> .answer-card:nth-of-type(3)) .answer-card[data-state=checked] .radio-circle { display: grid; }
+}
+/* Five options — the lone fifth card spans the full width */
+.answer-list:has(> .answer-card:nth-of-type(5)):not(:has(> .answer-card:nth-of-type(6))) > .answer-card:nth-of-type(5) { grid-column: 1 / -1; }
