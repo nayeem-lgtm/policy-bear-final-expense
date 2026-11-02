@@ -1,7 +1,7 @@
 import bearGuide from '@/assets/bear-guide-full.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Phone, ChevronDown } from 'lucide-react'
+import { ArrowRight, Check, Stethoscope, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
@@ -19,14 +19,6 @@ export const Route = createFileRoute('/')({
     { property: 'og:url', content: 'https://policy-bear-quote-quest.lovable.app/' },
   ], links: [{ rel: 'canonical', href: 'https://policy-bear-quote-quest.lovable.app/' }] }),
 })
-const faqs = [
-  ['What is final expense insurance?', 'Final expense insurance is life insurance intended to help your loved ones with funeral, burial, cremation and other final bills. Your named beneficiary receives benefits under the policy and decides how to use them.'],
-  ['Is this the same as a prepaid funeral plan?', 'No. A prepaid funeral plan is an arrangement for funeral goods or services. Final expense insurance pays benefits to your named beneficiary under the policy, rather than reserving a specific funeral service.'],
-  ['Will I need a medical exam?', 'The final expense plans illustrated here do not require a medical exam. Some plans still ask health questions. Eligibility depends on the insurer, plan and state.'],
-  ['Does the full benefit start right away?', 'Not always. Some final expense plans limit benefits for death from natural causes during an initial waiting period. Check the actual policy for when full benefits begin and any exclusions.'],
-  ['Will my price go up as I get older?', 'Some final expense whole life plans have guaranteed level premiums. Confirm that guarantee in the policy, and keep required payments up to date to maintain coverage.'],
-]
-
 function Index() {
   const [step, setStep] = useState(0)
   const changeStep = useCallback((value: number) => setStep(value), [])
@@ -40,11 +32,18 @@ function Index() {
             <PolicyWizard onStepChange={changeStep} />
           </div>
           {step === 0 && <p className="hero-tagline">An <span className="tagline-accent">AI-powered,</span> <span className="tagline-accent">24/7</span> insurance platform delivering <span className="tagline-mark">instant decisions</span><br className="tagline-break" /> and <span className="tagline-mark">life‑changing coverage</span>.</p>}
-          {step === 0 && <ul className="assurance"><li className="assurance-item">No medical exam required</li><li className="assurance-item">Instant approval</li></ul>}
         </div>
       </section>
       {step === 0 && <>
-        <section className="faq-section" id="questions"><div className="faq-inner"><div className="faq-heading"><h2>Final expense<br /> questions, answered.</h2><a className="faq-call" href="tel:+18447652327" aria-label="Call PolicyBear at (844) 765-2327"><Phone size={20} /> (844) POL-BEAR</a><div className="faq-bear-bubble" aria-hidden="true"><strong>Let Mr Bear</strong> guide you step by step.</div></div><div className="faq-bear-wrap" aria-hidden="true"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div></div></section>
+        <section className="coverage-promises" aria-label="Final expense coverage benefits">
+          <div className="coverage-promises-inner">
+            <div className="promise-bear"><img src={bearGuide} width={595} height={959} alt="Mr Bear, the PolicyBear mascot" /></div>
+            <ul className="promise-list">
+              <li className="promise-row"><Stethoscope className="promise-icon" aria-hidden="true" /><h2>No medical exam <span>required.</span></h2><span className="promise-check" aria-hidden="true"><Check /></span></li>
+              <li className="promise-row"><Zap className="promise-icon" aria-hidden="true" /><h2>Instant <span>approval.</span></h2><span className="promise-check" aria-hidden="true"><Check /></span></li>
+            </ul>
+          </div>
+        </section>
         <section className="closing-section"><h2>Find a starting point for your final expense coverage.</h2><Button asChild variant="action" size="touch"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button></section>
       </>}
     </main>
