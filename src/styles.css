@@ -1381,17 +1381,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 1180px) { .wizard-app { grid-template-columns: 220px minmax(0, 1fr); } .app-summary { grid-column: 2; grid-row: 1; position: static; padding: 18px 32px 0; grid-template-columns: 1fr auto; align-items: stretch; } .app-main { grid-column: 2; padding: 18px 32px 40px; } .wizard-app { grid-template-rows: auto 1fr; } .app-rail { grid-row: 1 / span 2; } .app-quote-card { display: flex; align-items: center; } .app-quote-head { align-self: stretch; } .app-quote-card dl { display: flex; gap: 22px; flex: 1; } .app-quote-card dl div + div { border-top: 0; } .app-quote-card dl div { gap: 8px; } .app-edit.app-edit { margin: 0 14px; width: auto; padding: 0 14px; } }
 @media (max-width: 760px) {
   .wizard-app { display: flex; flex-direction: column; }
-  .app-rail { position: sticky; z-index: 5; height: auto; flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--border); }
+  .app-rail { position: sticky; z-index: 5; height: auto; flex-direction: row; align-items: center; gap: 14px; padding: 9px 16px; border-right: 0; border-bottom: 1px solid var(--border); }
   .app-rail-logo img { width: 120px; }
   .app-steps { display: flex; flex: 1; justify-content: flex-end; gap: 6px; }
   .app-steps li { padding: 0; } .app-steps li::after, .app-step-copy, .app-rail-secure { display: none; }
   .app-step-dot { width: 22px; height: 22px; } .app-step-dot svg { width: 12px; height: 12px; }
-  .app-summary { order: 1; padding: 12px 16px 0; grid-template-columns: 1fr; }
+  .app-summary { order: 1; padding: 8px 16px 0; grid-template-columns: 1fr; }
   .app-agent { display: none; }
   .app-quote-head { padding: 10px 12px; } .app-quote-head svg { width: 22px; height: 22px; } .app-quote-head div { display: none; }
   .app-quote-card dl { padding: 4px 12px; gap: 14px; } .app-quote-card dd { font-size: 15px; } .app-quote-card dt { font-size: 12px; }
   .app-edit.app-edit { margin: 0 10px 0 0; padding: 0 10px; height: 34px; font-size: 13px; }
-  .app-main { order: 2; padding: 14px 16px 10px; }
+  .app-main { order: 2; padding: 10px 16px 10px; }
   .app-body .wizard-content h2 { font-size: 22px; }
 }
 .app-body .back-button { margin-left: -12px; }
