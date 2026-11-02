@@ -1372,21 +1372,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .closing-section .closing-btn-main:active { transform: scale(.99); }
 @media (max-width: 520px) { .closing-section .closing-btn-main { width: 100%; max-width: 340px; justify-content: center; } }
 
-/* Closing button v5 — simple bold blue text link */
-.closing-section .closing-btn-main, .closing-section .closing-btn-main:hover, .closing-section .closing-btn-main:active {
-  height: auto; min-height: 0; padding: 4px 0; gap: 8px; width: auto; max-width: none;
-  border-radius: 0; background: none; box-shadow: none; transform: none;
-  color: var(--primary); font-size: 17px; font-weight: 700; letter-spacing: -0.01em;
-}
-.closing-section .closing-btn-main > span:first-child {
-  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
-  transition: background-size 220ms ease;
-}
-.closing-section .closing-btn-main:hover > span:first-child { background-size: 100% 2px; }
-.closing-section .closing-btn-main .closing-btn-icon { transition: transform 200ms ease; }
-.closing-section .closing-btn-main:hover .closing-btn-icon { transform: translateX(4px); }
-.closing-section .closing-btn-main:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; border-radius: 4px; }
-@media (max-width: 520px) { .closing-section .closing-btn-main { width: auto; justify-content: center; } }
+/* Closing button: ticket-stub style (see v6 block at the end of this file) */
 
 /* Footer sits at the bottom edge on wizard steps (no blank band below it) */
 .policy-page:has(.funnel-section) { display: flex; flex-direction: column; min-height: 100dvh; }
