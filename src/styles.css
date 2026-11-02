@@ -499,8 +499,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .decision-symbol.warm { background: color-mix(in oklab, var(--brand-action) 20%, var(--background)); color: var(--brand-deep); }
 .price-card, .policy-card, .option-card, .info-panel, .next-list { border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 18px 0; }
 .price-card { text-align: center; border-top: 5px solid var(--primary); position: relative; overflow: hidden; background: linear-gradient(180deg, color-mix(in oklab, var(--primary) 4%, var(--card)) 0%, var(--card) 55%); box-shadow: 0 18px 40px -22px color-mix(in oklab, var(--primary) 35%, transparent); }
-.price-badge { display: inline-flex; align-items: center; gap: 6px; margin: 0 auto 12px; padding: 5px 14px; border-radius: 999px; background: color-mix(in oklab, var(--gold, #f5b301) 18%, var(--card)); color: var(--brand-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
-.price-badge svg { color: var(--gold, #f5b301); }
+.price-badge { display: inline-flex; align-items: center; gap: 6px; margin: 0 auto 12px; padding: 5px 14px; border-radius: 999px; background: color-mix(in oklab, var(--brand-action) 22%, var(--card)); color: var(--brand-deep); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+.price-badge svg { color: var(--brand-action-hover); }
 .price-figure { color: var(--muted-foreground); margin: 4px 0 0; }
 .price-figure strong { font-size: 56px; line-height: 1; color: var(--brand-deep); letter-spacing: -0.02em; }
 .price-figure span { font-size: 18px; color: var(--muted-foreground); }
