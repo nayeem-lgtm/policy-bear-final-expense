@@ -1269,8 +1269,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .closing-call { font-size: 14px; color: var(--muted-foreground); text-decoration: none; }
 .closing-call strong { color: var(--primary); }
 .closing-call:hover strong { text-decoration: underline; }
-.closing-ticket { position: relative; padding: 26px 26px 30px; border-radius: 22px; background: var(--card); border: 1px solid color-mix(in oklab, var(--primary) 14%, transparent); box-shadow: 0 2px 0 color-mix(in oklab, var(--primary) 6%, transparent), 0 40px 70px -40px color-mix(in oklab, var(--primary) 55%, transparent); transform: rotate(2.5deg); transition: transform .4s ease; }
-.closing-ticket::before { content: ''; position: absolute; inset: 14px -14px -14px 14px; z-index: -1; border-radius: 22px; background: var(--tagline-highlight); opacity: .7; }
+.closing-ticket { position: relative; padding: 26px 26px 30px; border-radius: 22px; background: var(--card); border: 1px solid color-mix(in oklab, var(--primary) 14%, transparent); box-shadow: 14px 14px 0 color-mix(in oklab, var(--tagline-highlight) 75%, transparent), 0 40px 70px -40px color-mix(in oklab, var(--primary) 55%, transparent); transform: rotate(2.5deg); transition: transform .4s ease; }
 .closing-split:hover .closing-ticket { transform: rotate(0deg) translateY(-4px); }
 .ticket-top { display: flex; align-items: center; gap: 12px; padding-bottom: 18px; border-bottom: 1.5px dashed color-mix(in oklab, var(--primary) 22%, transparent); }
 .ticket-top img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: top; background: color-mix(in oklab, var(--primary) 10%, var(--background)); }
