@@ -1698,3 +1698,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .skip-link:hover svg { transform: translateX(3px); }
 .reconnect-form { display: flex; flex-direction: column; }
 @media (prefers-reduced-motion: reduce) { .skip-link svg, .auto-next { transition: none; } }
+
+/* Small Next button shown only when revisiting an auto-advancing step */
+.revisit-next { display: inline-flex; align-items: center; gap: 6px; align-self: flex-end; margin: 16px 0 0 auto; padding: 9px 18px; border: 0; border-radius: 999px; background: var(--primary); color: var(--primary-foreground); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px color-mix(in oklab, var(--primary) 25%, transparent); transition: transform .2s, box-shadow .2s; }
+.revisit-next:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 16px color-mix(in oklab, var(--primary) 32%, transparent); }
+.revisit-next:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.revisit-next:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+.revisit-next svg { width: 16px; height: 16px; transition: transform .2s; }
+.revisit-next:hover:not(:disabled) svg { transform: translateX(3px); }
+.recipient-choices + .revisit-next { display: flex; width: fit-content; }
+@media (prefers-reduced-motion: reduce) { .revisit-next, .revisit-next svg { transition: none; } }
