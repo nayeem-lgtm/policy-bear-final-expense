@@ -68,3 +68,5 @@
 - [x] Show the final expense illustration immediately after the five Basic Info questions, move the Pre-Qualification questions (who, contact, height/weight, opt-in) after it, and delete the four question helper lines; verified the full walk in the live preview plus Back from the illustration.
 
 - Bear in questions section made bigger (300px column, 440px floor); "Explore coverage" restyled as a gold policy-ticket stub with paw print, notches and dashed perforation.
+
+- Questions section: all text moved to the right column (heading above the accordion), Mr Bear now spans the full left column with his head at the section top and shoes near the bottom; verified closed and expanded states at 901-1562px.
