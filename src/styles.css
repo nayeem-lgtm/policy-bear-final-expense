@@ -1257,7 +1257,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 /* Closing band */
-.closing-section { padding: 84px 24px 96px; background: linear-gradient(180deg, var(--background), color-mix(in oklab, var(--primary) 5%, var(--background))); }
+.closing-section { padding: 34px 24px 42px; background: linear-gradient(180deg, var(--background), color-mix(in oklab, var(--primary) 5%, var(--background))); }
 .closing-copy { max-width: 820px; margin: auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 34px; }
 .closing-copy h2 { margin: 0; font-size: 40px; line-height: 1.18; letter-spacing: -.03em; color: var(--brand-deep); font-weight: 800; text-wrap: balance; }
 .closing-hl { background: linear-gradient(180deg, transparent 0 58%, var(--tagline-highlight) 58% 92%, transparent 92%); padding: 0 3px; white-space: nowrap; }
@@ -1275,7 +1275,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .closing-btn-call:hover .closing-btn-icon { transform: rotate(-12deg); }
 .closing-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .closing-btn, .closing-btn-icon { transition: none; } }
-@media (max-width: 760px) { .closing-section { padding: 52px 18px 64px; } .closing-copy { gap: 26px; } .closing-copy h2 { font-size: 28px; } .closing-actions { flex-direction: column; width: 100%; gap: 12px; } .closing-btn { width: 100%; justify-content: space-between; } .closing-btn-call { justify-content: flex-start; } }
+@media (max-width: 760px) { .closing-section { padding: 28px 18px 34px; } .closing-copy { gap: 26px; } .closing-copy h2 { font-size: 28px; } .closing-actions { flex-direction: column; width: 100%; gap: 12px; } .closing-btn { width: 100%; justify-content: space-between; } .closing-btn-call { justify-content: flex-start; } }
 
 .closing-copy { max-width: 1040px; flex-direction: row; justify-content: space-between; text-align: left; gap: 40px; }
 .closing-copy h2 { font-size: 34px; }
