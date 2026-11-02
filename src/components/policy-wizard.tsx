@@ -33,6 +33,12 @@ type AddressSuggestion = { street: string; city: string; state: string; zip: str
 const blank: Answers = { zip: '', city: '', state: '', who: '', month: '', day: '', year: '', gender: '', tobacco: '', feet: '', inches: '', weight: '', coverage: '15000', firstName: '', middleName: '', lastName: '', email: '', phone: '', street: '', apt: '', country: 'United States', birthState: '', citizen: '', resident: '', owner: '', ssn: '', beneficiaryType: 'A person', beneficiaryFirst: '', beneficiaryLast: '', relationship: '', beneficiaryPhone: '', otherInsurance: '', replacing: '', paymentMethod: 'Bank account', accountName: '', accountType: 'Checking', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', draftDate: '1st of the month', signature: '', callbackTime: '', coverageType: '', health: Array(8).fill('') }
 const labels = ['About You', 'Pre-Qualification', 'Application', 'Finalize']
 const phone = '[FE_PHONE]'
+const coverageOptions = [
+  { value: '10000', label: 'A simple, dignified farewell', icon: <Heart /> },
+  { value: '15000', label: 'Funeral, burial & final bills', icon: <ShieldCheck />, popular: true },
+  { value: '20000', label: 'Extra cushion for loved ones', icon: <Sparkles /> },
+  { value: '25000', label: 'The fullest peace of mind', icon: <Sun /> },
+]
 const demoAddresses: AddressSuggestion[] = [
   { street: '123 Main Street', city: 'Orlando', state: 'FL', zip: '32801' },
   { street: '125 Main Street', city: 'Dallas', state: 'TX', zip: '75201' },
