@@ -1723,12 +1723,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* Social Security step: security banner, trust badges and protected state */
 .ssn-trust { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--card); }
-.ssn-trust-seals { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; padding: 12px 18px; gap: 18px; background: var(--seal-white); border-bottom: 1px solid var(--border); }
-.ssn-seal-slot { min-width: 0; height: 66px; display: flex; align-items: center; justify-content: center; }
-.ssn-seal-slot + .ssn-seal-slot { border-left: 1px solid var(--border); padding-left: 18px; }
-.ssn-seal-slot img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
-.ssn-seal-trustlock { max-width: 190px; }
-.ssn-seal-comodo { max-width: 130px; }
+.ssn-trust-seals { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 18px; background: var(--seal-white); border-bottom: 1px solid var(--border); }
+.ssn-seal-slot { min-width: 0; display: flex; align-items: center; justify-content: center; }
+.ssn-seal-slot + .ssn-seal-slot { border-left: 1px solid var(--border); padding-left: 16px; }
+.ssn-seal { display: block; height: 56px; width: auto; max-width: 100%; object-fit: contain; }
 .ssn-trust-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .ssn-trust-item { display: flex; align-items: center; justify-content: center; gap: 7px; min-width: 0; padding: 8px 6px; background: linear-gradient(180deg, color-mix(in oklab, var(--brand-soft-blue) 62%, var(--card)), var(--card)); }
 .ssn-trust-item + .ssn-trust-item { border-left: 1px solid color-mix(in oklab, var(--primary) 14%, var(--border)); }
