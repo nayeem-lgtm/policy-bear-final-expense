@@ -1524,3 +1524,4 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-body .app-tip-stage { align-items: stretch; }
 .app-tip-stage > .wizard-content { width: 100%; align-self: stretch; }
 .wizard-app:has(.app-tip-stage) .app-main { background: radial-gradient(circle at 20% 85%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 40%), radial-gradient(circle at 85% 20%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 45%), var(--background); }
+.app-tip-stage > .wizard-content { max-width: none; margin-inline: 0; }
