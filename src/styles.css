@@ -1302,3 +1302,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pb-footer-slim-inner { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 6px 14px; padding-block: 12px calc(12px + env(safe-area-inset-bottom)); }
 .pb-footer-slim-copy::after { content: ""; display: inline-block; width: 1px; height: 14px; margin-left: 14px; vertical-align: middle; background: var(--footer-border); }
 @media (max-width: 760px) { .funnel-section { padding: 0 0 20px; min-height: 0; } .funnel-section .wizard { padding: 18px 16px 20px; } }
+.funnel-section .back-button { min-height: 28px; height: 28px; margin: 0 0 2px; padding-block: 0; }
+.funnel-section .field-label { gap: 4px; }
+.funnel-section .wizard form { gap: 8px; }
+.funnel-section .continue-button, .funnel-section .wide-button { min-height: 50px; margin-top: 6px; }
+.funnel-section .wizard { margin-top: 0; }
