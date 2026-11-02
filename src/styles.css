@@ -1469,28 +1469,49 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-body .back-button { margin-left: -12px; }
 @media (max-width: 760px) { .app-rail { width: 100%; box-sizing: border-box; } .app-edit.app-edit { display: none; } .app-quote-card dl { justify-content: space-between; } }
 @media (max-width: 760px) { .app-summary { width: 100%; box-sizing: border-box; } .app-quote-card dl { flex: 1; } }
-/* Summary card v2 */
+/* Quote summary — aligned with the restrained application timeline. */
 .app-summary { padding: 22px 24px 22px 0; }
-.app-quote-card { display: block !important; border-radius: 20px; border: 0; background: linear-gradient(180deg, color-mix(in oklab, var(--primary) 7%, var(--card)) 0%, var(--card) 42%); box-shadow: 0 24px 48px -24px color-mix(in oklab, var(--primary) 45%, transparent), 0 0 0 1px color-mix(in oklab, var(--primary) 14%, transparent); position: relative; }
-.app-quote-card::before { content: ''; position: absolute; inset: 0 0 auto; height: 5px; border-radius: 20px 20px 0 0; background: linear-gradient(90deg, var(--primary), var(--brand-action)); }
-.app-quote-brand { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 22px 20px 14px; border-bottom: 1px dashed var(--border); }
-.app-quote-brand img { width: 132px; height: auto; display: block; }
-.app-quote-tag { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-deep); background: var(--tagline-highlight); padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
-.app-quote-price { padding: 20px 20px 8px; text-align: center; }
-.app-quote-price small { display: block; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted-foreground); }
-.app-quote-price strong { font-size: 44px; font-weight: 800; letter-spacing: -.02em; color: var(--primary); line-height: 1.15; }
-.app-quote-price strong span { font-size: 15px; font-weight: 600; color: var(--muted-foreground); margin-left: 2px; }
-.app-quote-card dl { display: block !important; padding: 6px 20px 12px; }
-.app-quote-card dl div { display: flex !important; justify-content: center; gap: 10px; padding: 4px 0; }
-.app-quote-card dt { font-size: 14px; }
-.app-quote-card dd { font-size: 17px; }
-.app-quote-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 2px 20px 16px; }
-.app-quote-chips span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--brand-deep); background: color-mix(in oklab, var(--primary) 8%, var(--card)); border: 1px solid color-mix(in oklab, var(--primary) 18%, transparent); padding: 6px 12px; border-radius: 999px; }
-.app-quote-chips svg { width: 13px; height: 13px; color: var(--success); }
-.app-edit.app-edit { display: inline-flex; margin: 0 20px 18px; width: calc(100% - 40px); }
-@media (max-width: 1180px) { .app-summary { display: block; padding: 18px 32px 0; } .app-quote-card { display: grid !important; grid-template-columns: auto minmax(0, 1fr); align-items: center; } .app-quote-card::before { inset: 0 auto 0 0; width: 5px; height: auto; border-radius: 20px 0 0 20px; background: linear-gradient(180deg, var(--primary), var(--brand-action)); } .app-quote-brand { border: 0; padding: 12px 16px; min-width: 0; } .app-quote-brand img { width: 104px; } .app-quote-tag { display: none; } .app-quote-price { padding: 10px 12px; min-width: 0; text-align: left; } .app-quote-price small { white-space: nowrap; } .app-quote-price strong { font-size: 24px; } .app-quote-card dl, .app-quote-chips, .app-edit.app-edit { display: none !important; } }
-@media (max-width: 760px) { .app-summary { padding: 12px 16px 0; } .app-quote-card { grid-template-columns: 1fr; } .app-quote-brand { display: none; } .app-quote-price { text-align: center; } .app-quote-price small { font-size: 11px; } .app-quote-price strong { font-size: 20px; } }
-.app-quote-brand img { width: 118px; } .app-quote-tag { font-size: 9.5px; padding: 3px 7px; letter-spacing: .06em; }
+.app-quote-card { display: block; position: relative; border-radius: 8px; border: 1px solid var(--border); background: var(--card); box-shadow: var(--wizard-shadow); }
+.app-quote-card::before { content: ''; display: block; height: 3px; background: var(--primary); }
+.app-quote-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 22px 22px 18px; border-bottom: 1px solid var(--border); }
+.app-quote-brand img { width: 142px; max-width: 100%; height: auto; display: block; }
+.app-quote-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0; color: var(--muted-foreground); }
+.app-quote-tag::before { content: ''; width: 7px; height: 7px; border-radius: 2px; background: var(--brand-action); }
+.app-quote-price { padding: 22px 22px 18px; text-align: left; }
+.app-quote-price small { display: block; margin-bottom: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--muted-foreground); }
+.app-quote-price strong { display: block; font-size: 36px; font-weight: 700; letter-spacing: 0; color: var(--brand-deep); line-height: 1.15; font-variant-numeric: tabular-nums; }
+.app-quote-price strong span { font-size: 14px; font-weight: 500; color: var(--muted-foreground); margin-left: 5px; }
+.app-quote-card dl { display: block; margin: 0 22px; padding: 13px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.app-quote-card dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 0; }
+.app-quote-card dt { font-size: 12px; color: var(--muted-foreground); }
+.app-quote-card dd { font-size: 17px; font-weight: 700; color: var(--primary); }
+.app-quote-chips { display: grid; gap: 12px; padding: 18px 22px; }
+.app-quote-chips span { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 500; color: var(--brand-deep); }
+.app-quote-chips svg { flex-shrink: 0; width: 16px; height: 16px; color: var(--primary); stroke-width: 1.8; }
+.app-edit.app-edit { display: flex; justify-content: space-between; margin: 0 22px 22px; width: calc(100% - 44px); height: 40px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--brand-light); font-size: 12px; font-weight: 600; color: var(--primary); box-shadow: none; }
+.app-edit.app-edit:hover { background: var(--brand-soft-blue); border-color: var(--primary); }
+.app-edit svg { width: 15px; height: 15px; }
+@media (max-width: 1180px) {
+  .app-summary { display: block; padding: 18px 32px 0; }
+  .app-quote-card { display: grid; grid-template-columns: minmax(100px, 1fr) auto; align-items: center; }
+  .app-quote-card::before { position: absolute; inset: 0 auto 0 0; width: 3px; height: auto; }
+  .app-quote-brand { border: 0; padding: 14px 18px; gap: 5px; min-width: 0; }
+  .app-quote-brand img { width: 115px; }
+  .app-quote-tag { font-size: 10px; }
+  .app-quote-price { padding: 14px 18px; min-width: 0; text-align: right; }
+  .app-quote-price small { font-size: 11px; margin-bottom: 4px; }
+  .app-quote-price strong { font-size: 24px; }
+  .app-quote-card dl, .app-quote-chips, .app-edit.app-edit { display: none; }
+}
+@media (max-width: 760px) {
+  .app-summary { padding: 10px 16px 0; }
+  .app-quote-brand { padding: 12px; }
+  .app-quote-brand img { width: 104px; }
+  .app-quote-price { padding: 12px; }
+  .app-quote-price small { font-size: 10px; }
+  .app-quote-price strong { font-size: 22px; }
+  .app-quote-price strong span { font-size: 12px; }
+}
 /* Before the illustration there is no quote to show, so the panel's column is given back to the question. */
 .wizard-app.no-quote { grid-template-columns: 250px minmax(0, 1fr); }
 @media (max-width: 1180px) { .wizard-app.no-quote { grid-template-columns: 220px minmax(0, 1fr); grid-template-rows: 1fr; } .wizard-app.no-quote .app-rail { grid-row: 1; } .wizard-app.no-quote .app-main { grid-row: 1; } }

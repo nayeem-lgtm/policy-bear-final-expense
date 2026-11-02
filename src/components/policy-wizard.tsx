@@ -275,7 +275,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
         <div className="app-quote-price"><small>Your monthly premium</small><strong>${monthly.toFixed(2)}<span>/mo</span></strong></div>
         <dl><div><dt>Coverage</dt><dd>${coverage.toLocaleString()}</dd></div></dl>
         <div className="app-quote-chips"><span><ShieldCheck /> Level premium</span><span><Check /> No medical exam</span></div>
-        <Button variant="quiet" className="app-edit" onClick={() => go('price')}><PenLine /> Edit quote</Button>
+        <Button variant="quiet" className="app-edit" onClick={() => go('price')}>Edit quote <PenLine /></Button>
       </div>
     </aside>}
   </section>
