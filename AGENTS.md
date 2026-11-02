@@ -21,4 +21,5 @@
 - Keep the contact page browser-only with the existing phone contact and no submission form; this preserves the presentation-only scope without undelivered messages.
 - Render the five legal content routes from shared browser-safe structured owner-supplied copy, preserving existing public URLs; keep general disclaimer separate from final expense disclosures so each document remains independently shareable.
 - Share contact consent across quote and callback screens, with legal links opening in new tabs so reviewing policies never interrupts entered answers; consent copy requires compliance approval before launch.
+- Auto-advance every coverage-recipient choice to contact details, preserve the insured-person guidance there, and keep marketing permission optional with an explicit continue action; this avoids extra steps without conflating reconnection and automated marketing consent.
 - Derive quote order and progress from the shared quote sequence and identify chapter boundaries by named steps, so reordered questions preserve Back navigation and chapter placement.
