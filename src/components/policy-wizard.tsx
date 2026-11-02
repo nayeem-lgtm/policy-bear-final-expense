@@ -7,8 +7,9 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import bearLogo from '@/assets/policybear-logo.asset.json'
 import bearGuide from '@/assets/bear-guide-full.png'
-import trustlockSeal from '@/assets/trustlock-complete.png.asset.json'
-import comodoSeal from '@/assets/comodo-original.png.asset.json'
+import geotrustSeal from '@/assets/geotrust-seal.png.asset.json'
+import trusteSeal from '@/assets/truste-seal.png.asset.json'
+import trustlockSeal from '@/assets/trustlock-seal.png.asset.json'
 
 const bearTips: Partial<Record<string, { myth: string; fact: string }>> = {
   gender: { myth: 'Life insurance is too expensive', fact: '50% of people overestimate the cost of life insurance' },
