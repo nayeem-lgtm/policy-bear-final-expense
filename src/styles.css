@@ -1492,3 +1492,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .bear-tip-title.is-fact { border-bottom-color: var(--success, oklch(0.6 0.15 150)); color: var(--foreground); margin-top: 12px; }
 .bear-tip-fact { font-weight: 700; }
 @media (max-width: 1140px) { .bear-tip-kicker { font-size: 14px; margin-bottom: 4px; } .bear-tip-title.is-fact { margin-top: 8px; } }
+
+/* Back orb — smooth, compact back control */
+.back-orb { display: inline-flex; align-items: center; gap: 0; height: 36px; padding: 0 4px 0 0; margin: 0 0 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--brand-deep); font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 2px 8px color-mix(in oklab, var(--brand-deep) 8%, transparent); transition: gap .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease; animation: back-orb-in .4s ease both; }
+.back-orb-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 999px; background: color-mix(in oklab, var(--primary) 10%, transparent); color: var(--primary); transition: background .25s ease, color .25s ease, transform .25s ease; }
+.back-orb-icon svg { width: 17px; height: 17px; transition: transform .25s ease; }
+.back-orb-label { max-width: 0; overflow: hidden; opacity: 0; white-space: nowrap; transition: max-width .3s ease, opacity .25s ease; }
+.back-orb:hover, .back-orb:focus-visible { gap: 6px; padding-right: 14px; border-color: color-mix(in oklab, var(--primary) 40%, transparent); box-shadow: 0 6px 16px color-mix(in oklab, var(--primary) 18%, transparent); outline: none; }
+.back-orb:hover .back-orb-label, .back-orb:focus-visible .back-orb-label { max-width: 60px; opacity: 1; }
+.back-orb:hover .back-orb-icon, .back-orb:focus-visible .back-orb-icon { background: var(--primary); color: var(--primary-foreground); }
+.back-orb:hover .back-orb-icon svg { transform: translateX(-2px); }
+.back-orb:active .back-orb-icon { transform: scale(.92); }
+.funnel-section .back-orb, .app-body .back-orb { height: 36px; min-height: 36px; margin: 0 0 10px; padding-block: 0; margin-left: 0; }
+@media (hover: none) { .back-orb { gap: 6px; padding-right: 14px; } .back-orb-label { max-width: 60px; opacity: 1; } }
+@keyframes back-orb-in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .back-orb, .back-orb * { transition: none; animation: none; } }
