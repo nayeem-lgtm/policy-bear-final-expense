@@ -4,7 +4,7 @@ export type Outcome = 'approved' | 'graded' | 'declined'
 export const COVERAGE_MIN = 5000
 export const COVERAGE_MAX = 50000
 
-// Basic Info holds the five rating questions (state, gender, date of birth, coverage, tobacco).
+// About You (shown as "About You", formerly "Basic Info") holds the five rating questions (state, gender, date of birth, coverage, tobacco).
 // The illustration is shown right after them; the remaining questions are Pre-Qualification.
 export const basicInfoSteps = ['state', 'gender', 'dob', 'coverage', 'tobacco'] as const
 export const preQualSteps = ['who', 'contact', 'size', 'opt-in'] as const
