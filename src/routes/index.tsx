@@ -1,6 +1,7 @@
 // ============= Full file contents =============
 
 import bearGuide from '@/assets/bear-guide-full.png'
+import bearWave from '@/assets/bear-waving.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useRef, useState } from 'react'
 import { ArrowRight, ChevronDown, PawPrint } from 'lucide-react'
