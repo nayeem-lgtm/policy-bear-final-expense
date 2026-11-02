@@ -253,20 +253,22 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const appMode = screen !== 'state'
   const tip = bearTips[screen]
   const minutes = [1, 1, 2, 2]
-  if (appMode) return <section className="wizard-app" id="get-covered" aria-label="Final expense application">
+  // The quote panel only belongs once the illustration has actually been shown.
+  const quoteSeen = journeySteps.indexOf(screen) >= journeySteps.indexOf('price')
+  if (appMode) return <section className={quoteSeen ? 'wizard-app' : 'wizard-app no-quote'} id="get-covered" aria-label="Final expense application">
     <aside className="app-rail" aria-label="Application progress">
       <Link to="/" hash="step-state" className="app-rail-logo" aria-label="PolicyBear home"><img src={bearLogo.url} width="190" height="38" alt="PolicyBear" /></Link>
       <ol className="app-steps">{labels.map((label, index) => <li key={label} className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} aria-current={index === chapter ? 'step' : undefined}><span className="app-step-dot">{index < chapter ? <Check /> : <span />}</span><span className="app-step-copy"><strong>{label}</strong><small><Clock /> {minutes[index]} min</small></span></li>)}</ol>
       <p className="app-rail-secure"><LockKeyhole /> Demo only · nothing is submitted</p>
     </aside>
     <div className="app-main">
-      <div className="app-topbar"><span>{labels[chapter]}</span><a href="tel:+18447652327" className="app-help"><Phone /> Need help?</a></div>
+      <div className="app-topbar"><span>{labels[chapter]}</span></div>
       <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
         <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
         <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
       </aside>{renderScreen()}</div> : renderScreen()}</div>
     </div>
-    <aside className="app-summary" aria-label="Your quote">
+    {quoteSeen && <aside className="app-summary" aria-label="Your quote">
       <div className="app-quote-card">
         <div className="app-quote-brand"><img src={bearLogo.url} width="150" height="30" alt="PolicyBear" /><span className="app-quote-tag">Final Expense</span></div>
         <div className="app-quote-price"><small>Your monthly premium</small><strong>${monthly.toFixed(2)}<span>/mo</span></strong></div>
@@ -274,7 +276,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
         <Button variant="quiet" className="app-edit" onClick={() => go('price')}><PenLine /> Edit quote</Button>
         <a className="app-agent" href="tel:+18447652327"><span className="agent-dot" /><span><small>Expert agents available</small><strong>(844) POL-BEAR</strong></span><Phone /></a>
       </div>
-    </aside>
+    </aside>}
   </section>
 
   const wizardSection = <section className={`wizard ${screen !== 'state' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
