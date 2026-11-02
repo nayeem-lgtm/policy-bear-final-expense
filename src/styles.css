@@ -1443,3 +1443,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .answer-list:has(> .answer-card:nth-child(3)) .radio-circle { display: none; }
   .answer-list:has(> .answer-card:nth-child(3)) .answer-card[data-state=checked] .radio-circle { display: grid; }
 }
+/* Five options — the lone fifth card spans the full width */
+.answer-list:has(> .answer-card:nth-child(5)):not(:has(> .answer-card:nth-child(6))) > .answer-card:nth-child(5) { grid-column: 1 / -1; }
