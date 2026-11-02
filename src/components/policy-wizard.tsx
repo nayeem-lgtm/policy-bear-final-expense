@@ -277,7 +277,6 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     </aside>
   </section>
 
-  const tip = bearTips[screen]
   const wizardSection = <section className={`wizard ${screen !== 'state' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
     {resume && <div className="resume-banner"><p>Welcome back, {answers.firstName || 'friend'}! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => setResume(false)}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(blank); localStorage.removeItem('policybear-demo'); go('state') }}>Start over</Button></div></div>}
     <div className="chapter-progress" aria-label="Application progress">{labels.map((label, index) => <span className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} key={label}>{index < chapter && <Check />}{label}</span>)}</div>
@@ -286,14 +285,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     {renderScreen()}
     <div className="demo-wrap"><Button variant="quiet" className="demo-pill" aria-expanded={demo} onClick={() => setDemo(!demo)}>Demo</Button>{demo && <div className="demo-toolbar"><strong>Jump to a screen</strong><select aria-label="Demo screen" value={screen} onChange={(event) => go(event.target.value as JourneyStep)}>{journeySteps.map((item) => <option value={item} key={item}>{item.replaceAll('-', ' ')}</option>)}</select><strong>Force decision</strong><div>{(['approved', 'graded', 'declined'] as Outcome[]).map((item) => <Button variant={forced === item ? 'action' : 'quiet'} key={item} onClick={() => setForced(item)}>{item}</Button>)}</div></div>}</div>
   </section>
-  if (!tip) return wizardSection
-  return <div className="basic-stage">
-    <aside className="bear-tip" aria-label="Tip from Mr Bear">
-      <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
-      <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
-    </aside>
-    {wizardSection}
-  </div>
+  return wizardSection
 }
 
 function ContactConsent({ checked, onChange }: { checked: boolean; onChange: (value: boolean) => void }) {
