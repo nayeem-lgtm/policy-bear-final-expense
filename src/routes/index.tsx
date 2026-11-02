@@ -3,7 +3,7 @@
 import bearGuide from '@/assets/bear-guide-full.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Check, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
 import { PolicyHeader, PolicyFooter, SlimFooter } from '@/components/policy-site'
@@ -41,7 +41,7 @@ function Index() {
           <div className="quote-form-holder">
             <PolicyWizard onStepChange={changeStep} />
           </div>
-          {step === 0 && <p className="hero-tagline">An <span className="tagline-accent">AI-powered,</span> <span className="tagline-accent">24/7</span> insurance platform delivering <span className="tagline-mark">instant decisions</span><br className="tagline-break" /> and <span className="tagline-mark">life‑changing coverage</span>.</p>}
+          {step === 0 && <p className="hero-tagline">An <span className="tagline-accent">AI-powered</span> insurance experience, available <span className="tagline-accent">24/7</span>, delivering <span className="tagline-mark">instant decisions</span><br className="tagline-break" /> and coverage with <span className="tagline-mark">no medical exam required</span>.</p>}
         </div>
       </section>
       {step === 0 && <>
@@ -49,10 +49,6 @@ function Index() {
           <div className="faq-inner">
             <header className="faq-head">
               <h2>Final expense questions, answered.</h2>
-              <ul className="faq-promises">
-                <li><span className="promise-check" aria-hidden="true"><Check /></span>No medical exam <em>required</em></li>
-                <li><span className="promise-check" aria-hidden="true"><Check /></span>Instant <em>approval</em></li>
-              </ul>
             </header>
             <div className="faq-bear-wrap" aria-hidden="true"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /></div>
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
