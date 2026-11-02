@@ -1237,6 +1237,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .answer-copy > .answer-badge { display: grid; place-items: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: color-mix(in oklab, var(--brand-deep) 7%, var(--muted)); color: var(--brand-deep); transition: background 150ms, color 150ms; }
 .answer-badge svg { width: 17px; height: 17px; }
 .answer-card[data-state=checked] .answer-badge { background: color-mix(in oklab, var(--primary) 13%, var(--background)); color: var(--primary); }
+.tobacco-choices .answer-card { min-height: 84px; }
+.tobacco-choices .answer-card[data-state=checked] { border-color: color-mix(in oklab, var(--success) 25%, var(--border)); background: color-mix(in oklab, var(--success) 10%, var(--background)); }
+.tobacco-choices .answer-card[data-state=checked] .answer-badge { background: var(--background); color: var(--primary); }
+.tobacco-choices .radio-circle { border-color: transparent; }
+.tobacco-choices .answer-card[data-state=checked] .radio-circle { background: var(--success); border-color: var(--success); color: var(--primary-foreground); }
+.tobacco-choices .radio-circle svg { width: 16px; height: 16px; }
 @media (max-width: 760px) {
   .question-head { gap: 12px; margin-bottom: 16px; }
   .question-badge { width: 40px; height: 40px; }
