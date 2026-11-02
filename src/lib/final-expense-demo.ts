@@ -12,7 +12,7 @@ export const quoteSteps = [...basicInfoSteps, ...preQualSteps] as const
 
 export const journeySteps = [
   ...basicInfoSteps, 'loading', 'price', ...preQualSteps,
-  'personal', 'address', 'identity', 'health-intro', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8',
+  'address', 'identity', 'health-intro', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8',
   'health-review', 'underwriting', 'decision', 'gi-offer', 'beneficiary', 'insurance', 'payment', 'draft',
   'review', 'disclosures', 'signature', 'verify', 'submitting', 'issued', 'callback', 'ineligible',
 ] as const
