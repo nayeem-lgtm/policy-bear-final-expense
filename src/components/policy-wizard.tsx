@@ -64,6 +64,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const [forced, setForced] = useState<Outcome | ''>('')
   const [annual, setAnnual] = useState(false)
   const [otherAmount, setOtherAmount] = useState(false)
+  const customTimer = useRef(0)
   const [showSSN, setShowSSN] = useState(false)
   const [consent, setConsent] = useState(false)
   const [confirmed, setConfirmed] = useState(false)
@@ -175,6 +176,13 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const advance = (next: JourneyStep) => window.setTimeout(() => go(next), 300)
   const back = () => { let i = screenIndex - 1; while (i > 0 && ['loading', 'underwriting', 'submitting'].includes(journeySteps[i] ?? '')) i -= 1; const previous = journeySteps[Math.max(0, i)]; if (previous) go(previous) }
   const choose = (key: StringAnswerKey, value: string, next?: JourneyStep) => { update(key, value); if (next) advance(next) }
+  // Custom coverage advances on its own once the slider settles, so no Continue button is needed.
+  const settleCustom = (value: string) => {
+    update('coverage', value)
+    window.clearTimeout(customTimer.current)
+    customTimer.current = window.setTimeout(() => { customTimer.current = 0; advance('tobacco') }, 700)
+  }
+  const clearCustomTimer = () => { window.clearTimeout(customTimer.current); customTimer.current = 0 }
   const chooseAddress = (address: AddressSuggestion) => {
     setAnswers((current) => ({ ...current, street: address.street, city: address.city || current.city, state: address.state || current.state, zip: address.zip || current.zip }))
     setAddressMenuOpen(false)
