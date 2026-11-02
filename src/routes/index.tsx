@@ -3,7 +3,7 @@
 import bearGuide from '@/assets/bear-guide-full.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, Check, ChevronDown, Phone } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown } from 'lucide-react'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
 import { PolicyHeader, PolicyFooter, SlimFooter } from '@/components/policy-site'
@@ -63,8 +63,6 @@ function Index() {
             <h2>Find a starting point for your <span className="closing-hl">final expense</span> coverage.</h2>
             <div className="closing-actions">
               <a className="closing-btn closing-btn-main" href="#get-covered"><span>Check my options</span><span className="closing-btn-icon"><ArrowRight size={18} /></span></a>
-              <span className="closing-or">or</span>
-              <a className="closing-btn closing-btn-call" href="tel:+18447652327"><span className="closing-btn-icon"><Phone size={16} /></span><span>Call (844) 765-2327</span></a>
             </div>
           </div>
         </section>
