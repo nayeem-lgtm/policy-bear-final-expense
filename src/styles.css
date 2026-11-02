@@ -1450,8 +1450,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .answer-list:has(> .answer-card:nth-of-type(5)):not(:has(> .answer-card:nth-of-type(6))) > .answer-card:nth-of-type(5) { grid-column: 1 / -1; }
 
 /* Mr Bear tip panel beside Basic Info steps */
-.funnel-inner:has(.basic-stage) { max-width: 1180px; }
-.funnel-section:has(.basic-stage) { background: radial-gradient(circle at 15% 30%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 45%), radial-gradient(circle at 85% 80%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 50%), var(--brand-light); }
+.funnel-inner:has(.basic-stage):not(:has(.wizard-app)) { max-width: 1180px; }
+.funnel-section:has(.basic-stage):not(:has(.wizard-app)) { background: radial-gradient(circle at 15% 30%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 45%), radial-gradient(circle at 85% 80%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 50%), var(--brand-light); }
+/* Inside the app workspace the tip sits under the form, Mr Bear at the left. */
+.app-body .basic-stage { display: flex; flex-direction: column; gap: 20px; }
+.app-body .bear-tip { display: flex; flex-direction: row; align-items: flex-end; gap: 12px; max-width: none; width: 100%; }
+.app-body .bear-tip-img { width: 76px; flex: none; order: 1; }
+.app-body .bear-tip-bubble { order: 2; flex: 1; padding: 12px 16px; }
+.app-body .bear-tip-bubble::after { left: -10px; bottom: 22px; transform: rotate(135deg); }
+.app-body .bear-tip-bubble p { font-size: 14px; }
 /* Form is always dead-centre on the page; Mr Bear stands in the left gutter, feet level with the card's bottom. */
 .basic-stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px) minmax(0, 1fr); column-gap: 28px; align-items: start; }
 .basic-stage > .wizard { grid-column: 2; grid-row: 1; width: 100%; margin-inline: auto; }

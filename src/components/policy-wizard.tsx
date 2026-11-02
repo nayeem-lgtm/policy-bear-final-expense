@@ -250,7 +250,8 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   }
 
   const chapter = chapterFor(screen)
-  const appMode = chapter >= 1
+  const appMode = screen !== 'state'
+  const tip = bearTips[screen]
   const minutes = [1, 1, 2, 2]
   if (appMode) return <section className="wizard-app" id="get-covered" aria-label="Final expense application">
     <aside className="app-rail" aria-label="Application progress">
@@ -260,7 +261,10 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     </aside>
     <div className="app-main">
       <div className="app-topbar"><span>{labels[chapter]}</span><a href="tel:+18447652327" className="app-help"><Phone /> Need help?</a></div>
-      <div className="app-body">{renderScreen()}</div>
+      <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
+        <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
+        <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
+      </aside>{renderScreen()}</div> : renderScreen()}</div>
     </div>
     <aside className="app-summary" aria-label="Your quote">
       <div className="app-quote-card">
@@ -273,7 +277,6 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     </aside>
   </section>
 
-  const tip = bearTips[screen]
   const wizardSection = <section className={`wizard ${screen !== 'state' ? 'wizard-standalone' : ''}`} id="get-covered" aria-label="Final expense journey">
     {resume && <div className="resume-banner"><p>Welcome back, {answers.firstName || 'friend'}! Pick up where you left off?</p><div><Button variant="quiet" onClick={() => setResume(false)}>Continue</Button><Button variant="quiet" onClick={() => { setAnswers(blank); localStorage.removeItem('policybear-demo'); go('state') }}>Start over</Button></div></div>}
     <div className="chapter-progress" aria-label="Application progress">{labels.map((label, index) => <span className={index === chapter ? 'current' : index < chapter ? 'complete' : ''} key={label}>{index < chapter && <Check />}{label}</span>)}</div>
@@ -282,14 +285,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     {renderScreen()}
     <div className="demo-wrap"><Button variant="quiet" className="demo-pill" aria-expanded={demo} onClick={() => setDemo(!demo)}>Demo</Button>{demo && <div className="demo-toolbar"><strong>Jump to a screen</strong><select aria-label="Demo screen" value={screen} onChange={(event) => go(event.target.value as JourneyStep)}>{journeySteps.map((item) => <option value={item} key={item}>{item.replaceAll('-', ' ')}</option>)}</select><strong>Force decision</strong><div>{(['approved', 'graded', 'declined'] as Outcome[]).map((item) => <Button variant={forced === item ? 'action' : 'quiet'} key={item} onClick={() => setForced(item)}>{item}</Button>)}</div></div>}</div>
   </section>
-  if (!tip) return wizardSection
-  return <div className="basic-stage">
-    <aside className="bear-tip" aria-label="Tip from Mr Bear">
-      <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
-      <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
-    </aside>
-    {wizardSection}
-  </div>
+  return wizardSection
 }
 
 function ContactConsent({ checked, onChange }: { checked: boolean; onChange: (value: boolean) => void }) {
