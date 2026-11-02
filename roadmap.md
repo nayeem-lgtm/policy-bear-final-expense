@@ -1,5 +1,8 @@
 # PolicyBear final expense
 
+- [x] Show the owner-supplied original GeoTrust, TRUSTe and TrustLock seals on the Social Security step as equal white tiles above the three trust badges; verified fit with the footer visible and no overflow at 986x834, 1280x800 and 390x844, all 26 tests pass.
+
+
 - [x] Display the owner-confirmed original TrustLock and Comodo seals on the Social Security step in a balanced layout; verified both images and Next-to-health navigation at 986px and 390px, all 26 tests pass.
 
 - [x] Fix recipient-card alignment, simplify permission presentation, remove repeated personal-details screen and polish address entry; verified both permission paths, address entry/Back, fixed card dimensions and phone/current-screen fit; 23 tests pass.
