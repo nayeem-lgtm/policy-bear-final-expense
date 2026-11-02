@@ -80,3 +80,5 @@
 - Merged the closing banner into the questions section as its own bottom row (heading left, button right, divider above), and replaced the ticket-stub button with a white card button: gold corner wedge, soft-gold paw chip, navy label and navy arrow chip that slides on hover. Verified desktop and phone, click scrolls to the form, 14 tests pass, build OK.
 
 - Application workspace now fits above the slim footer (flex chain from .policy-page to .wizard-app, rail height 100%), so copyright/Terms/Privacy is visible without scrolling. Answer option lists with three or more choices sit two across with round icon badges (who, beneficiary, callback time, payment date), the lone fifth card spans full width, and two-choice lists stay stacked. Verified at 687x679, 1440x900 and 390x844; 14 tests pass, build OK.
+
+- [x] Hide the monthly-premium panel until the illustration has been shown and remove the "Need help?" button from the workspace top bar; verified at 390, 986 and 1280px, all 14 tests pass.
