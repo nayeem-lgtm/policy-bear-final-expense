@@ -262,7 +262,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
       <p className="app-rail-secure"><LockKeyhole /> Demo only · nothing is submitted</p>
     </aside>
     <div className="app-main">
-      <div className="app-topbar"><span>{labels[chapter]}</span></div>
+      <div className="app-topbar"><span>{labels[chapter]}</span><a className="app-call" href="tel:+18447652327"><span className="agent-dot" aria-hidden="true" /><span className="app-call-copy"><small>Expert agents available</small><strong>(844) POL-BEAR</strong></span></a></div>
       <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
         <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
         <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
