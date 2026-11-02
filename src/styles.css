@@ -844,7 +844,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pb-footer-slim-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .pb-footer-slim-links span { width: 1px; height: 14px; background: var(--footer-border); }
 @media (max-width: 640px) {
-  .pb-footer-slim-inner { padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); }
+  .pb-footer-slim-inner { padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); }
   .pb-footer-slim-links { gap: 10px; }
 }
 
@@ -1355,11 +1355,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-step-copy small svg { width: 12px; height: 12px; }
 .app-rail-secure { margin: auto 0 0; display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted-foreground); }
 .app-rail-secure svg { width: 14px; height: 14px; }
-.app-main { min-width: 0; padding: 22px 48px 48px; }
+.app-main { min-width: 0; padding: 22px 48px 48px; display: flex; flex-direction: column; }
 .app-topbar { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--border); font-weight: 700; font-size: 15px; color: var(--brand-deep); }
 .app-help { display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border-radius: 999px; background: color-mix(in oklab, var(--primary) 9%, transparent); color: var(--primary); font-size: 13.5px; font-weight: 700; text-decoration: none; }
 .app-help svg { width: 15px; height: 15px; }
-.app-body { max-width: 620px; padding-top: 18px; }
+.app-body { width: 100%; max-width: 620px; margin-inline: auto; margin-block: auto; padding-top: 18px; }
 .app-body .wizard-content h2 { text-align: left; font-size: 26px; }
 .app-body .question-helper { text-align: left; }
 .app-summary { position: sticky; top: 0; align-self: start; display: grid; gap: 14px; padding: 22px 22px 22px 0; }
@@ -1381,17 +1381,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 1180px) { .wizard-app { grid-template-columns: 220px minmax(0, 1fr); } .app-summary { grid-column: 2; grid-row: 1; position: static; padding: 18px 32px 0; grid-template-columns: 1fr auto; align-items: stretch; } .app-main { grid-column: 2; padding: 18px 32px 40px; } .wizard-app { grid-template-rows: auto 1fr; } .app-rail { grid-row: 1 / span 2; } .app-quote-card { display: flex; align-items: center; } .app-quote-head { align-self: stretch; } .app-quote-card dl { display: flex; gap: 22px; flex: 1; } .app-quote-card dl div + div { border-top: 0; } .app-quote-card dl div { gap: 8px; } .app-edit.app-edit { margin: 0 14px; width: auto; padding: 0 14px; } }
 @media (max-width: 760px) {
   .wizard-app { display: flex; flex-direction: column; }
-  .app-rail { position: sticky; z-index: 5; height: auto; flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--border); }
+  .app-rail { position: sticky; z-index: 5; height: auto; flex-direction: row; align-items: center; gap: 14px; padding: 9px 16px; border-right: 0; border-bottom: 1px solid var(--border); }
   .app-rail-logo img { width: 120px; }
   .app-steps { display: flex; flex: 1; justify-content: flex-end; gap: 6px; }
   .app-steps li { padding: 0; } .app-steps li::after, .app-step-copy, .app-rail-secure { display: none; }
   .app-step-dot { width: 22px; height: 22px; } .app-step-dot svg { width: 12px; height: 12px; }
-  .app-summary { order: 1; padding: 12px 16px 0; grid-template-columns: 1fr; }
+  .app-summary { order: 1; padding: 8px 16px 0; grid-template-columns: 1fr; }
   .app-agent { display: none; }
   .app-quote-head { padding: 10px 12px; } .app-quote-head svg { width: 22px; height: 22px; } .app-quote-head div { display: none; }
   .app-quote-card dl { padding: 4px 12px; gap: 14px; } .app-quote-card dd { font-size: 15px; } .app-quote-card dt { font-size: 12px; }
   .app-edit.app-edit { margin: 0 10px 0 0; padding: 0 10px; height: 34px; font-size: 13px; }
-  .app-main { order: 2; padding: 14px 16px 32px; }
+  .app-main { order: 2; padding: 10px 16px 10px; }
   .app-body .wizard-content h2 { font-size: 22px; }
 }
 .app-body .back-button { margin-left: -12px; }
@@ -1415,7 +1415,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-quote-card .app-agent { display: flex; border: 0; border-top: 1px solid var(--border); border-radius: 0; background: color-mix(in oklab, var(--primary) 6%, var(--card)); padding: 14px 18px; }
 .app-quote-card .app-agent > span:nth-child(2) { flex: 1; }
 .app-quote-card .app-agent > svg { width: 18px; height: 18px; color: var(--primary); }
-@media (max-width: 1180px) { .app-summary { display: block; padding: 18px 32px 0; } .app-quote-card { display: grid !important; grid-template-columns: auto 1fr auto; align-items: center; } .app-quote-brand { border: 0; padding: 12px 16px; } .app-quote-price { padding: 10px 12px; } .app-quote-price strong { font-size: 24px; } .app-quote-card dl, .app-edit.app-edit { display: none !important; } .app-quote-card .app-agent { border-top: 0; align-self: stretch; align-items: center; } }
+@media (max-width: 1180px) { .app-summary { display: block; padding: 18px 32px 0; } .app-quote-card { display: grid !important; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; } .app-quote-brand { border: 0; padding: 12px 16px; min-width: 0; } .app-quote-brand img { width: 104px; } .app-quote-tag { display: none; } .app-quote-price { padding: 10px 12px; min-width: 0; } .app-quote-price small { white-space: nowrap; } .app-quote-price strong { font-size: 24px; } .app-quote-card dl, .app-edit.app-edit { display: none !important; } .app-quote-card .app-agent { border-top: 0; align-self: stretch; align-items: center; } }
 @media (max-width: 760px) { .app-summary { padding: 12px 16px 0; } .app-quote-card { grid-template-columns: 1fr auto; } .app-quote-brand { display: none; } .app-quote-price small { font-size: 11px; } .app-quote-price strong { font-size: 20px; } .app-quote-card .app-agent small { display: none; } .app-quote-card .app-agent strong { font-size: 14px; } }
 .app-quote-brand img { width: 118px; } .app-quote-tag { font-size: 9.5px; padding: 3px 7px; letter-spacing: .06em; }
 
