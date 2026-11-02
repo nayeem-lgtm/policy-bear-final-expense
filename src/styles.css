@@ -1452,7 +1452,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .funnel-inner:has(.basic-stage) { max-width: 1180px; }
 .funnel-section:has(.basic-stage) { background: radial-gradient(circle at 15% 30%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 45%), radial-gradient(circle at 85% 80%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 50%), var(--brand-light); }
 /* Form is always dead-centre on the page; Mr Bear stands in the left gutter, feet level with the card's bottom. */
-.basic-stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px) minmax(0, 1fr); column-gap: 28px; align-items: end; }
+.basic-stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px) minmax(0, 1fr); column-gap: 28px; align-items: start; }
 .basic-stage > .wizard { grid-column: 2; grid-row: 1; width: 100%; margin-inline: auto; }
 .bear-tip { grid-column: 1; grid-row: 1; justify-self: end; width: 100%; max-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .bear-tip-bubble { position: relative; width: 100%; background: var(--card); border: 2px solid var(--primary); border-radius: 16px; padding: 14px 16px; box-shadow: 0 18px 36px -20px color-mix(in oklab, var(--primary) 50%, transparent); animation: bear-tip-in .45s ease both; }
