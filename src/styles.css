@@ -1447,9 +1447,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .answer-list:has(> .answer-card:nth-of-type(5)):not(:has(> .answer-card:nth-of-type(6))) > .answer-card:nth-of-type(5) { grid-column: 1 / -1; }
 
 /* Mr Bear tip panel beside Basic Info steps */
-.funnel-inner:has(.basic-stage) { max-width: 1040px; }
+.funnel-inner:has(.basic-stage) { max-width: 1180px; }
 .funnel-section:has(.basic-stage) { background: radial-gradient(circle at 15% 30%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 45%), radial-gradient(circle at 85% 80%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 50%), var(--brand-light); }
-.basic-stage { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 640px); gap: 36px; align-items: center; justify-content: center; }
+.basic-stage { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 36px; align-items: center; }
+.basic-stage > .wizard { justify-self: center; width: 100%; max-width: 640px; }
 .bear-tip { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .bear-tip-bubble { position: relative; background: var(--card); border: 2px solid var(--primary); border-radius: 18px; padding: 16px 20px; box-shadow: 0 18px 36px -20px color-mix(in oklab, var(--primary) 50%, transparent); animation: bear-tip-in .45s ease both; }
 .bear-tip-bubble::after { content: ""; position: absolute; left: 50%; bottom: -11px; width: 18px; height: 18px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: translateX(-50%) rotate(45deg); }
