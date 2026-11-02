@@ -1281,3 +1281,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .closing-copy h2 { font-size: 34px; }
 .closing-btn-main { flex-shrink: 0; white-space: nowrap; }
 @media (max-width: 760px) { .closing-copy { flex-direction: column; text-align: center; gap: 24px; } .closing-copy h2 { font-size: 28px; } }
+/* Closing button v2 */
+.closing-btn-main { position: relative; overflow: hidden; padding: 0 30px; gap: 12px; border-radius: 14px; height: 58px; background: var(--primary); color: var(--primary-foreground); box-shadow: 0 18px 32px -16px var(--primary), inset 0 -3px 0 color-mix(in oklab, var(--brand-deep) 35%, transparent); }
+.closing-btn-main::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, color-mix(in oklab, var(--primary-foreground) 28%, transparent) 50%, transparent 70%); transform: translateX(-120%); animation: closing-shine 3.6s ease-in-out infinite; }
+.closing-btn-main .closing-btn-icon { width: auto; height: auto; background: none; color: var(--brand-action); }
+.closing-btn-main:hover { background: var(--brand-deep); transform: translateY(-2px); }
+@keyframes closing-shine { 0%, 55% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+@media (prefers-reduced-motion: reduce) { .closing-btn-main::after { animation: none; } }
+@media (max-width: 760px) { .closing-btn-main { justify-content: center; } }
