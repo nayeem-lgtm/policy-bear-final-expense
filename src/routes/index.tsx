@@ -2,6 +2,7 @@
 
 import bearGuide from '@/assets/bear-guide-full.png'
 import bearWave from '@/assets/bear-waving.png'
+import bearBlink from '@/assets/bear-blink.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useRef, useState } from 'react'
 import { ArrowRight, ChevronDown, PawPrint } from 'lucide-react'
@@ -30,22 +31,45 @@ const faqs = [
   ['Will my price go up as I get older?', 'Some final expense whole life plans have guaranteed level premiums. Confirm that guarantee in the policy, and keep required payments up to date to maintain coverage.'],
 ]
 
+const pawTrail = [
+  { left: '78%', bottom: '24px', size: 20 },
+  { left: '70%', bottom: '10px', size: 22 },
+  { left: '62%', bottom: '24px', size: 24 },
+  { left: '54%', bottom: '10px', size: 26 },
+  { left: '46%', bottom: '24px', size: 28 },
+  { left: '38%', bottom: '10px', size: 30 },
+]
+
 function Index() {
   const [step, setStep] = useState(0)
   const changeStep = useCallback((value: number) => setStep(value), [])
   const bearObserver = useRef<IntersectionObserver | null>(null)
+  const bearWaveTimer = useRef<number | null>(null)
   const attachBear = useCallback((node: HTMLDivElement | null) => {
     bearObserver.current?.disconnect()
-    if (!node || typeof IntersectionObserver === 'undefined') return
+    if (bearWaveTimer.current !== null) window.clearTimeout(bearWaveTimer.current)
+    if (!node) return
     node.classList.add('is-armed')
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        node.classList.add('is-visible')
-        observer.disconnect()
-      }
-    }, { threshold: 0.2 })
-    observer.observe(node)
-    bearObserver.current = observer
+    if (typeof IntersectionObserver === 'undefined') {
+      node.classList.add('is-visible')
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          node.classList.add('is-visible')
+          observer.disconnect()
+        }
+      }, { threshold: 0.2 })
+      observer.observe(node)
+      bearObserver.current = observer
+    }
+    const wave = () => {
+      node.classList.remove('is-waving')
+      void node.offsetWidth
+      node.classList.add('is-waving')
+      if (bearWaveTimer.current !== null) window.clearTimeout(bearWaveTimer.current)
+      bearWaveTimer.current = window.setTimeout(() => node.classList.remove('is-waving'), 2600)
+    }
+    node.addEventListener('pointerenter', wave)
   }, [])
   return <div className="policy-page">
     <PolicyHeader />
@@ -65,8 +89,9 @@ function Index() {
             <header className="faq-head">
               <h2>Final expense questions, answered.</h2>
             </header>
-            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><div className="faq-bear-stage"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /><img className="faq-bear-wave" src={bearWave} width={595} height={959} alt="" /></div></div>
+            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><div className="faq-bear-stage"><div className="faq-bear-lean"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /><img className="faq-bear-blink" src={bearBlink} width={595} height={959} alt="" /><img className="faq-bear-wave" src={bearWave} width={595} height={959} alt="" /></div></div></div>
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
+            <span className="faq-bear-trail" aria-hidden="true">{pawTrail.map((paw, index) => <PawPrint key={paw.left} className="faq-bear-paw" size={paw.size} style={{ left: paw.left, bottom: paw.bottom, animationDelay: `${0.82 + index * 0.28}s` }} />)}</span>
           </div>
         </section>
         <section className="closing-section" aria-label="Start your final expense quote">
