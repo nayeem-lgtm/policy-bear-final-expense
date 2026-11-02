@@ -54,3 +54,5 @@
 - [x] Show only a slim copyright + Terms/Privacy footer from the second quote step onward; full footer returns on step one. Verified desktop, phone, and Back navigation.
 
 - [x] Remove the "Popular locations" quick-pick chips from the state question; verify desktop and phone spacing.
+
+- [x] Restyle the landing assurances as a minimal text row and change "Immediate full coverage" to "Instant approval"; verify desktop and phone.
