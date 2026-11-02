@@ -62,9 +62,12 @@ function Index() {
         <section className="closing-section" aria-label="Start your final expense quote">
           <div className="closing-inner">
             <span className="closing-eyebrow">Takes about 2 minutes</span>
-            <h2>Find a starting point for your final expense coverage.</h2>
+            <h2>Find a starting point for your <span className="tagline-mark">final expense</span> coverage.</h2>
             <p className="closing-sub">No obligation. Prices shown are illustrative.</p>
-            <Button asChild variant="action" size="touch" className="closing-cta"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button>
+            <div className="closing-actions">
+              <Button asChild variant="action" size="touch" className="closing-cta"><a href="#get-covered">Check my options <ArrowRight size={21} /></a></Button>
+              <a className="closing-call" href="tel:+18447652327" aria-label="Call (844) 765-2327">or call <strong>(844) POL-BEAR</strong></a>
+            </div>
           </div>
         </section>
       </>}
