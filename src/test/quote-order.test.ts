@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, chapterFor, journeySteps, quoteSteps } from '@/lib/final-expense-demo'
+import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, basicInfoSteps, chapterFor, journeySteps, preQualSteps, quoteSteps } from '@/lib/final-expense-demo'
 
 describe('Coverage range', () => {
   it('runs from $5,000 to $50,000 as the owner offers it', () => {
@@ -10,20 +10,21 @@ describe('Coverage range', () => {
 
 describe('Quote sequence', () => {
   it('opens with the five basic-info questions in the owner\'s order', () => {
-    expect(quoteSteps.slice(0, 5)).toEqual(['state', 'gender', 'dob', 'coverage', 'tobacco'])
+    expect([...basicInfoSteps]).toEqual(['state', 'gender', 'dob', 'coverage', 'tobacco'])
   })
-  it('puts the remaining quote questions after the basic-info five, with opt-in still last', () => {
-    expect(quoteSteps.slice(5)).toEqual(['who', 'contact', 'size', 'opt-in'])
+  it('shows the illustration immediately after the basic-info five', () => {
+    expect(journeySteps.indexOf('loading')).toBe(journeySteps.indexOf('tobacco') + 1)
+    expect(journeySteps.indexOf('price')).toBe(journeySteps.indexOf('tobacco') + 2)
+  })
+  it('asks the pre-qualification questions after the illustration, with opt-in still last', () => {
+    expect([...preQualSteps]).toEqual(['who', 'contact', 'size', 'opt-in'])
+    expect(journeySteps.indexOf('who')).toBe(journeySteps.indexOf('price') + 1)
     expect(quoteSteps.at(-1)).toBe('opt-in')
   })
-  it('keeps every quote question before the price is shown', () => {
-    const lastQuote = journeySteps.indexOf('opt-in')
-    expect(journeySteps.indexOf('loading')).toBe(lastQuote + 1)
-    expect(journeySteps.indexOf('price')).toBe(lastQuote + 2)
-  })
   it('maps the four owner-named chapters to the right screens', () => {
-    for (const step of ['state', 'gender', 'dob', 'coverage', 'tobacco'] as const) expect(chapterFor(step)).toBe(0)
-    for (const step of ['who', 'contact', 'size', 'opt-in', 'price', 'personal', 'health-intro', 'h1', 'decision'] as const) expect(chapterFor(step)).toBe(1)
+    for (const step of basicInfoSteps) expect(chapterFor(step)).toBe(0)
+    expect(chapterFor('price')).toBe(0)
+    for (const step of ['who', 'contact', 'size', 'opt-in', 'personal', 'health-intro', 'h1', 'decision'] as const) expect(chapterFor(step)).toBe(1)
     expect(chapterFor('payment')).toBe(2)
     expect(chapterFor('signature')).toBe(3)
   })
