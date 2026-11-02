@@ -1449,27 +1449,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* Mr Bear tip panel beside Basic Info steps */
 .funnel-inner:has(.basic-stage) { max-width: 1180px; }
 .funnel-section:has(.basic-stage) { background: radial-gradient(circle at 15% 30%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 45%), radial-gradient(circle at 85% 80%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 50%), var(--brand-light); }
-.basic-stage { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 36px; align-items: center; }
-.basic-stage > .wizard { justify-self: center; width: 100%; max-width: 640px; }
-.bear-tip { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.bear-tip-bubble { position: relative; background: var(--card); border: 2px solid var(--primary); border-radius: 18px; padding: 16px 20px; box-shadow: 0 18px 36px -20px color-mix(in oklab, var(--primary) 50%, transparent); animation: bear-tip-in .45s ease both; }
-.bear-tip-bubble::after { content: ""; position: absolute; left: 50%; bottom: -11px; width: 18px; height: 18px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: translateX(-50%) rotate(45deg); }
-.bear-tip-title { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 2px; margin-bottom: 6px; }
-.bear-tip-bubble p { margin: 0; font-size: 16px; line-height: 1.45; color: var(--foreground); }
-.bear-tip-img { width: 190px; height: auto; filter: drop-shadow(0 16px 18px color-mix(in oklab, var(--foreground) 18%, transparent)); }
+/* Form is always dead-centre on the page; Mr Bear stands in the left gutter, feet level with the card's bottom. */
+.basic-stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px) minmax(0, 1fr); column-gap: 28px; align-items: end; }
+.basic-stage > .wizard { grid-column: 2; grid-row: 1; width: 100%; margin-inline: auto; }
+.bear-tip { grid-column: 1; grid-row: 1; justify-self: end; width: 100%; max-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.bear-tip-bubble { position: relative; width: 100%; background: var(--card); border: 2px solid var(--primary); border-radius: 16px; padding: 14px 16px; box-shadow: 0 18px 36px -20px color-mix(in oklab, var(--primary) 50%, transparent); animation: bear-tip-in .45s ease both; }
+.bear-tip-bubble::after { content: ""; position: absolute; left: 50%; bottom: -10px; width: 16px; height: 16px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: translateX(-50%) rotate(45deg); }
+.bear-tip-title { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 2px; margin-bottom: 5px; }
+.bear-tip-bubble p { margin: 0; font-size: 14.5px; line-height: 1.4; color: var(--foreground); }
+.bear-tip-img { width: 150px; height: auto; filter: drop-shadow(0 16px 18px color-mix(in oklab, var(--foreground) 18%, transparent)); }
 @keyframes bear-tip-in { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .bear-tip-bubble { animation: none; } }
-@media (max-width: 1100px) and (min-width: 761px) {
-  .basic-stage { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 24px; }
-  .bear-tip-img { width: 150px; }
-}
-@media (max-width: 760px) {
-  .basic-stage { grid-template-columns: 1fr; gap: 16px; }
-  .bear-tip { order: 2; flex-direction: row; align-items: flex-end; max-width: 640px; margin: 0 auto; padding: 0 12px; }
-  .bear-tip-img { width: 72px; flex: none; }
-  .bear-tip-bubble { order: 2; padding: 12px 14px; }
-  .bear-tip-bubble::after { left: -11px; bottom: 18px; transform: rotate(135deg); }
-  .bear-tip-bubble p { font-size: 14.5px; }
+/* Narrower screens: no gutter room, so the form stays centred and Mr Bear's tip sits directly under it, same width. */
+@media (max-width: 1140px) {
+  .basic-stage { grid-template-columns: minmax(0, 600px); justify-content: center; row-gap: 14px; }
+  .basic-stage > .wizard { grid-column: 1; grid-row: 1; }
+  .bear-tip { grid-column: 1; grid-row: 2; justify-self: stretch; max-width: none; flex-direction: row; align-items: flex-end; gap: 10px; padding: 0 4px; }
+  .bear-tip-img { width: 76px; flex: none; order: 1; }
+  .bear-tip-bubble { order: 2; padding: 12px 16px; }
+  .bear-tip-bubble::after { left: -10px; bottom: 22px; transform: rotate(135deg); }
+  .bear-tip-bubble p { font-size: 14px; }
 }
 .bear-tip-kicker { display: block; font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
 .bear-tip-title.is-myth { border-bottom-color: var(--destructive); color: var(--foreground); }
