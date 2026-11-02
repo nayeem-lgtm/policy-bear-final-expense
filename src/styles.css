@@ -1355,11 +1355,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-step-copy small svg { width: 12px; height: 12px; }
 .app-rail-secure { margin: auto 0 0; display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted-foreground); }
 .app-rail-secure svg { width: 14px; height: 14px; }
-.app-main { min-width: 0; padding: 22px 48px 48px; }
+.app-main { min-width: 0; padding: 22px 48px 48px; display: flex; flex-direction: column; }
 .app-topbar { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--border); font-weight: 700; font-size: 15px; color: var(--brand-deep); }
 .app-help { display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border-radius: 999px; background: color-mix(in oklab, var(--primary) 9%, transparent); color: var(--primary); font-size: 13.5px; font-weight: 700; text-decoration: none; }
 .app-help svg { width: 15px; height: 15px; }
-.app-body { max-width: 620px; padding-top: 18px; }
+.app-body { width: 100%; max-width: 620px; margin-inline: auto; margin-block: auto; padding-top: 18px; }
 .app-body .wizard-content h2 { text-align: left; font-size: 26px; }
 .app-body .question-helper { text-align: left; }
 .app-summary { position: sticky; top: 0; align-self: start; display: grid; gap: 14px; padding: 22px 22px 22px 0; }
