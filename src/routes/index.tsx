@@ -3,7 +3,7 @@
 import bearGuide from '@/assets/bear-guide-full.png'
 import { createFileRoute } from '@tanstack/react-router'
 import { useCallback, useState } from 'react'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown, PawPrint } from 'lucide-react'
 import { PolicyWizard } from '@/components/policy-wizard'
 import family from '@/assets/grandparents-family-moment.jpg'
 import { PolicyHeader, PolicyFooter, SlimFooter } from '@/components/policy-site'
@@ -58,7 +58,7 @@ function Index() {
           <div className="closing-copy">
             <h2>Find a starting point for your <span className="closing-hl">final expense</span> coverage.</h2>
             <div className="closing-actions">
-              <a className="closing-btn closing-btn-main" href="#get-covered"><span>Explore coverage</span><span className="closing-btn-icon"><ArrowRight size={18} /></span></a>
+              <a className="closing-btn closing-btn-main" href="#get-covered"><span className="closing-btn-stub" aria-hidden="true"><PawPrint size={19} /></span><span>Explore coverage</span><span className="closing-btn-icon"><ArrowRight size={17} /></span></a>
             </div>
           </div>
         </section>
