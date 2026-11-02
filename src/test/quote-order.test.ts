@@ -9,18 +9,21 @@ describe('Coverage range', () => {
 })
 
 describe('Quote sequence', () => {
-  it('asks for the state first, then collects contact details immediately after the second step', () => {
-    expect(quoteSteps.slice(0, 4)).toEqual(['state', 'who', 'contact', 'dob'])
-    expect(journeySteps.indexOf('contact')).toBe(2)
+  it('opens with the five basic-info questions in the owner\'s order', () => {
+    expect(quoteSteps.slice(0, 5)).toEqual(['state', 'gender', 'dob', 'coverage', 'tobacco'])
   })
-  it('keeps opt-in after all quote questions and before pricing', () => {
+  it('puts the remaining quote questions after the basic-info five, with opt-in still last', () => {
+    expect(quoteSteps.slice(5)).toEqual(['who', 'contact', 'size', 'opt-in'])
     expect(quoteSteps.at(-1)).toBe('opt-in')
-    expect(journeySteps.slice(journeySteps.indexOf('coverage'), journeySteps.indexOf('price') + 1)).toEqual(['coverage', 'opt-in', 'loading', 'price'])
+  })
+  it('keeps every quote question before the price is shown', () => {
+    const lastQuote = journeySteps.indexOf('opt-in')
+    expect(journeySteps.indexOf('loading')).toBe(lastQuote + 1)
+    expect(journeySteps.indexOf('price')).toBe(lastQuote + 2)
   })
   it('maps the four owner-named chapters to the right screens', () => {
-    expect(chapterFor('price')).toBe(0)
-    expect(chapterFor('personal')).toBe(0)
-    expect(chapterFor('health-intro')).toBe(1)
+    for (const step of ['state', 'gender', 'dob', 'coverage', 'tobacco'] as const) expect(chapterFor(step)).toBe(0)
+    for (const step of ['who', 'contact', 'size', 'opt-in', 'price', 'personal', 'health-intro', 'h1', 'decision'] as const) expect(chapterFor(step)).toBe(1)
     expect(chapterFor('payment')).toBe(2)
     expect(chapterFor('signature')).toBe(3)
   })
