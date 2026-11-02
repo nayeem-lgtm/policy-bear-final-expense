@@ -1722,27 +1722,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 560px) { .address-pair { grid-template-columns: 1fr; gap: 0; } .home-address-form { padding: 16px; } .next-row { flex-wrap: wrap; } }
 
 /* Social Security step: security banner, trust badges and protected state */
-.ssn-trust { border: 1px solid color-mix(in oklab, var(--primary) 20%, var(--border)); border-radius: 12px; overflow: hidden; background: var(--card); box-shadow: 0 14px 30px -22px color-mix(in oklab, var(--primary) 55%, transparent); }
-.ssn-trust-seal { position: relative; display: flex; align-items: center; gap: 10px; padding: 7px 10px; background: linear-gradient(115deg, var(--brand-deep), color-mix(in oklab, var(--brand-deep) 58%, var(--primary))); color: var(--seal-white); overflow: hidden; }
-.ssn-trust-seal > * { position: relative; z-index: 1; }
-.ssn-trust-seal::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 32%, rgb(255 255 255 / 16%) 50%, transparent 68%); transform: translateX(-80%); animation: vault-sheen 5.5s ease-in-out infinite; }
-.ssn-trust-lock { position: relative; display: grid; place-items: center; width: 33px; height: 33px; flex-shrink: 0; border-radius: 9px; background: linear-gradient(150deg, var(--primary), var(--brand-cyan)); color: var(--primary-foreground); box-shadow: inset 0 1px 0 rgb(255 255 255 / 35%), 0 5px 12px -5px color-mix(in oklab, var(--primary) 85%, transparent); }
-.ssn-trust-lock svg:first-child { width: 17px; height: 17px; }
-.ssn-trust-lock svg:last-child { position: absolute; right: -4px; bottom: -4px; width: 15px; height: 15px; padding: 2px; border-radius: 50%; background: var(--brand-action); color: var(--brand-deep); box-shadow: 0 0 0 2px var(--brand-deep); }
-.ssn-trust-seal-copy { display: grid; line-height: 1.04; }
-.ssn-trust-seal-copy small { font-size: 8.5px; font-weight: 700; font-style: italic; letter-spacing: .18em; text-transform: uppercase; opacity: .72; }
-.ssn-trust-seal-copy strong { font-size: 16px; font-weight: 800; font-style: italic; letter-spacing: .01em; }
-.ssn-trust-active { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 999px; border: 1px solid rgb(255 255 255 / 24%); background: rgb(255 255 255 / 9%); font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; flex-shrink: 0; }
-.ssn-trust-live-dot { position: relative; width: 6px; height: 6px; border-radius: 50%; background: var(--agent-available); flex-shrink: 0; }
-.ssn-trust-live-dot::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--agent-available); opacity: 0; animation: agent-beep 1.6s ease-out infinite; }
-.ssn-trust-by { margin-left: auto; display: flex; align-items: center; gap: 7px; padding-left: 10px; border-left: 1px solid rgb(255 255 255 / 18%); }
-.ssn-trust-by-icon { display: grid; place-items: center; width: 20px; height: 20px; flex-shrink: 0; border-radius: 6px; background: color-mix(in oklab, var(--brand-action) 22%, transparent); color: var(--brand-action); }
-.ssn-trust-by-icon svg { width: 12px; height: 12px; }
-.ssn-trust-by-copy { display: grid; line-height: 1.04; }
-.ssn-trust-by-copy small { font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
-.ssn-trust-by-copy strong { font-size: 12.5px; font-weight: 800; color: var(--brand-action); }
-.ssn-trust-by-arrow { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: rgb(255 255 255 / 14%); }
-.ssn-trust-by-arrow svg { width: 11px; height: 11px; }
+.ssn-trust { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--card); }
+.ssn-trust-seals { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; padding: 12px 18px; gap: 18px; background: var(--seal-white); border-bottom: 1px solid var(--border); }
+.ssn-seal-slot { min-width: 0; height: 66px; display: flex; align-items: center; justify-content: center; }
+.ssn-seal-slot + .ssn-seal-slot { border-left: 1px solid var(--border); padding-left: 18px; }
+.ssn-seal-slot img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.ssn-seal-trustlock { max-width: 190px; }
+.ssn-seal-comodo { max-width: 130px; }
 .ssn-trust-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .ssn-trust-item { display: flex; align-items: center; justify-content: center; gap: 7px; min-width: 0; padding: 8px 6px; background: linear-gradient(180deg, color-mix(in oklab, var(--brand-soft-blue) 62%, var(--card)), var(--card)); }
 .ssn-trust-item + .ssn-trust-item { border-left: 1px solid color-mix(in oklab, var(--primary) 14%, var(--border)); }
@@ -1762,12 +1748,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .ssn-form .answer-list { gap: 8px; margin: 16px 0 8px; }
 .ssn-form .answer-card { min-height: 50px; padding: 12px 18px; }
 @media (max-width: 620px) {
-  .ssn-trust-seal { padding: 6px 9px; gap: 8px; }
-  .ssn-trust-by { display: none; }
-  .ssn-trust-lock { width: 28px; height: 28px; }
-  .ssn-trust-lock svg:first-child { width: 15px; height: 15px; }
-  .ssn-trust-lock svg:last-child { width: 13px; height: 13px; }
-  .ssn-trust-seal-copy strong { font-size: 13.5px; }
+  .ssn-trust-seals { padding: 10px 12px; gap: 12px; }
+  .ssn-seal-slot { height: 54px; }
+  .ssn-seal-slot + .ssn-seal-slot { padding-left: 12px; }
   .ssn-trust-item { gap: 5px; padding: 6px 4px; }
   .ssn-trust-icon { width: 18px; height: 18px; border-radius: 6px; }
   .ssn-trust-icon svg { width: 11px; height: 11px; }
@@ -1780,4 +1763,4 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .ssn-form .answer-list { gap: 7px; margin: 12px 0 6px; }
   .ssn-form .answer-card { min-height: 50px; padding: 10px 14px; }
 }
-@media (prefers-reduced-motion: reduce) { .ssn-trust-seal::after, .ssn-trust-live-dot::after { animation: none; } }
+
