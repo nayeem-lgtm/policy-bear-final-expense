@@ -32,20 +32,30 @@ describe('Pre-qualification navigation', () => {
     expect(screen.getByRole('textbox', { name: 'First name' })).toBeInTheDocument()
   })
 
-  it('allows continuing without automated marketing permission', () => {
+  it('allows skipping automated marketing permission', () => {
     open('opt-in')
     expect(screen.getByRole('checkbox')).not.toBeChecked()
-    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
+    fireEvent.click(screen.getByRole('button', { name: /skip this step/ }))
     expect(window.location.hash).toBe('#step-address')
   })
 
-  it('requires explicit checkbox selection to give contact permission', () => {
+  it('advances automatically once permission is ticked', () => {
     open('opt-in')
     fireEvent.click(screen.getByRole('checkbox'))
-    expect(screen.getByRole('checkbox')).toBeChecked()
     expect(window.location.hash).toBe('#step-opt-in')
-    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
+    act(() => { vi.advanceTimersByTime(800) })
     expect(window.location.hash).toBe('#step-address')
+  })
+
+  it('advances from contact details once all are valid, with no Continue button', () => {
+    open('contact')
+    expect(screen.queryByRole('button', { name: /Continue/ })).toBeNull()
+    fireEvent.change(screen.getByRole('textbox', { name: 'First name' }), { target: { value: 'Ann' } })
+    fireEvent.change(screen.getByRole('textbox', { name: 'Last name' }), { target: { value: 'Lee' } })
+    fireEvent.change(screen.getByRole('textbox', { name: 'Email' }), { target: { value: 'ann@example.com' } })
+    fireEvent.change(screen.getByRole('textbox', { name: 'Mobile phone' }), { target: { value: '5555555555' } })
+    act(() => { vi.advanceTimersByTime(1500) })
+    expect(window.location.hash).toBe('#step-size')
   })
   it('returns from address directly to permission', () => {
     open('address')
