@@ -1324,3 +1324,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .faq-list summary { font-size: 15px; padding-block: 17px; }
   .faq-list details p { font-size: 14px; }
 }
+.faq-head h2 { font-size: 28px; }
+@media (max-width: 900px) { .faq-head h2 { font-size: 22px; } }
+@media (max-width: 520px) { .faq-head h2 { font-size: 18px; } }
