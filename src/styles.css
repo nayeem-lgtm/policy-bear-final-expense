@@ -328,7 +328,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .footer-top nav { display: flex; gap: 24px; font-size: 16px; color: var(--muted-foreground); }
 .footer-top a { min-height: 44px; display: inline-flex; align-items: center; }
 .site-footer > p { font-size: 16px; color: var(--muted-foreground); margin-top: 10px; line-height: 1.75; }
-.funnel-section { background: var(--brand-light); min-height: 690px; padding: 48px 20px 64px; }
+.funnel-section { background: var(--brand-light); min-height: 690px; padding: 20px 20px 64px; }
 .funnel-inner { width: 100%; max-width: 640px; margin: auto; }
 .wizard-standalone { padding: 30px 32px; }
 .back-button { margin: -12px 0 12px -8px; }
@@ -927,16 +927,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 /* ===== Banner + centered quote stage ===== */
-.hero-banner { position: relative; isolation: isolate; min-height: 340px; display: grid; place-items: center; overflow: hidden; background: var(--brand-deep); }
+.hero-banner { position: relative; isolation: isolate; min-height: 300px; display: grid; place-items: center; overflow: hidden; background: var(--brand-deep); }
 .hero-banner .hero-photo { opacity: 1; object-position: center 40%; }
 .hero-banner .hero-scrim { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 55%, transparent) 0%, color-mix(in oklab, var(--brand-deep) 72%, transparent) 100%); }
-.hero-banner-copy { max-width: 1120px; padding: 56px 24px; text-align: center; color: var(--light-ink); }
+.hero-banner-copy { max-width: 1120px; padding: 36px 24px 120px; text-align: center; color: var(--light-ink); }
 .hero-banner-copy h1 { font-size: clamp(28px, 3.9vw, 45px); line-height: 1.12; font-weight: 800; letter-spacing: -.01em; margin: 0 0 14px; text-shadow: 0 2px 18px color-mix(in oklab, var(--brand-deep) 60%, transparent); }
 @media (min-width: 761px) { .hero-banner-copy h1 { white-space: nowrap; } }
 .hero-banner-copy h1 span { color: var(--brand-action); }
 .hero-banner-copy p { font-size: 20px; line-height: 1.5; opacity: .95; }
 .quote-stage { background: linear-gradient(180deg, var(--brand-light), var(--background) 70%); padding: 0 20px 56px; }
-.quote-stage-inner { max-width: 640px; margin: -96px auto 0; position: relative; }
+.quote-stage-inner { max-width: 640px; margin: -120px auto 0; position: relative; }
 .quote-stage .wizard, .funnel-section .wizard { border-radius: 16px; padding: 30px 40px 32px; box-shadow: 0 24px 50px -24px color-mix(in oklab, var(--brand-deep) 40%, transparent); }
 .wizard .progress-track { height: 12px; border-radius: 999px; margin: 10px 0 30px; box-shadow: inset 0 1px 2px color-mix(in oklab, var(--brand-deep) 15%, transparent); }
 .wizard .progress-fill { border-radius: 999px; background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary) 70%, var(--brand-action))); transition: width 450ms cubic-bezier(.3,.8,.3,1); }
@@ -946,12 +946,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .wizard .continue-button { justify-content: center; gap: 10px; min-height: 62px; font-size: 20px; }
 .stage-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; margin-top: 26px; font-size: 16px; }
 @media (max-width: 760px) {
-  .hero-banner { min-height: 230px; }
-  .hero-banner-copy { padding: 36px 18px 60px; }
+  .hero-banner { min-height: 240px; }
+  .hero-banner-copy { padding: 24px 18px 92px; }
   .hero-banner-copy h1 { font-size: 32px; }
   .hero-banner-copy p { font-size: 17px; }
   .quote-stage { padding: 0 12px 40px; }
-  .quote-stage-inner { margin-top: -36px; }
+  .quote-stage-inner { margin-top: -80px; }
   .quote-stage .wizard, .hero-inner > .wizard { margin: 0; padding: 24px 18px 26px; border: 1px solid var(--border); border-radius: 14px; }
   .wizard-content h2 { font-size: 25px; }
   .stage-benefits { flex-direction: column; align-items: flex-start; padding-left: 8px; }
@@ -966,7 +966,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   box-shadow: 0 1px 2px color-mix(in oklab, var(--brand-deep) 8%, transparent), 0 30px 60px -28px color-mix(in oklab, var(--brand-deep) 45%, transparent);
 }
 .quote-stage { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 7%, var(--brand-light)), var(--background) 80%); }
-.hero-banner { min-height: 400px; }
+.hero-banner { min-height: 300px; }
 .hero-banner .hero-scrim { background: linear-gradient(180deg, color-mix(in oklab, var(--brand-deep) 40%, transparent) 0%, color-mix(in oklab, var(--brand-deep) 58%, transparent) 55%, color-mix(in oklab, var(--brand-deep) 74%, transparent) 100%); }
 .hero-banner-copy p { font-size: 21px; }
 
@@ -1171,12 +1171,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .header-call strong { font-size: 22px; }
   .header-call .call-caption { font-size: 12px; }
   .agents-available { font-size: 10px; }
-  .hero-banner { min-height: 224px; }
-  .hero-banner-copy { padding: 30px 20px 52px; }
-  .hero-banner-copy h1 { font-size: 30px; letter-spacing: 0; line-height: 1.18; }
-  .hero-banner-copy p { font-size: 17px; line-height: 1.5; max-width: 480px; margin-inline: auto; }
+  .hero-banner { min-height: 240px; }
+  .hero-banner-copy { padding: 20px 18px 96px; }
+  .hero-banner-copy h1 { font-size: 26px; letter-spacing: 0; line-height: 1.18; margin-bottom: 10px; }
+  .hero-banner-copy p { font-size: 15px; line-height: 1.4; max-width: 460px; margin-inline: auto; }
   .quote-stage { padding-inline: max(12px, env(safe-area-inset-left)); padding-bottom: 36px; }
-  .quote-stage-inner { margin-top: -28px; }
+  .quote-stage-inner { margin-top: -80px; }
   .quote-stage .wizard, .funnel-section .wizard { padding: 20px 18px 24px; border-radius: 12px; }
   .chapter-progress { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; margin-bottom: 18px; }
   .chapter-progress span, .chapter-progress span.complete { flex-direction: column; justify-content: flex-start; gap: 5px; padding: 0; min-width: 0; min-height: 58px; border-radius: 0; background: transparent; box-shadow: none; white-space: normal; font-size: 11px; line-height: 1.25; color: var(--muted-foreground); }
@@ -1221,7 +1221,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .header-call strong { font-size: 20px; }
   .header-call .call-caption { font-size: 11px; }
   .agents-available { font-size: 9px; }
-  .hero-banner-copy h1 { font-size: 28px; }
+  .hero-banner-copy h1 { font-size: 24px; }
   .quote-stage .wizard, .funnel-section .wizard { padding-inline: 14px; }
   .chapter-progress span { font-size: 11px; }
   .date-fields { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr) minmax(0, 1fr); gap: 6px; }
@@ -1307,7 +1307,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .policy-page:has(.funnel-section) .funnel-section { flex: 1 1 auto; display: flex; }
 .policy-page:has(.funnel-section) .funnel-inner { margin: auto; }
 /* Question steps sit near the top of the page, not floating mid-screen */
-.policy-page:has(.funnel-section) .funnel-inner:not(:has(.wizard-app)) { margin: 24px auto auto; }
+.policy-page:has(.funnel-section) .funnel-inner:not(:has(.wizard-app)) { margin: 8px auto auto; }
 @media (max-width: 760px) {
   .policy-page:has(.funnel-section) { display: block; min-height: 0; }
   .policy-page:has(.funnel-section) #main-content { display: block; }
