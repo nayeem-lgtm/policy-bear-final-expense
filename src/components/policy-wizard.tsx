@@ -330,8 +330,9 @@ const ssnTrustBadges = [
 function TrustBadges() {
   return <div className="ssn-trust">
     <div className="ssn-trust-seals" aria-label="Security verification seals">
-      <div className="ssn-seal-slot"><img className="ssn-seal-trustlock" src={trustlockSeal.url} alt="TrustLock — verified SSL secure" width="1395" height="509" /></div>
-      <div className="ssn-seal-slot"><img className="ssn-seal-comodo" src={comodoSeal.url} alt="Comodo Secured — SSL certificate seal" width="219" height="119" /></div>
+      <div className="ssn-seal-slot"><img className="ssn-seal" src={geotrustSeal.url} alt="Secured by GeoTrust" width="407" height="111" /></div>
+      <div className="ssn-seal-slot"><img className="ssn-seal" src={trusteSeal.url} alt="TRUSTe Certified Privacy, powered by TrustArc" width="338" height="119" /></div>
+      <div className="ssn-seal-slot"><img className="ssn-seal" src={trustlockSeal.url} alt="TrustLock verified SSL secure" width="317" height="125" /></div>
     </div>
     <div className="ssn-trust-row">
       {ssnTrustBadges.map((badge) => <span className="ssn-trust-item" key={badge.title}>
