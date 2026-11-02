@@ -76,3 +76,5 @@
 - Added a wave: generated an aligned paw-raised variant of Mr Bear (src/assets/bear-waving.png), layered it over the standing artwork in .faq-bear-stage, and cross-faded it every 9s with a small lean; verified the loop, alignment and phone layout.
 
 - Added a blink (src/assets/bear-blink.png), a hover-triggered wave, and a six-step gold paw-print trail across the section floor that steps in from the right and stops clear of his shoes; verified orientation, clearance, phone layout (trail hidden), reduced motion, 14 tests and build.
+
+- Merged the closing banner into the questions section as its own bottom row (heading left, button right, divider above), and replaced the ticket-stub button with a white card button: gold corner wedge, soft-gold paw chip, navy label and navy arrow chip that slides on hover. Verified desktop and phone, click scrolls to the form, 14 tests pass, build OK.
