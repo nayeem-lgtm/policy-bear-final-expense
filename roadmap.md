@@ -60,3 +60,5 @@
 - [x] Restyle the landing assurances as a minimal text row and change "Immediate full coverage" to "Instant approval"; verify desktop and phone.
 
 - [x] Restyle the male/female step like the owner's reference: circular topic icon beside the question, two side-by-side cards with circular icon badges (Mars/Venus), labels kept on one line. Verified 320-1280px, no overflow, selection state clear.
+
+- [x] Bring back the questions section merged with Mr Bear and the two gold-check promises in one section; verified desktop, 958, 390, 320, no overflow, slim footer from step two.
