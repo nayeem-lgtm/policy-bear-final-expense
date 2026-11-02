@@ -1,6 +1,6 @@
 # PolicyBear final expense
 
-- [ ] Polish recipient choices with automatic navigation and the reconnection permission step; verify selection, Back, voluntary consent and phone layout.
+- [x] Polish recipient choices with automatic navigation and the reconnection permission step; verified full quote flow, Back, both voluntary-consent paths, desktop and phone layouts; all 20 tests pass.
 
 - [x] Replace the old questions section with Mr Bear on the left and two professionally styled coverage promises; verified at 320, 390, 958 and 1280px, all 13 tests pass.
 
