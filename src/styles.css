@@ -277,7 +277,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-bear, .faq-bear-blink, .faq-bear-wave { position: absolute; bottom: 0; left: 50%; display: block; transform: translateX(-50%); width: auto; max-width: calc(100% + 26px); height: calc(100% + 30px); object-fit: contain; object-position: center bottom; }
 .faq-bear-blink, .faq-bear-wave { opacity: 0; }
 .faq-bear-trail { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-.faq-bear-paw { position: absolute; color: color-mix(in oklab, var(--brand-action) 78%, var(--brand-deep)); opacity: 0; animation: bear-paw-step 9s ease-in-out infinite; }
+.faq-bear-paw { position: absolute; color: color-mix(in oklab, var(--brand-action) 78%, var(--brand-deep)); fill: currentColor; stroke: none; opacity: 0; animation: bear-paw-step 9s ease-in-out infinite; }
 .faq-list { grid-area: list; min-width: 0; border-top: 1px solid var(--border); }
 .faq-list details { border-bottom: 1px solid var(--border); }
 

@@ -32,10 +32,10 @@ const faqs = [
 ]
 
 const pawTrail = [
-  { left: '0%', bottom: '2%', size: 20 },
-  { left: '8%', bottom: '12%', size: 23 },
-  { left: '17%', bottom: '2%', size: 26 },
-  { left: '26%', bottom: '12%', size: 28 },
+  { left: '0%', bottom: '3%', size: 22 },
+  { left: '7%', bottom: '7%', size: 25 },
+  { left: '14%', bottom: '2%', size: 27 },
+  { left: '21%', bottom: '6%', size: 29 },
 ]
 
 function Index() {
