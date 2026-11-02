@@ -1396,3 +1396,4 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .app-body .back-button { margin-left: -12px; }
 @media (max-width: 760px) { .app-rail { width: 100%; box-sizing: border-box; } .app-edit.app-edit { display: none; } .app-quote-card dl { justify-content: space-between; } }
+@media (max-width: 760px) { .app-summary { width: 100%; box-sizing: border-box; } .app-quote-card dl { flex: 1; } }
