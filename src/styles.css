@@ -502,7 +502,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .landing-hero { min-height: 0; background: var(--brand-light); } .hero-photo { height: 390px; width: 100%; object-position: center; opacity: .25; } .hero-scrim { height: 395px; background: linear-gradient(0deg, var(--brand-light) 0%, color-mix(in oklab, var(--brand-light) 65%, transparent) 50%, color-mix(in oklab, var(--brand-light) 80%, transparent) 100%); }
   .hero-inner { display: flex; flex-direction: column; align-items: stretch; gap: 30px; padding: 36px 20px; max-width: 600px; } .hero-copy { padding: 0; } .eyebrow { font-size: 16px; margin-bottom: 18px; } .hero-copy h1 { font-size: 38px; line-height: 1.17; margin-bottom: 18px; } .hero-description { font-size: 18px; margin-bottom: 22px; } .desktop-break { display: none; } .hero-benefits { font-size: 18px; gap: 10px; } .hero-family-note { display: none; } .photo-caption { display: none; }
   .wizard { padding: 24px; } .wizard-content h2 { font-size: 28px; } .form-trust { gap: 10px; flex-wrap: nowrap; justify-content: space-between; } .assurance-band > div { padding: 25px 20px; flex-wrap: wrap; justify-content: center; gap: 16px 24px; } .assurance-band span { font-size: 16px; } .assurance-band svg { width: 21px; height: 21px; }
-  .closing-section h2 { font-size: 26px; } .site-footer { padding: 28px 24px; } .footer-top { flex-direction: column; align-items: flex-start; gap: 12px; } .footer-top nav { flex-wrap: wrap; gap: 8px 20px; } .funnel-section { padding-top: 28px; min-height: 640px; } .date-fields { gap: 8px; } .wizard-standalone { padding: 24px; }
+  .closing-card h2 { font-size: 26px; } .site-footer { padding: 28px 24px; } .footer-top { flex-direction: column; align-items: flex-start; gap: 12px; } .footer-top nav { flex-wrap: wrap; gap: 8px 20px; } .funnel-section { padding-top: 28px; min-height: 640px; } .date-fields { gap: 8px; } .wizard-standalone { padding: 24px; }
 }
 @media (max-width: 410px) { .brand-link img { width: 145px; } .header-inner { padding: 0 16px; } .policy-action.header-call { padding-right: 13px; } .phone-circle { display: none; } .hero-copy h1 { font-size: 34px; } .hero-inner { padding: 30px 20px; } .wizard { padding: 22px 18px; } .form-trust { flex-wrap: wrap; justify-content: center; gap: 10px; } .wizard-progress { font-size: 16px; gap: 6px; } .answer-grid { gap: 16px 10px; } .answer-grid .answer-card { padding: 22px 10px; } .answer-grid .radio-circle { display: none; } .answer-card[data-state=checked] .radio-circle { display: grid; } .date-fields { grid-template-columns: 1.3fr .75fr 1fr; gap: 7px; } .field-label select { padding: 0 5px; font-size: 16px; } }
 @media (max-width: 560px) {
@@ -888,8 +888,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .pb-footer-seals .seal-hitrust-text b { font-size: 20px; }
   .pb-footer-seals .seal-geotrust { width: auto; }
   .navigation-toggle { min-width: 40px; padding: 0; }
-  .closing-section { flex-direction: column; align-items: flex-start; padding: 36px 24px; gap: 24px; }
-  .closing-section .policy-action { min-width: 0; }
+  .closing-section { padding: 36px 20px 44px; }
+  .closing-card { padding: 40px 24px; border-radius: 22px; }
+  .closing-cta { min-width: 0; }
   .hero-photo { opacity: .5; }
 }
 @media (max-width: 350px) {
@@ -1192,9 +1193,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-tagline { margin-top: 24px; font-size: 18px; line-height: 1.7; padding-inline: 8px; text-wrap: pretty; }
   .faq-list summary { font-size: 17px; line-height: 1.5; padding-block: 20px; }
   .faq-list details p { line-height: 1.7; padding-bottom: 20px; }
-  .closing-section { flex-direction: column; align-items: stretch; gap: 20px; padding: 32px 20px; }
-  .closing-section h2 { font-size: 24px; line-height: 1.4; }
-  .closing-section .policy-action { width: 100%; max-width: none; min-width: 0; }
+  .closing-section { padding: 28px 16px 36px; }
+  .closing-card { padding: 34px 20px; gap: 18px; }
+  .closing-card h2 { font-size: 23px; line-height: 1.35; }
+  .closing-sub { font-size: 13.5px; gap: 8px; }
+  .closing-cta { width: 100%; max-width: none; min-width: 0; }
   .pb-footer .pb-footer-inner { padding: 24px 16px calc(20px + env(safe-area-inset-bottom)); }
   .pb-footer-links { gap: 0 18px; }
   .pb-footer-links a { font-size: 13px; min-height: 44px; line-height: 1.45; }
