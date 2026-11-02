@@ -1306,8 +1306,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .policy-page:has(.funnel-section) #main-content { flex: 1 1 auto; display: flex; flex-direction: column; }
 .policy-page:has(.funnel-section) .funnel-section { flex: 1 1 auto; display: flex; }
 .policy-page:has(.funnel-section) .funnel-inner { margin: auto; }
-/* Question steps sit near the top of the page, not floating mid-screen */
-.policy-page:has(.funnel-section) .funnel-inner:not(:has(.wizard-app)) { margin: 8px auto auto; }
+/* Question steps sit in the vertical middle between header and footer */
+.policy-page:has(.funnel-section) .funnel-section { padding-block: 24px; }
+.policy-page:has(.funnel-section) .funnel-inner:not(:has(.wizard-app)) { margin: auto; }
 @media (max-width: 760px) {
   .policy-page:has(.funnel-section) { display: block; min-height: 0; }
   .policy-page:has(.funnel-section) #main-content { display: block; }
