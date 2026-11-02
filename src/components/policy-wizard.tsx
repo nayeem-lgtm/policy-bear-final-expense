@@ -250,7 +250,8 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   }
 
   const chapter = chapterFor(screen)
-  const appMode = chapter >= 1
+  const appMode = screen !== 'state'
+  const tip = bearTips[screen]
   const minutes = [1, 1, 2, 2]
   if (appMode) return <section className="wizard-app" id="get-covered" aria-label="Final expense application">
     <aside className="app-rail" aria-label="Application progress">
@@ -260,7 +261,10 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     </aside>
     <div className="app-main">
       <div className="app-topbar"><span>{labels[chapter]}</span><a href="tel:+18447652327" className="app-help"><Phone /> Need help?</a></div>
-      <div className="app-body">{renderScreen()}</div>
+      <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
+        <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
+        <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
+      </aside>{renderScreen()}</div> : renderScreen()}</div>
     </div>
     <aside className="app-summary" aria-label="Your quote">
       <div className="app-quote-card">
