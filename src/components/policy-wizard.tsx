@@ -154,7 +154,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const update = (key: StringAnswerKey, value: string) => { setAnswers((current) => ({ ...current, [key]: value })); setError('') }
   const go = (next: JourneyStep) => { setError(''); setResume(false); location.hash = `step-${next}`; setScreen(next) }
   const advance = (next: JourneyStep) => window.setTimeout(() => go(next), 300)
-  const back = () => { let i = screenIndex - 1; while (i > 0 && ['loading', 'underwriting', 'submitting'].includes(journeySteps[i])) i -= 1; const previous = journeySteps[Math.max(0, i)]; if (previous) go(previous) }
+  const back = () => { let i = screenIndex - 1; while (i > 0 && ['loading', 'underwriting', 'submitting'].includes(journeySteps[i] ?? '')) i -= 1; const previous = journeySteps[Math.max(0, i)]; if (previous) go(previous) }
   const choose = (key: StringAnswerKey, value: string, next?: JourneyStep) => { update(key, value); if (next) advance(next) }
   const chooseAddress = (address: AddressSuggestion) => {
     setAnswers((current) => ({ ...current, street: address.street, city: address.city || current.city, state: address.state || current.state, zip: address.zip || current.zip }))
