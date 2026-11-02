@@ -82,3 +82,5 @@
 - Application workspace now fits above the slim footer (flex chain from .policy-page to .wizard-app, rail height 100%), so copyright/Terms/Privacy is visible without scrolling. Answer option lists with three or more choices sit two across with round icon badges (who, beneficiary, callback time, payment date), the lone fifth card spans full width, and two-choice lists stay stacked. Verified at 687x679, 1440x900 and 390x844; 14 tests pass, build OK.
 
 - [x] Hide the monthly-premium panel until the illustration has been shown and remove the "Need help?" button from the workspace top bar; verified at 390, 986 and 1280px, all 14 tests pass.
+
+- [x] Put the call line back at the top right of the workspace bar (pulsing dot, "Expert agents available", (844) POL-BEAR); verified at 390, 986 and 1280px, all 14 tests pass.
