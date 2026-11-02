@@ -42,18 +42,32 @@ function Index() {
   const [step, setStep] = useState(0)
   const changeStep = useCallback((value: number) => setStep(value), [])
   const bearObserver = useRef<IntersectionObserver | null>(null)
+  const bearWaveTimer = useRef<number | null>(null)
   const attachBear = useCallback((node: HTMLDivElement | null) => {
     bearObserver.current?.disconnect()
-    if (!node || typeof IntersectionObserver === 'undefined') return
+    if (bearWaveTimer.current !== null) window.clearTimeout(bearWaveTimer.current)
+    if (!node) return
     node.classList.add('is-armed')
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        node.classList.add('is-visible')
-        observer.disconnect()
-      }
-    }, { threshold: 0.2 })
-    observer.observe(node)
-    bearObserver.current = observer
+    if (typeof IntersectionObserver === 'undefined') {
+      node.classList.add('is-visible')
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          node.classList.add('is-visible')
+          observer.disconnect()
+        }
+      }, { threshold: 0.2 })
+      observer.observe(node)
+      bearObserver.current = observer
+    }
+    const wave = () => {
+      node.classList.remove('is-waving')
+      void node.offsetWidth
+      node.classList.add('is-waving')
+      if (bearWaveTimer.current !== null) window.clearTimeout(bearWaveTimer.current)
+      bearWaveTimer.current = window.setTimeout(() => node.classList.remove('is-waving'), 2600)
+    }
+    node.addEventListener('pointerenter', wave)
   }, [])
   return <div className="policy-page">
     <PolicyHeader />
@@ -73,7 +87,7 @@ function Index() {
             <header className="faq-head">
               <h2>Final expense questions, answered.</h2>
             </header>
-            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><div className="faq-bear-stage"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /><img className="faq-bear-wave" src={bearWave} width={595} height={959} alt="" /></div></div>
+            <div className="faq-bear-wrap" aria-hidden="true" ref={attachBear}><div className="faq-bear-stage"><div className="faq-bear-lean"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /><img className="faq-bear-blink" src={bearBlink} width={595} height={959} alt="" /><img className="faq-bear-wave" src={bearWave} width={595} height={959} alt="" /></div></div><span className="faq-bear-trail">{pawTrail.map((paw, index) => <PawPrint key={paw.left} className="faq-bear-paw" size={paw.size} style={{ left: paw.left, bottom: paw.bottom, animationDelay: `${0.82 + index * 0.28}s` }} />)}</span></div>
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
           </div>
         </section>
