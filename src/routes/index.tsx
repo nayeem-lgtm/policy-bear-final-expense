@@ -49,10 +49,6 @@ function Index() {
           <div className="faq-inner">
             <header className="faq-head">
               <h2>Final expense questions, answered.</h2>
-              <ul className="faq-promises">
-                <li><span className="promise-check" aria-hidden="true"><Check /></span>No medical exam <em>required</em></li>
-                <li><span className="promise-check" aria-hidden="true"><Check /></span>Instant <em>approval</em></li>
-              </ul>
             </header>
             <div className="faq-bear-wrap" aria-hidden="true"><img className="faq-bear" src={bearGuide} width={595} height={959} alt="" /></div>
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
