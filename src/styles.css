@@ -487,8 +487,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes load-sheen { 0% { transform: translateX(-100%); } 62%, 100% { transform: translateX(100%); } }
 @keyframes load-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .load-ring-fill { stroke-dashoffset: 40; }
-  .load-bar span { transform: scaleX(1); }
+  .load-ring-fill { stroke-dashoffset: 124; }
+  .load-bar span { transform: scaleX(.55); }
   .load-ring-orbit { display: none; }
   .load-lines li.working .load-mark::before { border-top-color: var(--primary); }
   .load-lines li.working .load-line-copy { background: none; color: var(--brand-deep); }
