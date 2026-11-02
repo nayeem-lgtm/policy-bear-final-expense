@@ -35,7 +35,7 @@ describe('Pre-qualification navigation', () => {
   it('allows continuing without automated marketing permission', () => {
     open('opt-in')
     expect(screen.getByRole('checkbox')).not.toBeChecked()
-    fireEvent.click(screen.getByRole('button', { name: 'Continue', exact: true }))
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
     expect(window.location.hash).toBe('#step-address')
   })
 
@@ -44,7 +44,7 @@ describe('Pre-qualification navigation', () => {
     fireEvent.click(screen.getByRole('checkbox'))
     expect(screen.getByRole('checkbox')).toBeChecked()
     expect(window.location.hash).toBe('#step-opt-in')
-    fireEvent.click(screen.getByRole('button', { name: 'Continue', exact: true }))
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
     expect(window.location.hash).toBe('#step-address')
   })
   it('returns from address directly to permission', () => {
@@ -56,9 +56,9 @@ describe('Pre-qualification navigation', () => {
     open('address')
     fireEvent.change(screen.getByRole('textbox', { name: 'Street address' }), { target: { value: '125 Main Street' } })
     fireEvent.change(screen.getByRole('textbox', { name: 'City' }), { target: { value: 'Dallas' } })
-    fireEvent.change(screen.getByRole('combobox', { name: 'State', exact: true }), { target: { value: 'Texas' } })
+    fireEvent.change(screen.getByRole('combobox', { name: 'State' }), { target: { value: 'Texas' } })
     fireEvent.change(screen.getByRole('textbox', { name: 'ZIP code' }), { target: { value: '75201' } })
-    fireEvent.click(screen.getByRole('button', { name: 'Continue', exact: true }))
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
     expect(window.location.hash).toBe('#step-identity')
     fireEvent.click(screen.getByRole('button', { name: 'Go back to the previous question' }))
     expect(screen.getByRole('textbox', { name: 'Street address' })).toHaveValue('125 Main Street')
