@@ -18,7 +18,7 @@
 - Scope recipient radio-card styles separately from generic answer-card selectors and size them by their container, so narrow desktop columns and selected indicators cannot distort their layout.
 - Share the PolicyBear header and legal footer through the browser-safe policy-site module on the landing and legal content routes, so legal navigation and disclosures remain consistent.
 - Keep footer resource navigation, disclosure navigation and contact/social links in separate accessible groups within the shared footer; this keeps the compact layout navigable without duplicating links.
-- Keep the landing page free of standalone reassurance badge bands or mark strips; third-party accreditation and security seals appear only in the shared footer as crisp code-drawn badges and only for credentials the owner has confirmed.
+- Keep the landing page free of standalone reassurance badge bands or mark strips; footer credentials remain owner-confirmed, while the Social Security step imports original security-seal asset pointers without redrawing their artwork to preserve brand integrity.
 - Keep the contact page browser-only with the existing phone contact and no submission form; this preserves the presentation-only scope without undelivered messages.
 - Render the five legal content routes from shared browser-safe structured owner-supplied copy, preserving existing public URLs; keep general disclaimer separate from final expense disclosures so each document remains independently shareable.
 - Share contact consent across quote and callback screens, with legal links opening in new tabs so reviewing policies never interrupts entered answers; consent copy requires compliance approval before launch.
