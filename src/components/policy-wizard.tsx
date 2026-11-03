@@ -252,7 +252,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
       const index = screen === 'health-intro' ? 0 : Number(screen.slice(1)) - 1
       const item = healthQuestions[index] ?? healthQuestions[0]
       const value = answers.health[index] || ''
-      const next = (index === 7 ? 'health-review' : `h${index + 2}`) as JourneyStep
+      const next = (index === 7 ? 'underwriting' : `h${index + 2}`) as JourneyStep
       return shell(item.question, '', <div className="health-step">
         <div className="health-meta">
           <span className="health-topic"><HeartPulse /> {index === 0 ? 'A few health questions' : item.topic}</span>
@@ -266,12 +266,6 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
         {value && <div className="health-next">{continueTo(next, 'Next')}</div>}
       </div>)
     }
-    if (screen === 'health-review') { const yesCount = answers.health.filter((v) => v === 'Yes').length; return shell('Quick check of your answers', '', <div className="hreview">
-      <div className="hreview-summary"><span className="hreview-badge"><ClipboardCheck /></span><span><strong>{answers.health.filter((v) => v === 'No').length} No · {yesCount} Yes</strong><small>Tap any answer to change it.</small></span></div>
-      <ol className="hreview-list">{healthQuestions.map((item, index) => { const v = answers.health[index]; return <li key={item.topic}><button type="button" className="hreview-item" onClick={() => go(`h${index + 1}` as JourneyStep)} aria-label={`Change answer to question ${index + 1}: ${item.topic}`}><span className="hreview-num">{index + 1}</span><span className="hreview-topic">{item.topic}</span><span className={`hreview-answer ${v === 'Yes' ? 'is-yes' : v === 'No' ? 'is-no' : ''}`}>{v || '—'}</span><PenLine className="hreview-edit" /></button></li> })}</ol>
-      <CheckRow checked={confirmed} onChange={setConfirmed}>My answers are true and complete to the best of my knowledge.</CheckRow>
-      <Button variant="action" size="touch" className="continue-button" disabled={!confirmed} onClick={() => go('underwriting')}>Get my decision <ArrowRight /></Button>
-    </div>) }
     if (screen === 'underwriting') return <LoadingState icon={<ShieldCheck />} title="Reviewing your application" lines={['Reviewing your answers', 'Checking eligibility', 'Preparing your decision']} active={loadingLine} duration={2800} />
     if (screen === 'decision') return <Decision outcome={outcome} firstName={answers.firstName} coverage={coverage} price={monthly} onContinue={() => go(outcome === 'declined' ? 'gi-offer' : 'beneficiary')} onCallback={() => go('callback')} />
     if (screen === 'gi-offer') return shell('Guaranteed-issue final expense coverage', 'No health questions. Ages 50–85. Pick an amount to see your price.', <><Radio.Root value={answers.coverage} onValueChange={(value) => update('coverage', value)} className="answer-grid">{['5000', '10000', '15000', '20000', '25000'].map((value) => <Radio.Item className="answer-card" value={value} key={value}><strong>${Number(value).toLocaleString()}</strong><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}</Radio.Root><PriceCard price={calculatePrice(age || 68, answers.gender || 'Female', Math.min(coverage, 25000), answers.tobacco, 'guaranteed')} coverage={Math.min(coverage, 25000)} annual={annual} setAnnual={setAnnual} /><div className="info-panel">If death occurs from natural causes in the first 2 years, your beneficiary receives the premiums paid plus interest. Accidental loss is covered in full from day one. After 2 years, the full benefit is paid. [CARRIER_TO_CONFIRM]</div><div className="next-row"><button type="button" className="revisit-next" onClick={() => { update('coverageType', 'Guaranteed Issue'); go('beneficiary') }}>Next <ArrowRight /></button></div></>, { icon: <ShieldCheck /> })
