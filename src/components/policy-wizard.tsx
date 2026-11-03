@@ -12,14 +12,8 @@ import geotrustSeal from '@/assets/geotrust-seal.png.asset.json'
 import trusteSeal from '@/assets/truste-seal.png.asset.json'
 import trustlockSeal from '@/assets/trustlock-seal.png.asset.json'
 
-const bearTips: Partial<Record<string, { myth: string; fact: string }>> = {
-  gender: { myth: 'Life insurance is too expensive', fact: '50% of people overestimate the cost of life insurance' },
-  dob: { myth: 'Applying for life insurance is a hassle', fact: 'Applying for life insurance is fast and easy' },
-  coverage: { myth: 'The group life insurance I get at work is enough', fact: 'Group life insurance may not cover your family’s needs' },
-  tobacco: { myth: 'I don’t have dependents so I don’t need life insurance', fact: 'Life insurance will pay off student loans or mortgages in the event of your death' },
-}
+import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, TYPICAL_FINAL_EXPENSES, TYPICAL_FINAL_EXPENSES_SOURCE, aboutYouProgress, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
-import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
 type Answers = {
   zip: string; city: string; state: string; who: string; month: string; day: string; year: string
