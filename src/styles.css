@@ -1848,6 +1848,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .beneficiary-panel .app-panel-title { font-size: 15px; }
 .beneficiary-panel .field-label { font-size: 14px; gap: 4px; margin-bottom: 0; }
 .beneficiary-panel .text-field, .beneficiary-panel .field-label select { height: 46px; min-height: 46px; font-size: 16px; }
+.beneficiary-panel .panel-foot { padding-top: 8px; }
+.beneficiary-panel .panel-foot .revisit-next { min-height: 40px; height: 40px; }
 .panel-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 2px; padding-top: 9px; border-top: 1px solid var(--border); }
 .panel-hint { display: flex; align-items: center; gap: 6px; margin: 0; font-size: 12.5px; color: var(--muted-foreground); }
 .panel-hint svg { width: 14px; height: 14px; color: var(--primary); flex: none; }
@@ -1858,6 +1860,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .answer-copy strong { font-size: 14.5px; }
   .answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .answer-copy > .answer-badge { width: 24px; height: 24px; }
   .answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .answer-badge svg { width: 13px; height: 13px; }
+  .beneficiary-panel .two-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .beneficiary-panel .field-label { font-size: 13.5px; }
+  .beneficiary-panel .text-field, .beneficiary-panel .field-label select { height: 44px; min-height: 44px; font-size: 15px; }
 }
 @media (prefers-reduced-motion: reduce) { .answer-list.beneficiary-list .answer-card { transition: none; } }
 
