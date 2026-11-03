@@ -182,7 +182,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const clearCustomTimer = () => { window.clearTimeout(customTimer.current); customTimer.current = 0 }
   const healthChoice = (index: number, value: string) => {
     setAnswers((current) => ({ ...current, health: current.health.map((answer, i) => i === index ? value : answer) }))
-    advance(index === 7 ? 'health-review' : (`h${index + 2}` as JourneyStep))
+    advance(index === 7 ? 'underwriting' : (`h${index + 2}` as JourneyStep))
   }
   const dobTouched = useRef(false)
   const validDOBNow = age >= 50 && age <= 85 && Boolean(answers.day && answers.month && answers.year)
