@@ -20,10 +20,10 @@ const FED_DISTRICTS = ['', 'Boston', 'New York', 'Philadelphia', 'Cleveland', 'R
 /** ABA checksum: 3·(d1+d4+d7) + 7·(d2+d5+d8) + (d3+d6+d9) ≡ 0 mod 10. */
 export function isValidRouting(routing: string) {
   if (!/^\d{9}$/.test(routing)) return false
-  const d = routing.split('').map(Number)
+  const [a, b, c, e, f, g, h, i, j] = routing.split('').map(Number) as [number, number, number, number, number, number, number, number, number]
   const prefix = Number(routing.slice(0, 2))
   const validPrefix = (prefix >= 0 && prefix <= 12) || (prefix >= 21 && prefix <= 32) || (prefix >= 61 && prefix <= 72) || prefix === 80
-  return validPrefix && (3 * (d[0] + d[3] + d[6]) + 7 * (d[1] + d[4] + d[7]) + (d[2] + d[5] + d[8])) % 10 === 0
+  return validPrefix && (3 * (a + e + h) + 7 * (b + f + i) + (c + g + j)) % 10 === 0
 }
 
 export type RoutingResult = { status: 'incomplete' } | { status: 'invalid' } | { status: 'verified'; bank: string; detail: string }
