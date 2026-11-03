@@ -1831,3 +1831,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-panel .next-row { margin-top: 2px; }
 @keyframes app-panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .app-panel { animation: none; } }
+
+/* Opt-in mobile verification (mock OTP) */
+.otp-box { margin: 4px 0 16px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 14px; background: color-mix(in oklab, var(--primary) 4%, var(--background)); display: grid; gap: 8px; justify-items: start; }
+.otp-box.is-verified { border-color: color-mix(in oklab, var(--success) 40%, var(--border)); background: color-mix(in oklab, var(--success) 7%, var(--background)); }
+.otp-title { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--foreground); margin: 0; }
+.otp-title svg { width: 18px; height: 18px; color: var(--primary); }
+.otp-box.is-verified .otp-title svg { color: var(--success); }
+.otp-text { margin: 0; font-size: 14px; color: var(--muted-foreground); }
+.otp-disclosure { margin: 2px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--muted-foreground); }
+.otp-field { max-width: 220px; letter-spacing: .5em; font-size: 22px; font-weight: 700; text-align: center; }
