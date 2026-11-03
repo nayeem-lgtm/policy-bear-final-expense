@@ -260,7 +260,6 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
         </div>
         <div className="health-segments" aria-hidden="true">{healthQuestions.map((_, i) => <span key={i} className={i < index ? 'done' : i === index ? 'current' : undefined} />)}</div>
         {index === 0 && <p className="health-lead">Just 8 quick yes-or-no questions — no exam, no paperwork.</p>}
-        {item.explain && <p className="health-explain"><Info /> {item.explain}</p>}
         <Radio.Root aria-label={`Health question ${index + 1}`} value={value} onValueChange={(v) => healthChoice(index, v)} className="health-choices">
           {(['No', 'Yes'] as const).map((option) => <Radio.Item key={option} className={`answer-card health-card health-${option.toLowerCase()}`} value={option}><span className="health-icon" aria-hidden="true">{option === 'No' ? <Check /> : <X />}</span><span className="answer-copy"><strong>{option}</strong></span><span className="radio-circle"><Radio.Indicator><Check /></Radio.Indicator></span></Radio.Item>)}
         </Radio.Root>
