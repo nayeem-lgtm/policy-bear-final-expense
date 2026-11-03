@@ -1841,3 +1841,4 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .otp-text { margin: 0; font-size: 14px; color: var(--muted-foreground); }
 .otp-disclosure { margin: 2px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--muted-foreground); }
 .otp-field { max-width: 220px; letter-spacing: .5em; font-size: 22px; font-weight: 700; text-align: center; }
+.otp-box .revisit-next { margin: 2px 0 0; align-self: start; }
