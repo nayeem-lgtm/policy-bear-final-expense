@@ -1896,8 +1896,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pay-input.is-verified .text-field { border-color: oklch(0.6 0.15 150); box-shadow: 0 0 0 3px oklch(0.6 0.15 150 / .12); }
 .pay-input.is-invalid .text-field { border-color: var(--destructive); box-shadow: 0 0 0 3px color-mix(in oklab, var(--destructive) 12%, transparent); }
 .pay-status:empty { display: none; }
-.bank-chip { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--brand-blue) 22%, transparent); background: var(--brand-soft-blue); animation: bank-in .35s ease both; }
-.bank-chip-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--brand-blue); color: var(--primary-foreground); flex: none; }
+.bank-chip { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--primary) 22%, transparent); background: var(--brand-soft-blue); animation: bank-in .35s ease both; }
+.bank-chip-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--primary); color: var(--primary-foreground); flex: none; }
 .bank-chip-icon svg { width: 18px; height: 18px; }
 .bank-chip > span:nth-child(2) { display: grid; flex: 1; min-width: 0; }
 .bank-chip strong { font-size: 15px; color: var(--foreground); }
@@ -1906,7 +1906,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .bank-chip-ok svg { width: 14px; height: 14px; }
 .pay-error { display: flex; align-items: center; gap: 6px; margin: 0; font-size: 13px; color: var(--destructive); }
 .pay-error svg { width: 15px; height: 15px; flex: none; }
-.card-brand { position: absolute; right: 10px; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: var(--brand-blue); color: var(--primary-foreground); }
+.card-brand { position: absolute; right: 10px; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: var(--primary); color: var(--primary-foreground); }
 .pay-panel .revisit-next:disabled { opacity: .45; cursor: not-allowed; }
 @keyframes bank-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .bank-chip { animation: none; } }
