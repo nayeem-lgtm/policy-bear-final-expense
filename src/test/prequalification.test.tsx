@@ -19,6 +19,7 @@ afterEach(() => {
 })
 
 function open(step: string) {
+  if (step === 'opt-in') localStorage.setItem('policybear-demo', JSON.stringify({ answers: { phone: '5555555555' }, screen: 'opt-in', at: Date.now() }))
   window.history.replaceState(null, '', `/#step-${step}`)
   render(<PolicyWizard onStepChange={() => {}} />)
 }
