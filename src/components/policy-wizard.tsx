@@ -324,7 +324,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
 
   const chapter = chapterFor(screen)
   const appMode = screen !== 'state'
-  const tip = bearTips[screen]
+  const progress = aboutYouProgress(screen)
   const minutes = [1, 1, 2, 2]
   // The quote panel only belongs once the illustration has actually been shown.
   const quoteSeen = journeySteps.indexOf(screen) >= journeySteps.indexOf('price')
@@ -336,8 +336,8 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     </aside>
     <div className="app-main">
       <div className="app-topbar"><span>{labels[chapter]}</span><a className="app-call" href="tel:+18447652327"><span className="agent-dot" aria-hidden="true" /><span className="app-call-copy"><small>Licensed agents available</small><strong>(844) POL-BEAR</strong></span></a></div>
-      <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
-        <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
+      <div className="app-body">{progress ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Progress note from Mr Bear">
+        <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Question {progress.number} of {progress.total}</span><p className="bear-tip-time"><Clock size={15} aria-hidden="true" /> about {progress.secondsLeft} seconds left</p>{screen === 'coverage' && <CoverageGap coverage={coverage} />}</div>
         <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
       </aside>{renderScreen()}</div> : renderScreen()}</div>
     </div>
