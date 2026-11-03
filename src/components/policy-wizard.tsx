@@ -267,7 +267,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
       </div>)
     }
     if (screen === 'health-review') { const yesCount = answers.health.filter((v) => v === 'Yes').length; return shell('Quick check of your answers', '', <div className="hreview">
-      <div className="hreview-summary"><span className="hreview-badge"><ClipboardCheck /></span><span><strong>{8 - yesCount} No · {yesCount} Yes</strong><small>Tap any answer to change it.</small></span></div>
+      <div className="hreview-summary"><span className="hreview-badge"><ClipboardCheck /></span><span><strong>{answers.health.filter((v) => v === 'No').length} No · {yesCount} Yes</strong><small>Tap any answer to change it.</small></span></div>
       <ol className="hreview-list">{healthQuestions.map((item, index) => { const v = answers.health[index]; return <li key={item.topic}><button type="button" className="hreview-item" onClick={() => go(`h${index + 1}` as JourneyStep)} aria-label={`Change answer to question ${index + 1}: ${item.topic}`}><span className="hreview-num">{index + 1}</span><span className="hreview-topic">{item.topic}</span><span className={`hreview-answer ${v === 'Yes' ? 'is-yes' : v === 'No' ? 'is-no' : ''}`}>{v || '—'}</span><PenLine className="hreview-edit" /></button></li> })}</ol>
       <CheckRow checked={confirmed} onChange={setConfirmed}>My answers are true and complete to the best of my knowledge.</CheckRow>
       <Button variant="action" size="touch" className="continue-button" disabled={!confirmed} onClick={() => go('underwriting')}>Get my decision <ArrowRight /></Button>
