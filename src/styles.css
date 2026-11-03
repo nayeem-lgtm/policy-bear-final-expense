@@ -1765,3 +1765,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .ssn-form .next-row { margin-top: 8px; }
 }
 
+
+/* Health questions — unified step design */
+.health-step { display: flex; flex-direction: column; gap: 12px; }
+.health-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; order: -2; }
+.health-topic { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 9px; border-radius: 999px; background: color-mix(in oklab, var(--primary) 9%, transparent); color: var(--primary); font-size: 14px; font-weight: 700; }
+.health-topic svg { width: 16px; height: 16px; }
+.health-count { font-size: 14px; color: var(--muted-foreground); }
+.health-count b { color: var(--foreground); }
+.health-segments { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; order: -1; }
+.health-segments span { height: 5px; border-radius: 999px; background: var(--border); transition: background .3s; }
+.health-segments .done { background: var(--primary); }
+.health-segments .current { background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--primary) 35%, var(--card))); }
+.health-lead { margin: 0; font-size: 16px; font-weight: 600; color: var(--foreground); }
+.health-explain { display: flex; gap: 9px; align-items: flex-start; margin: 0; padding: 11px 14px; border-radius: 10px; background: var(--muted); color: var(--muted-foreground); font-size: 15px; line-height: 1.45; }
+.health-explain svg { flex: none; width: 17px; height: 17px; margin-top: 2px; color: var(--primary); }
+.health-step .health-choices { margin: 6px 0 0; }
+.health-card { gap: 14px; justify-content: flex-start !important; transition: transform .15s, box-shadow .2s, border-color .2s; }
+.health-card .answer-copy { flex: 1; text-align: left; }
+.health-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -14px color-mix(in oklab, var(--primary) 55%, transparent); }
+.health-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--muted); color: var(--muted-foreground); flex: none; transition: background .2s, color .2s; }
+.health-icon svg { width: 22px; height: 22px; }
+.health-no[data-state="checked"] .health-icon, .health-no:hover .health-icon { background: color-mix(in oklab, var(--primary) 12%, transparent); color: var(--primary); }
+.health-yes[data-state="checked"] .health-icon, .health-yes:hover .health-icon { background: color-mix(in oklab, var(--accent) 60%, transparent); color: var(--accent-foreground); }
+.health-next { display: flex; justify-content: flex-end; }
+@media (max-width: 620px) { .health-icon { width: 36px; height: 36px; } .health-explain { font-size: 14px; } }
+@media (prefers-reduced-motion: reduce) { .health-card, .health-segments span { transition: none; } .health-card:hover { transform: none; } }
