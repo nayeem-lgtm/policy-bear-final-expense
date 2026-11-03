@@ -469,3 +469,18 @@ function Decision({ outcome, firstName, coverage, price, onContinue, onCallback 
     <div className="celebrate-actions"><small>Illustrative result · Not an issued policy</small><Button type="button" variant="default" className="celebrate-next" onClick={onContinue}>Personalize my policy <ArrowRight /></Button></div>
   </div>
 }
+
+// Mr Bear's coverage-gap compare: the amount being picked against the typical cost of a
+// funeral, so the number on screen means something before the price appears.
+function CoverageGap({ coverage }: { coverage: number }) {
+  const scale = Math.max(coverage, TYPICAL_FINAL_EXPENSES)
+  const spare = coverage - TYPICAL_FINAL_EXPENSES
+  return <div className="gap-compare">
+    <div className="gap-row"><span>Typical final expenses</span><strong>${TYPICAL_FINAL_EXPENSES.toLocaleString()}</strong></div>
+    <div className="gap-track" aria-hidden="true"><span className="gap-fill is-typical" style={{ width: `${(TYPICAL_FINAL_EXPENSES / scale) * 100}%` }} /></div>
+    <div className="gap-row"><span>Your coverage</span><strong>${coverage.toLocaleString()}</strong></div>
+    <div className="gap-track" aria-hidden="true"><span className="gap-fill is-yours" style={{ width: `${(coverage / scale) * 100}%` }} /></div>
+    <p className="gap-note">{spare > 0 ? <><Check aria-hidden="true" /> Covered for the typical cost, with ${spare.toLocaleString()} to spare.</> : spare === 0 ? <><Check aria-hidden="true" /> Right at the typical cost.</> : <><AlertCircle aria-hidden="true" /> About ${(-spare).toLocaleString()} short of the typical cost.</>}</p>
+    <p className="gap-source">Typical cost: {TYPICAL_FINAL_EXPENSES_SOURCE} median.</p>
+  </div>
+}
