@@ -95,3 +95,5 @@
 - [x] Put the call line back at the top right of the workspace bar (pulsing dot, "Expert agents available", (844) POL-BEAR); verified at 390, 986 and 1280px, all 14 tests pass.
 
 - [x] Animate the loading screens (rate illustration, underwriting, submitting): filling dial arc with orbiting gold dot, growing progress bar, and checklist checks that pop in as each step finishes; reduced-motion users get a static mid-progress state. Verified through the real tobacco-answer transition and at 1280x900, all 14 tests pass, build OK.
+
+- [x] Redesign the benefit-recipient step: "A person" featured full width with one-line descriptions on every choice, a balanced 2x2 grid for the rest, clearer "Select a relationship" placeholder, and a compact details panel with the Next button on its own footer row; verified the step plus slim footer fit at 1048x834 and 1280x800, Next visible at 390x844, all 30 tests pass, build OK.
