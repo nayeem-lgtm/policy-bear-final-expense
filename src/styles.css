@@ -1546,7 +1546,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .answer-list:has(> .answer-card:nth-of-type(3)) .answer-card[data-state=checked] .radio-circle { display: grid; }
 }
 /* Five options — the lone fifth card spans the full width */
-.answer-list:has(> .answer-card:nth-of-type(5)):not(:has(> .answer-card:nth-of-type(6))) > .answer-card:nth-of-type(5) { grid-column: 1 / -1; }
+.answer-list:not(.beneficiary-list):has(> .answer-card:nth-of-type(5)):not(:has(> .answer-card:nth-of-type(6))) > .answer-card:nth-of-type(5) { grid-column: 1 / -1; }
 
 /* Mr Bear tip panel beside About You steps */
 .funnel-inner:has(.basic-stage):not(:has(.wizard-app)) { max-width: 1180px; }
