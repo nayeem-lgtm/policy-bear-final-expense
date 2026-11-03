@@ -1564,7 +1564,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .bear-tip { grid-column: 1; grid-row: 1; justify-self: end; width: 100%; max-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .bear-tip-bubble { position: relative; width: 100%; background: var(--card); border: 2px solid var(--primary); border-radius: 16px; padding: 14px 16px; box-shadow: 0 18px 36px -20px color-mix(in oklab, var(--primary) 50%, transparent); animation: bear-tip-in .45s ease both; }
 .bear-tip-bubble::after { content: ""; position: absolute; left: 50%; bottom: -10px; width: 16px; height: 16px; background: var(--card); border-right: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: translateX(-50%) rotate(45deg); }
-.bear-tip-title { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 2px; margin-bottom: 5px; }
 .bear-tip-bubble p { margin: 0; font-size: 14.5px; line-height: 1.4; color: var(--foreground); }
 .bear-tip-img { width: 150px; height: auto; filter: drop-shadow(0 16px 18px color-mix(in oklab, var(--foreground) 18%, transparent)); }
 @keyframes bear-tip-in { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
@@ -1580,10 +1579,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .bear-tip-bubble p { font-size: 14px; }
 }
 .bear-tip-kicker { display: block; font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
-.bear-tip-title.is-myth { border-bottom-color: var(--destructive); color: var(--foreground); }
-.bear-tip-title.is-fact { border-bottom-color: var(--success, oklch(0.6 0.15 150)); color: var(--foreground); margin-top: 12px; }
-.bear-tip-fact { font-weight: 700; }
-@media (max-width: 1140px) { .bear-tip-kicker { font-size: 14px; margin-bottom: 4px; } .bear-tip-title.is-fact { margin-top: 8px; } }
+@media (max-width: 1140px) { .bear-tip-kicker { font-size: 14px; margin-bottom: 4px; } }
 
 /* Back orb — smooth, compact back control */
 .back-orb { display: inline-flex; align-items: center; gap: 0; height: 36px; padding: 0 4px 0 0; margin: 0 0 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--brand-deep); font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 2px 8px color-mix(in oklab, var(--brand-deep) 8%, transparent); transition: gap .25s ease, padding .25s ease, border-color .25s ease, box-shadow .25s ease; animation: back-orb-in .4s ease both; }
@@ -1918,3 +1914,31 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pay-panel .field-label { gap: 4px; margin-bottom: 0; font-size: 14px; }
 .pay-panel .text-field, .pay-panel .field-label select { height: 46px; min-height: 46px; font-size: 16px; }
 .pay-form .app-panel.pay-panel { padding: 12px 16px; }
+
+/* Mr Bear's About You panel: time-to-done line and the coverage-gap compare */
+.bear-tip-time { display: flex; align-items: center; gap: 6px; margin: 0; font-size: 13.5px; font-weight: 700; color: var(--muted-foreground); }
+.bear-tip-time svg { flex: none; color: var(--primary); }
+.gap-compare { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); display: grid; gap: 3px; }
+.gap-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 12px; color: var(--muted-foreground); }
+.gap-row strong { font-size: 13.5px; color: var(--foreground); }
+.gap-track { height: 6px; border-radius: 999px; overflow: hidden; background: color-mix(in oklab, var(--primary) 9%, var(--card)); }
+.gap-fill { display: block; height: 100%; border-radius: 999px; transition: width .35s ease; }
+.gap-fill.is-typical { background: color-mix(in oklab, var(--primary) 42%, var(--card)); }
+.gap-fill.is-yours { background: var(--brand-action); }
+.gap-note { display: flex; align-items: center; gap: 6px; margin: 5px 0 0; font-size: 12.5px; font-weight: 700; color: var(--foreground); }
+.gap-note svg { flex: none; width: 14px; height: 14px; }
+.gap-note.is-covered svg { color: var(--success); }
+.gap-note.is-short svg { color: var(--destructive); }
+.gap-source { margin: 0; font-size: 11px; color: var(--muted-foreground); }
+/* Beats the generic .bear-tip-bubble p sizing rules so the panel keeps its own scale. */
+.app-body .bear-tip-bubble .bear-tip-time, .app-body .bear-tip-bubble .gap-note { font-size: 12.5px; }
+.app-body .bear-tip-bubble .gap-source { font-size: 11px; }
+/* Mr Bear's tail points at his head rather than his waist. */
+.app-body .app-tip-stage .bear-tip-bubble::after { bottom: 56px; }
+@media (max-width: 760px) {
+  .app-body .app-tip-stage .bear-tip-bubble::after { bottom: 62px; }
+  .gap-compare { margin-top: 6px; padding-top: 6px; }
+  .app-body .app-tip-stage .bear-tip-img { width: 62px; }
+}
+@media (prefers-reduced-motion: reduce) { .gap-fill { transition: none; } }
+

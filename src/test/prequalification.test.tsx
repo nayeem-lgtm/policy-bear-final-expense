@@ -142,3 +142,22 @@ describe('Application auto-advance', () => {
     expect(window.location.hash).toBe('#step-insurance')
   })
 })
+
+describe('Mr Bear progress panel', () => {
+  it('shows which About You question this is and roughly how long is left', () => {
+    open('gender')
+    expect(screen.getByText('Question 2 of 5')).toBeInTheDocument()
+    expect(screen.getByText(/about 50 seconds left/)).toBeInTheDocument()
+    expect(screen.queryByText(/Did you know?/)).toBeNull()
+  })
+  it('compares the chosen coverage with the typical cost of a funeral', () => {
+    open('coverage')
+    expect(screen.getByText('Question 4 of 5')).toBeInTheDocument()
+    expect(screen.getByText('$8,300')).toBeInTheDocument()
+    expect(screen.getByText('Typical cost: NFDA 2023 General Price List Study median.')).toBeInTheDocument()
+    expect(screen.getByText(/Covered for the typical cost, with \$6,700 to spare\./)).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Choose a different amount' }))
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '5000' } })
+    expect(screen.getByText(/About \$3,300 short of the typical cost\./)).toBeInTheDocument()
+  })
+})

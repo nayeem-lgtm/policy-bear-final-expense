@@ -12,14 +12,8 @@ import geotrustSeal from '@/assets/geotrust-seal.png.asset.json'
 import trusteSeal from '@/assets/truste-seal.png.asset.json'
 import trustlockSeal from '@/assets/trustlock-seal.png.asset.json'
 
-const bearTips: Partial<Record<string, { myth: string; fact: string }>> = {
-  gender: { myth: 'Life insurance is too expensive', fact: '50% of people overestimate the cost of life insurance' },
-  dob: { myth: 'Applying for life insurance is a hassle', fact: 'Applying for life insurance is fast and easy' },
-  coverage: { myth: 'The group life insurance I get at work is enough', fact: 'Group life insurance may not cover your family’s needs' },
-  tobacco: { myth: 'I don’t have dependents so I don’t need life insurance', fact: 'Life insurance will pay off student loans or mortgages in the event of your death' },
-}
+import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, TYPICAL_FINAL_EXPENSES, TYPICAL_FINAL_EXPENSES_SOURCE, aboutYouProgress, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
-import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
 type Answers = {
   zip: string; city: string; state: string; who: string; month: string; day: string; year: string
@@ -330,7 +324,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
 
   const chapter = chapterFor(screen)
   const appMode = screen !== 'state'
-  const tip = bearTips[screen]
+  const progress = aboutYouProgress(screen)
   const minutes = [1, 1, 2, 2]
   // The quote panel only belongs once the illustration has actually been shown.
   const quoteSeen = journeySteps.indexOf(screen) >= journeySteps.indexOf('price')
@@ -342,8 +336,8 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     </aside>
     <div className="app-main">
       <div className="app-topbar"><span>{labels[chapter]}</span><a className="app-call" href="tel:+18447652327"><span className="agent-dot" aria-hidden="true" /><span className="app-call-copy"><small>Licensed agents available</small><strong>(844) POL-BEAR</strong></span></a></div>
-      <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
-        <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
+      <div className="app-body">{progress ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Progress note from Mr Bear">
+        <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Question {progress.number} of {progress.total}</span><p className="bear-tip-time"><Clock size={15} aria-hidden="true" /> about {progress.secondsLeft} seconds left</p>{screen === 'coverage' && <CoverageGap coverage={coverage} />}</div>
         <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
       </aside>{renderScreen()}</div> : renderScreen()}</div>
     </div>
@@ -473,5 +467,20 @@ function Decision({ outcome, firstName, coverage, price, onContinue, onCallback 
       <p className="celebrate-note">{graded ? `For the first 2 years, the full benefit is paid for accidental loss; for other causes, a partial benefit applies. From year 3, your family receives the full $${coverage.toLocaleString()}. [CARRIER_TO_CONFIRM]` : 'Full benefit from day one [CARRIER_TO_CONFIRM]'}</p>
     </section>
     <div className="celebrate-actions"><small>Illustrative result · Not an issued policy</small><Button type="button" variant="default" className="celebrate-next" onClick={onContinue}>Personalize my policy <ArrowRight /></Button></div>
+  </div>
+}
+
+// Mr Bear's coverage-gap compare: the amount being picked against the typical cost of a
+// funeral, so the number on screen means something before the price appears.
+function CoverageGap({ coverage }: { coverage: number }) {
+  const scale = Math.max(coverage, TYPICAL_FINAL_EXPENSES)
+  const spare = coverage - TYPICAL_FINAL_EXPENSES
+  return <div className="gap-compare">
+    <div className="gap-row"><span>Typical final expenses</span><strong>${TYPICAL_FINAL_EXPENSES.toLocaleString()}</strong></div>
+    <div className="gap-track" aria-hidden="true"><span className="gap-fill is-typical" style={{ width: `${(TYPICAL_FINAL_EXPENSES / scale) * 100}%` }} /></div>
+    <div className="gap-row"><span>Your coverage</span><strong>${coverage.toLocaleString()}</strong></div>
+    <div className="gap-track" aria-hidden="true"><span className="gap-fill is-yours" style={{ width: `${(coverage / scale) * 100}%` }} /></div>
+    <p className={`gap-note${spare >= 0 ? ' is-covered' : ' is-short'}`}>{spare > 0 ? <><Check aria-hidden="true" /> Covered for the typical cost, with ${spare.toLocaleString()} to spare.</> : spare === 0 ? <><Check aria-hidden="true" /> Right at the typical cost.</> : <><AlertCircle aria-hidden="true" /> About ${(-spare).toLocaleString()} short of the typical cost.</>}</p>
+    <p className="gap-source">Typical cost: {TYPICAL_FINAL_EXPENSES_SOURCE} median.</p>
   </div>
 }
