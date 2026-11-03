@@ -10,6 +10,21 @@ export const basicInfoSteps = ['state', 'gender', 'dob', 'coverage', 'tobacco'] 
 export const preQualSteps = ['who', 'contact', 'size', 'opt-in'] as const
 export const quoteSteps = [...basicInfoSteps, ...preQualSteps] as const
 
+// Typical final expenses: the NFDA 2023 General Price List Study median for a funeral
+// with a viewing and burial. Owner can swap the figure; keep the source label in sync.
+export const TYPICAL_FINAL_EXPENSES = 8300
+export const TYPICAL_FINAL_EXPENSES_SOURCE = 'NFDA 2023 General Price List Study'
+
+// Mr Bear's progress note: which About You question this is, and roughly how long is
+// left before the illustration appears.
+export function aboutYouProgress(step: JourneyStep) {
+  const index = (basicInfoSteps as readonly string[]).indexOf(step)
+  if (index < 0) return null
+  const remaining = basicInfoSteps.length - index
+  return { number: index + 1, total: basicInfoSteps.length, secondsLeft: Math.max(10, Math.round((remaining * 12) / 5) * 5) }
+}
+
+
 export const journeySteps = [
   ...basicInfoSteps, 'loading', 'price', ...preQualSteps,
   'address', 'identity', 'ssn', 'health-intro', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8',
