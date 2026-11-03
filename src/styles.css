@@ -1833,9 +1833,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) { .app-panel { animation: none; } }
 
 /* Beneficiary step — one featured choice on top, described options below, compact details panel */
-.answer-list.beneficiary-list { margin: 14px 0 10px; gap: 10px; }
+.answer-list.beneficiary-list { margin: 10px 0 8px; gap: 10px; }
 .answer-list.beneficiary-list > .answer-card:first-of-type { grid-column: 1 / -1; }
-.answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .answer-card { min-height: 0; padding: 10px 13px; }
+.answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .answer-card { min-height: 0; padding: 8px 13px; }
 .answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .answer-copy { flex-direction: row; align-items: center; gap: 11px; }
 .answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .answer-copy > .answer-badge { width: 28px; height: 28px; }
 .answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .answer-badge svg { width: 15px; height: 15px; }
@@ -1844,12 +1844,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .answer-list.beneficiary-list .answer-text strong { color: var(--brand-deep); }
 .answer-list.beneficiary-list .answer-text > span { font-size: 13px; line-height: 1.3; color: var(--muted-foreground); }
 .answer-list.beneficiary-list:has(> .answer-card:nth-of-type(3)) .radio-circle { width: 20px; height: 20px; }
-.beneficiary-panel { gap: 8px; padding: 12px 14px; }
+.beneficiary-panel { gap: 8px; padding: 10px 14px; }
 .beneficiary-panel .app-panel-title { font-size: 15px; }
 .beneficiary-panel .field-label { font-size: 14px; gap: 4px; margin-bottom: 0; }
 .beneficiary-panel .text-field, .beneficiary-panel .field-label select { height: 46px; min-height: 46px; font-size: 16px; }
 .beneficiary-panel .panel-foot { padding-top: 8px; }
-.beneficiary-panel .panel-foot .revisit-next { min-height: 40px; height: 40px; }
+.beneficiary-panel .panel-foot .revisit-next { min-height: 40px; height: 40px; margin-top: 0; }
+/* Keep the whole step, slim footer included, inside one screen */
+.app-body:has(.beneficiary-list) { padding-top: 12px; }
+.wizard-content:has(.beneficiary-list) .question-head { margin-bottom: 14px; }
 .panel-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 2px; padding-top: 9px; border-top: 1px solid var(--border); }
 .panel-hint { display: flex; align-items: center; gap: 6px; margin: 0; font-size: 12.5px; color: var(--muted-foreground); }
 .panel-hint svg { width: 14px; height: 14px; color: var(--primary); flex: none; }
