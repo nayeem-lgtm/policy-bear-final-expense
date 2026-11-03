@@ -19,6 +19,7 @@ afterEach(() => {
 })
 
 function open(step: string) {
+  if (step === 'opt-in') localStorage.setItem('policybear-demo', JSON.stringify({ answers: { phone: '5555555555' }, screen: 'opt-in', at: Date.now() }))
   window.history.replaceState(null, '', `/#step-${step}`)
   render(<PolicyWizard onStepChange={() => {}} />)
 }
@@ -35,6 +36,9 @@ describe('Pre-qualification navigation', () => {
   it('allows skipping automated marketing permission', () => {
     open('opt-in')
     expect(screen.getByRole('checkbox')).not.toBeChecked()
+    expect(screen.queryByRole('button', { name: /skip this step/ })).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: /Send code/ }))
+    fireEvent.change(screen.getByRole('textbox', { name: 'Verification code' }), { target: { value: '123456' } })
     fireEvent.click(screen.getByRole('button', { name: /skip this step/ }))
     expect(window.location.hash).toBe('#step-address')
   })
@@ -42,6 +46,10 @@ describe('Pre-qualification navigation', () => {
   it('advances automatically once permission is ticked', () => {
     open('opt-in')
     fireEvent.click(screen.getByRole('checkbox'))
+    act(() => { vi.advanceTimersByTime(800) })
+    expect(window.location.hash).toBe('#step-opt-in')
+    fireEvent.click(screen.getByRole('button', { name: /Send code/ }))
+    fireEvent.change(screen.getByRole('textbox', { name: 'Verification code' }), { target: { value: '123456' } })
     expect(window.location.hash).toBe('#step-opt-in')
     act(() => { vi.advanceTimersByTime(800) })
     expect(window.location.hash).toBe('#step-address')
