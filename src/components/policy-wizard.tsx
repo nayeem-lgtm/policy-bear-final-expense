@@ -418,16 +418,14 @@ function Decision({ outcome, firstName, coverage, price, onContinue, onCallback 
   const graded = outcome === 'graded'
   const name = firstName || 'friend'
   return <div className="wizard-content celebrate">
-    <div className="celebrate-burst" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ '--i': i } as React.CSSProperties} />)}</div>
-    <div className="celebrate-seal" aria-hidden="true"><span className="celebrate-ring" /><Check /></div>
-    <p className="celebrate-kicker"><Sparkles /> {graded ? 'Good news' : 'You’re approved'}</p>
-    <h2>{graded ? `${name}, you qualify for graded coverage.` : `Congratulations, ${name}!`}</h2>
-    <p className="celebrate-sub">{graded ? 'This demo shows graded final expense coverage.' : 'This demo shows a final expense approval.'}</p>
-    <div className="celebrate-policy">
-      <div className="celebrate-policy-top"><span>{graded ? 'Graded coverage' : 'Immediate full coverage'}</span><ShieldCheck /></div>
-      <div className="celebrate-figures"><div><small>Coverage</small><strong>${coverage.toLocaleString()}</strong></div><div><small>Monthly</small><strong>${price.toFixed(2)}</strong></div></div>
+    <div className="celebrate-status"><span className="celebrate-seal" aria-hidden="true"><Check /></span><span>{graded ? 'Coverage option available' : 'Your coverage match'}</span></div>
+    <h2 id="wizard-title">{graded ? `Good news, ${name}.` : `Congratulations, ${name}!`}</h2>
+    <p className="celebrate-sub">{graded ? 'Your demo result offers graded final expense coverage.' : 'Your demo application qualifies for final expense coverage.'}</p>
+    <section className="celebrate-policy" aria-label="Your coverage summary">
+      <div className="celebrate-policy-top"><ShieldCheck /><span>{graded ? 'Graded coverage' : 'Immediate full coverage'}</span></div>
+      <dl className="celebrate-figures"><div><dt>Coverage amount</dt><dd>${coverage.toLocaleString()}</dd></div><div><dt>Monthly premium</dt><dd>${price.toFixed(2)}<span>/mo</span></dd></div></dl>
       <p className="celebrate-note">{graded ? `For the first 2 years, the full benefit is paid for accidental loss; for other causes, a partial benefit applies. From year 3, your family receives the full $${coverage.toLocaleString()}. [CARRIER_TO_CONFIRM]` : 'Full benefit from day one [CARRIER_TO_CONFIRM]'}</p>
-    </div>
-    <Button variant="action" size="touch" className="wide-button" onClick={onContinue}>{graded ? 'Accept and continue' : 'Continue to set up your policy'} <ArrowRight /></Button>
+    </section>
+    <div className="celebrate-actions"><small>Illustrative result · Not an issued policy</small><Button type="button" variant="default" className="celebrate-next" onClick={onContinue}>Personalize my policy <ArrowRight /></Button></div>
   </div>
 }
