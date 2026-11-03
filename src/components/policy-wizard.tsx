@@ -480,7 +480,7 @@ function CoverageGap({ coverage }: { coverage: number }) {
     <div className="gap-track" aria-hidden="true"><span className="gap-fill is-typical" style={{ width: `${(TYPICAL_FINAL_EXPENSES / scale) * 100}%` }} /></div>
     <div className="gap-row"><span>Your coverage</span><strong>${coverage.toLocaleString()}</strong></div>
     <div className="gap-track" aria-hidden="true"><span className="gap-fill is-yours" style={{ width: `${(coverage / scale) * 100}%` }} /></div>
-    <p className="gap-note">{spare > 0 ? <><Check aria-hidden="true" /> Covered for the typical cost, with ${spare.toLocaleString()} to spare.</> : spare === 0 ? <><Check aria-hidden="true" /> Right at the typical cost.</> : <><AlertCircle aria-hidden="true" /> About ${(-spare).toLocaleString()} short of the typical cost.</>}</p>
+    <p className={`gap-note${spare >= 0 ? ' is-covered' : ' is-short'}`}>{spare > 0 ? <><Check aria-hidden="true" /> Covered for the typical cost, with ${spare.toLocaleString()} to spare.</> : spare === 0 ? <><Check aria-hidden="true" /> Right at the typical cost.</> : <><AlertCircle aria-hidden="true" /> About ${(-spare).toLocaleString()} short of the typical cost.</>}</p>
     <p className="gap-source">Typical cost: {TYPICAL_FINAL_EXPENSES_SOURCE} median.</p>
   </div>
 }
