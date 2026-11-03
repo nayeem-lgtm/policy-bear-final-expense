@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, TYPICAL_FINAL_EXPENSES, TYPICAL_FINAL_EXPENSES_SOURCE, aboutYouProgress, basicInfoSteps, chapterFor, journeySteps, preQualSteps, quoteSteps } from '@/lib/final-expense-demo'
+import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, basicInfoSteps, chapterFor, journeySteps, preQualSteps, quoteSteps } from '@/lib/final-expense-demo'
 
 describe('Coverage range', () => {
   it('runs from $5,000 to $50,000 as the owner offers it', () => {
