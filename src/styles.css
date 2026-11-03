@@ -1918,20 +1918,27 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* Mr Bear's About You panel: time-to-done line and the coverage-gap compare */
 .bear-tip-time { display: flex; align-items: center; gap: 6px; margin: 0; font-size: 13.5px; font-weight: 700; color: var(--muted-foreground); }
 .bear-tip-time svg { flex: none; color: var(--primary); }
-.gap-compare { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); display: grid; gap: 5px; }
-.gap-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 12.5px; color: var(--muted-foreground); }
-.gap-row strong { font-size: 14px; color: var(--foreground); }
-.gap-track { height: 8px; border-radius: 999px; overflow: hidden; background: color-mix(in oklab, var(--primary) 9%, var(--card)); }
+.gap-compare { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); display: grid; gap: 3px; }
+.gap-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 12px; color: var(--muted-foreground); }
+.gap-row strong { font-size: 13.5px; color: var(--foreground); }
+.gap-track { height: 6px; border-radius: 999px; overflow: hidden; background: color-mix(in oklab, var(--primary) 9%, var(--card)); }
 .gap-fill { display: block; height: 100%; border-radius: 999px; transition: width .35s ease; }
 .gap-fill.is-typical { background: color-mix(in oklab, var(--primary) 42%, var(--card)); }
 .gap-fill.is-yours { background: var(--brand-action); }
-.gap-note { display: flex; align-items: center; gap: 6px; margin: 4px 0 0; font-size: 13px; font-weight: 700; color: var(--foreground); }
-.gap-note svg { flex: none; width: 15px; height: 15px; }
+.gap-note { display: flex; align-items: center; gap: 6px; margin: 5px 0 0; font-size: 12.5px; font-weight: 700; color: var(--foreground); }
+.gap-note svg { flex: none; width: 14px; height: 14px; }
 .gap-note.is-covered svg { color: var(--success); }
 .gap-note.is-short svg { color: var(--destructive); }
-.gap-source { margin: 0; font-size: 11.5px; color: var(--muted-foreground); }
+.gap-source { margin: 0; font-size: 11px; color: var(--muted-foreground); }
 /* Beats the generic .bear-tip-bubble p sizing rules so the panel keeps its own scale. */
-.app-body .bear-tip-bubble .bear-tip-time, .app-body .bear-tip-bubble .gap-note { font-size: 13px; }
-.app-body .bear-tip-bubble .gap-source { font-size: 11.5px; }
-@media (max-width: 760px) { .gap-compare { margin-top: 8px; padding-top: 8px; } .gap-row { font-size: 12px; } .gap-row strong { font-size: 13px; } }
+.app-body .bear-tip-bubble .bear-tip-time, .app-body .bear-tip-bubble .gap-note { font-size: 12.5px; }
+.app-body .bear-tip-bubble .gap-source { font-size: 11px; }
+/* Mr Bear's tail points at his head rather than his waist. */
+.app-body .app-tip-stage .bear-tip-bubble::after { bottom: 56px; }
+@media (max-width: 760px) {
+  .app-body .app-tip-stage .bear-tip-bubble::after { bottom: 62px; }
+  .gap-compare { margin-top: 6px; padding-top: 6px; }
+  .app-body .app-tip-stage .bear-tip-img { width: 62px; }
+}
 @media (prefers-reduced-motion: reduce) { .gap-fill { transition: none; } }
+
