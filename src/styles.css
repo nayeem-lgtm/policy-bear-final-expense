@@ -1834,3 +1834,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .celebrate-figures strong { font-size: 28px; color: var(--primary); }
 .celebrate-note { margin: 0; padding: 10px 16px; border-top: 1px solid var(--border); background: var(--muted); font-size: 14px; color: var(--muted-foreground); }
 @media (prefers-reduced-motion: reduce) { .celebrate-burst { display: none; } .celebrate-seal, .celebrate-ring { animation: none; } }
+
+/* Application section panels */
+.app-form { display: flex; flex-direction: column; gap: 14px; }
+.app-panel { display: flex; flex-direction: column; gap: 12px; padding: 16px; margin-top: 4px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); box-shadow: 0 14px 30px -26px color-mix(in oklab, var(--primary) 70%, transparent); animation: app-panel-in .3s ease-out both; }
+.app-panel-title { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 16px; font-weight: 700; color: var(--foreground); }
+.app-panel-title svg { width: 18px; height: 18px; color: var(--primary); flex: none; }
+.app-panel .next-row { margin-top: 2px; }
+@keyframes app-panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .app-panel { animation: none; } }
