@@ -101,3 +101,25 @@ describe('Identity split', () => {
     expect(screen.getByText('Will you be the policy owner and the person paying?')).toBeInTheDocument()
   })
 })
+
+describe('Application auto-advance', () => {
+  it('moves on from other insurance when No is chosen', () => {
+    open('insurance')
+    fireEvent.click(screen.getByRole('radio', { name: /^No/ }))
+    act(() => { vi.advanceTimersByTime(400) })
+    expect(window.location.hash).toBe('#step-payment')
+  })
+  it('moves on from draft date with one tap', () => {
+    open('draft')
+    fireEvent.click(screen.getByRole('radio', { name: /^1st of the month/ }))
+    act(() => { vi.advanceTimersByTime(400) })
+    expect(window.location.hash).toBe('#step-review')
+  })
+  it('stays on beneficiary when A person is chosen so details can be entered', () => {
+    open('beneficiary')
+    fireEvent.click(screen.getByRole('radio', { name: /^A person/ }))
+    act(() => { vi.advanceTimersByTime(400) })
+    expect(window.location.hash).toBe('#step-beneficiary')
+    expect(screen.getByRole('textbox', { name: 'First name' })).toBeInTheDocument()
+  })
+})
