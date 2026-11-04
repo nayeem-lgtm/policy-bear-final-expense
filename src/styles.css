@@ -1950,3 +1950,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-tip-stage .bear-tip-myth { font-size: 12.5px !important; color: var(--muted-foreground) !important; }
 .app-tip-stage .bear-tip-fact { font-size: 13.5px !important; color: var(--brand-deep) !important; }
 @media (max-width: 760px) { .app-body .app-tip-stage .wizard-content h2 { font-size: 22px; } }
+
+/* Segmented toggle for two-option profile questions */
+.app-tip-stage .answer-list.answer-list-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; border-radius: 16px; background: color-mix(in oklab, var(--brand-deep) 7%, var(--muted)); }
+.app-tip-stage .answer-list.answer-list-pair .answer-card { min-height: 60px; padding: 10px 14px; justify-content: center; border: 0; border-radius: 12px; background: transparent; box-shadow: none; }
+.app-tip-stage .answer-list.answer-list-pair .answer-card::before { display: none; }
+.app-tip-stage .answer-list.answer-list-pair .answer-card:hover { background: color-mix(in oklab, var(--card) 55%, transparent); box-shadow: none; }
+.app-tip-stage .answer-list.answer-list-pair .answer-copy { justify-content: center; gap: 10px; flex: 0 1 auto; }
+.app-tip-stage .answer-list.answer-list-pair .answer-badge { width: 30px !important; height: 30px !important; border-radius: 50%; background: transparent; color: color-mix(in oklab, var(--brand-deep) 60%, transparent); }
+.app-tip-stage .answer-list.answer-list-pair .answer-badge svg { width: 20px; height: 20px; }
+.app-tip-stage .answer-list.answer-list-pair .answer-copy strong { font-size: 17px; font-weight: 600; color: color-mix(in oklab, var(--brand-deep) 65%, transparent); }
+.app-tip-stage .answer-list.answer-list-pair .answer-card[data-state=checked] { background: var(--card); box-shadow: 0 6px 16px -8px color-mix(in oklab, var(--brand-deep) 35%, transparent); }
+.app-tip-stage .answer-list.answer-list-pair .answer-card[data-state=checked] .answer-badge { background: color-mix(in oklab, var(--primary) 12%, transparent); color: var(--primary); }
+.app-tip-stage .answer-list.answer-list-pair .answer-card[data-state=checked] strong { color: var(--primary); }
+.app-tip-stage .question-head { text-align: center; }
