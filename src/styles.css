@@ -1391,17 +1391,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-cta h2 { margin: 0; min-width: 0; font-size: 22px; line-height: 1.35; letter-spacing: -0.015em; font-weight: 700; color: var(--brand-deep); text-wrap: balance; }
 .faq-cta-hl { background: linear-gradient(180deg, transparent 0 58%, var(--tagline-highlight) 58% 92%, transparent 92%); padding: 0 3px; white-space: nowrap; }
 .faq-cta-btn { position: relative; display: inline-flex; align-items: flex-end; min-width: 274px; padding: 12px 0 12px; color: var(--brand-deep); text-decoration: none; flex-shrink: 0; }
-.faq-cta-btn::before { content: ""; position: absolute; left: 0; right: 52px; bottom: 12px; height: 1px; background: var(--brand-action); transition: height 240ms ease; }
-.faq-cta-label { font-size: 17px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; padding-bottom: 9px; white-space: nowrap; }
-.faq-cta-path { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 0 14px 5px 20px; min-width: 46px; }
-.faq-cta-step { position: relative; z-index: 1; color: color-mix(in oklab, var(--brand-action) 45%, var(--brand-deep)); opacity: 0.75; transform: rotate(-12deg); transition: opacity 240ms ease, transform 240ms ease; }
-.faq-cta-step:nth-child(2) { transform: rotate(9deg) translateY(-3px); transition-delay: 60ms; }
-.faq-cta-step:nth-child(3) { transform: rotate(-5deg); transition-delay: 120ms; }
+.faq-cta-btn::before { content: ""; position: absolute; left: 0; right: 46px; bottom: 12px; height: 1px; background: var(--brand-action); transition: height 240ms ease; }
+.faq-cta-label { font-size: 17px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; padding-bottom: 12px; white-space: nowrap; }
+.faq-cta-path { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 0 12px 5px 14px; min-width: 46px; }
+.faq-cta-step { position: relative; z-index: 1; color: color-mix(in oklab, var(--brand-action) 45%, var(--brand-deep)); opacity: 0.75; transform: rotate(-10deg); transition: opacity 240ms ease, transform 240ms ease; }
+.faq-cta-step:nth-child(2) { transform: rotate(8deg); transition-delay: 60ms; }
+.faq-cta-step:nth-child(3) { transform: rotate(-6deg); transition-delay: 120ms; }
 .faq-cta-arrow { position: relative; z-index: 1; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--primary); color: var(--primary-foreground); flex-shrink: 0; box-shadow: 0 12px 24px -16px color-mix(in oklab, var(--primary) 85%, transparent); transition: transform 240ms ease, box-shadow 240ms ease; }
 .faq-cta-btn:hover::before { height: 2px; }
-.faq-cta-btn:hover .faq-cta-step { opacity: 0.95; transform: rotate(-12deg) translateY(-2px); }
-.faq-cta-btn:hover .faq-cta-step:nth-child(2) { transform: rotate(9deg) translateY(-5px); }
-.faq-cta-btn:hover .faq-cta-step:nth-child(3) { transform: rotate(-5deg) translateY(-2px); }
+.faq-cta-btn:hover .faq-cta-step { opacity: 0.95; transform: rotate(-10deg) translateX(2px); }
+.faq-cta-btn:hover .faq-cta-step:nth-child(2) { transform: rotate(8deg) translateX(2px); }
+.faq-cta-btn:hover .faq-cta-step:nth-child(3) { transform: rotate(-6deg) translateX(2px); }
 .faq-cta-btn:hover .faq-cta-arrow { transform: translateX(5px); box-shadow: 0 16px 28px -16px color-mix(in oklab, var(--primary) 90%, transparent); }
 .faq-cta-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; border-radius: 8px; }
 @media (prefers-reduced-motion: reduce) { .faq-cta-btn::before, .faq-cta-step, .faq-cta-arrow { transition: none; } }
