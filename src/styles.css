@@ -1314,24 +1314,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .answer-list-pair .answer-card { min-width: 0; gap: 12px; }
 .answer-list-pair .answer-copy { flex-direction: row; align-items: center; gap: 11px; flex: 1 1 auto; min-width: 0; }
 .answer-list-pair .answer-copy strong { white-space: normal; overflow-wrap: anywhere; line-height: 1.25; min-width: 0; }
-.radio-circle > span { display: grid; place-items: center; width: 100%; height: 100%; }
-.radio-circle svg { width: 14px; height: 14px; display: block; }
 .answer-copy > .answer-badge { display: grid; place-items: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: color-mix(in oklab, var(--brand-deep) 7%, var(--muted)); color: var(--brand-deep); transition: background 150ms, color 150ms; }
 .answer-badge svg { width: 17px; height: 17px; }
 .answer-card[data-state=checked] .answer-badge { background: color-mix(in oklab, var(--primary) 13%, var(--background)); color: var(--primary); }
 .tobacco-choices .answer-card, .sex-choices .answer-card { min-height: 84px; }
-.sex-choices .answer-badge { width: 46px !important; height: 46px !important; }
-.sex-choices .answer-badge svg { width: 22px; height: 22px; }
 .sex-choices .answer-copy strong { font-size: 18px; font-weight: 600; }
-.sex-choices .answer-card[data-state=checked] { border-color: color-mix(in oklab, var(--success) 25%, var(--border)); background: color-mix(in oklab, var(--success) 10%, var(--background)); }
-.sex-choices .answer-card[data-state=checked] .answer-badge { background: var(--background); color: var(--brand-deep); }
-.sex-choices .radio-circle { border-color: transparent; }
-.sex-choices .answer-card[data-state=checked] .radio-circle { background: var(--success); border-color: var(--success); color: var(--primary-foreground); }
-.tobacco-choices .answer-card[data-state=checked] { border-color: color-mix(in oklab, var(--success) 25%, var(--border)); background: color-mix(in oklab, var(--success) 10%, var(--background)); }
-.tobacco-choices .answer-card[data-state=checked] .answer-badge { background: var(--background); color: var(--primary); }
-.tobacco-choices .radio-circle { border-color: transparent; }
-.tobacco-choices .answer-card[data-state=checked] .radio-circle { background: var(--success); border-color: var(--success); color: var(--primary-foreground); }
-.tobacco-choices .radio-circle svg { width: 16px; height: 16px; }
 @media (max-width: 760px) {
   .question-head { gap: 12px; margin-bottom: 16px; }
   .question-badge { width: 40px; height: 40px; }
@@ -1644,10 +1631,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .recipient-copy small { font-size: 12px; line-height: 1.4; color: var(--muted-foreground); overflow-wrap: anywhere; }
 .recipient-status { grid-column: 2; grid-row: 1; display: grid; place-items: center; width: 24px; height: 24px; align-self: center; color: var(--primary); }
 .recipient-status svg { width: 17px; height: 17px; }
-.recipient-check { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--primary); color: var(--primary-foreground); }
+.recipient-choice[data-state=checked] .recipient-arrow { transform: translateX(3px); }
 .recipient-choice:hover, .recipient-choice[data-state=checked] { border-color: var(--primary); background: var(--brand-soft-blue); }
 .recipient-choice:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
-.recipient-choice[data-state=checked] .recipient-arrow { display: none; }
+.recipient-arrow { transition: transform 180ms ease; }
 @container (max-width: 380px) { .recipient-choice { height: 178px; padding: 12px; gap: 10px; } .recipient-copy strong { font-size: 14px; } }
 .recipient-note { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 18px 0 0; font-size: 13px; color: var(--muted-foreground); }
 .recipient-note svg { width: 15px; color: var(--primary); }
@@ -1939,22 +1926,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-body .app-tip-stage { gap: 0; position: relative; }
 .app-body .app-tip-stage > .back-orb { margin: 0 0 18px; }
 .app-body .app-tip-stage > .wizard-content { background: transparent; border: 0; box-shadow: none; padding: 0; border-radius: 0; }
-.app-tip-stage .question-kicker { display: block; font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
-.app-tip-stage .question-head { margin-bottom: 22px; }
+.app-tip-stage .question-head { margin-bottom: 24px; }
 .app-tip-stage .question-head .question-badge { display: none; }
 .app-body .app-tip-stage .wizard-content h2 { font-size: 28px; line-height: 1.2; letter-spacing: -0.025em; color: var(--brand-deep); }
-.app-tip-stage .answer-list, .app-tip-stage .answer-list-pair { display: grid; grid-template-columns: 1fr; gap: 10px; counter-reset: opt; }
-.app-tip-stage .answer-list .answer-card { counter-increment: opt; flex-direction: row; justify-content: space-between; min-height: 62px; padding: 16px 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); box-shadow: none; transform: none; }
-.app-tip-stage .answer-list .answer-card:hover { border-color: color-mix(in oklab, var(--primary) 55%, var(--border)); background: var(--card); box-shadow: 0 8px 18px -14px color-mix(in oklab, var(--brand-deep) 50%, transparent); }
-.app-tip-stage .answer-list .answer-copy { flex-direction: row; align-items: center; gap: 14px; text-align: left; }
-.app-tip-stage .answer-list .answer-copy::before { content: counter(opt, upper-alpha); display: grid; place-items: center; width: 26px; height: 26px; flex: none; border-radius: 6px; background: var(--muted); color: var(--muted-foreground); font-size: 12px; font-weight: 700; transition: background 150ms, color 150ms; }
-.app-tip-stage .answer-list .answer-badge { display: none !important; }
+.app-tip-stage .answer-list, .app-tip-stage .answer-list-pair { display: grid; grid-template-columns: 1fr; gap: 11px; }
+.app-tip-stage .answer-list .answer-card { position: relative; overflow: hidden; flex-direction: row; align-items: center; justify-content: flex-start; min-height: 68px; padding: 14px 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); box-shadow: none; transform: none; transition: border-color 160ms, background 160ms, box-shadow 220ms; }
+.app-tip-stage .answer-list .answer-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--primary); transform: scaleY(0); transition: transform 240ms cubic-bezier(.2,.7,.3,1); }
+.app-tip-stage .answer-list .answer-card:hover { border-color: color-mix(in oklab, var(--primary) 50%, var(--border)); box-shadow: 0 8px 18px -14px color-mix(in oklab, var(--brand-deep) 50%, transparent); }
+.app-tip-stage .answer-list .answer-copy { flex-direction: row; align-items: center; gap: 15px; text-align: left; }
+.app-tip-stage .answer-list .answer-badge { display: grid; place-items: center; width: 42px; height: 42px; flex: none; border-radius: 12px; background: color-mix(in oklab, var(--brand-deep) 6%, var(--muted)); color: var(--brand-deep); transition: background 160ms, color 160ms; }
+.app-tip-stage .answer-list .answer-badge svg { width: 20px; height: 20px; }
 .app-tip-stage .answer-list .answer-copy strong { font-size: 17px; font-weight: 600; color: var(--brand-deep); }
-.app-tip-stage .answer-list .radio-circle { position: static; width: 22px; height: 22px; border: 0; background: transparent; }
-.app-tip-stage .answer-list .answer-card[data-state=checked] { border: 2px solid var(--primary); padding: 15px 19px; background: var(--card); box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 10%, transparent); }
-.app-tip-stage .answer-list .answer-card[data-state=checked] .answer-copy::before { background: var(--primary); color: var(--primary-foreground); }
-.app-tip-stage .answer-list .answer-card[data-state=checked] .radio-circle { background: transparent; color: var(--primary); border: 0; }
-.app-tip-stage .tobacco-choices .answer-card[data-state=checked], .app-tip-stage .sex-choices .answer-card[data-state=checked] { background: var(--card); border-color: var(--primary); }
+.app-tip-stage .answer-list .answer-card[data-state=checked] { border-color: var(--primary); background: color-mix(in oklab, var(--primary) 7%, var(--card)); box-shadow: 0 10px 24px -18px color-mix(in oklab, var(--primary) 75%, transparent); }
+.app-tip-stage .answer-list .answer-card[data-state=checked]::before { transform: scaleY(1); }
+.app-tip-stage .answer-list .answer-card[data-state=checked] .answer-badge { background: var(--primary); color: var(--primary-foreground); }
+.app-tip-stage .tobacco-choices .answer-card[data-state=checked], .app-tip-stage .sex-choices .answer-card[data-state=checked] { background: color-mix(in oklab, var(--primary) 7%, var(--card)); border-color: var(--primary); }
 /* Fact line under the form */
 .app-body .app-tip-stage .bear-tip { order: 3; margin-top: 26px; flex-direction: row; align-items: center; gap: 12px; padding: 14px 0 0; border-top: 1px solid var(--border); background: transparent; }
 .app-body .app-tip-stage .bear-tip-img { width: 40px; margin: 0; filter: none; align-self: flex-start; }
