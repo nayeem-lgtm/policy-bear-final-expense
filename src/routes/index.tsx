@@ -78,6 +78,25 @@ function Index() {
             </div>
           </div>
         </section>
+        <section className="fact-lab" aria-label="Fact check design concepts">
+          <div className="fact-lab-inner">
+            <h2 className="fact-lab-title">Fact check — four directions</h2>
+            <div className="fact-lab-grid">
+              <article className="fact-lab-cell"><span className="fact-lab-tag">A · Flip card</span>
+                <div className="flab flab-flip"><div className="flab-spin"><div className="flab-face flab-front"><span className="flab-kicker">Myth</span><p>Applying for life insurance is a hassle</p></div><div className="flab-face flab-back"><span className="flab-kicker">Fact</span><p>Applying for life insurance is fast and easy</p></div></div></div>
+              </article>
+              <article className="fact-lab-cell"><span className="fact-lab-tag">B · Myth / fact chips</span>
+                <div className="flab flab-chips"><p className="flab-row"><span className="flab-chip is-myth">Myth</span><s>Applying for life insurance is a hassle</s></p><p className="flab-row"><span className="flab-chip is-fact">Fact</span><strong>Applying for life insurance is fast and easy</strong></p></div>
+              </article>
+              <article className="fact-lab-cell"><span className="fact-lab-tag">C · Gold wipe reveal</span>
+                <div className="flab flab-wipe"><p className="flab-myth-line">Applying for life insurance is a hassle</p><p className="flab-fact-line">Applying for life insurance is fast and easy</p><span className="flab-wipe-bar" aria-hidden="true" /></div>
+              </article>
+              <article className="fact-lab-cell"><span className="fact-lab-tag">D · Mr Bear holds the note</span>
+                <div className="flab flab-note"><img className="flab-note-bear" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" /><div className="flab-note-card"><span className="flab-kicker">Mr Bear says</span><p>Applying for life insurance is fast and easy</p><s className="flab-note-myth">Applying for life insurance is a hassle</s></div></div>
+              </article>
+            </div>
+          </div>
+        </section>
       </>}
     </main>
     {step === 0 ? <PolicyFooter /> : <SlimFooter />}
