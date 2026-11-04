@@ -213,8 +213,8 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     {options?.back !== false && screen !== 'state' && !['loading', 'underwriting', 'submitting'].includes(screen) && <button type="button" className="back-button back-orb" onClick={back} aria-label="Go back to the previous question"><span className="back-orb-icon"><ArrowLeft /></span><span className="back-orb-label">Back</span></button>}
     <div className={`wizard-content ${options?.compact ? 'compact-content' : ''}`} key={screen}>
       {options?.icon
-        ? <div className="question-head"><span className="question-badge" aria-hidden="true">{options.icon}</span><div className="question-head-copy"><h2 id="wizard-title" ref={heading} tabIndex={-1}>{title}</h2>{helper && <p className="question-helper">{helper}</p>}</div></div>
-        : <><h2 id="wizard-title" ref={heading} tabIndex={-1}>{title}</h2>{helper && <p className="question-helper">{helper}</p>}</>}
+        ? <div className="question-head"><span className="question-badge" aria-hidden="true">{options.icon}</span><div className="question-head-copy">{chapterFor(screen) === 0 && screen !== 'state' && <span className="question-kicker">Question {chapterProgress(screen).position} of {chapterProgress(screen).total}</span>}<h2 id="wizard-title" ref={heading} tabIndex={-1}>{title}</h2>{helper && <p className="question-helper">{helper}</p>}</div></div>
+        : <>{chapterFor(screen) === 0 && screen !== 'state' && <span className="question-kicker">Question {chapterProgress(screen).position} of {chapterProgress(screen).total}</span>}<h2 id="wizard-title" ref={heading} tabIndex={-1}>{title}</h2>{helper && <p className="question-helper">{helper}</p>}</>}
       {content}
       {error && <div className="form-error" role="alert"><AlertCircle /> {error}</div>}
     </div>
