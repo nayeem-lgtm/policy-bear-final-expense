@@ -40,11 +40,14 @@ const phone = '[FE_PHONE]'
 const SexBadgeIcon = () => <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><g className="sex-mark-mars"><circle cx="7.5" cy="8.5" r="4" /><path d="M10.33 5.67 13.2 2.8M13.2 2.8h-2.6M13.2 2.8v2.6" /></g><g className="sex-mark-venus"><circle cx="16.5" cy="14" r="4" /><path d="M16.5 18v3.5M14.3 20.1h4.4" /></g></svg>
 const DateBadgeIcon = () => <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><g className="date-frame"><rect x="3.2" y="5.2" width="17.6" height="15.6" rx="3.4" /><path d="M8 3.2v4M16 3.2v4M3.2 10.1h17.6" /></g><g className="date-mark"><circle cx="8.9" cy="14.1" r="1.15" /><circle cx="12" cy="13.2" r="1.2" /><circle cx="15.1" cy="14.1" r="1.15" /><ellipse cx="12" cy="17.7" rx="2.7" ry="2" /></g></svg>
 const PawGlyph = () => <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="5.6" cy="11.2" rx="2.1" ry="2.7" transform="rotate(-20 5.6 11.2)" /><ellipse cx="9.7" cy="7.4" rx="2.1" ry="2.8" transform="rotate(-7 9.7 7.4)" /><ellipse cx="14.3" cy="7.4" rx="2.1" ry="2.8" transform="rotate(7 14.3 7.4)" /><ellipse cx="18.4" cy="11.2" rx="2.1" ry="2.7" transform="rotate(20 18.4 11.2)" /><path d="M12 12.4c3.3 0 6 2.2 6 4.7 0 2.4-2.3 3.7-4.4 2.9-1-.4-2.2-.4-3.2 0-2.1.8-4.4-.5-4.4-2.9 0-2.5 2.7-4.7 6-4.7Z" /></svg>
+// Coverage icons: hand-drawn coins that grow with the amount — brand blue strokes, gold accents.
+const CoinIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7.2" /><path className="coin-accent" d="M12 8.4v7.2M14.2 10c-.5-.8-1.4-1.2-2.2-1.2-1.2 0-2.1.8-2.1 1.8 0 2.5 4.3 1.3 4.3 3.8 0 1-.9 1.8-2.2 1.8-.9 0-1.8-.5-2.2-1.4" /></svg>
+const CoinStackIcon = ({ coins, sparkle = false }: { coins: number; sparkle?: boolean }) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{Array.from({ length: coins }, (_, i) => { const top = 17.8 - i * 3.6; return <g key={i}><ellipse cx="10.5" cy={top} rx="6" ry="2.5" />{i === 0 && <path d={`M4.5 ${top}v3.6M16.5 ${top}v3.6`} />}</g> })}{sparkle && <path className="coin-accent" d="M19 3.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9Z" />}</svg>
 const coverageOptions = [
-  { value: '10000', label: 'A dignified farewell', icon: <Heart /> },
-  { value: '15000', label: 'Funeral & final bills', icon: <ShieldCheck />, popular: true },
-  { value: '20000', label: 'Cushion for loved ones', icon: <Sparkles /> },
-  { value: '25000', label: 'Fullest peace of mind', icon: <Sun /> },
+  { value: '10000', icon: <CoinIcon /> },
+  { value: '15000', icon: <CoinStackIcon coins={2} />, popular: true },
+  { value: '20000', icon: <CoinStackIcon coins={3} /> },
+  { value: '25000', icon: <CoinStackIcon coins={3} sparkle /> },
 ]
 const whoIcons: Record<string, React.ReactNode> = { Me: <User />, 'My spouse or partner': <Heart />, 'My mom or dad': <Users />, 'Someone else': <UserRound /> }
 const whoDescriptions: Record<string, string> = { Me: 'Protection for my loved ones', 'My spouse or partner': 'Planning our future together', 'My mom or dad': 'Helping someone I love', 'Someone else': 'Supporting someone close' }
