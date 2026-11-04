@@ -1970,7 +1970,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .bear-flip-face.is-fact p { font-weight: 700; color: var(--brand-deep); }
 @keyframes bear-flip { 0%, 38% { transform: rotateY(0deg); } 50%, 88% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
 @media (max-width: 430px) { .app-body .app-tip-stage .bear-tip-img { width: 44px; } .bear-flip-face p { font-size: 12.5px; } }
-@media (max-width: 760px) { .app-body .app-tip-stage .bear-tip-img { position: static; transform: none; right: auto; width: 68px; } }
+@media (max-width: 760px) { .app-body .app-tip-stage .bear-tip-img { position: static; transform: none; right: auto; width: 56px; } }
 @media (prefers-reduced-motion: reduce) { .bear-flip-spin { animation: none; } .bear-flip-face.is-myth { display: none; } .bear-flip-face.is-fact { transform: none; } }
 @media (max-width: 760px) { .app-body .app-tip-stage .wizard-content h2 { font-size: 22px; } }
 
