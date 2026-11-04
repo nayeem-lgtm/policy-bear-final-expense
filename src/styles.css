@@ -2059,3 +2059,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .flab-note-myth { display: block; margin-top: 5px; font-size: 11.5px; color: color-mix(in oklab, var(--brand-deep) 42%, transparent); text-decoration-color: color-mix(in oklab, var(--destructive) 65%, transparent); }
 @media (max-width: 700px) { .fact-lab-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .flab-spin, .flab-myth-line, .flab-fact-line, .flab-wipe-bar { animation: none; } .flab-fact-line { clip-path: none; } .flab-myth-line { opacity: 0; } }
+
+/* Coverage — segmented amount track matching the sex and date boxes */
+.app-tip-stage .coverage-grid { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 26px auto 0; padding: 7px; border: 1px solid color-mix(in oklab, var(--primary) 14%, transparent); border-radius: 20px; background: linear-gradient(180deg, color-mix(in oklab, var(--primary) 9%, var(--muted)), color-mix(in oklab, var(--primary) 4%, var(--muted))); box-shadow: inset 0 2px 5px color-mix(in oklab, var(--brand-deep) 10%, transparent); }
+.app-tip-stage .coverage-card { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; min-height: 96px; padding: 12px 8px 11px; border: 0; border-radius: 15px; background: transparent; box-shadow: none; transform: none; text-align: center; transition: background 260ms cubic-bezier(.2,.8,.25,1), box-shadow 260ms cubic-bezier(.2,.8,.25,1); }
+.app-tip-stage .coverage-card:hover { transform: none; border-color: transparent; box-shadow: none; background: color-mix(in oklab, var(--card) 42%, transparent); }
+.app-tip-stage .coverage-card[data-state=checked] { background: linear-gradient(180deg, var(--card), color-mix(in oklab, var(--primary) 5%, var(--card))); box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--primary) 22%, transparent), 0 12px 26px -14px color-mix(in oklab, var(--primary) 72%, transparent), 0 2px 4px -2px color-mix(in oklab, var(--brand-deep) 22%, transparent); }
+.app-tip-stage .coverage-icon { width: 40px; height: 40px; border-radius: 50%; background: color-mix(in oklab, var(--card) 72%, var(--muted)); color: color-mix(in oklab, var(--brand-deep) 62%, transparent); box-shadow: 0 1px 2px color-mix(in oklab, var(--brand-deep) 12%, transparent); transition: background 200ms, color 200ms, box-shadow 200ms; }
+.app-tip-stage .coverage-icon svg { width: 21px; height: 21px; }
+.app-tip-stage .coverage-card[data-state=checked] .coverage-icon { background: linear-gradient(140deg, var(--primary), color-mix(in oklab, var(--primary) 70%, var(--brand-deep))); color: var(--primary-foreground); box-shadow: 0 7px 15px -7px color-mix(in oklab, var(--primary) 85%, transparent); }
+.app-tip-stage .coverage-copy { align-items: center; }
+.app-tip-stage .coverage-copy > strong { font-size: 17px; font-weight: 600; color: color-mix(in oklab, var(--brand-deep) 72%, transparent); transition: color 200ms; }
+.app-tip-stage .coverage-card[data-state=checked] .coverage-copy > strong { color: var(--primary); }
+.app-tip-stage .coverage-price { margin-left: 0; padding: 3px 9px; font-size: 11.5px; }
+.app-tip-stage .coverage-tag { top: 7px; right: 8px; left: auto; padding: 2px 8px; font-size: 9px; letter-spacing: .08em; }
+.app-tip-stage .question-badge .cov-stack { stroke: var(--primary); }
+.app-tip-stage .question-badge .cov-mark { fill: var(--brand-action-hover); stroke: none; }
+.app-tip-stage .other-amount { width: auto; display: block; margin: 16px auto 0; font-size: 13.5px; }
+.app-tip-stage .coverage-custom { margin: 14px auto 0; border-radius: 16px; }
+@media (max-width: 560px) { .app-tip-stage .coverage-grid { margin-top: 20px; padding: 6px; border-radius: 17px; } .app-tip-stage .coverage-card { min-height: 84px; padding: 10px 6px 9px; gap: 4px; } .app-tip-stage .coverage-icon { width: 34px; height: 34px; } .app-tip-stage .coverage-icon svg { width: 18px; height: 18px; } .app-tip-stage .coverage-copy > strong { font-size: 15.5px; } .app-tip-stage .coverage-price { font-size: 10.5px; padding: 2px 7px; } .app-tip-stage .coverage-tag { top: 5px; right: 6px; font-size: 8.5px; } }
