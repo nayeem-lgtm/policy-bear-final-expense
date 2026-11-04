@@ -2011,3 +2011,48 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-tip-stage .question-badge .date-mark { fill: var(--brand-action-hover); stroke: none; }
 @media (max-width: 430px) { .app-tip-stage .date-fields { padding: 6px; border-radius: 17px; } .app-tip-stage .date-fields .date-seg { padding: 8px 3px 7px; } .app-tip-stage .date-fields .date-seg-label { font-size: 9.5px; letter-spacing: .07em; } .app-tip-stage .date-fields select { font-size: 16px; } }
 @media (prefers-reduced-motion: reduce) { .app-tip-stage .date-fields .date-seg { transition: none; } }
+
+/* Fact check concept sheet (temporary comparison) */
+.fact-lab { padding: 56px 24px 72px; background: color-mix(in oklab, var(--primary) 4%, var(--background)); border-top: 1px solid var(--border); }
+.fact-lab-inner { max-width: 940px; margin: 0 auto; }
+.fact-lab-title { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--brand-deep); margin: 0 0 22px; }
+.fact-lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.fact-lab-cell { display: flex; flex-direction: column; gap: 9px; }
+.fact-lab-tag { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-foreground); }
+.flab { min-height: 122px; border: 1px solid color-mix(in oklab, var(--primary) 13%, transparent); border-radius: 16px; background: var(--card); box-shadow: 0 16px 32px -28px color-mix(in oklab, var(--brand-deep) 65%, transparent); padding: 14px 16px; }
+.flab-kicker { display: block; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: color-mix(in oklab, var(--primary) 78%, var(--brand-deep)); margin-bottom: 6px; }
+.flab p { margin: 0; font-size: 14px; line-height: 1.45; color: var(--brand-deep); }
+/* A · flip card */
+.flab-flip { display: grid; place-items: center; perspective: 900px; background: transparent; border-style: dashed; }
+.flab-spin { position: relative; width: 100%; height: 92px; transform-style: preserve-3d; animation: flab-flip 5.2s cubic-bezier(.6,.02,.3,1) infinite; }
+.flab-face { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 12px 16px; border-radius: 13px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flab-front { background: color-mix(in oklab, var(--destructive) 7%, var(--card)); border: 1px solid color-mix(in oklab, var(--destructive) 26%, transparent); }
+.flab-front p { color: color-mix(in oklab, var(--brand-deep) 52%, transparent); text-decoration: line-through; text-decoration-color: color-mix(in oklab, var(--destructive) 70%, transparent); }
+.flab-front .flab-kicker { color: var(--destructive); }
+.flab-back { background: linear-gradient(120deg, color-mix(in oklab, var(--primary) 8%, var(--card)), var(--card)); border: 1px solid color-mix(in oklab, var(--primary) 26%, transparent); transform: rotateY(180deg); }
+.flab-back p { font-weight: 700; }
+@keyframes flab-flip { 0%, 38% { transform: rotateY(0deg); } 50%, 88% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
+/* B · myth / fact chips */
+.flab-chips { display: flex; flex-direction: column; justify-content: center; gap: 9px; }
+.flab-row { display: flex; align-items: flex-start; gap: 9px; margin: 0; font-size: 13.5px; line-height: 1.4; }
+.flab-row s { color: color-mix(in oklab, var(--brand-deep) 48%, transparent); text-decoration-color: color-mix(in oklab, var(--destructive) 75%, transparent); }
+.flab-row strong { color: var(--brand-deep); font-weight: 700; }
+.flab-chip { flex: none; font-size: 9.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; margin-top: 1px; }
+.flab-chip.is-myth { background: color-mix(in oklab, var(--destructive) 11%, var(--card)); color: var(--destructive); border: 1px solid color-mix(in oklab, var(--destructive) 28%, transparent); }
+.flab-chip.is-fact { background: color-mix(in oklab, var(--brand-action) 20%, var(--card)); color: color-mix(in oklab, var(--brand-deep) 82%, var(--brand-action)); border: 1px solid color-mix(in oklab, var(--brand-action) 55%, transparent); }
+/* C · gold wipe reveal */
+.flab-wipe { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+.flab-myth-line { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 16px; color: color-mix(in oklab, var(--brand-deep) 46%, transparent) !important; text-decoration: line-through; text-decoration-color: color-mix(in oklab, var(--destructive) 70%, transparent); animation: flab-myth-out 4.6s ease infinite; }
+.flab-fact-line { position: relative; font-weight: 700; clip-path: inset(0 100% 0 0); animation: flab-fact-in 4.6s ease infinite; }
+.flab-wipe-bar { position: absolute; top: 0; bottom: 0; left: 0; width: 34%; background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--brand-action) 55%, transparent), transparent); animation: flab-bar 4.6s ease infinite; }
+@keyframes flab-bar { 0% { transform: translateX(-110%); } 30%, 100% { transform: translateX(340%); } }
+@keyframes flab-fact-in { 0%, 8% { clip-path: inset(0 100% 0 0); } 34%, 86% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 0 0 0); } }
+@keyframes flab-myth-out { 0%, 8% { opacity: 1; } 34%, 100% { opacity: 0; } }
+/* D · bear holds the note */
+.flab-note { display: flex; align-items: center; gap: 12px; }
+.flab-note-bear { width: 62px; flex: none; align-self: flex-end; }
+.flab-note-card { position: relative; flex: 1 1 auto; min-width: 0; padding: 11px 14px; border-radius: 13px; border: 1px solid color-mix(in oklab, var(--brand-action) 42%, transparent); background: linear-gradient(150deg, color-mix(in oklab, var(--brand-action) 12%, var(--card)), var(--card)); box-shadow: 0 12px 26px -22px color-mix(in oklab, var(--brand-deep) 70%, transparent); }
+.flab-note-card p { font-weight: 700; }
+.flab-note-myth { display: block; margin-top: 5px; font-size: 11.5px; color: color-mix(in oklab, var(--brand-deep) 42%, transparent); text-decoration-color: color-mix(in oklab, var(--destructive) 65%, transparent); }
+@media (max-width: 700px) { .fact-lab-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .flab-spin, .flab-myth-line, .flab-fact-line, .flab-wipe-bar { animation: none; } .flab-fact-line { clip-path: none; } .flab-myth-line { opacity: 0; } }
