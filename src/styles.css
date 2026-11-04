@@ -377,7 +377,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .coverage-tag { position: absolute; top: -11px; left: 14px; padding: 3px 10px; border-radius: 999px; background: var(--brand-action); color: var(--brand-deep); font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; box-shadow: 0 4px 10px -4px color-mix(in oklab, var(--brand-action-hover) 70%, transparent); }
 .coverage-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--brand-soft-blue); color: var(--primary); flex-shrink: 0; }
 .coverage-icon svg { width: 24px; height: 24px; }
-.coverage-icon .cov-paws { fill: var(--brand-action); }
+.coverage-icon .cov-fill { fill: var(--brand-action); }
 .coverage-icon .cov-mark { fill: var(--brand-action); stroke: none; }
 .coverage-card[data-state=checked] .coverage-icon { background: var(--primary); color: var(--primary-foreground); }
 .coverage-copy { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
