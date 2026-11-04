@@ -46,8 +46,8 @@ const PawPrint = ({ x, y, s }: { x: number; y: number; s: number }) => <g transf
 const CoverageShieldIcon = ({ paw = 0.38, sparkle = false }: { paw?: number; sparkle?: boolean }) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2.4 19.6 5v6.2c0 4.7-3.2 7.9-7.6 9.6-4.4-1.7-7.6-4.9-7.6-9.6V5Z" /><g className="cov-paws" fill="currentColor" stroke="none"><PawPrint x={12 - 12 * paw} y={11.6 - 12.3 * paw} s={paw} /></g>{sparkle && <path className="cov-mark" d="M19.4 2.4l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8Z" />}</svg>
 const CoverageBadgeIcon = () => <CoverageShieldIcon paw={0.42} sparkle />
 const coverageOptions = [
-  { value: '10000', icon: <CoverageShieldIcon paw={0.3} /> },
-  { value: '15000', icon: <CoverageShieldIcon paw={0.38} />, popular: true },
+  { value: '10000', icon: <CoverageShieldIcon paw={0.36} /> },
+  { value: '15000', icon: <CoverageShieldIcon paw={0.4} />, popular: true },
   { value: '20000', icon: <CoverageShieldIcon paw={0.46} /> },
   { value: '25000', icon: <CoverageShieldIcon paw={0.46} sparkle /> },
 ]
