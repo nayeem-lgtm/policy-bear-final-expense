@@ -1631,10 +1631,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .recipient-copy small { font-size: 12px; line-height: 1.4; color: var(--muted-foreground); overflow-wrap: anywhere; }
 .recipient-status { grid-column: 2; grid-row: 1; display: grid; place-items: center; width: 24px; height: 24px; align-self: center; color: var(--primary); }
 .recipient-status svg { width: 17px; height: 17px; }
-.recipient-check { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--primary); color: var(--primary-foreground); }
+.recipient-choice[data-state=checked] .recipient-arrow { transform: translateX(3px); }
 .recipient-choice:hover, .recipient-choice[data-state=checked] { border-color: var(--primary); background: var(--brand-soft-blue); }
 .recipient-choice:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
-.recipient-choice[data-state=checked] .recipient-arrow { display: none; }
+.recipient-arrow { transition: transform 180ms ease; }
 @container (max-width: 380px) { .recipient-choice { height: 178px; padding: 12px; gap: 10px; } .recipient-copy strong { font-size: 14px; } }
 .recipient-note { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 18px 0 0; font-size: 13px; color: var(--muted-foreground); }
 .recipient-note svg { width: 15px; color: var(--primary); }
