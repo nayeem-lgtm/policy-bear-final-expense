@@ -1393,7 +1393,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-cta-btn { position: relative; display: inline-flex; align-items: flex-end; min-width: 274px; padding: 12px 0 12px; color: var(--brand-deep); text-decoration: none; flex-shrink: 0; }
 .faq-cta-btn::before { content: ""; position: absolute; left: 0; right: 46px; bottom: 12px; height: 1px; background: var(--brand-action); transition: height 240ms ease; }
 .faq-cta-label { font-size: 17px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; padding-bottom: 12px; white-space: nowrap; }
-.faq-cta-path { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 0 12px 5px 14px; min-width: 46px; }
+.faq-cta-path { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 0 12px 8px 14px; min-width: 46px; }
 .faq-cta-step { position: relative; z-index: 1; color: color-mix(in oklab, var(--brand-action) 45%, var(--brand-deep)); opacity: 0.75; transform: rotate(-10deg); transition: opacity 240ms ease, transform 240ms ease; }
 .faq-cta-step:nth-child(2) { transform: rotate(8deg); transition-delay: 60ms; }
 .faq-cta-step:nth-child(3) { transform: rotate(-6deg); transition-delay: 120ms; }
