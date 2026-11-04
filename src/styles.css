@@ -1624,7 +1624,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-body .app-tip-stage .bear-tip-kicker { font-size: 14px; margin-bottom: 4px; }
 .app-body .app-tip-stage .bear-tip-title.is-fact { margin-top: 8px; }
 .app-body:has(.app-tip-stage) { margin-block: auto; padding-top: 0; }
-@media (max-width: 760px) { .app-tip-stage > .wizard-content { padding: 18px 16px; border-radius: 16px; } .app-body .app-tip-stage .bear-tip-img { width: 68px; } }
+@media (max-width: 760px) { .app-tip-stage > .wizard-content { padding: 18px 16px; border-radius: 16px; } .app-body .app-tip-stage .bear-tip-img { position: static; transform: none; right: auto; width: 68px; } }
 .app-body .app-tip-stage { align-items: stretch; }
 .app-tip-stage > .wizard-content { width: 100%; align-self: stretch; }
 .wizard-app:has(.app-tip-stage) .app-main { background: radial-gradient(circle at 20% 85%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 40%), radial-gradient(circle at 85% 20%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 45%), var(--background); }
