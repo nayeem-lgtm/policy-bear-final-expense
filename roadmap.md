@@ -104,3 +104,4 @@
 
 - [x] Built the owner-chosen closing CTA (idea D "Paw press"): deep-navy pill with a gold circular paw chip at the left and the near-white label; hover lifts the pill and presses the chip. Removed the paw trail, gold hairline and unused path/step styles. Presented ideas as a live-rendered labelled sheet in Files (cta-button-ideas.png). Verified at 986x834 and 390x844 plus hover state, all 35 tests pass, build OK.
 - [x] Chapter heading above the form: slim blue-gold progress bar + "x of y" counter (option B), counting only real questions per chapter.
+- [x] Replaced the generic person icon on the sex-assigned-at-birth badge with a custom Mars (brand blue) + Venus (gold) pair, side by side and unbroken; verified badge geometry and screen at 986x834, all 39 tests pass, build OK.
