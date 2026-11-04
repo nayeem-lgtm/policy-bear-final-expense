@@ -42,14 +42,14 @@ const DateBadgeIcon = () => <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.
 const PawGlyph = () => <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="5.6" cy="11.2" rx="2.1" ry="2.7" transform="rotate(-20 5.6 11.2)" /><ellipse cx="9.7" cy="7.4" rx="2.1" ry="2.8" transform="rotate(-7 9.7 7.4)" /><ellipse cx="14.3" cy="7.4" rx="2.1" ry="2.8" transform="rotate(7 14.3 7.4)" /><ellipse cx="18.4" cy="11.2" rx="2.1" ry="2.7" transform="rotate(20 18.4 11.2)" /><path d="M12 12.4c3.3 0 6 2.2 6 4.7 0 2.4-2.3 3.7-4.4 2.9-1-.4-2.2-.4-3.2 0-2.1.8-4.4-.5-4.4-2.9 0-2.5 2.7-4.7 6-4.7Z" /></svg>
 // Coverage icons: hand-drawn coins that grow with the amount — brand blue strokes, gold accents.
 const PawPrint = ({ x, y, s }: { x: number; y: number; s: number }) => <g transform={`translate(${x} ${y}) scale(${s})`}><ellipse cx="5.6" cy="11.2" rx="2.1" ry="2.7" transform="rotate(-20 5.6 11.2)" /><ellipse cx="9.7" cy="7.4" rx="2.1" ry="2.8" transform="rotate(-7 9.7 7.4)" /><ellipse cx="14.3" cy="7.4" rx="2.1" ry="2.8" transform="rotate(7 14.3 7.4)" /><ellipse cx="18.4" cy="11.2" rx="2.1" ry="2.7" transform="rotate(20 18.4 11.2)" /><path d="M12 12.4c3.3 0 6 2.2 6 4.7 0 2.4-2.3 3.7-4.4 2.9-1-.4-2.2-.4-3.2 0-2.1.8-4.4-.5-4.4-2.9 0-2.5 2.7-4.7 6-4.7Z" /></g>
-// Coverage amounts read as growing protection: a shield carrying one, two or three gold paws.
-const CoverageShieldIcon = ({ paws = 1, sparkle = false }: { paws?: number; sparkle?: boolean }) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2.4 19.6 5v6.2c0 4.7-3.2 7.9-7.6 9.6-4.4-1.7-7.6-4.9-7.6-9.6V5Z" /><g className="cov-paws" fill="currentColor" stroke="none">{paws === 1 && <PawPrint x={7.2} y={6.5} s={0.4} />}{paws === 2 && <><PawPrint x={4.6} y={7.3} s={0.32} /><PawPrint x={11.8} y={7.3} s={0.32} /></>}{paws >= 3 && <><PawPrint x={5} y={6.5} s={0.27} /><PawPrint x={12.6} y={6.5} s={0.27} /><PawPrint x={8.8} y={11.3} s={0.27} /></>}</g>{sparkle && <path className="cov-mark" d="M19.4 2.4l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8Z" />}</svg>
-const CoverageBadgeIcon = () => <CoverageShieldIcon paws={1} sparkle />
+// Coverage amounts read as growing protection: a shield whose single gold paw print steps up in size.
+const CoverageShieldIcon = ({ paw = 0.38, sparkle = false }: { paw?: number; sparkle?: boolean }) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 2.4 19.6 5v6.2c0 4.7-3.2 7.9-7.6 9.6-4.4-1.7-7.6-4.9-7.6-9.6V5Z" /><g className="cov-paws" fill="currentColor" stroke="none"><PawPrint x={12 - 12 * paw} y={11.6 - 12.3 * paw} s={paw} /></g>{sparkle && <path className="cov-mark" d="M19.4 2.4l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8Z" />}</svg>
+const CoverageBadgeIcon = () => <CoverageShieldIcon paw={0.42} sparkle />
 const coverageOptions = [
-  { value: '10000', icon: <CoverageShieldIcon paws={1} /> },
-  { value: '15000', icon: <CoverageShieldIcon paws={2} />, popular: true },
-  { value: '20000', icon: <CoverageShieldIcon paws={3} /> },
-  { value: '25000', icon: <CoverageShieldIcon paws={3} sparkle /> },
+  { value: '10000', icon: <CoverageShieldIcon paw={0.3} /> },
+  { value: '15000', icon: <CoverageShieldIcon paw={0.38} />, popular: true },
+  { value: '20000', icon: <CoverageShieldIcon paw={0.46} /> },
+  { value: '25000', icon: <CoverageShieldIcon paw={0.46} sparkle /> },
 ]
 const whoIcons: Record<string, React.ReactNode> = { Me: <User />, 'My spouse or partner': <Heart />, 'My mom or dad': <Users />, 'Someone else': <UserRound /> }
 const whoDescriptions: Record<string, string> = { Me: 'Protection for my loved ones', 'My spouse or partner': 'Planning our future together', 'My mom or dad': 'Helping someone I love', 'Someone else': 'Supporting someone close' }
