@@ -1405,7 +1405,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-cta-btn:hover .faq-cta-arrow { transform: translateX(5px); box-shadow: 0 16px 28px -16px color-mix(in oklab, var(--primary) 90%, transparent); }
 .faq-cta-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; border-radius: 8px; }
 @media (prefers-reduced-motion: reduce) { .faq-cta-btn::before, .faq-cta-step, .faq-cta-arrow { transition: none; } }
-@media (max-width: 760px) { .faq-cta { flex-direction: column; align-items: center; text-align: center; gap: 16px; } .faq-cta h2 { font-size: 19px; } .faq-cta-btn { width: 100%; max-width: 340px; justify-content: space-between; } }
+@media (max-width: 760px) { .faq-cta { flex-direction: column; align-items: center; text-align: center; gap: 16px; } .faq-cta h2 { font-size: 19px; } .faq-cta-btn { width: 100%; max-width: 340px; } .faq-cta-path { flex: 0 0 auto; justify-content: flex-start; gap: 10px; } .faq-cta-arrow { margin-left: auto; } }
 @media (max-width: 520px) { .faq-cta h2 { font-size: 17px; } }
 
 /* Application workspace — after "Apply now" */
