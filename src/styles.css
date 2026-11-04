@@ -1396,7 +1396,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-cta-path { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; padding: 0 2px 5px 16px; min-width: 46px; }
 .faq-cta-path::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--border); }
 .faq-cta-path::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--brand-action); transition: width 360ms cubic-bezier(0.22, 0.68, 0.28, 1); }
-.faq-cta-step { position: relative; z-index: 1; color: color-mix(in oklab, var(--brand-action) 58%, var(--brand-deep)); opacity: 0.3; transform: rotate(-12deg); transition: opacity 240ms ease, transform 240ms ease; }
+.faq-cta-step { position: relative; z-index: 1; color: color-mix(in oklab, var(--brand-action) 58%, var(--brand-deep)); opacity: 0.45; transform: rotate(-12deg); transition: opacity 240ms ease, transform 240ms ease; }
 .faq-cta-step:nth-child(2) { transform: rotate(9deg) translateY(-3px); transition-delay: 60ms; }
 .faq-cta-step:nth-child(3) { transform: rotate(-5deg); transition-delay: 120ms; }
 .faq-cta-arrow { position: relative; z-index: 1; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--primary); color: var(--primary-foreground); flex-shrink: 0; box-shadow: 0 12px 24px -16px color-mix(in oklab, var(--primary) 85%, transparent); transition: transform 240ms ease, box-shadow 240ms ease; }
