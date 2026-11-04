@@ -1404,7 +1404,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-cta-btn:hover .faq-cta-step:nth-child(3) { transform: rotate(-6deg) translateX(2px); }
 .faq-cta-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) { .faq-cta-btn, .faq-cta-btn::before, .faq-cta-step { transition: none; } }
-@media (max-width: 760px) { .faq-cta { flex-direction: column; align-items: center; text-align: center; gap: 16px; } .faq-cta h2 { font-size: 19px; } .faq-cta-btn { width: 100%; max-width: 340px; justify-content: center; } .faq-cta-path { flex: 0 0 auto; justify-content: flex-start; gap: 10px; } }
+@media (max-width: 760px) { .faq-cta { flex-direction: column; align-items: center; text-align: center; gap: 16px; } .faq-cta h2 { font-size: 19px; } .faq-cta-btn { max-width: 100%; } .faq-cta-path { flex: 0 0 auto; justify-content: flex-start; gap: 10px; } }
 @media (max-width: 520px) { .faq-cta h2 { font-size: 17px; } }
 
 /* Application workspace — after "Apply now" */
