@@ -4,7 +4,7 @@ export type Outcome = 'approved' | 'graded' | 'declined'
 export const COVERAGE_MIN = 5000
 export const COVERAGE_MAX = 50000
 
-// About You (shown as "About You", formerly "Basic Info") holds the five rating questions (state, gender, date of birth, coverage, tobacco).
+// Your Profile (shown as "Your Profile", formerly "Basic Info" then "About You") holds the five rating questions (state, gender, date of birth, coverage, tobacco).
 // The illustration is shown right after them; the remaining questions are Pre-Qualification.
 export const basicInfoSteps = ['state', 'gender', 'dob', 'coverage', 'tobacco'] as const
 export const preQualSteps = ['who', 'contact', 'size', 'opt-in'] as const
@@ -83,7 +83,7 @@ export function determineOutcome(health: string[]): Outcome {
 
 export function chapterFor(step: JourneyStep) {
   const index = journeySteps.indexOf(step)
-  // About You runs through the five rating questions and the illustration; every later question is Pre-Qualification.
+  // Your Profile runs through the five rating questions and the illustration; every later question is Pre-Qualification.
   if (index < journeySteps.indexOf('who')) return 0
   if (index < journeySteps.indexOf('gi-offer')) return 1
   if (index < journeySteps.indexOf('review')) return 2

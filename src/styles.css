@@ -1556,7 +1556,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* Five options — the lone fifth card spans the full width */
 .answer-list:not(.beneficiary-list):has(> .answer-card:nth-of-type(5)):not(:has(> .answer-card:nth-of-type(6))) > .answer-card:nth-of-type(5) { grid-column: 1 / -1; }
 
-/* Mr Bear tip panel beside About You steps */
+/* Mr Bear tip panel beside Your Profile steps */
 .funnel-inner:has(.basic-stage):not(:has(.wizard-app)) { max-width: 1180px; }
 .funnel-section:has(.basic-stage):not(:has(.wizard-app)) { background: radial-gradient(circle at 15% 30%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 45%), radial-gradient(circle at 85% 80%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 50%), var(--brand-light); }
 /* Inside the app workspace the tip sits under the form, Mr Bear at the left. */
@@ -1608,7 +1608,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @keyframes back-orb-in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .back-orb, .back-orb * { transition: none; animation: none; } }
 
-/* About You workspace v3: no outer strips, question first, Mr Bear tip below */
+/* Your Profile workspace v3: no outer strips, question first, Mr Bear tip below */
 .policy-page:has(.wizard-app) .funnel-section { padding: 0; }
 .app-body .app-tip-stage { gap: 14px; }
 .app-tip-stage > .back-orb { order: 1; align-self: flex-start; margin: 0; }

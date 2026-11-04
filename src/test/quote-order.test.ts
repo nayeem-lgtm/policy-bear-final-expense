@@ -49,12 +49,12 @@ describe('Licensed states', () => {
 })
 
 describe('Chapter progress counter', () => {
-  it('counts About You as five rating questions and puts gender second', () => {
+  it('counts Your Profile as five rating questions and puts gender second', () => {
     expect(chapterProgress('gender')).toEqual({ chapter: 0, position: 2, total: 5 })
     expect(chapterProgress('state')).toEqual({ chapter: 0, position: 1, total: 5 })
     expect(chapterProgress('tobacco')).toEqual({ chapter: 0, position: 5, total: 5 })
   })
-  it('sits at the end of About You while the illustration is on screen', () => {
+  it('sits at the end of Your Profile while the illustration is on screen', () => {
     expect(chapterProgress('loading').position).toBe(5)
     expect(chapterProgress('price')).toEqual({ chapter: 0, position: 5, total: 5 })
   })
