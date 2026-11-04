@@ -1984,3 +1984,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-tip-stage .answer-list.answer-list-pair .answer-card[data-state=checked] .answer-badge { background: linear-gradient(140deg, var(--primary), color-mix(in oklab, var(--primary) 70%, var(--brand-deep))); color: var(--primary-foreground); box-shadow: 0 7px 15px -7px color-mix(in oklab, var(--primary) 85%, transparent); }
 .app-tip-stage .answer-list.answer-list-pair .answer-card[data-state=checked] strong { color: var(--primary); }
 @media (prefers-reduced-motion: reduce) { .app-tip-stage .answer-list.answer-list-pair::after { transition: none; } }
+
+/* Date of birth — segmented date track */
+.app-tip-stage .date-fields { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 26px auto 0; padding: 7px; border: 1px solid color-mix(in oklab, var(--primary) 14%, transparent); border-radius: 20px; background: linear-gradient(180deg, color-mix(in oklab, var(--primary) 9%, var(--muted)), color-mix(in oklab, var(--primary) 4%, var(--muted))); box-shadow: inset 0 2px 5px color-mix(in oklab, var(--brand-deep) 10%, transparent); }
+.app-tip-stage .date-fields .date-seg { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; margin: 0; padding: 10px 6px 9px; border-radius: 15px; background: transparent; transition: background 260ms cubic-bezier(.2,.8,.25,1), box-shadow 260ms cubic-bezier(.2,.8,.25,1); }
+.app-tip-stage .date-fields .date-seg + .date-seg::before { content: ""; position: absolute; left: -1px; top: 24%; bottom: 24%; width: 1px; background: color-mix(in oklab, var(--primary) 16%, transparent); }
+.app-tip-stage .date-fields .date-seg[data-filled] { background: linear-gradient(180deg, var(--card), color-mix(in oklab, var(--primary) 5%, var(--card))); box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--primary) 22%, transparent), 0 12px 26px -14px color-mix(in oklab, var(--primary) 72%, transparent), 0 2px 4px -2px color-mix(in oklab, var(--brand-deep) 22%, transparent); }
+.app-tip-stage .date-fields .date-seg:focus-within { box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--primary) 40%, transparent), 0 0 0 4px color-mix(in oklab, var(--primary) 13%, transparent); }
+.app-tip-stage .date-fields .date-seg-label { font-size: 10.5px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; color: color-mix(in oklab, var(--brand-deep) 42%, transparent); transition: color 220ms; }
+.app-tip-stage .date-fields .date-seg[data-filled] .date-seg-label { color: color-mix(in oklab, var(--primary) 80%, var(--brand-deep)); }
+.app-tip-stage .date-fields select { width: 100%; min-width: 0; height: 30px; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; appearance: none; -webkit-appearance: none; font-family: inherit; font-size: 19px; font-weight: 600; color: color-mix(in oklab, var(--brand-deep) 34%, transparent); text-align: center; text-align-last: center; cursor: pointer; transition: color 220ms; }
+.app-tip-stage .date-fields select option { color: var(--foreground); font-weight: 500; }
+.app-tip-stage .date-fields .date-seg[data-filled] select { color: var(--primary); }
+.app-tip-stage .date-age { display: flex; align-items: center; justify-content: center; gap: 7px; width: fit-content; margin: 16px auto 0; padding: 8px 16px; border: 1px solid color-mix(in oklab, var(--primary) 20%, transparent); border-radius: 999px; background: color-mix(in oklab, var(--primary) 7%, var(--card)); color: var(--primary); font-size: 14.5px; font-weight: 600; }
+.app-tip-stage .date-age svg { width: 15px; height: 15px; }
+.app-tip-stage .question-badge .date-frame { stroke: var(--primary); }
+.app-tip-stage .question-badge .date-mark { fill: var(--brand-action-hover); stroke: none; }
+@media (max-width: 430px) { .app-tip-stage .date-fields { padding: 6px; border-radius: 17px; } .app-tip-stage .date-fields .date-seg { padding: 8px 3px 7px; } .app-tip-stage .date-fields .date-seg-label { font-size: 9.5px; letter-spacing: .07em; } .app-tip-stage .date-fields select { font-size: 16px; } }
+@media (prefers-reduced-motion: reduce) { .app-tip-stage .date-fields .date-seg { transition: none; } }
