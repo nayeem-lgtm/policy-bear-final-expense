@@ -47,3 +47,26 @@ describe('Licensed states', () => {
     for (const abbr of ['FL', 'NY', 'GA', 'IL', 'NC', 'WA']) expect(abbrs).not.toContain(abbr)
   })
 })
+
+describe('Chapter progress counter', () => {
+  it('counts About You as five rating questions and puts gender second', () => {
+    expect(chapterProgress('gender')).toEqual({ chapter: 0, position: 2, total: 5 })
+    expect(chapterProgress('state')).toEqual({ chapter: 0, position: 1, total: 5 })
+    expect(chapterProgress('tobacco')).toEqual({ chapter: 0, position: 5, total: 5 })
+  })
+  it('sits at the end of About You while the illustration is on screen', () => {
+    expect(chapterProgress('loading').position).toBe(5)
+    expect(chapterProgress('price')).toEqual({ chapter: 0, position: 5, total: 5 })
+  })
+  it('counts the fifteen Pre-Qualification questions without the illustration', () => {
+    expect(chapterProgress('who')).toEqual({ chapter: 1, position: 1, total: 15 })
+    expect(chapterProgress('h8')).toEqual({ chapter: 1, position: 15, total: 15 })
+    expect(chapterProgress('underwriting').position).toBe(15)
+  })
+  it('keeps the Application and Finalize totals honest', () => {
+    expect(chapterProgress('gi-offer')).toEqual({ chapter: 2, position: 1, total: 5 })
+    expect(chapterProgress('draft')).toEqual({ chapter: 2, position: 5, total: 5 })
+    expect(chapterProgress('review')).toEqual({ chapter: 3, position: 1, total: 4 })
+    expect(chapterProgress('verify')).toEqual({ chapter: 3, position: 4, total: 4 })
+  })
+})
