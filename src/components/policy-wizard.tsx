@@ -34,7 +34,7 @@ type Answers = {
 }
 type StringAnswerKey = Exclude<keyof Answers, 'health'>
 const blank: Answers = { zip: '', city: '', state: '', who: '', month: '', day: '', year: '', gender: '', tobacco: '', feet: '', inches: '', weight: '', coverage: '15000', firstName: '', middleName: '', lastName: '', email: '', phone: '', street: '', apt: '', country: 'United States', birthState: '', citizen: '', resident: '', owner: '', ssn: '', beneficiaryType: 'A person', beneficiaryFirst: '', beneficiaryLast: '', relationship: '', beneficiaryPhone: '', otherInsurance: '', replacing: '', paymentMethod: 'Bank account', accountName: '', accountType: 'Checking', routing: '', account: '', accountConfirm: '', card: '', expiry: '', paymentZip: '', draftDate: '1st of the month', signature: '', callbackTime: '', coverageType: '', health: Array(8).fill('') }
-const labels = ['About You', 'Pre-Qualification', 'Application', 'Finalize']
+const labels = ['Your Profile', 'Pre-Qualification', 'Application', 'Finalize']
 const phone = '[FE_PHONE]'
 const coverageOptions = [
   { value: '10000', label: 'A dignified farewell', icon: <Heart /> },
