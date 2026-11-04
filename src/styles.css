@@ -1395,7 +1395,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-cta-label::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--brand-action); }
 .faq-cta-path { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; padding: 0 2px 5px 16px; min-width: 46px; }
 .faq-cta-path::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--brand-action); opacity: 0.55; transition: opacity 240ms ease, height 240ms ease; }
-.faq-cta-path::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--brand-action); opacity: 0; transition: opacity 240ms ease; }
 .faq-cta-step { position: relative; z-index: 1; color: color-mix(in oklab, var(--brand-action) 42%, var(--brand-deep)); opacity: 0.55; transform: rotate(-12deg); transition: opacity 240ms ease, transform 240ms ease; }
 .faq-cta-step:nth-child(2) { transform: rotate(9deg) translateY(-3px); transition-delay: 60ms; }
 .faq-cta-step:nth-child(3) { transform: rotate(-5deg); transition-delay: 120ms; }
@@ -1406,7 +1405,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-cta-btn:hover .faq-cta-step:nth-child(3) { transform: rotate(-5deg) translateY(-2px); }
 .faq-cta-btn:hover .faq-cta-arrow { transform: translateX(5px); box-shadow: 0 16px 28px -16px color-mix(in oklab, var(--primary) 90%, transparent); }
 .faq-cta-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; border-radius: 8px; }
-@media (prefers-reduced-motion: reduce) { .faq-cta-path::after, .faq-cta-step, .faq-cta-arrow { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .faq-cta-path::before, .faq-cta-step, .faq-cta-arrow { transition: none; } }
 @media (max-width: 760px) { .faq-cta { flex-direction: column; align-items: center; text-align: center; gap: 16px; } .faq-cta h2 { font-size: 19px; } .faq-cta-btn { width: 100%; max-width: 340px; justify-content: space-between; } }
 @media (max-width: 520px) { .faq-cta h2 { font-size: 17px; } }
 
