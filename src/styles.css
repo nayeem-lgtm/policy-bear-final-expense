@@ -1307,6 +1307,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .question-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
 .question-badge { display: grid; place-items: center; width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%; border: 1px solid color-mix(in oklab, var(--primary) 32%, transparent); background: color-mix(in oklab, var(--primary) 8%, var(--background)); color: var(--primary); }
 .question-badge svg { width: 22px; height: 22px; }
+.question-badge .sex-mark-mars { stroke: var(--primary); }
+.question-badge .sex-mark-venus { stroke: var(--brand-action-hover); }
 .question-head-copy { min-width: 0; }
 .question-head h2 { text-align: left; margin-bottom: 4px; }
 .question-head .question-helper { text-align: left; margin-bottom: 0; }
