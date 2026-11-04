@@ -1935,7 +1935,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pay-form .app-panel.pay-panel { padding: 12px 16px; }
 
 /* Clean-card question form (Your Profile chapter) */
-.app-body:has(.app-tip-stage) { max-width: 600px; margin-block: 28px auto; }
+.app-body:has(.app-tip-stage) { max-width: 600px; margin-block: 8vh auto; }
 .app-body .app-tip-stage { gap: 0; position: relative; }
 .app-body .app-tip-stage > .back-orb { position: absolute; top: 22px; left: 22px; z-index: 2; margin: 0; width: 36px; padding: 0; justify-content: center; }
 .app-body .app-tip-stage > .back-orb .back-orb-label { display: none; }
