@@ -1559,7 +1559,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-body .basic-stage { display: flex; flex-direction: column; gap: 20px; }
 .app-body .bear-tip { display: flex; flex-direction: row; align-items: flex-end; gap: 12px; max-width: none; width: 100%; }
 .app-body .bear-tip-img { width: 76px; flex: none; order: 1; }
-.app-body .bear-tip-bubble { order: 2; flex: 1; padding: 12px 16px; }
+.app-body .bear-tip-bubble { order: 2; flex: 1; padding: 12px 16px 17px; }
 .app-body .bear-tip-bubble::after { left: -10px; bottom: 22px; transform: rotate(135deg); }
 .app-body .bear-tip-bubble p { font-size: 14px; }
 /* Form is always dead-centre on the page; Mr Bear stands in the left gutter, feet level with the card's bottom. */
