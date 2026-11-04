@@ -90,6 +90,26 @@ export function chapterFor(step: JourneyStep) {
   return 3
 }
 
+// Screens that actually ask the customer something. Used for the "2 of 5" chapter counter,
+// so the illustration, underwriting and decision screens don't inflate the total.
+const chapterQuestions: readonly JourneyStep[][] = [
+  [...basicInfoSteps],
+  ['who', 'contact', 'size', 'opt-in', 'address', 'identity', 'ssn', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8'],
+  ['gi-offer', 'beneficiary', 'insurance', 'payment', 'draft'],
+  ['review', 'disclosures', 'signature', 'verify'],
+]
+
+export function chapterProgress(step: JourneyStep) {
+  const chapter = chapterFor(step)
+  const list = chapterQuestions[chapter] ?? []
+  const index = list.indexOf(step)
+  // Screens between questions (illustration, underwriting, decision) sit at the boundary they just crossed.
+  const position = index >= 0
+    ? index + 1
+    : Math.max(1, list.filter((item) => journeySteps.indexOf(item) < journeySteps.indexOf(step)).length)
+  return { chapter, position, total: list.length }
+}
+
 export const safeSavedKeys = [
   'zip', 'city', 'state', 'who', 'month', 'day', 'year', 'gender', 'tobacco', 'feet', 'inches', 'weight',
   'coverage', 'firstName', 'middleName', 'lastName', 'email', 'phone', 'street', 'apt', 'country', 'birthState',
