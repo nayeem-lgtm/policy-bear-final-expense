@@ -230,6 +230,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .policy-quiet { color: var(--primary); background: transparent; font-size: 16px; min-height: 44px; white-space: normal; }
 .policy-quiet:hover { background: var(--brand-soft-blue); }
 .continue-button { width: 100%; justify-content: space-between; padding: 0 22px; }
+.reveal-button { position: relative; overflow: hidden; justify-content: center; gap: 10px; }
+.reveal-button::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 45%; background: linear-gradient(105deg, transparent, color-mix(in oklab, var(--brand-light) 55%, transparent), transparent); transform: skewX(-18deg); transition: left 650ms ease; pointer-events: none; }
+.reveal-button:hover::after { left: 115%; }
+@media (prefers-reduced-motion: reduce) { .reveal-button::after { display: none; } }
 .continue-optional { margin: 10px auto 0; display: flex; font-size: 15px; color: var(--muted-foreground); text-decoration: underline; text-underline-offset: 3px; }
 .continue-optional:hover { color: var(--primary); background: transparent; }
 .continue-optional svg { width: 16px; height: 16px; }
