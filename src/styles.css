@@ -1933,3 +1933,40 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .pay-panel .field-label { gap: 4px; margin-bottom: 0; font-size: 14px; }
 .pay-panel .text-field, .pay-panel .field-label select { height: 46px; min-height: 46px; font-size: 16px; }
 .pay-form .app-panel.pay-panel { padding: 12px 16px; }
+
+/* Clean-card question form (Your Profile chapter) */
+.app-body:has(.app-tip-stage) { max-width: 600px; margin-block: 8vh auto; }
+.app-body .app-tip-stage { gap: 0; position: relative; }
+.app-body .app-tip-stage > .back-orb { position: absolute; top: 22px; left: 22px; z-index: 2; margin: 0; width: 36px; padding: 0; justify-content: center; }
+.app-body .app-tip-stage > .back-orb .back-orb-label { display: none; }
+.app-body .app-tip-stage > .wizard-content { background: var(--card); border: 1px solid color-mix(in oklab, var(--brand-deep) 9%, transparent); border-radius: 22px 22px 0 0; padding: 30px 34px 32px; box-shadow: 0 30px 60px -36px color-mix(in oklab, var(--brand-deep) 45%, transparent); }
+.app-body .app-tip-stage:has(> .back-orb) > .wizard-content .question-head { padding-left: 50px; }
+.app-tip-stage .question-head { align-items: center; margin-bottom: 26px; }
+.app-tip-stage .question-head .question-badge { display: none; }
+.app-body .app-tip-stage .wizard-content h2 { font-size: 24px; line-height: 1.25; letter-spacing: -0.02em; }
+.app-tip-stage .answer-list-pair { gap: 14px; }
+.app-tip-stage .answer-list-pair .answer-card { flex-direction: column; justify-content: center; min-height: 128px; padding: 20px 14px; border: 1.5px solid var(--border); border-radius: 16px; background: color-mix(in oklab, var(--brand-light) 60%, var(--card)); box-shadow: none; }
+.app-tip-stage .answer-list-pair .answer-card:hover { border-color: var(--primary); background: var(--card); box-shadow: 0 14px 26px -18px color-mix(in oklab, var(--primary) 60%, transparent); }
+.app-tip-stage .answer-list-pair .answer-copy { flex-direction: column; gap: 12px; text-align: center; flex: none; }
+.app-tip-stage .answer-list-pair .answer-copy strong { font-size: 17px; font-weight: 700; }
+.app-tip-stage .answer-list-pair .answer-badge { width: 52px !important; height: 52px !important; background: var(--card); box-shadow: inset 0 0 0 1px var(--border); color: var(--brand-deep); }
+.app-tip-stage .answer-list-pair .answer-badge svg { width: 24px; height: 24px; }
+.app-tip-stage .answer-list-pair .radio-circle { position: absolute; top: 12px; right: 12px; width: 22px; height: 22px; }
+.app-tip-stage .answer-list-pair .answer-card[data-state=checked] { border-color: var(--primary); background: var(--card); box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 14%, transparent); }
+.app-tip-stage .answer-list-pair .answer-card[data-state=checked] .answer-badge { background: var(--primary); color: var(--primary-foreground); box-shadow: none; }
+.app-tip-stage .answer-list-pair .answer-card[data-state=checked] .radio-circle { background: var(--primary); border-color: var(--primary); color: var(--primary-foreground); }
+/* Fact strip attached under the card */
+.app-body .app-tip-stage .bear-tip { order: 3; margin: 0; flex-direction: row; align-items: center; gap: 0; background: var(--brand-deep); border-radius: 0 0 22px 22px; padding: 0 22px 0 14px; overflow: hidden; min-height: 76px; }
+.app-body .app-tip-stage .bear-tip-img { width: 64px; align-self: flex-end; margin: 10px 8px -18px 0; filter: none; }
+.app-body .app-tip-stage .bear-tip-bubble { background: transparent; border: 0; box-shadow: none; padding: 12px 0; animation: bear-tip-in .35s ease both; }
+.app-body .app-tip-stage .bear-tip-bubble::after { display: none; }
+.app-body .app-tip-stage .bear-tip-kicker { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--brand-action); margin-bottom: 3px; }
+.app-tip-stage .bear-tip-myth { font-size: 12.5px !important; color: color-mix(in oklab, var(--primary-foreground) 60%, transparent) !important; }
+.app-tip-stage .bear-tip-fact { font-size: 14px !important; color: var(--primary-foreground) !important; }
+@media (max-width: 760px) {
+  .app-body .app-tip-stage > .wizard-content { padding: 22px 18px 24px; }
+  .app-body .app-tip-stage > .back-orb { top: 16px; left: 14px; }
+  .app-body .app-tip-stage:has(> .back-orb) > .wizard-content .question-head { padding-left: 44px; }
+  .app-body .app-tip-stage .wizard-content h2 { font-size: 20px; }
+  .app-tip-stage .answer-list-pair .answer-card { min-height: 108px; }
+}
