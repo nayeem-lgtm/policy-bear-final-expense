@@ -1949,23 +1949,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .app-tip-stage .answer-list .answer-card[data-state=checked]::before { transform: scaleY(1); }
 .app-tip-stage .answer-list .answer-card[data-state=checked] .answer-badge { background: var(--primary); color: var(--primary-foreground); }
 .app-tip-stage .tobacco-choices .answer-card[data-state=checked], .app-tip-stage .sex-choices .answer-card[data-state=checked] { background: color-mix(in oklab, var(--primary) 7%, var(--card)); border-color: var(--primary); }
-/* Mr Bear fact check — paw-stamped verdict */
+/* Mr Bear fact check — the myth flips away to reveal the fact */
 .app-body .app-tip-stage .bear-tip { order: 3; margin-top: 24px; flex-direction: row; align-items: center; gap: 13px; padding: 0; border-top: 0; background: transparent; }
 .app-body .app-tip-stage .bear-tip-img { width: 56px; margin: 0; filter: none; align-self: center; flex: none; }
-.app-body .app-tip-stage .bear-tip-bubble { position: relative; overflow: hidden; flex: 1 1 auto; min-width: 0; padding: 12px 68px 12px 16px; border: 1px solid color-mix(in oklab, var(--primary) 13%, transparent); border-radius: 16px; background: linear-gradient(120deg, color-mix(in oklab, var(--primary) 6%, var(--card)), var(--card)); box-shadow: 0 16px 32px -26px color-mix(in oklab, var(--brand-deep) 65%, transparent); }
+.app-body .app-tip-stage .bear-tip-bubble { position: relative; flex: 1 1 auto; min-width: 0; padding: 12px 16px 14px; border: 1px solid color-mix(in oklab, var(--primary) 13%, transparent); border-radius: 16px; background: linear-gradient(120deg, color-mix(in oklab, var(--primary) 6%, var(--card)), var(--card)); box-shadow: 0 16px 32px -26px color-mix(in oklab, var(--brand-deep) 65%, transparent); }
 .app-body .app-tip-stage .bear-tip-bubble::after { display: none; }
-.app-body .app-tip-stage .bear-tip-kicker { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: color-mix(in oklab, var(--primary) 78%, var(--brand-deep)); margin-bottom: 5px; }
+.app-body .app-tip-stage .bear-tip-kicker { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: color-mix(in oklab, var(--primary) 78%, var(--brand-deep)); margin-bottom: 9px; }
 .app-body .app-tip-stage .bear-tip-kicker svg { width: 12px; height: 12px; flex: none; color: var(--brand-action); }
-.app-tip-stage .bear-tip-myth { position: relative; display: block; margin: 0 0 6px; font-size: 13px !important; line-height: 1.45; color: color-mix(in oklab, var(--brand-deep) 46%, transparent) !important; }
-.app-tip-stage .bear-tip-myth .myth-text { background-image: linear-gradient(var(--destructive), var(--destructive)); background-repeat: no-repeat; background-position: 0 62%; background-size: 0% 1.5px; box-decoration-break: clone; -webkit-box-decoration-break: clone; animation: myth-strike 460ms cubic-bezier(.65,.05,.36,1) 260ms forwards; }
-@keyframes myth-strike { to { background-size: 100% 1.5px; } }
-.app-tip-stage .bear-tip-fact { margin: 0; font-size: 14px !important; font-weight: 700; line-height: 1.4; color: var(--brand-deep) !important; animation: fact-in 420ms cubic-bezier(.2,.8,.25,1) 620ms both; }
-@keyframes fact-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-.app-body .app-tip-stage .bear-tip-stamp { position: absolute; right: 14px; top: 50%; display: grid; place-items: center; width: 46px; height: 46px; flex: none; border: 1.5px dashed color-mix(in oklab, var(--brand-action) 72%, transparent); border-radius: 50%; background: color-mix(in oklab, var(--brand-action) 9%, transparent); color: var(--brand-action); translate: 0 -50%; rotate: -12deg; opacity: 0; animation: paw-stamp 480ms cubic-bezier(.34,1.56,.64,1) 780ms forwards; }
-.app-body .app-tip-stage .bear-tip-stamp svg { width: 22px; height: 22px; fill: currentColor; }
-@keyframes paw-stamp { 0% { opacity: 0; scale: 1.7; rotate: -30deg; } 60% { opacity: .95; scale: .93; rotate: -9deg; } 100% { opacity: .9; scale: 1; rotate: -12deg; } }
-@media (max-width: 430px) { .app-body .app-tip-stage .bear-tip-bubble { padding-right: 58px; } .app-body .app-tip-stage .bear-tip-stamp { width: 38px; height: 38px; right: 10px; } .app-body .app-tip-stage .bear-tip-stamp svg { width: 18px; height: 18px; } .app-body .app-tip-stage .bear-tip-img { width: 44px; } }
-@media (prefers-reduced-motion: reduce) { .app-tip-stage .bear-tip-myth .myth-text { animation: none; background-size: 100% 1.5px; } .app-tip-stage .bear-tip-fact { animation: none; } .app-body .app-tip-stage .bear-tip-stamp { animation: none; opacity: .9; } }
+.bear-flip { perspective: 900px; }
+.bear-flip-spin { display: grid; transform-style: preserve-3d; animation: bear-flip 6.4s cubic-bezier(.66,.02,.34,1) infinite; }
+.bear-flip-face { grid-area: 1 / 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.bear-flip-face p { margin: 0; font-size: 13.5px; line-height: 1.42; }
+.bear-flip-chip { font-size: 9.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; }
+.bear-flip-face.is-myth .bear-flip-chip { background: color-mix(in oklab, var(--destructive) 11%, var(--card)); color: var(--destructive); border: 1px solid color-mix(in oklab, var(--destructive) 26%, transparent); }
+.bear-flip-face.is-myth p { color: color-mix(in oklab, var(--brand-deep) 46%, transparent); text-decoration: line-through; text-decoration-color: color-mix(in oklab, var(--destructive) 72%, transparent); text-decoration-thickness: 1.5px; }
+.bear-flip-face.is-fact { transform: rotateY(180deg); }
+.bear-flip-face.is-fact .bear-flip-chip { background: color-mix(in oklab, var(--brand-action) 22%, var(--card)); color: color-mix(in oklab, var(--brand-deep) 80%, var(--brand-action)); border: 1px solid color-mix(in oklab, var(--brand-action) 52%, transparent); }
+.bear-flip-face.is-fact p { font-weight: 700; color: var(--brand-deep); }
+@keyframes bear-flip { 0%, 38% { transform: rotateY(0deg); } 50%, 88% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
+@media (max-width: 430px) { .app-body .app-tip-stage .bear-tip-img { width: 44px; } .bear-flip-face p { font-size: 12.5px; } }
+@media (prefers-reduced-motion: reduce) { .bear-flip-spin { animation: none; } .bear-flip-face.is-myth { display: none; } .bear-flip-face.is-fact { transform: none; } }
 @media (max-width: 760px) { .app-body .app-tip-stage .wizard-content h2 { font-size: 22px; } }
 
 /* Centered question header with topic badge */
