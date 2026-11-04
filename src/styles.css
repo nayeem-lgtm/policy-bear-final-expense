@@ -1603,6 +1603,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (hover: none) { .back-orb { gap: 6px; padding-right: 14px; } .back-orb-label { max-width: 60px; opacity: 1; } }
 @keyframes back-orb-in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .back-orb, .back-orb * { transition: none; animation: none; } }
+.app-topbar-back { flex: none; margin: 0; height: 32px; padding: 0 12px 0 0; gap: 7px; border-color: transparent; background: color-mix(in oklab, var(--brand-deep) 6%, transparent); box-shadow: none; font-size: 13px; animation: none; }
+.app-topbar-back .back-orb-icon { width: 28px; height: 28px; background: color-mix(in oklab, var(--primary) 12%, transparent); }
+.app-topbar-back .back-orb-icon svg { width: 15px; height: 15px; }
+.app-topbar-back .back-orb-label { max-width: 60px; opacity: 1; }
+.app-topbar-back:hover, .app-topbar-back:focus-visible { gap: 7px; padding-right: 12px; border-color: color-mix(in oklab, var(--primary) 30%, transparent); background: color-mix(in oklab, var(--primary) 9%, transparent); box-shadow: none; }
+@media (max-width: 760px) { .app-topbar-back { padding-right: 0; } .app-topbar-back .back-orb-label { display: none; } }
 
 /* Your Profile workspace v3: no outer strips, question first, Mr Bear tip below */
 .policy-page:has(.wizard-app) .funnel-section { padding: 0; }

@@ -212,7 +212,6 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   const trust = null
 
   const shell = (title: string, helper: string, content: React.ReactNode, options?: { back?: boolean; compact?: boolean; icon?: React.ReactNode }) => <>
-    {options?.back !== false && screen !== 'state' && !['loading', 'underwriting', 'submitting'].includes(screen) && <button type="button" className="back-button back-orb" onClick={back} aria-label="Go back to the previous question"><span className="back-orb-icon"><ArrowLeft /></span><span className="back-orb-label">Back</span></button>}
     <div className={`wizard-content ${options?.compact ? 'compact-content' : ''}`} key={screen}>
       {options?.icon
         ? <div className="question-head"><span className="question-badge" aria-hidden="true">{options.icon}</span><div className="question-head-copy"><h2 id="wizard-title" ref={heading} tabIndex={-1}>{title}</h2>{helper && <p className="question-helper">{helper}</p>}</div></div>
@@ -344,7 +343,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
       <p className="app-rail-secure"><LockKeyhole /> Demo only · nothing is submitted</p>
     </aside>
     <div className="app-main">
-      <div className="app-topbar"><span className="app-chapter"><strong>{labels[chapter]}</strong><em className="app-chapter-meter" aria-hidden="true"><i style={{ width: `${(progress.position / progress.total) * 100}%` }} /></em><small>{progress.position} of {progress.total}</small></span><a className="app-call" href="tel:+18447652327"><span className="agent-dot" aria-hidden="true" /><span className="app-call-copy"><small>Licensed agents available</small><strong>(844) POL-BEAR</strong></span></a></div>
+      <div className="app-topbar">{!['state', 'issued', 'loading', 'underwriting', 'submitting'].includes(screen) && <button type="button" className="back-orb app-topbar-back" onClick={back} aria-label="Go back to the previous question"><span className="back-orb-icon"><ArrowLeft /></span><span className="back-orb-label">Back</span></button>}<span className="app-chapter"><strong>{labels[chapter]}</strong><em className="app-chapter-meter" aria-hidden="true"><i style={{ width: `${(progress.position / progress.total) * 100}%` }} /></em><small>{progress.position} of {progress.total}</small></span><a className="app-call" href="tel:+18447652327"><span className="agent-dot" aria-hidden="true" /><span className="app-call-copy"><small>Licensed agents available</small><strong>(844) POL-BEAR</strong></span></a></div>
       <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
         <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Mr Bear’s fact check</span><p className="bear-tip-myth"><s>{tip.myth}</s></p><p className="bear-tip-fact">{tip.fact}</p></div>
         <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
