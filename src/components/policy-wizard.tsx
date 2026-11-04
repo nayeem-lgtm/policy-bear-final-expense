@@ -344,7 +344,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
     <div className="app-main">
       <div className="app-topbar"><span className="app-chapter"><strong>{labels[chapter]}</strong><em className="app-chapter-meter" aria-hidden="true"><i style={{ width: `${(progress.position / progress.total) * 100}%` }} /></em><small>{progress.position} of {progress.total}</small></span><a className="app-call" href="tel:+18447652327"><span className="agent-dot" aria-hidden="true" /><span className="app-call-copy"><small>Licensed agents available</small><strong>(844) POL-BEAR</strong></span></a></div>
       <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
-        <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
+        <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Mr Bear’s fact check</span><p className="bear-tip-myth"><s>{tip.myth}</s></p><p className="bear-tip-fact">{tip.fact}</p></div>
         <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
       </aside>{renderScreen()}</div> : renderScreen()}</div>
     </div>
