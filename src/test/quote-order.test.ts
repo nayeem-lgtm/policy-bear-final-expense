@@ -10,11 +10,11 @@ describe('Coverage range', () => {
 
 describe('Quote sequence', () => {
   it('opens with the five basic-info questions in the owner\'s order', () => {
-    expect([...basicInfoSteps]).toEqual(['state', 'gender', 'dob', 'coverage', 'tobacco'])
+    expect([...basicInfoSteps]).toEqual(['state', 'gender', 'dob', 'tobacco', 'coverage'])
   })
   it('shows the illustration immediately after the basic-info five', () => {
-    expect(journeySteps.indexOf('loading')).toBe(journeySteps.indexOf('tobacco') + 1)
-    expect(journeySteps.indexOf('price')).toBe(journeySteps.indexOf('tobacco') + 2)
+    expect(journeySteps.indexOf('loading')).toBe(journeySteps.indexOf('coverage') + 1)
+    expect(journeySteps.indexOf('price')).toBe(journeySteps.indexOf('coverage') + 2)
   })
   it('asks the pre-qualification questions after the illustration, with opt-in still last', () => {
     expect([...preQualSteps]).toEqual(['who', 'contact', 'size', 'opt-in'])
@@ -52,7 +52,8 @@ describe('Chapter progress counter', () => {
   it('counts Your Profile as five rating questions and puts gender second', () => {
     expect(chapterProgress('gender')).toEqual({ chapter: 0, position: 2, total: 5 })
     expect(chapterProgress('state')).toEqual({ chapter: 0, position: 1, total: 5 })
-    expect(chapterProgress('tobacco')).toEqual({ chapter: 0, position: 5, total: 5 })
+    expect(chapterProgress('tobacco')).toEqual({ chapter: 0, position: 4, total: 5 })
+    expect(chapterProgress('coverage')).toEqual({ chapter: 0, position: 5, total: 5 })
   })
   it('sits at the end of Your Profile while the illustration is on screen', () => {
     expect(chapterProgress('loading').position).toBe(5)
