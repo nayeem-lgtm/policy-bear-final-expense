@@ -1309,7 +1309,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .question-badge svg { width: 22px; height: 22px; }
 .question-badge .sex-mark-mars { stroke: var(--primary); }
 .question-badge .sex-mark-venus { stroke: var(--brand-action-hover); }
-.question-badge .sex-mark-knockout { stroke: color-mix(in oklab, var(--primary) 8%, var(--background)); }
 .question-head-copy { min-width: 0; }
 .question-head h2 { text-align: left; margin-bottom: 4px; }
 .question-head .question-helper { text-align: left; margin-bottom: 0; }

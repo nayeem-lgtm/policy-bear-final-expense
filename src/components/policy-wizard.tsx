@@ -37,7 +37,7 @@ const blank: Answers = { zip: '', city: '', state: '', who: '', month: '', day: 
 const labels = ['Your Profile', 'Pre-Qualification', 'Application', 'Finalize']
 const phone = '[FE_PHONE]'
 // Interwoven Mars + Venus mark for the sex question: brand blue for Mars, gold for Venus.
-const SexBadgeIcon = () => <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><g className="sex-mark-mars"><circle cx="14.5" cy="9.5" r="5" /><path d="M18.04 5.96 21.5 2.5M21.5 2.5h-3.3M21.5 2.5v3.3" /></g><circle className="sex-mark-knockout" cx="9.5" cy="14.5" r="5" strokeWidth="4.4" /><g className="sex-mark-venus"><circle cx="9.5" cy="14.5" r="5" /><path d="M9.5 19.5v3.3M7.1 21.4h4.8" /></g></svg>
+const SexBadgeIcon = () => <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><mask id="sex-mark-cut"><rect width="24" height="24" fill="white" /><circle cx="9.5" cy="14.5" r="5" fill="none" stroke="black" strokeWidth="4.4" /></mask><g className="sex-mark-mars" mask="url(#sex-mark-cut)"><circle cx="14.5" cy="9.5" r="5" /><path d="M18.04 5.96 21.5 2.5M21.5 2.5h-3.3M21.5 2.5v3.3" /></g><g className="sex-mark-venus"><circle cx="9.5" cy="14.5" r="5" /><path d="M9.5 19.5v3.3M7.1 21.4h4.8" /></g></svg>
 const coverageOptions = [
   { value: '10000', label: 'A dignified farewell', icon: <Heart /> },
   { value: '15000', label: 'Funeral & final bills', icon: <ShieldCheck />, popular: true },
