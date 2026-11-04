@@ -47,14 +47,14 @@ const SHIELD = 'M12 2.4 19.6 5v6.2c0 4.7-3.2 7.9-7.6 9.6-4.4-1.7-7.6-4.9-7.6-9.6
 const CoverageShieldIcon = ({ fill = 0.5, sparkle = false }: { fill?: number; sparkle?: boolean }) => {
   const id = useId().replace(/:/g, '')
   const top = 20.8 - 18.4 * fill
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><defs><clipPath id={`sh${id}`}><path d={SHIELD} /></clipPath></defs><rect className="cov-fill" fill="var(--brand-action)" x="1" y={top} width="22" height={21.6 - top} stroke="none" clipPath={`url(#sh${id})`} /><path d={SHIELD} />{sparkle && <path className="cov-mark" fill="var(--brand-action)" d="M19.4 2.4l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8Z" />}</svg>
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><defs><clipPath id={`sh${id}`}><path d={SHIELD} /></clipPath></defs><rect className="cov-fill" fill="var(--brand-action)" x="1" y={top} width="22" height={21.6 - top} stroke="none" clipPath={`url(#sh${id})`} /><path d={SHIELD} />{sparkle && <path className="cov-mark" fill="var(--brand-action)" d="M21.2 1l.5 1.1 1.1.5-1.1.5-.5 1.1-.5-1.1-1.1-.5 1.1-.5Z" />}</svg>
 }
 const CoverageBadgeIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={SHIELD} /><g fill="var(--brand-action)" stroke="none"><PawPrint x={5.8} y={5.2} s={0.52} /></g></svg>
 const coverageOptions = [
-  { value: '10000', icon: <CoverageShieldIcon fill={0.28} /> },
+  { value: '10000', icon: <CoverageShieldIcon fill={0.3} /> },
   { value: '15000', icon: <CoverageShieldIcon fill={0.5} />, popular: true },
-  { value: '20000', icon: <CoverageShieldIcon fill={0.72} /> },
-  { value: '25000', icon: <CoverageShieldIcon fill={0.95} sparkle /> },
+  { value: '20000', icon: <CoverageShieldIcon fill={0.7} /> },
+  { value: '25000', icon: <CoverageShieldIcon fill={0.88} sparkle /> },
 ]
 const whoIcons: Record<string, React.ReactNode> = { Me: <User />, 'My spouse or partner': <Heart />, 'My mom or dad': <Users />, 'Someone else': <UserRound /> }
 const whoDescriptions: Record<string, string> = { Me: 'Protection for my loved ones', 'My spouse or partner': 'Planning our future together', 'My mom or dad': 'Helping someone I love', 'Someone else': 'Supporting someone close' }
