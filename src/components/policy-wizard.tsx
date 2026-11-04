@@ -19,7 +19,7 @@ const bearTips: Partial<Record<string, { myth: string; fact: string }>> = {
   tobacco: { myth: 'I don’t have dependents so I don’t need life insurance', fact: 'Life insurance will pay off student loans or mortgages in the event of your death' },
 }
 
-import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, calculatePrice, chapterFor, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
+import { COVERAGE_MAX, COVERAGE_MIN, LICENSED_STATES, calculatePrice, chapterFor, chapterProgress, determineOutcome, formatSSN, healthQuestions, journeySteps, quoteSteps, sanitizedAnswers, US_STATES, type JourneyStep, type Outcome } from '@/lib/final-expense-demo'
 
 type Answers = {
   zip: string; city: string; state: string; who: string; month: string; day: string; year: string
@@ -329,6 +329,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
   }
 
   const chapter = chapterFor(screen)
+  const progress = chapterProgress(screen)
   const appMode = screen !== 'state'
   const tip = bearTips[screen]
   const minutes = [1, 1, 2, 2]
@@ -341,7 +342,7 @@ export function PolicyWizard({ onStepChange }: { onStepChange: (step: number) =>
       <p className="app-rail-secure"><LockKeyhole /> Demo only · nothing is submitted</p>
     </aside>
     <div className="app-main">
-      <div className="app-topbar"><span>{labels[chapter]}</span><a className="app-call" href="tel:+18447652327"><span className="agent-dot" aria-hidden="true" /><span className="app-call-copy"><small>Licensed agents available</small><strong>(844) POL-BEAR</strong></span></a></div>
+      <div className="app-topbar"><span className="app-chapter"><strong>{labels[chapter]}</strong><em className="app-chapter-meter" aria-hidden="true"><i style={{ width: `${(progress.position / progress.total) * 100}%` }} /></em><small>{progress.position} of {progress.total}</small></span><a className="app-call" href="tel:+18447652327"><span className="agent-dot" aria-hidden="true" /><span className="app-call-copy"><small>Licensed agents available</small><strong>(844) POL-BEAR</strong></span></a></div>
       <div className="app-body">{tip ? <div className="basic-stage app-tip-stage"><aside className="bear-tip" aria-label="Tip from Mr Bear">
         <div className="bear-tip-bubble" key={screen}><span className="bear-tip-kicker">Did you know?</span><span className="bear-tip-title is-myth">Myth</span><p>{tip.myth}</p><span className="bear-tip-title is-fact">Fact</span><p className="bear-tip-fact">{tip.fact}</p></div>
         <img className="bear-tip-img" src={bearGuide} width={595} height={959} alt="" aria-hidden="true" />
