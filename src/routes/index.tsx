@@ -74,7 +74,7 @@ function Index() {
             <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={23} /></summary><p>{answer}</p></details>)}</div>
             <div className="faq-cta">
               <h2>Find a starting point for your <span className="faq-cta-hl">final expense</span> coverage.</h2>
-              <a className="faq-cta-btn" href="#get-covered"><span className="faq-cta-paw" aria-hidden="true"><PawPrint size={18} /></span><span>Explore coverage</span><span className="faq-cta-arrow"><ArrowRight size={16} /></span></a>
+              <a className="faq-cta-btn" href="#get-covered"><span className="faq-cta-label">Explore coverage</span><span className="faq-cta-path" aria-hidden="true"><PawPrint className="faq-cta-step" size={13} /><PawPrint className="faq-cta-step" size={15} /><PawPrint className="faq-cta-step" size={17} /></span><span className="faq-cta-arrow"><ArrowRight size={17} /></span></a>
             </div>
           </div>
         </section>
